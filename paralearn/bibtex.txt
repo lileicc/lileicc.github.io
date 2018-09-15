@@ -1,0 +1,11 @@
+@inproceedings{LeiCut08,
+ author = {Lei Li and Wenjie Fu and Fan Guo and Todd C. Mowry and Christos Faloutsos},
+ title = {Cut-and-stitch: efficient parallel learning of linear dynamical systems on smps},
+ booktitle = {KDD '08: Proceeding of the 14th ACM SIGKDD international conference on Knowledge discovery and data mining},
+ year = {2008},
+ isbn = {978-1-60558-193-4},
+ pages = {471--479},
+ location = {Las Vegas, Nevada, USA},
+ publisher = {ACM},
+ address = {New York, NY, USA},
+ }

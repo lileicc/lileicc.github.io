@@ -1,0 +1,89 @@
+<!DOCTYPE HTML>
+<html><head>
+
+
+  <meta charset="UTF-8"><title>MLDS</title>
+  
+  <link rel="stylesheet" href="css/style.css" type="text/css"></head><body>
+<div id="header">
+<div style="text-align: left;">
+</div>
+<div>
+<div style="text-align: left;">
+</div>
+<h1 style="text-align: left;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Multilinear Dynamical Systems</h1>
+</div>
+<div align="right">
+<ul id="navigation">
+  <li class="active"> <a href="../">Home</a> </li>
+  <li> <a href="#people">People</a> </li>
+  <li> <a href="#publication">Publication</a> </li>
+  <li> <a href="#download">Download</a> </li>
+</ul>
+</div>
+</div>
+<div id="adbox">
+<div class="clearfix"> 
+<div>
+<h2>MLDS: A model for tensor time series</h2>
+<img style="width: 317px;" src="images/mlds.svg" alt="Img">
+<p>Data in the sciences frequently occur as sequences of
+multidimensional arrays called tensors. How can hidden, evolving trends
+in such data be extracted while preserving the tensor structure? The
+model that is traditionally used is the linear dynamical system (LDS),
+which treats the latent state and observation at each time slice as
+vectors. We present the multilinear dynamical system (MLDS) for
+modeling tensor time series and an expectation–maximization (EM)
+algorithm to estimate the parameters. The MLDS models each tensor
+observation in a series as the multilinear projection of a
+corresponding member of a sequence of latent tensors. The latent
+tensors are again evolving with respect to a multilinear projection.
+Compared to the LDS with an equal number of parameters, the MLDS
+achieves higher prediction accuracy and marginal likelihood. 
+</p>
+</div>
+</div>
+</div>
+
+<div id="contents">
+<div>
+<h1><a name="people"></a>People</h1>
+<ul>
+  <li>Prof. <a href="http://www.cs.berkeley.edu/%7Erussell/">Stuart
+Russell</a></li>
+  <li>Dr. <a href="http://www.cs.cmu.edu/%7Eleili/">Lei Li</a>
+(contact: [my full name]@cs.berkeley.edu)</li>
+  <li>Mark Rogers<br>
+  </li>
+</ul>
+</div>
+<div>
+<h1><a name="publication"></a>Publication</h1>
+<p style="margin-left: 40px;"> Mark Rogers, Lei Li and Stuart J.
+Russell (2013), "<span style="font-style: italic;">Multilinear
+Dynamical Systems for Tensor Time Series</span>", In Advances in Neural
+Information Processing Systems 26. [<a href="../pubs/rogers-nips2013-mlds.pdf">PDF</a>] </p>
+</div>
+<div background="">
+<h1><a name="download"></a>Download</h1>
+<ul>
+  <li>Source code (matlab): <a href="../software/mlds-r662.zip">mlds-r661.zip</a></li>
+  <li>Data:</li>
+  <ul>
+    <li><a href="sst.mat">Tropical Region Sea Surface Temperature</a></li>
+    <li><a href="tesla.mat">12 Car and Oil company stock prices</a></li>
+    <li><a href="nasdaq100.mat">20 NASDAQ stock prices</a></li>
+    <li><a href="video.mat">A video clip of ocean surf</a></li>
+  </ul>
+</ul>
+</div>
+</div>
+
+<div id="footer">
+<div class="clearfix">
+<div id="connect"> </div>
+<p>Lei Li © 2013 . All Rights Reserved. </p>
+</div>
+</div>
+
+</body></html>

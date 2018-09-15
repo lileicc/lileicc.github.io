@@ -1,0 +1,42 @@
+<tr id="\format{\bibtexkey}" class="entry">
+	<td>\begin{author}\format[AuthorFirstFirstCommas,HTMLChars]{\author}\end{author}, <i>"\format[HTMLChars]{\title}"</i>\begin{journal}, \format[HTMLChars]{\journal}\end{journal}\begin{booktitle}, In \format[HTMLChars]{\booktitle}\end{booktitle}\begin{address}, \format[HTMLChars]{\address}\end{address}\begin{volume}, Volume \volume\end{volume}\begin{number}(\format[FormatPagesForHTML]{\number})\end{number}\begin{pages}, pp. \format[FormatPagesForHTML]{\pages}.\end{pages}\begin{publisher} \format[HTMLChars]{\publisher}\end{publisher}\begin{howpublished}, \format[HTMLChars]{\howpublished} \end{howpublished}\begin{year}, \format[HTMLChars]{\year}\end{year}.
+	\begin{note}<p class="note">\format{\note}</p>\end{note}
+	<p class="infolinks">\begin{abstract}<a href="javascript:toggleInfo('\format{\bibtexkey}','abstract')">[Abstract]</a>\end{abstract}\begin{review} [<a href="javascript:toggleInfo('\format{\bibtexkey}','review')">Review</a>] \end{review} <a href="javascript:toggleInfo('\format{\bibtexkey}','bibtex')">[BibTeX]</a>
+  \begin{file} \format[WrapFileLinks(<a href="\r">&#91;\d_\f&#93;</a>,pdf),Replace(>&#91;_,>&#91;)]{\file}\end{file}
+  \begin{doi} <a href="\format[DOICheck]{\doi}">[DOI]</a>\end{doi}
+  \begin{url} <a href="\format{\url}">[URL]</a>\end{url}
+  \begin{software} <a href="\format{\software}">[Software]</a>\end{software}
+  \begin{slides} <a href="\format{\slides}">[PPT]</a>\end{slides}
+  \begin{file} \format[WrapFileLinks( <a href="\r">&#91;\d&#93;</a> ,url),]{\file}\end{file}
+	</p>
+	</td>
+</tr>
+\begin{abstract}
+<tr id="abs_\format{\bibtexkey}" class="abstract noshow">
+	<td><b>Abstract</b>: \format[HTMLChars]{\abstract}</td>
+</tr>\end{abstract}
+\begin{review}
+<tr id="rev_\format{\bibtexkey}" class="review noshow">
+	<td><b>Review</b>: \format[HTMLChars]{\review}</td>
+</tr>\end{review}
+<tr id="bib_\format{\bibtexkey}" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@\format[ToLowerCase]{\bibtextype}{\bibtexkey,\begin{author}
+  author = {\format[HTMLChars]{\author}}\end{author}\begin{title},
+  title = {\format[HTMLChars]{\title}}\end{title}\begin{booktitle},
+  booktitle = {\format[HTMLChars]{\booktitle}}\end{booktitle}\begin{journal},
+  journal = {\format[HTMLChars]{\journal}}\end{journal}\begin{publisher},
+  publisher = {\format[HTMLChars]{\publisher}}\end{publisher}\begin{school},
+  school = {\format[HTMLChars]{\school}}\end{school}\begin{year},
+  year = {\format[HTMLChars]{\year}}\end{year}\begin{volume},
+  volume = {\format[HTMLChars]{\volume}}\end{volume}\begin{number},
+  number = {\format[HTMLChars]{\number}}\end{number}\begin{pages},
+  pages = {\format[HTMLChars]{\pages}}\end{pages}\begin{edition},
+  edition = {\format[HTMLChars]{\edition}}\end{edition}\begin{note},
+  note = {\format[HTMLChars]{\note}}\end{note}\begin{url},
+  url = {\format[HTMLChars]{\url}}\end{url}\begin{doi},
+  doi = {\format[DOICheck]{\doi}}\end{doi}
+}
+</pre></td>
+</tr>

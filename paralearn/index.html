@@ -1,0 +1,1036 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns:m="http://schemas.microsoft.com/office/2004/12/omml" xmlns="http://www.w3.org/TR/REC-html40"><head>
+
+
+
+
+  <meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+
+  <meta name="ProgId" content="Word.Document">
+
+  <meta name="Generator" content="Microsoft Word 12">
+
+  <meta name="Originator" content="Microsoft Word 12">
+
+  <link rel="File-List" href="index_files/filelist.xml">
+
+  <link rel="Edit-Time-Data" href="index_files/editdata.mso"><!--[if !mso]>
+<style>
+v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style>
+<![endif]--><title>Parallel LDS</title><!--[if gte mso 9]><xml>
+ <o:DocumentProperties>
+  <o:Author>Carnegie Mellon University</o:Author>
+  <o:LastAuthor>Carnegie Mellon University</o:LastAuthor>
+  <o:Revision>11</o:Revision>
+  <o:TotalTime>590</o:TotalTime>
+  <o:Created>2008-04-02T00:31:00Z</o:Created>
+  <o:LastSaved>2008-09-05T06:14:00Z</o:LastSaved>
+  <o:Pages>1</o:Pages>
+  <o:Words>527</o:Words>
+  <o:Characters>3007</o:Characters>
+  <o:Company>Carnegie Mellon University</o:Company>
+  <o:Lines>25</o:Lines>
+  <o:Paragraphs>7</o:Paragraphs>
+  <o:CharactersWithSpaces>3527</o:CharactersWithSpaces>
+  <o:Version>12.00</o:Version>
+ </o:DocumentProperties>
+</xml><![endif]-->
+
+
+
+
+  
+
+  <link rel="dataStoreItem" href="index_files/item0008.xml" target="index_files/props0009.xml">
+
+  <link rel="themeData" href="index_files/themedata.thmx">
+
+  <link rel="colorSchemeMapping" href="index_files/colorschememapping.xml"><!--[if gte mso 9]><xml>
+ <w:WordDocument>
+  <w:Zoom>TextFit</w:Zoom>
+  <w:TrackMoves>false</w:TrackMoves>
+  <w:TrackFormatting/>
+  <w:ValidateAgainstSchemas/>
+  <w:SaveIfXMLInvalid>false</w:SaveIfXMLInvalid>
+  <w:IgnoreMixedContent>false</w:IgnoreMixedContent>
+  <w:AlwaysShowPlaceholderText>false</w:AlwaysShowPlaceholderText>
+  <w:DoNotPromoteQF/>
+  <w:LidThemeOther>EN-US</w:LidThemeOther>
+  <w:LidThemeAsian>ZH-CN</w:LidThemeAsian>
+  <w:LidThemeComplexScript>X-NONE</w:LidThemeComplexScript>
+  <w:Compatibility>
+   <w:BreakWrappedTables/>
+   <w:SnapToGridInCell/>
+   <w:WrapTextWithPunct/>
+   <w:UseAsianBreakRules/>
+   <w:DontGrowAutofit/>
+   <w:SplitPgBreakAndParaMark/>
+   <w:DontVertAlignCellWithSp/>
+   <w:DontBreakConstrainedForcedTables/>
+   <w:DontVertAlignInTxbx/>
+   <w:Word11KerningPairs/>
+   <w:CachedColBalance/>
+   <w:UseFELayout/>
+  </w:Compatibility>
+  <w:BrowserLevel>MicrosoftInternetExplorer4</w:BrowserLevel>
+  <m:mathPr>
+   <m:mathFont m:val="Cambria Math"/>
+   <m:brkBin m:val="before"/>
+   <m:brkBinSub m:val="&#45;-"/>
+   <m:smallFrac m:val="off"/>
+   <m:dispDef/>
+   <m:lMargin m:val="0"/>
+   <m:rMargin m:val="0"/>
+   <m:defJc m:val="centerGroup"/>
+   <m:wrapIndent m:val="1440"/>
+   <m:intLim m:val="subSup"/>
+   <m:naryLim m:val="undOvr"/>
+  </m:mathPr></w:WordDocument>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <w:LatentStyles DefLockedState="false" DefUnhideWhenUsed="true"
+  DefSemiHidden="true" DefQFormat="false" DefPriority="99"
+  LatentStyleCount="267">
+  <w:LsdException Locked="false" Priority="0" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Normal"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 1"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 2"/>
+  <w:LsdException Locked="false" Priority="9" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="heading 3"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 4"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 5"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 6"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 7"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 8"/>
+  <w:LsdException Locked="false" Priority="9" QFormat="true" Name="heading 9"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 1"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 2"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 3"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 4"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 5"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 6"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 7"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 8"/>
+  <w:LsdException Locked="false" Priority="39" Name="toc 9"/>
+  <w:LsdException Locked="false" Priority="35" QFormat="true" Name="caption"/>
+  <w:LsdException Locked="false" Priority="10" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Title"/>
+  <w:LsdException Locked="false" Priority="1" Name="Default Paragraph Font"/>
+  <w:LsdException Locked="false" Priority="11" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtitle"/>
+  <w:LsdException Locked="false" Priority="22" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Strong"/>
+  <w:LsdException Locked="false" Priority="20" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Emphasis"/>
+  <w:LsdException Locked="false" Priority="59" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Table Grid"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Placeholder Text"/>
+  <w:LsdException Locked="false" Priority="1" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="No Spacing"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 1"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 1"/>
+  <w:LsdException Locked="false" UnhideWhenUsed="false" Name="Revision"/>
+  <w:LsdException Locked="false" Priority="34" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="List Paragraph"/>
+  <w:LsdException Locked="false" Priority="29" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Quote"/>
+  <w:LsdException Locked="false" Priority="30" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Quote"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 1"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 1"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 1"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 1"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 1"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 1"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 1"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 2"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 2"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 2"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 2"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 2"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 2"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 2"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 2"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 3"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 3"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 3"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 3"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 3"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 3"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 3"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 3"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 4"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 4"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 4"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 4"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 4"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 4"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 4"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 4"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 5"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 5"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 5"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 5"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 5"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 5"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 5"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 5"/>
+  <w:LsdException Locked="false" Priority="60" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="61" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light List Accent 6"/>
+  <w:LsdException Locked="false" Priority="62" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Light Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="63" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="64" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Shading 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="65" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="66" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium List 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="67" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 1 Accent 6"/>
+  <w:LsdException Locked="false" Priority="68" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 2 Accent 6"/>
+  <w:LsdException Locked="false" Priority="69" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Medium Grid 3 Accent 6"/>
+  <w:LsdException Locked="false" Priority="70" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Dark List Accent 6"/>
+  <w:LsdException Locked="false" Priority="71" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Shading Accent 6"/>
+  <w:LsdException Locked="false" Priority="72" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful List Accent 6"/>
+  <w:LsdException Locked="false" Priority="73" SemiHidden="false"
+   UnhideWhenUsed="false" Name="Colorful Grid Accent 6"/>
+  <w:LsdException Locked="false" Priority="19" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Emphasis"/>
+  <w:LsdException Locked="false" Priority="21" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Emphasis"/>
+  <w:LsdException Locked="false" Priority="31" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Subtle Reference"/>
+  <w:LsdException Locked="false" Priority="32" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Intense Reference"/>
+  <w:LsdException Locked="false" Priority="33" SemiHidden="false"
+   UnhideWhenUsed="false" QFormat="true" Name="Book Title"/>
+  <w:LsdException Locked="false" Priority="37" Name="Bibliography"/>
+  <w:LsdException Locked="false" Priority="39" QFormat="true" Name="TOC Heading"/>
+ </w:LatentStyles>
+</xml><![endif]-->
+
+
+  <style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-alt:SimSun;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 135135232 16 0 262145 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;
+	mso-font-charset:1;
+	mso-generic-font-family:roman;
+	mso-font-format:other;
+	mso-font-pitch:variable;
+	mso-font-signature:0 0 0 0 0 0;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;
+	mso-font-charset:0;
+	mso-generic-font-family:swiss;
+	mso-font-pitch:variable;
+	mso-font-signature:1627400839 -2147483648 8 0 66047 0;}
+@font-face
+	{font-family:SimSun;
+	panose-1:2 1 6 0 3 1 1 1 1 1;
+	mso-font-charset:134;
+	mso-generic-font-family:auto;
+	mso-font-pitch:variable;
+	mso-font-signature:3 135135232 16 0 262145 0;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+h1
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 1 Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:1;
+	font-size:24.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+h2
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 2 Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:2;
+	font-size:18.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+h3
+	{mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-qformat:yes;
+	mso-style-link:"Heading 3 Char";
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	mso-outline-level:3;
+	font-size:13.5pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	font-weight:bold;}
+a:link, span.MsoHyperlink
+	{mso-style-priority:99;
+	color:blue;
+	text-decoration:underline;
+	text-underline:single;}
+a:visited, span.MsoHyperlinkFollowed
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	color:purple;
+	text-decoration:underline;
+	text-underline:single;}
+p
+	{mso-style-priority:99;
+	mso-margin-top-alt:auto;
+	margin-right:0in;
+	mso-margin-bottom-alt:auto;
+	margin-left:0in;
+	mso-pagination:widow-orphan;
+	font-size:12.0pt;
+	font-family:"Times New Roman","serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-link:"Balloon Text Char";
+	margin:0in;
+	margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;}
+span.Heading1Char
+	{mso-style-name:"Heading 1 Char";
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 1";
+	mso-ansi-font-size:14.0pt;
+	mso-bidi-font-size:14.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#365F91;
+	mso-themecolor:accent1;
+	mso-themeshade:191;
+	font-weight:bold;}
+span.Heading2Char
+	{mso-style-name:"Heading 2 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 2";
+	mso-ansi-font-size:13.0pt;
+	mso-bidi-font-size:13.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.Heading3Char
+	{mso-style-name:"Heading 3 Char";
+	mso-style-noshow:yes;
+	mso-style-priority:9;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Heading 3";
+	mso-ansi-font-size:12.0pt;
+	mso-bidi-font-size:12.0pt;
+	font-family:"Cambria","serif";
+	mso-ascii-font-family:Cambria;
+	mso-ascii-theme-font:major-latin;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:major-fareast;
+	mso-hansi-font-family:Cambria;
+	mso-hansi-theme-font:major-latin;
+	mso-bidi-font-family:"Times New Roman";
+	mso-bidi-theme-font:major-bidi;
+	color:#4F81BD;
+	mso-themecolor:accent1;
+	font-weight:bold;}
+span.BalloonTextChar
+	{mso-style-name:"Balloon Text Char";
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-unhide:no;
+	mso-style-locked:yes;
+	mso-style-link:"Balloon Text";
+	mso-ansi-font-size:8.0pt;
+	mso-bidi-font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	mso-ascii-font-family:Tahoma;
+	mso-fareast-font-family:"Times New Roman";
+	mso-fareast-theme-font:minor-fareast;
+	mso-hansi-font-family:Tahoma;
+	mso-bidi-font-family:Tahoma;}
+.MsoChpDefault
+	{mso-style-type:export-only;
+	mso-default-props:yes;
+	font-size:10.0pt;
+	mso-ansi-font-size:10.0pt;
+	mso-bidi-font-size:10.0pt;
+	mso-fareast-font-family:SimSun;}
+@page Section1
+	{size:8.5in 11.0in;
+	margin:1.0in 1.25in 1.0in 1.25in;
+	mso-header-margin:.5in;
+	mso-footer-margin:.5in;
+	mso-paper-source:0;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ @list l0
+	{mso-list-id:470172995;
+	mso-list-template-ids:-490846558;}
+@list l0:level1
+	{mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l0:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l0:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1
+	{mso-list-id:728530396;
+	mso-list-template-ids:1632380750;}
+@list l1:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l1:level2
+	{mso-level-number-format:bullet;
+	mso-level-text:o;
+	mso-level-tab-stop:1.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:"Courier New";
+	mso-bidi-font-family:"Times New Roman";}
+@list l1:level3
+	{mso-level-tab-stop:1.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level4
+	{mso-level-tab-stop:2.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level5
+	{mso-level-tab-stop:2.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level6
+	{mso-level-tab-stop:3.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level7
+	{mso-level-tab-stop:3.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level8
+	{mso-level-tab-stop:4.0in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l1:level9
+	{mso-level-tab-stop:4.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;}
+@list l2
+	{mso-list-id:864709088;
+	mso-list-template-ids:-443901228;}
+@list l2:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l3
+	{mso-list-id:999844102;
+	mso-list-template-ids:704831416;}
+@list l3:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+@list l4
+	{mso-list-id:1650086936;
+	mso-list-template-ids:-891110964;}
+@list l4:level1
+	{mso-level-number-format:bullet;
+	mso-level-text:\F0B7;
+	mso-level-tab-stop:.5in;
+	mso-level-number-position:left;
+	text-indent:-.25in;
+	mso-ansi-font-size:10.0pt;
+	font-family:Symbol;}
+ol
+	{margin-bottom:0in;}
+ul
+	{margin-bottom:0in;}
+-->
+  </style><!--[if gte mso 10]>
+<style>
+ /* Style Definitions */
+ table.MsoNormalTable
+	{mso-style-name:"Table Normal";
+	mso-tstyle-rowband-size:0;
+	mso-tstyle-colband-size:0;
+	mso-style-noshow:yes;
+	mso-style-priority:99;
+	mso-style-qformat:yes;
+	mso-style-parent:"";
+	mso-padding-alt:0in 5.4pt 0in 5.4pt;
+	mso-para-margin:0in;
+	mso-para-margin-bottom:.0001pt;
+	mso-pagination:widow-orphan;
+	font-size:10.0pt;
+	font-family:"Times New Roman","serif";}
+</style>
+<![endif]-->
+
+  <meta http-equiv="Content-Language" content="en-us"><!--[if gte mso 9]><xml>
+ <o:shapedefaults v:ext="edit" spidmax="8194"/>
+</xml><![endif]--><!--[if gte mso 9]><xml>
+ <o:shapelayout v:ext="edit">
+  <o:idmap v:ext="edit" data="1"/>
+ </o:shapelayout></xml><![endif]--></head><body style="" bgcolor="#d9e6ec" lang="EN-US" link="blue" vlink="purple">
+
+
+<div class="Section1">
+
+<h1><span style="">Parallel Learning of
+Sequential Graphical Models<o:p></o:p></span></h1>
+
+
+<p style="margin-bottom: 0.0001pt;"><span style="font-size: 13.5pt;">[<a href="#Overview">Overview</a> | <a href="#People">People</a> | <a href="#Publication">Publication</a> | <a href="#Download">Download</a></span><span style="font-size: 13.5pt;"> </span><span style="font-size: 13.5pt;">|</span><span style="font-size: 13.5pt;"> <a href="#Contact">Contact</a></span><span style="font-size: 13.5pt;"> | <a href="http://www.azoft.com/people/seremina/edu/parallel_learn-rom.html" target="_blank">View this page in Romanian</a>]<br>
+
+&nbsp;</span></p>
+
+
+<div class="MsoNormal" style="text-align: center;" align="center"><span style="">
+
+<hr align="center" size="2" width="100%">
+
+</span></div>
+
+
+<h1><a name="Overview"><span style="">Overview</span></a><span style=""><o:p></o:p></span></h1>
+
+
+<p><!--[if gte vml 1]><v:shapetype id="_x0000_t75" coordsize="21600,21600"
+ o:spt="75" o:preferrelative="t" path="m@4@5l@4@11@9@11@9@5xe" filled="f"
+ stroked="f">
+ <v:stroke joinstyle="miter"/>
+ <v:formulas>
+  <v:f eqn="if lineDrawn pixelLineWidth 0"/>
+  <v:f eqn="sum @0 1 0"/>
+  <v:f eqn="sum 0 0 @1"/>
+  <v:f eqn="prod @2 1 2"/>
+  <v:f eqn="prod @3 21600 pixelWidth"/>
+  <v:f eqn="prod @3 21600 pixelHeight"/>
+  <v:f eqn="sum @0 0 1"/>
+  <v:f eqn="prod @6 1 2"/>
+  <v:f eqn="prod @7 21600 pixelWidth"/>
+  <v:f eqn="sum @8 21600 0"/>
+  <v:f eqn="prod @7 21600 pixelHeight"/>
+  <v:f eqn="sum @10 21600 0"/>
+ </v:formulas>
+ <v:path o:extrusionok="f" gradientshapeok="t" o:connecttype="rect"/>
+ <o:lock v:ext="edit" aspectratio="t"/>
+</v:shapetype><v:shape id="Object_x0020_1" o:spid="_x0000_s1033" type="#_x0000_t75"
+ style='position:absolute;margin-left:388.15pt;margin-top:15.45pt;width:427.2pt;
+ height:133.9pt;z-index:-1;visibility:visible;mso-wrap-distance-left:11.88pt;
+ mso-wrap-distance-top:25.92pt;mso-wrap-distance-right:20.52pt;
+ mso-wrap-distance-bottom:6.56pt;mso-position-horizontal:right;
+ mso-position-horizontal-relative:text;mso-position-vertical:absolute;
+ mso-position-vertical-relative:text' wrapcoords="1125 1121 0 1121 0 1791 1575 4702 2250 8283 1049 11647 1049 12091 2551 15446 2174 16567 1800 18132 1876 19253 2399 21043 2475 21043 10575 21043 18526 21043 21451 20592 21451 17906 21150 16115 20700 15446 21074 12091 21074 11865 20624 8509 20776 8283 21299 5598 21375 2912 18301 2460 2551 1121 1125 1121"
+ o:gfxdata="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
+">
+ <v:imagedata src="index_files/image001.png" o:title=""/>
+ <o:lock v:ext="edit" aspectratio="f"/>
+ <w:wrap type="tight"/>
+</v:shape><![endif]--><!--[if !vml]--><img src="index_files/image003.gif" style="margin: 35px 6px 9px -6px;" v:shapes="Object_x0020_1" align="right" height="179" hspace="22" width="570"><!--[endif]--><span style="">The number of cores in a single chip
+keeps on increasing recent years, yet there is no good framework for machine
+learning to take advantage of multi-core computation. How much speedup could we
+obtain for a more general class of learning algorithms, especially for machine
+learning algorithms on graphical models?<o:p></o:p></span></p>
+
+
+<p><span style="">In this project, we plan to
+investigate how much parallelism we could exploit in machine learning
+algorithms on graphical models with multi-core processors. We will focus on the
+inference algorithms for both Bayesian Network and Markov Random Fields. We
+will also investigate the learning algorithms in graphical models, such as
+Expectation-Maximization algorithm and Markov Chain Monte Carlo algorithms.<o:p></o:p></span></p>
+
+
+<p><span style="">The goal is to design and
+implement efficient parallel learning algorithm for sequential graphical
+models, such as hidden Markov models (HMM) and linear dynamical systems (LDS).
+LDS (or Kalman filters) is very useful in <a href="../mocap.stitch">motion
+capture</a>, visual tracking, speech recognition, quantitative studies of
+financial markets, network intrusion detection, forecasting, etc. <o:p></o:p></span></p>
+
+
+<p><span style="">This project is originated from
+a course project of <a href="http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15740-f07/www/">15740
+Computer Architecture</a>. If you are interested, you can find the project page
+<a href="15740-07">here</a> (sorry, ONLY visible within CMU).<o:p></o:p></span></p>
+
+
+<p><b>FUNDING ACKNOWLEDGEMENTS:</b><br>
+
+This material is based upon work supported by the National Science Foundation
+under Grants No. IIS-0326322. The data used in this project was obtained from <a href="mocap.cs.cmu.edu">mocap.cs.cmu.edu</a> supported by NSF EIA-0196217. Any
+opinions, findings, and conclusions or recommendations expressed in this
+material are those of the author(s) and do not necessarily reflect the views of
+the National Science Foundation, or other funding parties. </p>
+
+
+<h1><a name="People"><span style="">People</span></a><span style=""><o:p></o:p></span></h1>
+
+
+<ul type="disc">
+
+ <li class="MsoNormal" style=""><span style="font-size: 13.5pt;"><a href="http://www.cs.cmu.edu/%7Echristos">Christos Faloutsos</a> -
+     professor from C</span><span style="font-size: 13.5pt;">SD</span><span style=""><o:p></o:p></span></li>
+
+ <li class="MsoNormal" style=""><span style=""><a href="http://www.cs.cmu.edu/%7Etcm/">Todd C. Mowry</a></span><span style="font-size: 13.5pt;"> -
+     professor from CSD</span><span style=""><o:p></o:p></span></li>
+
+ <li class="MsoNormal" style=""><span style="font-size: 13.5pt;"><a href="http://www.cs.cmu.edu/%7Eleili">Lei Li</a> - PhD student from CSD </span><span style=""><o:p></o:p></span></li>
+
+ <li class="MsoNormal" style=""><span style=""><a href="http://www.cs.cmu.edu/%7Ewenjief/">Wenjie Fu</a></span><span style=""> </span><span style="font-size: 13.5pt;">- PhD
+     student from CSD</span><span style=""><o:p></o:p></span></li>
+
+ <li class="MsoNormal" style=""><span style="font-size: 13.5pt;"><a href="http://www.cs.cmu.edu/%7Efanguo/">Fan
+     Guo</a></span><span style="font-size: 13.5pt;">
+     - PhD student from CSD</span></li>
+  <li class="MsoNormal" style=""><span style="font-size: 13.5pt;"><a href="http://www.cs.cmu.edu/%7Ebinf/">Bin Fu</a> - PhD student from CSD<br>
+</span></li>
+
+
+</ul>
+
+
+<h1><a name="Publication"><span style="">Publication</span></a><span style=""><o:p></o:p></span></h1>
+
+
+<table class="MsoNormalTable" style="width: 100%; border-collapse: collapse;" id="AutoNumber1" border="0" cellpadding="0" cellspacing="0" width="100%">
+
+ <tbody>
+    <tr>
+
+  <td style="padding: 0in; width: 100%;" width="100%">
+  
+      <p style="margin-left: 0.5in; text-indent: -0.25in;"><span style=""><span style="">1.<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span>Lei Li, <span style="">Wenjie Fu, Fan Guo, Todd C. Mowry</span>,<span style=""> and</span> Christos Faloutsos. <i style="">Cut-And-Stitch:
+  Efficient Parallel Learning of Linear</i><i style=""><span style=""> </span>Dynamical Systems on SMPs</i>.
+  <span style="">ACM KDD ?8, Las Vegas, Nevada,
+  USA, 2008. [<a href="../pubs/li-kdd08-new.pdf">pdf</a>] </span>[<a href="bibtex.txt">BiBTeX</a>]</p>
+      <p style="margin-left: 0.5in; text-indent: -0.25in;">&nbsp;
+&nbsp; &nbsp; * Errata:&nbsp; There was a typo in Equation 37, page 4
+in the original kdd version. The software source code is correct.</p>
+      <p style="margin-left: 0.5in; text-indent: -0.25in;">2.Lei Li, Bin Fu, Christos Faloutsos. <span style="font-style: italic;">Efficient Parallel Learning of Hidden Markov Chain Models on SMPs, IEICE Transactions on Information and Systems.</span> Volume E93.D(6), pp. 1330-1342.</p>
+</td>
+
+ </tr>
+
+  </tbody>
+</table>
+
+
+<h1><a name="Download"><span style="">Download</span></a><span style=""><o:p></o:p></span></h1>
+
+
+<ul type="disc">
+
+ <li class="MsoNormal" style=""><b style=""><span style="font-size: 13.5pt;">Dataset</span></b><span style="font-size: 13.5pt;"> </span><span style="font-size: 13.5pt;">(please
+     gently acknowledge us in your resulting work)</span><span style=""><o:p></o:p></span></li>
+
+</ul>
+
+
+<p style="margin-left: 1in; text-indent: -0.25in;"><!--[if !supportLists]--><span style="font-size: 10pt; font-family: &quot;Courier New&quot;;"><span style="">o<span style="font-family: &quot;Times New Roman&quot;; font-style: normal; font-variant: normal; font-weight: normal; font-size: 7pt; line-height: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;
+</span></span></span><!--[endif]-->processed motion capture dataset&nbsp;<span style="">[<a href="data.tar.bz2">Download</a>]</span>
+</p>
+
+
+<ul type="disc">
+
+ <li class="MsoNormal"><b style=""><span style="font-size: 13.5pt;">Presentation:</span></b><span style="font-size: 13.5pt;"> </span><span style="">[<a href="kdd08-slides.pdf">PPT</a>]
+     [<a href="kdd-poster.pdf">Poster</a>]</span><b style=""><span style="font-size: 13.5pt;"><o:p></o:p></span></b></li>
+
+ <li class="MsoNormal" style=""><b><span style="font-size: 13.5pt;">Software:</span></b><span style="font-size: 13.5pt;"> </span><span style="">c++ source code</span> [<span style=""><a style="outline-color: navy ! important; outline-style: dashed ! important; outline-width: 2px ! important;" href="../software/paralearn.0.1.zip">D<span style="">ownload</span></a></span>]<span style=""> (running on fedora 7, or gcc 4.2.0 above)</span><span style=""><o:p></o:p></span></li>
+
+</ul>
+
+
+<h1><a name="Contact"></a><a name="_Contact"></a><span style=""><span style="">Contact</span></span><span style=""><span style=""><o:p></o:p></span></span></h1>
+
+
+<span style=""></span>
+
+<p class="MsoNormal" style="margin-left: 0.5in;"><span style="">Suggestions or
+any comments are welcome. Please email Lei Li at </span><a href="http://mailhide.recaptcha.net/d?k=01nFP05RxdGgGkLx9LCuB0oA==&amp;c=gQYQQBgL_NBV3mpDCqg6wAprMxZP2ioyv5H0galyPkY=" title="Reveal this e-mail address">CLICK HERE</a>@cs.cmu.edu<span style=""> </span>(Spam blocking provided by the <a href="http://www.recaptcha.net">reCAPTCHA</a> Project).<span style=""><o:p></o:p></span></p>
+
+
+<p class="MsoNormal" style=""><span style=""><o:p>&nbsp;</o:p></span></p>
+
+
+</div>
+
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+var pageTracker = _gat._getTracker("UA-5329698-2");
+pageTracker._trackPageview();
+</script>
+</body></html>

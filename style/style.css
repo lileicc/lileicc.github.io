@@ -1,0 +1,265 @@
+/*body
+{
+	background: #FFF;
+	color: #444;
+	padding: 0 0 30px 0;
+	font-size: 12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+*/
+
+body {
+    background: #0a0a0a url(images/background.jpg) top center no-repeat;
+    color: #ccc;
+    font: Arial, Helvetica, sans-serif;
+    line-height: 1.3em;
+}
+
+/* Misc Styles */
+
+a { color: #444; text-decoration: none; }
+a:hover { color: #888; text-decoration: none; }
+
+img.imgright { float: right; margin: 0 0 15px 15px; padding: 5px; border: 0px dashed #CCC; }
+img.imgleft { float: left; margin: 0 15px 15px 0; padding: 5px; border: 0px dashed #a63a3a; }
+
+/* Main Styles */
+
+
+div .main .project  /* the wrapper for a project description on the main page */
+{
+	color:#555; 
+	margin: 14px 0 8px 5px; 
+	padding:0px 5px 0px 8px; 
+	border-left:5px solid #ccc; 
+	/* background-color:#eaeaea;  /* */
+	display:block; font-weight:400;
+}
+
+.main h3 /* section heading for a project theme on the main page */
+{
+	color:#555; 
+	margin: 30px 0 8px 0px; 
+}
+
+#container
+{
+	margin: 0 auto;
+	width: 900px;
+	background: #FFF;
+}
+
+	#container #headercont
+	{
+		width: 860px;
+		height: 15px;
+		padding: 5px 20px 0 20px;
+		background: #FFF;
+	}
+	
+		#container #headercont h1 a
+		{
+			font-size: 48px;
+			letter-spacing: -2px;
+			color: #FFF;
+		}
+		
+		#container #headercont h1 a:hover
+		{
+			color: #444;
+		}
+	
+	#container #menucont
+	{
+		margin: 0 auto;
+		width: 900px;
+		height: 44px;
+		background: #444 url('../images/bg_menucont.gif') no-repeat right top;
+	}
+	
+		#container #menucont h1
+		{
+			display: inline;
+			height: 50px;
+			margin: 5px 0 5px 20px;
+			font-size: 36px;
+			color: #aaa;
+			font-family: 'Cabin Condensed', sans-serif;
+			letter-spacing: -1px;	
+		}
+
+		#container #menucont ul
+		{
+			float: right;
+			height: 46px;
+		}
+		
+		#container #menucont ul li
+		{
+			float: right;
+			display: block;
+		}
+		
+		#container #menucont ul li a
+		{
+			float: right;
+			display: block;
+			color: #FFF;
+			background: #444 url('../images/bg_menucont.gif') no-repeat right top;
+			padding: 0 25px;
+			line-height: 44px;
+			font-size: 11px;
+			text-decoration: none;
+			font-weight: bold;
+			text-transform: uppercase;
+		}
+		
+		#container #menucont ul ul li a
+		{ 
+			float: none; 
+			width: 160px;
+			padding: 10px 20px;
+			border: 0;
+			line-height: 14px;
+			font-weight: normal;
+		}
+
+		#container #menucont ul li a:hover, #container #menucont ul li.sfHover a, #container #menucont ul ul a
+		{
+			color: #FFF;
+			background: #555;
+		}
+		
+		#container #menucont ul li li a:hover, #container #menucont ul li.sfHover li a:hover
+		{
+			color: #FFF;
+			background: #888;
+		}
+		
+			/*** Start SuckerFish Styles ***/
+			
+				.sf-menu, .sf-menu * { margin: 0; padding: 0; list-style:	none; }
+				.sf-menu { line-height:	1.0; }
+				.sf-menu ul { position: absolute; top: -999em; width: 200px; margin-top: 0; padding-top: 0; }
+				.sf-menu ul li { width:	100%; }
+				.sf-menu li:hover { visibility: inherit; }
+				.sf-menu li { float: right; position: relative; }
+				.sf-menu a { display: block; position: relative; }
+				.sf-menu li:hover ul, .sf-menu li.sfHover ul { left: 0px; top: 44px; z-index: 99; }
+				ul.sf-menu li:hover li ul, ul.sf-menu li.sfHover li ul { top: -999em; }
+				ul.sf-menu li li:hover ul, ul.sf-menu li li.sfHover ul { right: 200px; top: 0; }
+				ul.sf-menu li li:hover li ul, ul.sf-menu li li.sfHover li ul { top: -999em; }
+				ul.sf-menu li li li:hover ul, ul.sf-menu li li li.sfHover ul { right: 10em; top: 0; }		
+			
+			/** End SuckerFish Styles **/
+	
+	#container #maincont
+	{
+		margin: 0 auto;
+		width: 900px;
+		line-height: 22px;
+		background: url("../images/bg-maincont.gif") repeat-y;
+	}
+	
+			#container #maincont p { margin: 0 0 15px 0;}
+			#container #maincont a {color: #840; font-weight: 100;}
+			#container #maincont a:hover {color: #000; text-decoration: underline;}
+			#container #maincont p { line-height: 1.5; }
+			#container #maincont #box p { line-height: 1.5; clear: both;}
+			#container #maincont h1, #container #maincont h2, #container #maincont h3, #container #maincont h4, #container #maincont h5 { margin: 0 0 10px 0; font-weight: normal; letter-spacing: -1px; }
+			#container #maincont h1 { font-family: 'Cabin Condensed', sans-serif; font-size: 30px; }
+			#container #maincont h2 { font-family: 'Cabin Condensed', sans-serif; font-size: 28px; }
+			#container #maincont h3 { font-family: 'Cabin Condensed', sans-serif; font-size: 26px; }
+			#container #maincont h4 { font-family: 'Cabin Condensed', sans-serif; font-size: 24px; }
+			#container #maincont h5 { font-family: 'Cabin Condensed', sans-serif; font-size: 22px; }
+			#container #maincont ul { margin: 0 0 15px 35px; list-style-type: square; clear: both;}
+			#container #maincont #mainright ul{ list-style-type: none;}
+			/*#container #maincont #mainright ul li:before { content: "\2192 \0020 \0020";}*/
+			#container #maincont ul li { padding: 0 0 0 2px; }
+			#container #maincont ol { margin: 0 0 15px 35px; list-style-type: decimal; }
+			#container #maincont ol li { padding: 0 0 0 2px; }
+			#container #maincont blockquote { background: #EEE; border-left: 3px solid #666; padding: 15px; margin: 0 0 15px 30px; font-style: normal; line-height: 18px; clear: both;}
+			#container #maincont hr { color: #a63a3a; background-color: #a63a3a; height: 4px; width: 100%; margin: 0 0 35px 0;}
+	
+		#container #maincont #mainleft
+		{
+			float: left;
+			width: 610px;
+			padding: 20px;
+		}
+
+		#container #maincont #mainleft #box
+		{
+			float: left;
+			width: 264px;
+			height: 400px;
+			margin: 6px;
+			padding: 9px;
+			/*background: #BBB;*/
+			background: #EEE; 
+			border-left: 3px solid #444; /*padding: 15px; margin: 0 0 15px 0; font-style: italic; line-height: 18px; clear: both;*/
+			
+		}
+		
+		#container #maincont #mainleft #box_short
+		{
+			float: left;
+			width: 264px;
+			height: 150px;
+			margin: 6px;
+			padding: 9px;
+			/*background: #BBB;*/
+			background: #EEE; 
+			border-left: 3px solid #444; /*padding: 15px; margin: 0 0 15px 0; font-style: italic; line-height: 18px; clear: both;*/
+			
+		}
+		
+		#container #maincont #mainright
+		{
+			float: left;
+			width: 210px;
+			padding: 20px;
+		}
+
+#footercont
+{
+	clear: both;
+	margin: 0 auto;
+	width: 900px;
+	padding: 20px 0px 5px 0px;
+	border-top: 1px solid #DDD;
+	font-size: 11px;
+	color: #777;
+	text-align: right;
+}
+
+
+
+
+
+
+
+form input
+{
+	border: 1px solid #999999;
+	border: 1px solid #999999;
+	padding: 6px;
+	color: #666666;
+	width: 120px;
+	
+}
+
+form input.formbutton
+{
+	background: #444;
+	color: #FFF;
+	border: none;
+	font-weight:bold;
+	width: 60px;
+}
+
+form input.formbutton:hover
+{
+	background: #333;
+	cursor: pointer;
+}
