@@ -57,15 +57,14 @@
   Timestamp                = {2014.12.16}
 }
 
-@InProceedings{juan2014beyond,
-  Title                    = {Beyond Poisson: Modeling Inter-Arrival Times of Requests in a Datacenter},
-  Author                   = {Da-Cheng Juan and Lei Li and Huan-Kai Peng and Diana Marculescu and Christos Faloutsos},
-  Booktitle                = {The Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD)},
-  Year                     = {2014},
-
-  File                     = {:pubs/ruan-2014-beyond.pdf:PDF},
-  Owner                    = {leili},
-  Timestamp                = {2014.01.07}
+@InProceedings{juan2014poisson,
+  author    = {Da-Cheng Juan and Lei Li and Huan-Kai Peng and Diana Marculescu and Christos Faloutsos},
+  title     = {Beyond Poisson: Modeling Inter-Arrival Times of Requests in a Datacenter},
+  booktitle = {The Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD)},
+  year      = {2014},
+  file      = {:pubs/ruan-2014-beyond.pdf:PDF},
+  owner     = {leili},
+  timestamp = {2014.01.07},
 }
 
 @InProceedings{wu2014bfit,
@@ -593,6 +592,61 @@ small portion of the number areas in the dataset by quadrangle.
 Extensive experiments illustrate the effectiveness of
 the proposed framework.},
   file      = {:pubs/ligen-2018jersey-cvpr-cvs.pdf:PDF},
+}
+
+@InProceedings{miao2019cgmh,
+  author    = {Ning Miao and Hao Zhou and Lili Mou and Rui Yan and Lei Li},
+  title     = {{CGMH:} Constrained Sentence Generation by Metropolis-Hastings Sampling},
+  booktitle = {AAAI},
+  year      = {2019},
+  abstract  = {In real-world applications of natural language generation,
+there are often constraints on the target sentences in addition
+to fluency and naturalness requirements. Existing language
+generation techniques are usually based on recurrent
+neural networks (RNNs). However, it is non-trivial to impose
+constraints on RNNs while maintaining generation quality,
+since RNNs generate sentences sequentially (or with beam
+search) from the first word to the last. In this paper, we propose
+CGMH, a novel approach using Metropolis-Hastings
+sampling for constrained sentence generation. CGMH allows
+complicated constraints such as the occurrence of multiple
+keywords in the target sentences, which cannot be handled in
+traditional RNN-based approaches. Moreover, CGMH works
+in the inference stage, and does not require parallel corpora
+for training.We evaluate our method on a variety of tasks, including
+keywords-to-sentence generation, unsupervised sentence
+paraphrasing, and unsupervised sentence error correction.
+CGMH achieves high performance compared with previous
+supervised methods for sentence generation. Our code
+is released at https://github.com/NingMiao/CGMH},
+  file      = {:pubs/miao-aaai2019-cgmh.pdf:PDF},
+  url       = {http://arxiv.org/abs/1811.10996},
+}
+
+@InProceedings{wu2019unified,
+  author    = {Hao Wu and Jiayuan Mao and Yufeng Zhang and Weiwei Sun and Yuning Jiang and Lei Li and Wei-Ying Ma},
+  title     = {Unified Visual-Semantic Embeddings: Bridging Vision and Language with Structured Meaning Representations},
+  booktitle = {CVPR},
+  year      = {2019},
+  abstract  = {We propose Unified Visual-Semantic Embeddings (VSE)
+for learning a joint space for scene representation and textual
+semantics. It unifies the embeddings of concepts at different
+levels: objects, attributes, relations and full scenes. We
+view the sentential semantics as a combination of different
+semantic components such as object or relational descriptors,
+and align their embeddings with different regions of a
+scene. A contrastive learning approach is proposed for the
+effective learning of such fine-grained alignment from only
+image-caption pairs. We also present a simple yet effective
+approach that enforces the coverage of caption embeddings
+on the semantic components that appear in the sentence. We
+demonstrate that the Unified VSE outperforms other baselines
+on cross-modal retrieval tasks and the enforcement
+of the semantic coverage improves models’ robustness in
+defending text-domain adversarial attacks. Moreover, such
+robustness empowers the use of visual cues to accurately
+resolve word dependencies in novel sentences.},
+  file      = {:pubs/wu-cvpr2019-vse.pdf:PDF},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
