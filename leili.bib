@@ -17,7 +17,7 @@
   booktitle = {25th International Joint Conference on Artificial Intelligence (IJCAI)},
   year      = {2016},
   abstract  = {A probabilistic program defines a probability measure over its semantic structures. One common goal of probabilistic programming languages (PPLs) is to compute posterior probabilities for arbitrary models and queries, given observed evidence, using a generic inference engine. Most PPL inference engines—even the compiled ones—incur significant runtime interpretation overhead, especially for contingent and open-universe models. This paper describes Swift, a compiler for the BLOG PPL. Swift-generated code incorporates optimizations that eliminate interpretation overhead, maintain dynamic dependencies efficiently, and handle memory management for possible worlds of varying sizes. Experiments comparing Swift with other PPL engines on a variety of inference problems demonstrate speedups ranging from 12x to 326x.},
-  file      = {:pubs/wu2016swift.pdf:PDF;Arxiv:http\://arxiv.org/abs/1606.09242:URL;Source repo:https\://github.com/lileicc/swift:URL},
+  file      = {:pubs/wu2016swift.pdf:PDF;Arxiv:http\://arxiv.org/abs/1606.09242:URL;Software:https\://github.com/lileicc/swift:URL},
   owner     = {leili},
   timestamp = {2016.07.04},
 }
@@ -93,19 +93,16 @@
   Timestamp                = {2013.05.08}
 }
 
-@InProceedings{fu2013why,
-  Title                    = {Why People Hate Your App - Making Sense of User Feedback in a Mobile App Store},
-  Author                   = {Bin Fu and Jialiu Lin and Lei Li and Christos Faloutsos and Jason Hong and Norman Sadeh},
-  Booktitle                = {KDD '13: Proceeding of the 19th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
-  Year                     = {2013},
-
-  Address                  = {New York, NY, USA},
-  Publisher                = {ACM},
-
-  Abstract                 = {User review is a crucial component of open mobile app mar- kets such as the Google Play Store. How do we automatically summarize millions of user reviews and make sense out of them? Unfortunately, beyond simple summaries such as histograms of user ratings, there are few analytic tools that can provide insights into user reviews. In this paper, we propose WisCom, a system that can analyze tens of millions user ratings and comments in mobile app markets at three different levels of detail. Our system is able to (a) discover inconsistencies in reviews; (b) identify reasons why users like or dislike a given app, and provide an interactive, zoomable view of how users’ reviews evolve over time; and (c) provide valuable insights into the entire app market, identifying users’ major concerns and preferences of different types of apps. Results using our techniques are reported on a 32GB dataset consisting of over 13 million user reviews of 171,493 Android apps in the Google Play Store. We discuss how the techniques presented herein can be deployed to help a mobile app market operator such as Google as well as individual app developers and end-users.},
-  File                     = {:pubs/fu-kdd2013-wiscom.pdf:PDF},
-  Owner                    = {leili},
-  Timestamp                = {2013.06.18}
+@InProceedings{lu2019uncovering,
+  author    = {Yunfei Lu and Linyun Yu and Peng Cui and Chengxi Zang and Renzhe Xu and Yihao Liu and Lei Li and Wenwu Zhu},
+  title     = {Uncovering the Co-driven Mechanism of Social and Content Links in User Churn Phenomena},
+  booktitle = {KDD},
+  year      = {2019},
+  address   = {New York, NY, USA},
+  publisher = {ACM},
+  abstract  = {Recent years witness the merge of social networks and user-generatedcontent (UGC) platforms. In these new platforms, users establishlinks to others not only driven by their social relationships in thephysical world but also driven by the contents published by others.During this merging process, social networks gradually integrateboth social and content links and become unprecedentedly complicated,with the motivation to exploit both the advantages of socialviscosity and content attractiveness to reach the best customerretention situation. However, due to the lack of fine-grained datarecording such merging phenomena, the co-driven mechanism ofsocial and content links in churn phenomena remains unexplored.How do social and content factors jointly influence customers’churn? What is the best ratio of social and content links for a user’sretention? Is there a model to capture this co-driven mechanism inusers’ churn phenomena?In this paper, we collect a real-world dataset with more than 5.77million users and 925 million links, with each link being tagged asa social one or a content one. We find that both social and contentlinks have a significant impact on users’ churn and theywork jointlyas a complicated mixture effect. As a result, we propose a novelsurvival model, which incorporates both social and content factors,to predict churn probability over time. Our model successfully fitsthe churn distribution in reality and accurately predicts the churnrate of different subpopulations in the future. By analyzing themodeling parameters, we try to strike a balance between socialdrivenand content-driven links in a user’s social network to reachthe lowest churn rate. Our model and findings may have potentialimplications for the design of future social media.},
+  owner     = {leili},
+  timestamp = {2019-04-30},
 }
 
 @TechReport{li2013blog,
@@ -563,7 +560,7 @@ proposed method can obtain more accurate text classification results.},
 @InProceedings{cao2018brits,
   author    = {Wei Cao and Dong Wang and Jian Li and Hao Zhou and Yitan Li and Lei Li},
   title     = {BRITS: Bidirectional Recurrent Imputation for Time Series},
-  booktitle = {Neural Information Processing Systems (NIPS)},
+  booktitle = {Neural Information Processing Systems (NeurIPS)},
   year      = {2018},
   abstract  = {Time series are widely used as signals in many classification/regression tasks. It is ubiquitous that time series contains many missing values. Given multiple correlated time series data, how to fill in missing values and to predict their class labels? Existing imputation methods often impose strong assumptions of the underlying data generating process, such as linear dynamics in the state space. In this paper, we propose BRITS, a novel method based on recurrent neural networks for missing value imputation in time series data. Our proposed method directly learns the missing values in a bidirectional recurrent dynamical system, without any specific assumption. The imputed values are treated as variables of RNN graph and can be effectively updated during the backpropagation.BRITS has three advantages: (a) it can handle multiple correlated missing values in time series; (b) it generalizes to time series with nonlinear dynamics underlying; (c) it provides a data-driven imputation procedure and applies to general settings with missing data.We evaluate our model on three real-world datasets, including an air quality dataset, a health-care data, and a localization data for human activity. Experiments show that our model outperforms the state-of-the-art methods in both imputation and classification/regression accuracies.},
   url       = {https://arxiv.org/abs/1805.10572},
@@ -619,7 +616,7 @@ paraphrasing, and unsupervised sentence error correction.
 CGMH achieves high performance compared with previous
 supervised methods for sentence generation. Our code
 is released at https://github.com/NingMiao/CGMH},
-  file      = {:pubs/miao-aaai2019-cgmh.pdf:PDF},
+  file      = {:pubs/miao-aaai2019-cgmh.pdf:PDF;Software:https\://github.com/NingMiao/CGMH:URL;PPT:pubs/CGMH_AAAI_2019_leili.pdf:PDF},
   url       = {http://arxiv.org/abs/1811.10996},
 }
 
@@ -647,6 +644,19 @@ defending text-domain adversarial attacks. Moreover, such
 robustness empowers the use of visual cues to accurately
 resolve word dependencies in novel sentences.},
   file      = {:pubs/wu-cvpr2019-vse.pdf:PDF},
+}
+
+@InProceedings{fu2013why,
+  author    = {Bin Fu and Jialiu Lin and Lei Li and Christos Faloutsos and Jason Hong and Norman Sadeh},
+  title     = {Why People Hate Your App - Making Sense of User Feedback in a Mobile App Store},
+  booktitle = {KDD '13: Proceeding of the 19th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  year      = {2013},
+  address   = {New York, NY, USA},
+  publisher = {ACM},
+  abstract  = {User review is a crucial component of open mobile app mar- kets such as the Google Play Store. How do we automatically summarize millions of user reviews and make sense out of them? Unfortunately, beyond simple summaries such as histograms of user ratings, there are few analytic tools that can provide insights into user reviews. In this paper, we propose WisCom, a system that can analyze tens of millions user ratings and comments in mobile app markets at three different levels of detail. Our system is able to (a) discover inconsistencies in reviews; (b) identify reasons why users like or dislike a given app, and provide an interactive, zoomable view of how users’ reviews evolve over time; and (c) provide valuable insights into the entire app market, identifying users’ major concerns and preferences of different types of apps. Results using our techniques are reported on a 32GB dataset consisting of over 13 million user reviews of 171,493 Android apps in the Google Play Store. We discuss how the techniques presented herein can be deployed to help a mobile app market operator such as Google as well as individual app developers and end-users.},
+  file      = {:pubs/fu-kdd2013-wiscom.pdf:PDF},
+  owner     = {leili},
+  timestamp = {2013.06.18},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
