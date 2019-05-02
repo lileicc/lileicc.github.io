@@ -371,22 +371,51 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
 </div>
 <table id="qstable" border="1">
 <tbody>
-<tr id="miao2019cgmh" class="entry">
+<tr id="lu2019uncovering" class="entry">
+	<td>Yunfei Lu, Linyun Yu, Peng Cui, Chengxi Zang, Renzhe Xu, Yihao Liu, Lei Li and Wenwu Zhu, <i>"Uncovering the Co-driven Mechanism of Social and Content Links in User Churn Phenomena"</i>, In KDD, New York, NY, USA ACM, 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('lu2019uncovering','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('lu2019uncovering','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_lu2019uncovering" class="abstract noshow">
+	<td><b>Abstract</b>: Recent years witness the merge of social networks and user-generatedcontent (UGC) platforms. In these new platforms, users establishlinks to others not only driven by their social relationships in thephysical world but also driven by the contents published by others.During this merging process, social networks gradually integrateboth social and content links and become unprecedentedly complicated,with the motivation to exploit both the advantages of socialviscosity and content attractiveness to reach the best customerretention situation. However, due to the lack of fine-grained datarecording such merging phenomena, the co-driven mechanism ofsocial and content links in churn phenomena remains unexplored.How do social and content factors jointly influence customers’churn? What is the best ratio of social and content links for a user’sretention? Is there a model to capture this co-driven mechanism inusers’ churn phenomena?In this paper, we collect a real-world dataset with more than 5.77million users and 925 million links, with each link being tagged asa social one or a content one. We find that both social and contentlinks have a significant impact on users’ churn and theywork jointlyas a complicated mixture effect. As a result, we propose a novelsurvival model, which incorporates both social and content factors,to predict churn probability over time. Our model successfully fitsthe churn distribution in reality and accurately predicts the churnrate of different subpopulations in the future. By analyzing themodeling parameters, we try to strike a balance between socialdrivenand content-driven links in a user’s social network to reachthe lowest churn rate. Our model and findings may have potentialimplications for the design of future social media.</td>
+</tr>
+
+<tr id="bib_lu2019uncovering" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{lu2019uncovering,
+  author = {Yunfei Lu and Linyun Yu and Peng Cui and Chengxi Zang and Renzhe Xu and Yihao Liu and Lei Li and Wenwu Zhu},
+  title = {Uncovering the Co-driven Mechanism of Social and Content Links in User Churn Phenomena},
+  booktitle = {KDD},
+  publisher = {ACM},
+  year = {2019}
+}
+</pre></td>
+</tr><tr id="miao2019cgmh" class="entry">
 	<td>Ning Miao, Hao Zhou, Lili Mou, Rui Yan and Lei Li, <i>"CGMH: Constrained Sentence Generation by Metropolis-Hastings Sampling"</i>, In AAAI, 2019.
 	
 	<p class="infolinks"><a href="javascript:toggleInfo('miao2019cgmh','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('miao2019cgmh','bibtex')">[BibTeX]</a>
-   <a href="pubs/miao-aaai2019-cgmh.pdf">&#91;PDF&#93;</a>
+   <a href="pubs/miao-aaai2019-cgmh.pdf">&#91;PDF&#93;</a><a href="pubs/CGMH_AAAI_2019_leili.pdf">&#91;PPT_PDF&#93;</a>
   
    <a href="http://arxiv.org/abs/1811.10996">[URL]</a>
 	
 	
-	 
+	  <a href="https://github.com/NingMiao/CGMH">&#91;Software&#93;</a> 
 	</p>
 	</td>
 </tr>
 
 <tr id="abs_miao2019cgmh" class="abstract noshow">
-	<td><b>Abstract</b>: In real-world applications of natural language generation,there are often constraints on the target sentences in additionto fluency and naturalness requirements. Existing languagegeneration techniques are usually based on recurrentneural networks (RNNs). However, it is non-trivial to imposeconstraints on RNNs while maintaining generation quality,since RNNs generate sentences sequentially (or with beamsearch) from the first word to the last. In this paper, we proposeCGMH, a novel approach using Metropolis-Hastingssampling for constrained sentence generation. CGMH allowscomplicated constraints such as the occurrence of multiplekeywords in the target sentences, which cannot be handled intraditional RNN-based approaches. Moreover, CGMH worksin the inference stage, and does not require parallel corporafor training.We evaluate our method on a variety of tasks, includingkeywords-to-sentence generation, unsupervised sentenceparaphrasing, and unsupervised sentence error correction.CGMH achieves high performance compared with previoussupervised methods for sentence generation. Our codeis released at https://github.com/NingMiao/CGMH</td>
+	<td><b>Abstract</b>: In real-world applications of natural language generation,<br>there are often constraints on the target sentences in addition<br>to fluency and naturalness requirements. Existing language<br>generation techniques are usually based on recurrent<br>neural networks (RNNs). However, it is non-trivial to impose<br>constraints on RNNs while maintaining generation quality,<br>since RNNs generate sentences sequentially (or with beam<br>search) from the first word to the last. In this paper, we propose<br>CGMH, a novel approach using Metropolis-Hastings<br>sampling for constrained sentence generation. CGMH allows<br>complicated constraints such as the occurrence of multiple<br>keywords in the target sentences, which cannot be handled in<br>traditional RNN-based approaches. Moreover, CGMH works<br>in the inference stage, and does not require parallel corpora<br>for training.We evaluate our method on a variety of tasks, including<br>keywords-to-sentence generation, unsupervised sentence<br>paraphrasing, and unsupervised sentence error correction.<br>CGMH achieves high performance compared with previous<br>supervised methods for sentence generation. Our code<br>is released at https://github.com/NingMiao/CGMH</td>
 </tr>
 
 <tr id="bib_miao2019cgmh" class="bibtex noshow">
@@ -429,7 +458,7 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
 }
 </pre></td>
 </tr><tr id="cao2018brits" class="entry">
-	<td>Wei Cao, Dong Wang, Jian Li, Hao Zhou, Yitan Li and Lei Li, <i>"BRITS: Bidirectional Recurrent Imputation for Time Series"</i>, In Neural Information Processing Systems (NIPS), 2018.
+	<td>Wei Cao, Dong Wang, Jian Li, Hao Zhou, Yitan Li and Lei Li, <i>"BRITS: Bidirectional Recurrent Imputation for Time Series"</i>, In Neural Information Processing Systems (NeurIPS), 2018.
 	
 	<p class="infolinks"><a href="javascript:toggleInfo('cao2018brits','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('cao2018brits','bibtex')">[BibTeX]</a>
   
@@ -452,7 +481,7 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
 @inproceedings{cao2018brits,
   author = {Wei Cao and Dong Wang and Jian Li and Hao Zhou and Yitan Li and Lei Li},
   title = {BRITS: Bidirectional Recurrent Imputation for Time Series},
-  booktitle = {Neural Information Processing Systems (NIPS)},
+  booktitle = {Neural Information Processing Systems (NeurIPS)},
   year = {2018},
   url = {https://arxiv.org/abs/1805.10572}
 }
@@ -622,7 +651,7 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
 </tr>
 
 <tr id="abs_dai2016cfo" class="abstract noshow">
-	<td><b>Abstract</b>: How can we enable computers to automatically answer questions like ``Who created the character Harry Potter''? Carefully built knowledge bases provide rich sources of facts. However, it remains a challenge to answer factoid questions raised in natural language due to numerous expressions of one question. In particular, we focus on the most common questions --- ones that can be answered with a single fact in the knowledge base. We propose CFO, a Conditional Focused neural-network-based approach to answering factoid questions with knowledge bases. Our approach first zooms in a question to find more probable candidate subject mentions, and infers the final answers with a unified conditional probabilistic framework. Powered by deep recurrent neural networks and neural embeddings, our proposed CFO achieves an accuracy of 75.7&percnt; on a dataset of 108k questions - the largest public one to date. It outperforms the current state of the art by an absolute margin of 11.8%.</td>
+	<td><b>Abstract</b>: How can we enable computers to automatically answer questions like ``Who created the character Harry Potter''? Carefully built knowledge bases provide rich sources of facts. However, it remains a challenge to answer factoid questions raised in natural language due to numerous expressions of one question. In particular, we focus on the most common questions --- ones that can be answered with a single fact in the knowledge base. We propose CFO, a Conditional Focused neural-network-based approach to answering factoid questions with knowledge bases. Our approach first zooms in a question to find more probable candidate subject mentions, and infers the final answers with a unified conditional probabilistic framework. Powered by deep recurrent neural networks and neural embeddings, our proposed CFO achieves an accuracy of 75.7&#37; on a dataset of 108k questions - the largest public one to date. It outperforms the current state of the art by an absolute margin of 11.8%.</td>
 </tr>
 
 <tr id="bib_dai2016cfo" class="bibtex noshow">
@@ -644,7 +673,7 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
   
 	
 	
-	  <a href="http://arxiv.org/abs/1606.09242">&#91;Arxiv&#93;</a>  <a href="https://github.com/lileicc/swift">&#91;Source repo&#93;</a> 
+	  <a href="http://arxiv.org/abs/1606.09242">&#91;Arxiv&#93;</a>  <a href="https://github.com/lileicc/swift">&#91;Software&#93;</a> 
 	</p>
 	</td>
 </tr>
@@ -1174,7 +1203,7 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
 	<td>Siyuan Liu, Lei Li, Christos Faloutsos and Lionel Ni, <i>"Mobile Phone Graph Evolution: Findings, Model and Interpretation"</i>, In IEEE International Conference on Data Mining, workshop on Data Mining Technologies for Computational Collective Intelligence, 2011.
 	
 	<p class="infolinks"> <a href="javascript:toggleInfo('liu2011mobile','bibtex')">[BibTeX]</a>
-   <a href="pubs\liu-2011-mobile.pdf">&#91;PDF&#93;</a>
+   <a href="pubs/liu-2011-mobile.pdf">&#91;PDF&#93;</a>
   
   
 	
@@ -1225,7 +1254,7 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
 	
 	<p class="infolinks"> <a href="javascript:toggleInfo('henderson2010metric','bibtex')">[BibTeX]</a>
    <a href="pubs/henderson-kdd10.pdf">&#91;PDF&#93;</a>
-   <a href="http://doi.org/10.1145/1835804.1835828">[DOI]</a>
+   <a href="https://doi.org/10.1145/1835804.1835828">[DOI]</a>
   
 	
 	
@@ -1245,7 +1274,7 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
   publisher = {ACM},
   year = {2010},
   pages = {163--172},
-  doi = {http://doi.org/10.1145/1835804.1835828}
+  doi = {https://doi.org/10.1145/1835804.1835828}
 }
 </pre></td>
 </tr><tr id="li2010bolero" class="entry">
@@ -1368,7 +1397,7 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
 	
 	<p class="infolinks"> <a href="javascript:toggleInfo('guo2009tailoring','bibtex')">[BibTeX]</a>
   
-   <a href="http://doi.org/10.1145/1507509.1507523">[DOI]</a>
+   <a href="https://doi.org/10.1145/1507509.1507523">[DOI]</a>
   
 	
 	
@@ -1388,7 +1417,7 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
   publisher = {ACM},
   year = {2009},
   pages = {88--92},
-  doi = {http://doi.org/10.1145/1507509.1507523}
+  doi = {https://doi.org/10.1145/1507509.1507523}
 }
 </pre></td>
 </tr><tr id="li2009dynammo" class="entry">
@@ -1532,7 +1561,7 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
 	
 	<p class="infolinks"> <a href="javascript:toggleInfo('xu2008inferring','bibtex')">[BibTeX]</a>
   
-   <a href="http://doi.org/10.1109/ICDEW.2008.4498373">[DOI]</a>
+   <a href="https://doi.org/10.1109/ICDEW.2008.4498373">[DOI]</a>
   
 	
 	
@@ -1551,14 +1580,14 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
   booktitle = {IEEE 24th International Conference on Data Engineering workshops},
   year = {2008},
   pages = {525-530},
-  doi = {http://doi.org/10.1109/ICDEW.2008.4498373}
+  doi = {https://doi.org/10.1109/ICDEW.2008.4498373}
 }
 </pre></td>
 </tr><tr id="li2006providing" class="entry">
 	<td>Lei Li, Qiaoling Liu, Yunfeng Tao, Lei Zhang, Jian Zhou and Yong Yu, <i>"Providing an Uncertainty Reasoning Service for Semantic Web Application"</i>, In Asia-Pacific Web Conference, pp. 628-639., 2006.
 	
 	<p class="infolinks"> <a href="javascript:toggleInfo('li2006providing','bibtex')">[BibTeX]</a>
-   <a href="pubs\li-apweb06-pdlp.pdf">&#91;PDF&#93;</a>
+   <a href="pubs/li-apweb06-pdlp.pdf">&#91;PDF&#93;</a>
   
   
 	
@@ -1583,7 +1612,7 @@ p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
 </tr></tbody>
 </table>
 <p>
- <small>Created by <a href="http://jabref.sourceforge.net">JabRef</a> on 2019/04/09.</small> Return to <a href="./">Home</a>
+ <small>Created by <a href="http://jabref.sourceforge.net">JabRef</a> on 2019/04/30.</small> Return to <a href="./">Home</a>
 </p>
 <!-- File generated by JabRef ; Export Filter written by Mark Schenk, (C) 2008, Modified by Lei Li (C) 2011,2017 -->
 </body>
