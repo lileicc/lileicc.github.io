@@ -5,6 +5,7 @@
   title     = {CFO: Conditional Focused Neural Question Answering with Large-scale Knowledge Bases},
   booktitle = {ACL},
   year      = {2016},
+  month     = jul,
   abstract  = {How can we enable computers to automatically answer questions like ``Who created the character Harry Potter''? Carefully built knowledge bases provide rich sources of facts. However, it remains a challenge to answer factoid questions raised in natural language due to numerous expressions of one question. In particular, we focus on the most common questions --- ones that can be answered with a single fact in the knowledge base. We propose CFO, a Conditional Focused neural-network-based approach to answering factoid questions with knowledge bases. Our approach first zooms in a question to find more probable candidate subject mentions, and infers the final answers with a unified conditional probabilistic framework. Powered by deep recurrent neural networks and neural embeddings, our proposed CFO achieves an accuracy of 75.7\% on a dataset of 108k questions - the largest public one to date. It outperforms the current state of the art by an absolute margin of 11.8\%.},
   file      = {:pubs/dai2016cfo.pdf:PDF;Arxiv:https\://arxiv.org/abs/1606.01994:URL;Source repo:https\://github.com/zihangdai/CFO:URL},
   owner     = {leili},
@@ -16,6 +17,7 @@
   title     = {Swift: Compiled Inference for Probabilistic Programming Languages},
   booktitle = {25th International Joint Conference on Artificial Intelligence (IJCAI)},
   year      = {2016},
+  month     = jul,
   abstract  = {A probabilistic program defines a probability measure over its semantic structures. One common goal of probabilistic programming languages (PPLs) is to compute posterior probabilities for arbitrary models and queries, given observed evidence, using a generic inference engine. Most PPL inference engines—even the compiled ones—incur significant runtime interpretation overhead, especially for contingent and open-universe models. This paper describes Swift, a compiler for the BLOG PPL. Swift-generated code incorporates optimizations that eliminate interpretation overhead, maintain dynamic dependencies efficiently, and handle memory management for possible worlds of varying sizes. Experiments comparing Swift with other PPL engines on a variety of inference problems demonstrate speedups ranging from 12x to 326x.},
   file      = {:pubs/wu2016swift.pdf:PDF;Arxiv:http\://arxiv.org/abs/1606.09242:URL;Software:https\://github.com/lileicc/swift:URL},
   owner     = {leili},
@@ -99,8 +101,10 @@
   booktitle = {KDD},
   year      = {2019},
   address   = {New York, NY, USA},
+  month     = aug,
   publisher = {ACM},
   abstract  = {Recent years witness the merge of social networks and user-generatedcontent (UGC) platforms. In these new platforms, users establishlinks to others not only driven by their social relationships in thephysical world but also driven by the contents published by others.During this merging process, social networks gradually integrateboth social and content links and become unprecedentedly complicated,with the motivation to exploit both the advantages of socialviscosity and content attractiveness to reach the best customerretention situation. However, due to the lack of fine-grained datarecording such merging phenomena, the co-driven mechanism ofsocial and content links in churn phenomena remains unexplored.How do social and content factors jointly influence customers’churn? What is the best ratio of social and content links for a user’sretention? Is there a model to capture this co-driven mechanism inusers’ churn phenomena?In this paper, we collect a real-world dataset with more than 5.77million users and 925 million links, with each link being tagged asa social one or a content one. We find that both social and contentlinks have a significant impact on users’ churn and theywork jointlyas a complicated mixture effect. As a result, we propose a novelsurvival model, which incorporates both social and content factors,to predict churn probability over time. Our model successfully fitsthe churn distribution in reality and accurately predicts the churnrate of different subpopulations in the future. By analyzing themodeling parameters, we try to strike a balance between socialdrivenand content-driven links in a user’s social network to reachthe lowest churn rate. Our model and findings may have potentialimplications for the design of future social media.},
+  file      = {:pubs/lu-kdd2019-social-content-links.pdf:PDF},
   owner     = {leili},
   timestamp = {2019-04-30},
 }
@@ -500,6 +504,7 @@
   title     = {A Nearly-Black-Box Online Algorithm for Joint Parameter and State Estimation in Temporal Models},
   booktitle = {The Thirty-First AAAI Conference on Artificial Intelligence},
   year      = {2017},
+  month     = jul,
   note      = {The earlier version appeared in NIPS 2016 workshop on Advances in Approximate Bayesian Inference.},
   abstract  = {Online joint parameter and state estimation is a core problem for temporal models. Most existing methods are either restricted to a particular class of models (e.g., the Storvik filter) or computationally expensive (e.g., particle MCMC). We propose a novel nearly-black-box algorithm, the Assumed Parameter Filter (APF), a hybrid of particle filtering for state variables and assumed density filtering for parameter variables. It has the following advantages: (a) it is online and computationally efficient; (b) it is applicable to both discrete and continuous parameter spaces with arbitrary transition dynamics. On a variety of toy and real models, APF generates more accurate results within a fixed computation budget compared to several standard algorithms from the literature.},
   file      = {:pubs/erol-aaai2017-apf.pdf:PDF;Appendix:pubs/erol-aaai2017-apf-appendix.pdf:PDF},
@@ -526,6 +531,7 @@
   booktitle = {Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)},
   year      = {2018},
   pages     = {1252--1262},
+  month     = jun,
   publisher = {Association for Computational Linguistics},
   abstract  = {Co-training is a popular semi-supervised learning framework to utilize a
 large amount of unlabeled data in addition to a small labeled set. Co-training
@@ -551,6 +557,7 @@ proposed method can obtain more accurate text classification results.},
   title     = {On Tree-Based Neural Sentence Modeling},
   booktitle = {Conference on Empirical Methods in Natural Language Processing (EMNLP)},
   year      = {2018},
+  month     = oct,
   abstract  = {Neural networks with tree-based sentence encoders have shown better results on many downstream tasks. Most of existing tree-based encoders adopt syntactic parsing trees as the explicit structure prior. To study the effectiveness of different tree structures, we replace the parsing trees with trivial trees (i.e., binary balanced tree, left-branching tree and right-branching tree) in the encoders. Though trivial trees contain no syntactic information, those encoders get competitive or even better results on all of the ten downstream tasks we investigated. This surprising result indicates that explicit syntax guidance may not be the main contributor to the superior performances of tree-based neural sentence modeling. Further analysis show that tree modeling gives better results when crucial words are closer to the final representation. Additional experiments give more clues on how to design an effective tree-based encoder.},
   file      = {:pubs/shi-emnlp2018-tree.pdf:PDF},
   owner     = {lilei.02},
@@ -562,6 +569,7 @@ proposed method can obtain more accurate text classification results.},
   title     = {BRITS: Bidirectional Recurrent Imputation for Time Series},
   booktitle = {Neural Information Processing Systems (NeurIPS)},
   year      = {2018},
+  month     = dec,
   abstract  = {Time series are widely used as signals in many classification/regression tasks. It is ubiquitous that time series contains many missing values. Given multiple correlated time series data, how to fill in missing values and to predict their class labels? Existing imputation methods often impose strong assumptions of the underlying data generating process, such as linear dynamics in the state space. In this paper, we propose BRITS, a novel method based on recurrent neural networks for missing value imputation in time series data. Our proposed method directly learns the missing values in a bidirectional recurrent dynamical system, without any specific assumption. The imputed values are treated as variables of RNN graph and can be effectively updated during the backpropagation.BRITS has three advantages: (a) it can handle multiple correlated missing values in time series; (b) it generalizes to time series with nonlinear dynamics underlying; (c) it provides a data-driven imputation procedure and applies to general settings with missing data.We evaluate our model on three real-world datasets, including an air quality dataset, a health-care data, and a localization data for human activity. Experiments show that our model outperforms the state-of-the-art methods in both imputation and classification/regression accuracies.},
   url       = {https://arxiv.org/abs/1805.10572},
 }
@@ -572,6 +580,7 @@ proposed method can obtain more accurate text classification results.},
   booktitle = {IEEE Conference on Computer Vision and Pattern Recognition workshops, Computer Vision in Sports},
   year      = {2018},
   pages     = {1864-1871},
+  month     = jun,
   abstract  = {It is still a challenging task to recognize the jersey number 
 of players on the court in soccer match videos, as the
 jersey numbers are very small in the object detection task
@@ -596,6 +605,7 @@ the proposed framework.},
   title     = {{CGMH:} Constrained Sentence Generation by Metropolis-Hastings Sampling},
   booktitle = {AAAI},
   year      = {2019},
+  month     = jan,
   abstract  = {In real-world applications of natural language generation,
 there are often constraints on the target sentences in addition
 to fluency and naturalness requirements. Existing language
@@ -625,6 +635,7 @@ is released at https://github.com/NingMiao/CGMH},
   title     = {Unified Visual-Semantic Embeddings: Bridging Vision and Language with Structured Meaning Representations},
   booktitle = {CVPR},
   year      = {2019},
+  month     = jun,
   abstract  = {We propose Unified Visual-Semantic Embeddings (VSE)
 for learning a joint space for scene representation and textual
 semantics. It unifies the embeddings of concepts at different
@@ -657,6 +668,46 @@ resolve word dependencies in novel sentences.},
   file      = {:pubs/fu-kdd2013-wiscom.pdf:PDF},
   owner     = {leili},
   timestamp = {2013.06.18},
+}
+
+@InProceedings{qiu2019dynamically,
+  author    = {Lin Qiu, Yunxuan Xiao, Yanru Qu, Hao Zhou, Lei Li, Weinan Zhang, Yong Yu},
+  title     = {Dynamically Fused Graph Network for Multi-hop Reasoning},
+  booktitle = {ACL},
+  year      = {2019},
+  month     = jul,
+  abstract  = {Text-based question answering (TBQA) has been studied extensively in recent years. Most existing approaches focus on finding the answer to a question within a single paragraph. However, many difficult questions require multiple supporting evidence from scattered text across two or more documents. In this paper, we propose the Dynamically Fused Graph Network (DFGN), a novel method to answer those questions requiring multiple scattered evidence and reasoning over them. Inspired by human’s step-by-step reasoning behavior, DFGN includes a dynamic fusion layer that starts from the entities mentioned in the given query, explores along the entity graph dynamically built from the text, and gradually finds relevant supporting entities from the given documents. We evaluate DFGN on HotpotQA, a public TBQA dataset requiring multi-hop reasoning. DFGN achieves competitive results on the public board. Furthermore, our analy- sis shows DFGN could produce interpretable reasoning chains.},
+  file      = {:pubs/qiu-acl2019-dfgn.pdf:PDF},
+}
+
+@InProceedings{bao2019generating,
+  author    = {Yu Bao, Hao Zhou, Shujian Huang, Lei Li, Lili Mou, Olga Vechtomova, Xinyu Dai, Jiajun Chen},
+  title     = {Generating Sentences from Disentangled Syntactic and Semantic Spaces},
+  booktitle = {ACL},
+  year      = {2019},
+  month     = jul,
+  abstract  = {Variational auto-encoders (VAEs) are widely used in natural language generation due to the regularization of the latent space. However, generating sentences from the continuous latent space does not explicitly model the syntactic information. In this paper, we propose to generate sentences from disentangled syntactic and semantic spaces. Our proposed method explicitly models syntactic information in the VAE’s latent space by using the linearized tree sequence, leading to better performance of language generation. Additionally, the advantage of sampling in the disentangled syntactic and semantic latent spaces enables us to perform novel applications, such as the unsupervised paraphrase generation and syntax-transfer generation. Experimental results show that our proposed model achieves similar or better performance in various tasks, compared with state-of-the-art related work.},
+  file      = {:pubs/bao-acl2019-dssvae.pdf:PDF},
+}
+
+@InProceedings{zhang2019generating,
+  author    = {Huangzhao Zhang, Ning Miao, Hao Zhou, Lei Li},
+  title     = {Generating Fluent Adversarial Examples for Natural Languages},
+  booktitle = {ACL (short paper)},
+  year      = {2019},
+  month     = jul,
+  abstract  = {Efficiently building an adversarial attacker fornatural language processing (NLP) tasks is areal challenge. Firstly, as the sentence spaceis discrete, it is difficult to make small perturbations along the direction of gradients. Secondly,the fluency of the generated examples can not be guaranteed. In this paper, we propose MHA, which addresses both problemsby performing Metropolis-Hastings sampling,whose proposal is designed with the guidanceof gradients. Experiments on IMDB and SNLIshow that our proposed MHA outperforms thebaseline model on attacking capability. Adversarial training with MHA also leads to better robustness and performance.},
+  file      = {:pubs/zhang-acl2019generation-cgmh-adversarial.pdf:PDF},
+}
+
+@InProceedings{wen2019correct,
+  author    = {Rongxiang Wen, Hao Zhou, Shujian Huang, Yifan Xia, Lei Li, Jiajun Chen},
+  title     = {Correct-and-Memorize: Learning to Translate from Interactive Revisions},
+  booktitle = {IJCAI},
+  year      = {2019},
+  month     = aug,
+  abstract  = {State-of-the-art machine translation models are stillnot on a par with human translators. Previous worktakes human interactions into the neural machine translation process to obtain improved results in target languages. However, not all model-translation errors are equal some are critical while others are minor. In the mean while, same translation mistakes occur repeatedly in similar context. To solve bothissues, we propose CAMIT, a novel method for translating in an interactive environment. Our proposed method works with critical revision instructions,therefore allows human to correct arbitrary words in model-translated sentences. In addition,CAMIT learns from and softly memorizes revision actions based on the context, alleviating the issue of repeating mistakes. Experiments in both ideal and real interactive translation settings demonstrate that our proposed CAMIT enhances machine translation results significantly while requires fewer revision instructions from human compared to previous methods.},
+  file      = {:pubs/weng-ijcai2019-imt.pdf:PDF},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
