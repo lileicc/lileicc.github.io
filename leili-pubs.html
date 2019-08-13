@@ -90,7 +90,7 @@
     </div>
     <div id="bibtex_display">
       <div class="if bibtex_template" style="display: none;">
-        <ul>
+        <ol>
           <li> 
             <!---
             <span class="if journal !nolink"> 
@@ -100,10 +100,18 @@
               </a> 
             </span> 
             --->
-            <span class="if title"> <span class="title"></span>,
+            <span class="if title"> 
+              <a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
+                extra="BIBTEXKEY">
+                <span style="text-decoration: underline;" class="title"></span>,
+              </a> ,
             </span>
             <div class="if author"> 
-              <span class="author"><span class="first"></span><span class="von"></span><span class="last"></span><span class="junior"></span>
+              <span class="author">
+                <span class="first"> </span>
+                <span class="von"> </span>
+                <span class="last"> </span>
+                <span class="junior"></span>
               </span>
             </div>
             <div> 
@@ -171,7 +179,7 @@
               </span>
             </div>
           </li>
-        </ul>
+        </ol>
       </div>
     </div>
     <!-- Latest compiled and minified JavaScript -->
