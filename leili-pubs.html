@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="cache-control" content="no-cache">
     <title> Lei Li's publications </title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
@@ -90,22 +90,53 @@
     <div id="bibtex_display">
       <div class="if bibtex_template" style="display: none;">
         <ul>
-          <li> <span class="if journal !nolink"> <a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
+          <li> 
+            <span class="if journal !nolink"> 
+              <a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
                 extra="BIBTEXKEY">
                 <span style="text-decoration: underline;" class="title"></span>,
-              </a> </span> <span class="if title nolink"> <span class="title"></span>,
+              </a> 
+            </span> 
+            <span class="if title nolink"> <span class="title"></span>,
             </span>
             <div class="if author"> <span class="author"></span> </div>
-            <div> <span class="if journal"><em><span class="journal"></span></em>,</span>
-              <span class="if booktitle">In <em><span class="booktitle"></span></em>,</span>
-              <span class="if editor"><span class="editor"></span> (editors),</span>
-              <span class="if publisher"><em><span class="publisher"></span></em>,</span>
-              <span class="if !journal number">Technical report <span class="number"></span>,</span>
-              <span class="if institution"><span class="institution"></span>,</span>
-              <span class="if address"><span class="address"></span>,</span> <span
-                class="if volume"><span
-                  class="volume"></span>,</span>
-              <span class="if journal number">(<span class="number"></span>),</span>
+            <div> 
+              <span class="if journal">
+                <em>
+                  <span class="journal"></span>
+                </em>,
+              </span>
+              <span class="if booktitle">In 
+                <em>
+                  <span class="booktitle">
+                  </span>
+                </em>,
+              </span>
+              <span class="if editor">
+                <span class="editor"></span> (editors),
+              </span>
+              <span class="if publisher">
+                <em>
+                  <span class="publisher"></span>
+                </em>,
+              </span>
+              <span class="if BIBTEXTYPEKEY==@TECHREPORT">
+                Technical report 
+                <span class="number"></span>,</span>
+              <span class="if institution">
+                <span class="institution"></span>,
+              </span>
+              <span class="if address">
+                <span class="address"></span>,
+              </span> 
+              <span
+                class="if volume">
+                <span
+                  class="volume"></span>,
+              </span>
+              <span class="if journal number">(
+                <span class="number"></span>),
+              </span>
               <span class="if pages"> pages <span class="pages"></span>,</span>
               <span class="if month"><span class="month"></span>,</span> <span
                 class="if year"><span
@@ -120,17 +151,24 @@
                 [bib] </a> </div>
             <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
               <div class="well">
-                <pre><span class="bibtexraw noread"></span></pre>
+                <pre>
+                <span class="bibtexraw noread"></span>
+                </pre>
               </div>
             </div>
-            <div style="display:none"><span class="bibtextype"></span></div>
-            <div style="display:none"><span class="if topic"><span class="topic"></span></span></div>
+            <div style="display:none">
+              <span class="bibtextype"></span>
+            </div>
+            <div style="display:none">
+              <span class="if topic">
+                <span class="topic"></span>
+              </span>
+            </div>
           </li>
         </ul>
       </div>
     </div>
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    
   </body>
 </html>
