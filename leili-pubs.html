@@ -94,14 +94,6 @@
       <div class="if bibtex_template" style="display: none;">
         <ul>
           <li> 
-            <!---
-            <span class="if journal !nolink"> 
-              <a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
-                extra="BIBTEXKEY">
-                <span style="text-decoration: underline;" class="title"></span>,
-              </a> 
-            </span> 
-            --->
             <span class="if title"> 
               <a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
                 extra="BIBTEXKEY"><span style="text-decoration: underline;" class="title"></span></a>,
@@ -158,6 +150,7 @@
                 aria-controls="bib+BIBTEXKEY+"
                 extra="BIBTEXKEY">
                 [bib] </a>
+              <span class="if abstract">
               <a class="bibtexVar"
                 role="button"
                 data-toggle="collapse"
@@ -166,19 +159,16 @@
                 aria-controls="abs+BIBTEXKEY+"
                 extra="BIBTEXKEY">
                 [abstract] </a>
+              </span>
             </div>
             <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
-              <div class="well">
-                <pre>
-                <span class="bibtexraw noread"></span>
-                </pre>
+              <div>
+                <pre><span class="bibtexraw noread"></span></pre>
               </div>
             </div>
             <div class="bibtexVar collapse" id="abs+BIBTEXKEY+" extra="BIBTEXKEY">
-              <div class="well">
-                <pre>
-                <span class="abstract"></span>
-                </pre>
+              <div>
+                <pre><span class="abstract"></span></pre>
               </div>
             </div>
             <div style="display:none">
