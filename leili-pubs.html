@@ -149,18 +149,35 @@
                 class="if year"><span
                   class="year"></span>.</span>
               <span class="if url"><a class="bibtexVar" href="+URL+" extra="url">[URL]</a></span>
-              <span class="if note"><span class="note"></span>.</span> <a class="bibtexVar"
+              <span class="if note"><span class="note"></span>.</span> 
+              <a class="bibtexVar"
                 role="button"
                 data-toggle="collapse"
                 href="#bib+BIBTEXKEY+"
                 aria-expanded="false"
                 aria-controls="bib+BIBTEXKEY+"
                 extra="BIBTEXKEY">
-                [bib] </a> </div>
+                [bib] </a>
+              <a class="bibtexVar"
+                role="button"
+                data-toggle="collapse"
+                href="#abs+BIBTEXKEY+"
+                aria-expanded="false"
+                aria-controls="abs+BIBTEXKEY+"
+                extra="BIBTEXKEY">
+                [abstract] </a>
+            </div>
             <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
               <div class="well">
                 <pre>
                 <span class="bibtexraw noread"></span>
+                </pre>
+              </div>
+            </div>
+            <div class="bibtexVar collapse" id="abs+BIBTEXKEY+" extra="BIBTEXKEY">
+              <div class="well">
+                <pre>
+                <span class="abstract"></span>
                 </pre>
               </div>
             </div>
