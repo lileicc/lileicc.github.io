@@ -1,3 +1,4 @@
+
 <tr id="\format{\bibtexkey}" class="entry">
 	<td>\begin{author}\format[AuthorFirstFirstCommas,HTMLChars]{\author}\end{author}, <i>"\format[HTMLChars]{\title}"</i>\begin{booktitle}, In \format[HTMLChars]{\booktitle}\end{booktitle}\begin{address}, \format[HTMLChars]{\address}\end{address}\begin{volume}, Volume \volume\end{volume}\begin{number}(\format[FormatPagesForHTML]{\number})\end{number}\begin{pages}, pp. \format[FormatPagesForHTML]{\pages}.\end{pages}\begin{publisher} \format[HTMLChars]{\publisher}\end{publisher}\begin{year}, \format[HTMLChars]{\year}\end{year}.
 	\begin{note}<p class="note">\format{\note}</p>\end{note}
