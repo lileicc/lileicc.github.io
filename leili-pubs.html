@@ -38,17 +38,21 @@
 	    #bibtex_errors { margin-top:10px; color: red;}
 	    h1.header {margin-left:8px;}
 	    h1.YEAR { font-size: 17px; font-weight: bold; display: inline; margin-left:8px;}
-      span.raw pre {
-        font-size: small;
+      pre {
+        overflow: auto;
+      }
+      .raw {
+        display: block;
+        unicode-bidi: embed;
+        font-family: monospace;
+        white-space: pre;
+        font-size: pre;
       }
       .NOTE {
         color: green;
         font-size: small;
         text-indent:2em;
         margin-top:1px; margin-bottom:-3px;
-      }
-      pre {
-        overflow: auto;
       }
     </style>
     <!-- Latest compiled and minified CSS -->
@@ -179,7 +183,7 @@
             </div>
             <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
               <div>
-                <pre><span class="bibtextypekey" style="text-transform:lowercase"></span>{<span class="bibtexkey"></span>,
+                <pre><span class="bibtextypekey raw" style="text-transform:lowercase"></span>{<span class="bibtexkey"></span>,
   author = <span class="author raw"></span>,
   title = "<span class="title raw"></span>",<span class="if booktitle">
   booktitle = "<span class="booktitle"></span>",</span><span class="if journal">
