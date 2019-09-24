@@ -41,21 +41,40 @@
       pre {
         white-space: pre-wrap;
         hyphens: auto;
+        word-break: keep-all;
       }
-      .note {
+      span.note{
+        font-weight: bold;
+      }
+      /*.note {
         color: green;
         font-size: small;
         text-indent:2em;
         margin-top:1px; margin-bottom:-3px;
-      }
+      }*/
       span.raw {
-        color: pre;
+        color: #333;
         unicode-bidi: embed;
-        font-family: monospace;
-        font-size: pre;
+        font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+        font-size: 13px;
+      }
+      span.abstract {
+        white-space: pre-wrap;
+        hyphens: auto;
+        word-break: keep-all;
+        font-size:13px;
+      }
+      span.comment {
+        display: block;
+        font-size:small;
+        margin-block-start: 0.1em;
+        margin-block-end: 0.5em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+        color: green;
       }
       [class="Lei Li"] {
-        text-decoration: bold;
+        font-weight: bold;
       }
     </style>
     <!-- Latest compiled and minified CSS -->
@@ -155,9 +174,10 @@
                 <span class="number"></span>),
               </span>
               <span class="if pages"> pages <span class="pages"></span>,</span>
-              <span class="if month"><span class="month"></span>,</span> <span
+              <span
                 class="if year"><span
                   class="year"></span>.</span>
+              <span class="if note">(<span class="note"></span>) </span>
               <span class="if url"><a class="bibtexVar" href="+URL+" extra="url">[URL]</a></span>
               <span class="if doi"><a class="bibtexVar" href="+DOI+" extra="doi">[DOI]</a></span>
               <span class="if software"><a class="bibtexVar" href="+SOFTWARE+" extra="software">[Software]</a></span>
@@ -180,12 +200,11 @@
                 extra="BIBTEXKEY">
                 [abstract] </a>
               </span>
-              <p class="note">
-              <span class="if note"><span class="note"></span>.</span></p>
+              <span class="if comment"><span class="comment"></span></span>
             </div>
             <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
               <div>
-                <pre><span class="bibtextypekey raw" style="text-transform:lowercase"></span>{<span class="bibtexkey"></span>,
+                <pre><span class="bibtextypekey raw" style="text-transform:lowercase"></span>{<span class="bibtexkey raw"></span>,
   author = <span class="author raw"></span>,
   title = "<span class="title raw"></span>",<span class="if booktitle">
   booktitle = "<span class="booktitle raw"></span>",</span><span class="if journal">
