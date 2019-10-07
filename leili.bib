@@ -2,37 +2,28 @@
 
 @InProceedings{miao2019kernelized,
   author    = {Miao, Ning and Zhou, Hao and Zhao, Chengqi and Li, Lei},
+  booktitle = {the 33rd Conference on Neural Information Processing Systems (NeurIPS)},
   title     = {Kernelized Bayesian Softman for Text Generation},
-  booktitle = {Neural Information Processing Systems (NeurIPS)},
   year      = {2019},
   month     = dec,
 }
 
-@InProceedings{wang2019towards,
-  author    = {Wang, Mingxuan and Xie, Jun and Tan, Zhixing and Su, Jinsong and Xiong, Deyi and Li, Lei},
-  booktitle = {EMNLP},
-  title     = {Towards Linear Time Neural Machine Translation with Capsule Networks},
-  year      = {2019},
-  month     = nov,
-  abstract  = {In this study, we first investigate a novel capsule network with dynamic routing for linear time Neural Machine Translation (NMT), referred as CAPSNMT. CAPSNMT uses an aggregation mechanism to map the source sentence into a matrix with pre-determined size, and then applys a deep LSTM network to decode the target sequence from the source representation. Unlike the previous work (Sutskever et al., 2014) to store the source sentence with a passive and bottom-up way, the dynamic routing policy encodes the source sentence with an iterative process to decide the credit attribution between nodes from lower and higher layers. CAPSNMT has two core properties: it runs in time that is linear in the length of the sequences and provides a more flexible way to aggregate the part-whole information of the source sentence. On WMT14 English-German task and a larger WMT14 English-French task, CAPSNMT achieves comparable results with the Transformer system. We also devise new hybrid architectures intended to combine the strength of CAPSNMT and the RNMT model. Our hybrid models obtain state-of-the-arts results on both benchmark datasets. To the best of our knowledge, this is the first work that capsule networks have been empirically inves- tigated for sequence to sequence problems},
-}
-
 @InProceedings{zhao2019what,
   author    = {Zhao, Zhichen and Li, Lei and Zhang, Bowen and Jiang, Yuning and Xu, Li and Wang, Meng and Ma, Weiying},
-  booktitle = {The 28th ACM International Conference on Information and Knowledge Management (CIKM)},
+  booktitle = {the 28th ACM International Conference on Information and Knowledge Management (CIKM)},
   title     = {What You Look Matters: Offline Evaluation of Advertising Creatives for Cold Start Problem},
   year      = {2019},
   month     = nov,
   abstract  = {Modern online-auction-based advertising systems utilize user and item features to automatically place ads. In order to train a model to rank the most profitable ads, new ad creatives have to be placed online for hours to receive sufficient user-click data. This corresponds to the cold-start stage. Random strategy lead to inefficiency and inferior selections of potential ads. In this paper, we analyze the effectiveness of content-based selection during the cold-start stage. Specifically, we propose Pre Evaluation of Ad Creative Model (PEAC), a novel method to evaluate and select ad creatives offline before being placed online. Our proposed PEAC utilizes the automatically extracted deep feature from ad content to predict and rank their potential online placement performance. It does not rely on any user-click data, which is scarce during the cold-starting phase. A large-scale system based on our method has been deployed in a real online advertising platform. The online A/B testing shows the ads system with PEAC pre-ranking obtains significant improvement in revenue gain compared to the prior system. Furthermore, we provide detailed analyses on what the model learned, which gives further suggestions to improve ad creative design.},
 }
 
-@InProceedings{fu2019rethinking,
-  author    = {Fu, Yao and Zhou, Hao and Chen, Jiaze and Li, Lei},
-  booktitle = {12th International Conference on Natural Language Generation (INLG)},
-  title     = {Rethinking Text Attribute Transfer: A Lexical Analysis},
+@InProceedings{wang2019towards,
+  author    = {Wang, Mingxuan and Xie, Jun and Tan, Zhixing and Su, Jinsong and Xiong, Deyi and Li, Lei},
+  booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  title     = {Towards Linear Time Neural Machine Translation with Capsule Networks},
   year      = {2019},
-  month     = oct,
-  abstract  = {Text attribute transfer is modifying certain linguistic attributes (e.g. sentiment, style, authorship, etc.) of a sentence and transforming them from one type to another. In this paper, we aim to analyze and interpret what is changed during the transfer process. We start from the observation that in many existing models and datasets, certain words within a sentence play important roles in determining the sentence attribute class. These words are referred to as the Pivot Words. Based on these pivot words, we propose a lexical analysis framework, the Pivot Analysis, to quantitatively analyze the effects of these words in text attribute classification and transfer. We apply this framework to existing datasets and models, and show that: (1) the pivot words are strong features for the classification of sentence attributes; (2) to change the attribute of a sentence, many datasets only requires to change certain pivot words; (3) consequently, many transfer models only perform the lexical-level modification, while leaving higher-level sentence structures unchanged. Our work provides an in-depth understanding of linguistic attribute transfer and further identifies the future requirements and challenges of this task.},
+  month     = nov,
+  abstract  = {In this study, we first investigate a novel capsule network with dynamic routing for linear time Neural Machine Translation (NMT), referred as CAPSNMT. CAPSNMT uses an aggregation mechanism to map the source sentence into a matrix with pre-determined size, and then applys a deep LSTM network to decode the target sequence from the source representation. Unlike the previous work (Sutskever et al., 2014) to store the source sentence with a passive and bottom-up way, the dynamic routing policy encodes the source sentence with an iterative process to decide the credit attribution between nodes from lower and higher layers. CAPSNMT has two core properties: it runs in time that is linear in the length of the sequences and provides a more flexible way to aggregate the part-whole information of the source sentence. On WMT14 English-German task and a larger WMT14 English-French task, CAPSNMT achieves comparable results with the Transformer system. We also devise new hybrid architectures intended to combine the strength of CAPSNMT and the RNMT model. Our hybrid models obtain state-of-the-arts results on both benchmark datasets. To the best of our knowledge, this is the first work that capsule networks have been empirically inves- tigated for sequence to sequence problems},
 }
 
 @InProceedings{jiang2019svd,
@@ -56,14 +47,13 @@
   url       = {https://vatex.org/main/index.html},
 }
 
-@InProceedings{wen2019correct,
-  author    = {Wen, Rongxiang and Zhou, Hao and Huang, Shujian and Xia, Yifan and Li, Lei and Chen, Jiajun},
-  booktitle = {IJCAI},
-  title     = {Correct-and-Memorize: Learning to Translate from Interactive Revisions},
+@InProceedings{fu2019rethinking,
+  author    = {Fu, Yao and Zhou, Hao and Chen, Jiaze and Li, Lei},
+  booktitle = {the 12th International Conference on Natural Language Generation (INLG)},
+  title     = {Rethinking Text Attribute Transfer: A Lexical Analysis},
   year      = {2019},
-  month     = aug,
-  note      = {Oral Presentation},
-  abstract  = {State-of-the-art machine translation models are stillnot on a par with human translators. Previous worktakes human interactions into the neural machine translation process to obtain improved results in target languages. However, not all model-translation errors are equal some are critical while others are minor. In the mean while, same translation mistakes occur repeatedly in similar context. To solve bothissues, we propose CAMIT, a novel method for translating in an interactive environment. Our proposed method works with critical revision instructions,therefore allows human to correct arbitrary words in model-translated sentences. In addition,CAMIT learns from and softly memorizes revision actions based on the context, alleviating the issue of repeating mistakes. Experiments in both ideal and real interactive translation settings demonstrate that our proposed CAMIT enhances machine translation results significantly while requires fewer revision instructions from human compared to previous methods.},
+  month     = oct,
+  abstract  = {Text attribute transfer is modifying certain linguistic attributes (e.g. sentiment, style, authorship, etc.) of a sentence and transforming them from one type to another. In this paper, we aim to analyze and interpret what is changed during the transfer process. We start from the observation that in many existing models and datasets, certain words within a sentence play important roles in determining the sentence attribute class. These words are referred to as the Pivot Words. Based on these pivot words, we propose a lexical analysis framework, the Pivot Analysis, to quantitatively analyze the effects of these words in text attribute classification and transfer. We apply this framework to existing datasets and models, and show that: (1) the pivot words are strong features for the classification of sentence attributes; (2) to change the attribute of a sentence, many datasets only requires to change certain pivot words; (3) consequently, many transfer models only perform the lexical-level modification, while leaving higher-level sentence structures unchanged. Our work provides an in-depth understanding of linguistic attribute transfer and further identifies the future requirements and challenges of this task.},
 }
 
 @InProceedings{lu2019uncovering,
@@ -78,6 +68,28 @@
   file      = {:pubs/lu-kdd2019-social-content-links.pdf:PDF},
   owner     = {leili},
   timestamp = {2019-04-30},
+}
+
+@InProceedings{sun2019graspsnooker,
+  author    = {Sun, Zhaoyue and Chen, Jiaze and Zhou, Hao and Zhou, Deyu and Li, Lei and Jiang, Mingmin},
+  booktitle = {the 28th International Joint Conference on Artificial Intelligence ({IJCAI})},
+  title     = {GraspSnooker: Automatic Chinese Commentary Generation for Snooker Videos},
+  year      = {2019},
+  month     = aug,
+  note      = {Demos},
+  pages     = {6569--6571},
+  doi       = {10.24963/ijcai.2019/959},
+  url       = {https://doi.org/10.24963/ijcai.2019/959},
+}
+
+@InProceedings{wen2019correct,
+  author    = {Wen, Rongxiang and Zhou, Hao and Huang, Shujian and Xia, Yifan and Li, Lei and Chen, Jiajun},
+  booktitle = {the 28th International Joint Conference on Artificial Intelligence (IJCAI)},
+  title     = {Correct-and-Memorize: Learning to Translate from Interactive Revisions},
+  year      = {2019},
+  month     = aug,
+  note      = {Oral Presentation},
+  abstract  = {State-of-the-art machine translation models are stillnot on a par with human translators. Previous worktakes human interactions into the neural machine translation process to obtain improved results in target languages. However, not all model-translation errors are equal some are critical while others are minor. In the mean while, same translation mistakes occur repeatedly in similar context. To solve bothissues, we propose CAMIT, a novel method for translating in an interactive environment. Our proposed method works with critical revision instructions,therefore allows human to correct arbitrary words in model-translated sentences. In addition,CAMIT learns from and softly memorizes revision actions based on the context, alleviating the issue of repeating mistakes. Experiments in both ideal and real interactive translation settings demonstrate that our proposed CAMIT enhances machine translation results significantly while requires fewer revision instructions from human compared to previous methods.},
 }
 
 @InProceedings{bao2019generating,
@@ -111,7 +123,7 @@
 
 @InProceedings{wu2019unified,
   author    = {Wu, Hao and Mao, Jiayuan and Zhang, Yufeng and Sun, Weiwei and Jiang, Yuning and Li, Lei and Ma, Wei-Ying},
-  booktitle = {CVPR},
+  booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
   title     = {Unified Visual-Semantic Embeddings: Bridging Vision and Language with Structured Meaning Representations},
   year      = {2019},
   month     = jun,
@@ -139,8 +151,8 @@ resolve word dependencies in novel sentences.},
 
 @InProceedings{miao2019cgmh,
   author    = {Miao, Ning and Zhou, Hao and Mou, Lili and Yan, Rui and Li, Lei},
+  booktitle = {the 33rd {AAAI} Conference on Artificial Intelligence (AAAI)},
   title     = {{CGMH:} Constrained Sentence Generation by Metropolis-Hastings Sampling},
-  booktitle = {AAAI},
   year      = {2019},
   month     = jan,
   abstract  = {In real-world applications of natural language generation,
@@ -169,8 +181,8 @@ is released at https://github.com/NingMiao/CGMH},
 
 @InProceedings{cao2018brits,
   author    = {Cao, Wei and Wang, Dong and Li, Jian and Zhou, Hao and Li, Yitan and Li, Lei},
+  booktitle = {the 32nd Conference on Neural Information Processing Systems (NeurIPS)},
   title     = {{BRITS}: Bidirectional Recurrent Imputation for Time Series},
-  booktitle = {Neural Information Processing Systems (NeurIPS)},
   year      = {2018},
   month     = dec,
   abstract  = {Time series are widely used as signals in many classification/regression tasks. It is ubiquitous that time series contains many missing values. Given multiple correlated time series data, how to fill in missing values and to predict their class labels? Existing imputation methods often impose strong assumptions of the underlying data generating process, such as linear dynamics in the state space. In this paper, we propose BRITS, a novel method based on recurrent neural networks for missing value imputation in time series data. Our proposed method directly learns the missing values in a bidirectional recurrent dynamical system, without any specific assumption. The imputed values are treated as variables of RNN graph and can be effectively updated during the backpropagation.BRITS has three advantages: (a) it can handle multiple correlated missing values in time series; (b) it generalizes to time series with nonlinear dynamics underlying; (c) it provides a data-driven imputation procedure and applies to general settings with missing data.We evaluate our model on three real-world datasets, including an air quality dataset, a health-care data, and a localization data for human activity. Experiments show that our model outperforms the state-of-the-art methods in both imputation and classification/regression accuracies.},
@@ -191,11 +203,11 @@ is released at https://github.com/NingMiao/CGMH},
 
 @InProceedings{li2018jersey,
   author    = {Li, Gen and Xu, Shikun and Liu, Xiang and Li, Lei and Wang, Changhu},
-  title     = {Jersey Number Recognition with Semi-Supervised Spatial Transformer Network},
   booktitle = {IEEE Conference on Computer Vision and Pattern Recognition workshops, Computer Vision in Sports},
+  title     = {Jersey Number Recognition with Semi-Supervised Spatial Transformer Network},
   year      = {2018},
-  pages     = {1864--1871},
   month     = jun,
+  pages     = {1864 --1871},
   abstract  = {It is still a challenging task to recognize the jersey number 
 of players on the court in soccer match videos, as the
 jersey numbers are very small in the object detection task
@@ -212,7 +224,7 @@ a semi-supervised multi-task learning system, by labeling a
 small portion of the number areas in the dataset by quadrangle.
 Extensive experiments illustrate the effectiveness of
 the proposed framework.},
-  file      = {:pubs/li2018jersey - Jersey Number Recognition with Semi-Supervised Spatial Transformer Network.pdf:PDF},
+  groups    = {workshop},
 }
 
 @InProceedings{wu2018reinforced,
@@ -243,12 +255,12 @@ proposed method can obtain more accurate text classification results.},
 
 @InProceedings{erol2017nearly,
   author    = {Erol, Yusuf B. and Wu, Yi and Li, Lei and Russell, Stuart},
+  booktitle = {the 31st AAAI Conference on Artificial Intelligence (AAAI)},
   title     = {A Nearly-Black-Box Online Algorithm for Joint Parameter and State Estimation in Temporal Models},
-  booktitle = {The Thirty-First AAAI Conference on Artificial Intelligence},
   year      = {2017},
   month     = jul,
-  comment      = {The earlier version appeared in NIPS 2016 workshop on Advances in Approximate Bayesian Inference.},
   abstract  = {Online joint parameter and state estimation is a core problem for temporal models. Most existing methods are either restricted to a particular class of models (e.g., the Storvik filter) or computationally expensive (e.g., particle MCMC). We propose a novel nearly-black-box algorithm, the Assumed Parameter Filter (APF), a hybrid of particle filtering for state variables and assumed density filtering for parameter variables. It has the following advantages: (a) it is online and computationally efficient; (b) it is applicable to both discrete and continuous parameter spaces with arbitrary transition dynamics. On a variety of toy and real models, APF generates more accurate results within a fixed computation budget compared to several standard algorithms from the literature.},
+  comment   = {The earlier version appeared in NIPS 2016 workshop on Advances in Approximate Bayesian Inference.},
   file      = {:pubs/erol2017nearly - A Nearly-Black-Box Online Algorithm for Joint Parameter and State Estimation in Temporal Models.pdf:PDF;Appendix:pubs/erol-aaai2017-apf-appendix.pdf:PDF},
   owner     = {lilei.02},
   timestamp = {2017-01-20},
@@ -264,7 +276,6 @@ proposed method can obtain more accurate text classification results.},
   volume   = {11},
   abstract = {The recent explosion in the adoption of search engines and new media such as blogs and Twitter have facilitated the faster propagation of news and rumors. How quickly does a piece of news spread over these media? How does its popularity diminish over time? Does the rising and falling pattern follow a simple universal law? In this paper, we propose SPIKEM, a concise yet flexible analytical model of the rise and fall patterns of information diffusion. Our model has the following advantages: (a) unification power: it explains earlier empirical observations and generalizes theoretical models including the SI and SIR models. We provide the threshold of the take-off vs. die-out conditions for SPIKEM, and discuss the generality of our model, by applying it to an arbitrary graph topology; (b) practicality: it matches the observed behavior of diverse sets of real data; (c) parsimony: it requires only a handful of parameters; and (d) usefulness: it makes it possible to perform analytic tasks such as forecasting, spotting anomalies, and interpretation by reverse engineering the system parameters of interest (e.g. quality of news, number of interested bloggers, etc.). We also introduce an efficient and effective algorithm for the real-time monitoring of information diffusion, namely, SPIKESTREAM, which identifies multiple diffusion patterns in a large collection of online event streams. Extensive experiments on real datasets demonstrate that SPIKEM accurately and succinctly describes all the patterns of the rise-and-fall spikes in social networks.},
   comment  = {The earlier version of the paper appeared in KDD'12. This version includes significant extension.},
-  file     = {:pubs/matsubara2017non - Non-linear Dynamics of Information Diffusion in Social Networks.pdf:PDF},
 }
 
 @InProceedings{wu2016swift,
@@ -293,20 +304,18 @@ proposed method can obtain more accurate text classification results.},
 
 @InProceedings{lu2015twisted,
   author    = {Lu, Zefu and Li, Lei and Xu, Wei},
-  title     = {Twisted Recurrent Network for Named Entity Recognition},
   booktitle = {Bay Area Machine Learning Symposium},
+  title     = {Twisted Recurrent Network for Named Entity Recognition},
   year      = {2015},
-  file      = {:pubs/lu2015twisted - Twisted Recurrent Network for Named Entity Recognition.pdf:PDF},
   owner     = {leili},
   timestamp = {2015.11.03},
 }
 
 @InProceedings{pham2015optimization,
   author    = {Pham, Hieu and Dai, Zihang and Li, Lei},
-  title     = {On Optimization Algorithms for Recurrent Networks with Long Short-Term Memory},
   booktitle = {Bay Area Machine Learning Symposium},
+  title     = {On Optimization Algorithms for Recurrent Networks with Long Short-Term Memory},
   year      = {2015},
-  file      = {:pubs/pham2015optimization - On Optimization Algorithms for Recurrent Networks with Long Short-Term Memory.pdf:PDF},
   owner     = {leili},
   timestamp = {2015.11.03},
 }
@@ -367,18 +376,6 @@ proposed method can obtain more accurate text classification results.},
   timestamp = {2013.03.05},
 }
 
-@InProceedings{rogers2013multilinear,
-  author    = {Rogers, Mark and Li, Lei and Russell, Stuart J.},
-  title     = {Multilinear Dynamical Systems for Tensor Time Series},
-  booktitle = {Advances in Neural Information Processing Systems 26},
-  year      = {2013},
-  file      = {:pubs/rogers2013multilinear - Multilinear Dynamical Systems for Tensor Time Series.pdf:PDF},
-  owner     = {leili},
-  software  = {software/mlds-r662.zip},
-  timestamp = {2013.09.11},
-  url       = {mlds/index.html},
-}
-
 @InProceedings{liu2013hibernating,
   author    = {Liu, Siyuan and Li, Lei and Krishnan, Ramayya},
   title     = {Hibernating Process: Modelling Mobile Calls at Multiple Scales},
@@ -387,19 +384,6 @@ proposed method can obtain more accurate text classification results.},
   file      = {:pubs/liu2013hibernating - Hibernating Process_ Modelling Mobile Calls at Multiple Scales.pdf:PDF},
   owner     = {leili},
   timestamp = {2013.11.26},
-}
-
-@InProceedings{fu2013why,
-  author    = {Fu, Bin and Lin, Jialiu and Li, Lei and Faloutsos, Christos and Hong, Jason and Sadeh, Norman},
-  title     = {Why People Hate Your App - Making Sense of User Feedback in a Mobile App Store},
-  booktitle = {KDD '13: Proceeding of the 19th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
-  year      = {2013},
-  address   = {New York, NY, USA},
-  publisher = {ACM},
-  abstract  = {User review is a crucial component of open mobile app mar- kets such as the Google Play Store. How do we automatically summarize millions of user reviews and make sense out of them? Unfortunately, beyond simple summaries such as histograms of user ratings, there are few analytic tools that can provide insights into user reviews. In this paper, we propose WisCom, a system that can analyze tens of millions user ratings and comments in mobile app markets at three different levels of detail. Our system is able to (a) discover inconsistencies in reviews; (b) identify reasons why users like or dislike a given app, and provide an interactive, zoomable view of how users’ reviews evolve over time; and (c) provide valuable insights into the entire app market, identifying users’ major concerns and preferences of different types of apps. Results using our techniques are reported on a 32GB dataset consisting of over 13 million user reviews of 171,493 Android apps in the Google Play Store. We discuss how the techniques presented herein can be deployed to help a mobile app market operator such as Google as well as individual app developers and end-users.},
-  file      = {:pubs/fu2013why - Why People Hate Your App - Making Sense of User Feedback in a Mobile App Store.pdf:PDF},
-  owner     = {leili},
-  timestamp = {2013.06.18},
 }
 
 @InProceedings{erol2013extended,
@@ -412,6 +396,31 @@ proposed method can obtain more accurate text classification results.},
   file      = {:pubs/erol2013extended - The Extended Parameter Filter.pdf:PDF},
   owner     = {leili},
   timestamp = {2013.05.08},
+}
+
+@InProceedings{fu2013why,
+  author    = {Fu, Bin and Lin, Jialiu and Li, Lei and Faloutsos, Christos and Hong, Jason and Sadeh, Norman},
+  booktitle = {the 19th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)},
+  title     = {Why People Hate Your App - Making Sense of User Feedback in a Mobile App Store},
+  year      = {2013},
+  address   = {New York, NY, USA},
+  publisher = {ACM},
+  abstract  = {User review is a crucial component of open mobile app mar- kets such as the Google Play Store. How do we automatically summarize millions of user reviews and make sense out of them? Unfortunately, beyond simple summaries such as histograms of user ratings, there are few analytic tools that can provide insights into user reviews. In this paper, we propose WisCom, a system that can analyze tens of millions user ratings and comments in mobile app markets at three different levels of detail. Our system is able to (a) discover inconsistencies in reviews; (b) identify reasons why users like or dislike a given app, and provide an interactive, zoomable view of how users’ reviews evolve over time; and (c) provide valuable insights into the entire app market, identifying users’ major concerns and preferences of different types of apps. Results using our techniques are reported on a 32GB dataset consisting of over 13 million user reviews of 171,493 Android apps in the Google Play Store. We discuss how the techniques presented herein can be deployed to help a mobile app market operator such as Google as well as individual app developers and end-users.},
+  file      = {:pubs/fu2013why - Why People Hate Your App - Making Sense of User Feedback in a Mobile App Store.pdf:PDF},
+  owner     = {leili},
+  timestamp = {2013.06.18},
+}
+
+@InProceedings{rogers2013multilinear,
+  author    = {Rogers, Mark and Li, Lei and Russell, Stuart J.},
+  booktitle = {the 27th Conference on Neural Information Processing Systems},
+  title     = {Multilinear Dynamical Systems for Tensor Time Series},
+  year      = {2013},
+  file      = {:pubs/rogers2013multilinear - Multilinear Dynamical Systems for Tensor Time Series.pdf:PDF},
+  owner     = {leili},
+  software  = {software/mlds-r662.zip},
+  timestamp = {2013.09.11},
+  url       = {mlds/index.html},
 }
 
 @InProceedings{matsubara2013f,
@@ -528,7 +537,6 @@ proposed method can obtain more accurate text classification results.},
   title        = {Fast algorithms for mining co-evolving time series},
   school       = {Carnegie Mellon University},
   year         = {2011},
-  file         = {:pubs/li2011fast - Fast algorithms for mining co-evolving time series.pdf:PDF},
   howpublished = {Available as technical report CMU-CS-11-127},
   owner        = {leili},
   slides       = {pubs/leili-talk2011-defense.pdf},
@@ -653,11 +661,12 @@ proposed method can obtain more accurate text classification results.},
 
 @InProceedings{xu2008inferring,
   author    = {Xu, Wanhong and Zhou, Xi and Li, Lei},
-  title     = {Inferring privacy information via social relations},
   booktitle = {IEEE 24th International Conference on Data Engineering workshops},
+  title     = {Inferring privacy information via social relations},
   year      = {2008},
   pages     = {525--530},
   doi       = {10.1109/ICDEW.2008.4498373},
+  groups    = {workshop},
 }
 
 @InProceedings{li2008cut,
