@@ -1,0 +1,696 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html > 
+<head><title>KDD&#8217;10tutorial: Indexing and Mining Time Sequences.</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
+<meta name="originator" content="TeX4ht (http://www.cse.ohio-state.edu/~gurari/TeX4ht/)"> 
+<!-- html --> 
+<meta name="src" content="index.tex"> 
+<meta name="date" content="2010-07-23 21:14:00"> 
+<link rel="stylesheet" type="text/css" href="index.css"> 
+</head><body 
+>
+   <div class="maketitle">
+                                                                                  
+                                                                                  
+                                                                                  
+                                                                                  
+
+<h2 class="titleHead"><a 
+href="http://www.sigkdd.org/kdd2010/" >KDD&#8217;10</a>tutorial: Indexing and Mining Time
+Sequences.</h2>
+<div class="author" ><a 
+href="http://www.cs.cmu.edu/~christos" ><span 
+class="ecrm-1440">Christos Faloutsos</span></a> <span 
+class="ecrm-1440">and </span><a 
+href="http://lileicc.github.io/" ><span 
+class="ecrm-1440">Lei Li</span></a> <span 
+class="ecrm-1440">(CMU/SCS)</span></div><br />
+<div class="date" ><span 
+class="ecrm-1440">July 23, 2010</span></div>
+   </div>
+   <h3 class="likesectionHead"><a 
+ id="x1-1000"></a>DESCRIPTION - OBJECTIVES </h3>
+<!--l. 29--><p class="noindent" >How can we find patterns in a sequence of sensor measurements (eg., a sequence of
+temperatures, or water-pollutant measurements)? How can we compress it? What are the
+major tools for forecasting and outlier detection? The objective of this tutorial is to
+provide a concise and intuitive overview of the most important tools, that can help us find
+patterns in sensor sequences. Sensor data analysis becomes of increasingly high
+importance, thanks to the decreasing cost of hardware and the increasing on-sensor
+processing abilities. We review the state of the art in three related fields: (a) fast similarity
+search for time sequences, (b) linear forecasting with the traditional AR (autoregressive)
+and ARIMA methodologies, (c) Kalman filters, and (d) non-linear forecasting, for
+chaotic/self-similar time sequences, using lag-plots and fractals. The emphasis of the
+tutorial is to give the intuition behind these powerful tools, which is usually lost in the
+technical literature, as well as to give case studies that illustrate their practical
+use.
+<!--l. 47--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-2000"></a>FOILS </h3>
+<!--l. 49--><p class="noindent" >The pdf of the foils is here <a 
+href="kdd2010-tut-partA.pdf" >part A</a> and <a 
+href="kdd2010-tut-partB.pdf" >part B</a>
+<!--l. 53--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-3000"></a>CONTENT AND OUTLINE</h3>
+                                                                                  
+                                                                                  
+      <ul class="itemize1">
+      <li class="itemize">Part 1: Similarity Search
+           <ul class="itemize2">
+           <li class="itemize">why we need similarity search
+           </li>
+           <li class="itemize">distance functions (Euclidean, LP norms, time-warping)
+           </li>
+           <li class="itemize">fast searching (R-trees)</li></ul>
+      </li>
+      <li class="itemize">Part 2: feature extraction
+           <ul class="itemize2">
+           <li class="itemize">DFT, Wavelets
+           </li>
+           <li class="itemize">SVD, ICA, FastMap</li></ul>
+      </li>
+      <li class="itemize">Part 3: Linear Forecasting
+           <ul class="itemize2">
+           <li class="itemize">main idea behind linear forecasting
+           </li>
+           <li class="itemize">AR methodology
+           </li>
+           <li class="itemize">multivariate regression
+           </li>
+           <li class="itemize">Recursive Least Squares
+           </li>
+           <li class="itemize">de-trending; periodicities</li></ul>
+      </li>
+      <li class="itemize">Part 4: Kalman filters
+           <ul class="itemize2">
+           <li class="itemize">intution and example: tracking moving objects
+                                                                                  
+                                                                                  
+           </li>
+           <li class="itemize">linear dynamical systems, inference and learning
+               <ul class="itemize3">
+               <li class="itemize">original Kalman
+               </li>
+               <li class="itemize">Kalman filters with parameter estimation</li></ul>
+           </li>
+           <li class="itemize">Extensions
+               <ul class="itemize3">
+               <li class="itemize">Handling missing values
+               </li>
+               <li class="itemize">Switching Kalman filters; particle filters</li></ul>
+           </li>
+           <li class="itemize">Kalman filters at work
+               <ul class="itemize3">
+               <li class="itemize">Segmentation
+               </li>
+               <li class="itemize">Compression,
+               </li>
+               <li class="itemize">Parallel learning on SMP
+               </li>
+               <li class="itemize">Motion stitching</li></ul>
+           </li></ul>
+      </li>
+      <li class="itemize">Part 5: Bursty traffic and fractals
+           <ul class="itemize2">
+           <li class="itemize">fractal dimension
+           </li>
+           <li class="itemize">80/20 law</li></ul>
+      </li>
+      <li class="itemize">Part 6: Non-linear forecasting
+           <ul class="itemize2">
+           <li class="itemize">main idea: lag-plots
+                                                                                  
+                                                                                  
+           </li>
+           <li class="itemize">definition and intuition
+           </li>
+           <li class="itemize">algorithms for fast computation
+           </li>
+           <li class="itemize">case studies</li></ul>
+      </li>
+      <li class="itemize">Conclusions</li></ul>
+<!--l. 119--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-4000"></a>GOAL - WHO SHOULD ATTEND </h3>
+<!--l. 121--><p class="noindent" >Researchers that want to get up to speed with the major tools in time sequence analysis.
+Also, practitioners who want a concise, intuitive overview of the state of the
+art.
+<!--l. 126--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-5000"></a>PREREQUISITES</h3>
+<!--l. 128--><p class="noindent" >None. The emphasis is on the intuition behind all these mathematical tools.
+<!--l. 132--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-6000"></a>PRESENTERS - BIOS </h3>
+<!--l. 134--><p class="noindent" ><span 
+class="ecti-1200">Christos Faloutsos </span>is a Professor at Carnegie Mellon University. He has received the
+Presidential Young Investigator Award by the National Science Foundation (1989), the
+Research Contributions Award in ICDM 2006, the Innovations award in KDD&#8217;10, 16 &#8220;best
+paper&#8221; awards, and several teaching awards. He has served as a member of the executive
+committee of SIGKDD; he has published over 200 refereed articles, 11 book chapters and
+one monograph. He holds five patents and he has given over 30 tutorials and over 10
+invited distinguished lectures. His research interests include data mining for graphs and
+streams, fractals, database performance, and indexing for multimedia and bio-informatics
+data.
+<!--l. 146--><p class="indent" >   <span 
+class="ecti-1200">Lei Li </span>is currently a Ph.D. candidate at Computer Science Department, Carnegie
+Mellon University. Lei Li is received his B.E. degree from the Department of Computer
+Science and Engineering, Shanghai Jiao Tong University. His research interests
+include machine learning, data mining, time series analysis, and motion capture
+data.
+<!--l. 152--><p class="indent" >   <span class="cite">[<a 
+href="#XDamerau64Technique">8</a>,&#x00A0;<a 
+href="#XDaubechies92Ten">9</a>]</span><span class="cite">[<a 
+href="#XDBLP:conf/icde/MegalooikonomouWLF05">34</a>,&#x00A0;<a 
+href="#XDBLP:conf/icde/SakuraiFY07">43</a>,&#x00A0;<a 
+href="#XDBLP:conf/pods/SakuraiYF05">45</a>,&#x00A0;<a 
+href="#XDBLP:conf/sigmod/TaoFPL04">51</a>]</span><span class="cite">[<a 
+href="#XDBLP:conf/icde/SakuraiPF05">44</a>,&#x00A0;<a 
+href="#XDBLP:conf/icde/SunPF05">48</a>,&#x00A0;<a 
+href="#XDBLP:conf/icde/WangCPFM02">52</a>,&#x00A0;<a 
+href="#XDBLP:conf/pakdd/SunPF06">49</a>,&#x00A0;<a 
+href="#XDBLP:conf/vldb/PapadimitriouBF03">38</a>,&#x00A0;<a 
+href="#XDBLP:conf/vldb/PapadimitriouSF05">39</a>,&#x00A0;<a 
+href="#XDBLP:conf/pakdd/PanKFH04">36</a>]</span><span class="cite">[<a 
+href="#XKeogh01Locally">25</a>,&#x00A0;<a 
+href="#XKeogh04Towards">26</a>]</span><span class="cite">[<a 
+href="#XDBLP:conf/cikm/ChakrabartiF02">6</a>]</span><span class="cite">[<a 
+href="#XDBLP:conf/vldb/YiF00">54</a>,&#x00A0;<a 
+href="#XDBLP:conf/icde/YiSJJFB00">56</a>,&#x00A0;<a 
+href="#XDBLP:conf/icde/YiJF98">55</a>]</span><span class="cite">[<a 
+href="#XDBLP:conf/sigmod/FaloutsosL95">11</a>]</span><span class="cite">[<a 
+href="#XKruskal78Multidimensional">29</a>,&#x00A0;<a 
+href="#XBartell92Latent">2</a>]</span><span class="cite">[<a 
+href="#XFoltz92Personalized">12</a>,&#x00A0;<a 
+href="#XDumais94Latent">10</a>]</span><span class="cite">[<a 
+href="#Xpapadimitriou98latent">37</a>]</span><span class="cite">[<a 
+href="#XHyvarinen01Independent">21</a>]</span><span class="cite">[<a 
+href="#XJolliffe02PCA">23</a>,&#x00A0;<a 
+href="#XPress92Numerical">40</a>]</span><span class="cite">[<a 
+href="#XDBLP:conf/spieSR/KoblaDLF97">28</a>,
+&#x00A0;<a 
+href="#XDBLP:conf/vldb/PalpanasCGKZ04">27</a>,&#x00A0;<a 
+href="#XGarofalakis09Data">14</a>,&#x00A0;<a 
+href="#XDBLP:conf/vldb/JensenP07">22</a>,&#x00A0;<a 
+href="#XGehrke01Computing">15</a>,&#x00A0;<a 
+href="#XGuttman84R">20</a>]</span><span class="cite">[<a 
+href="#XCiaccia97M">7</a>,&#x00A0;<a 
+href="#XWeigend94Time">53</a>,&#x00A0;<a 
+href="#XSauer94Time">46</a>,&#x00A0;<a 
+href="#XCastagli92Nonlinear">5</a>,&#x00A0;<a 
+href="#XTakens81Detecting">50</a>,&#x00A0;<a 
+href="#XRabiner93Fundamentals">41</a>,&#x00A0;<a 
+href="#XZhu02">58</a>,&#x00A0;<a 
+href="#Xzhu03burst">57</a>,&#x00A0;<a 
+href="#XOppenheim02MEMS">35</a>,&#x00A0;<a 
+href="#XBabu01Continuous">1</a>,&#x00A0;<a 
+href="#XBreunig00">4</a>,&#x00A0;<a 
+href="#XBerry92a">3</a>,&#x00A0;<a 
+href="#XGaede98Multidimensional">13</a>,&#x00A0;<a 
+href="#XGunopulos01Time">19</a>]</span><span class="cite">[<a 
+href="#XDBLP:conf/kdd/LiMPF09">32</a>,&#x00A0;<a 
+href="#XDBLP:conf/kdd/LiFGMF08">30</a>,&#x00A0;<a 
+href="#XLi2008Laziness">31</a>,&#x00A0;<a 
+href="#XLi2010">33</a>]</span><span class="cite">[<a 
+href="#XKalman1960a">24</a>,&#x00A0;<a 
+href="#XRauch1965Maximum">42</a>]</span><span class="cite">[<a 
+href="#Xzoubin96lds">16</a>,&#x00A0;<a 
+href="#XGhahramani2000Variational">17</a>,&#x00A0;<a 
+href="#XGordon1993Novel">18</a>,&#x00A0;<a 
+href="#Xshumway82approach">47</a>]</span>
+                                                                                  
+                                                                                  
+<!--l. 1--><p class="noindent" >
+   <h3 class="likesectionHead"><a 
+ id="x1-7000"></a>References</h3>
+<!--l. 1--><p class="noindent" >
+     <div class="thebibliography">
+     <p class="bibitem" ><span class="biblabel">
+  [1]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XBabu01Continuous"></a>Shivnath Babu and Jennifer Widom. Continuous Queries over Data Streams.
+     <span 
+class="ecti-1200">SIGMOD Record 109-120</span>, 30(3), 2001.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+  [2]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XBartell92Latent"></a>Brian&#x00A0;T  Bartell,  Garrison&#x00A0;W  Cottrell,  and  Richard&#x00A0;K  Belew.    Latent
+     Semantic  Indexing  is  an  Optimal  Special  Case  of  Multidimensional  Scaling.
+     <span 
+class="ecti-1200">SIGIR</span>, pages 161&#8211;167, 1992.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+  [3]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XBerry92a"></a>Michael&#x00A0;W Berry.  Large-Scale Sparse Singular Value Computations.  <span 
+class="ecti-1200">The</span>
+     <span 
+class="ecti-1200">International Journal of Supercomputer Applications</span>, 6(1):13&#8211;49, 1992.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+  [4]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XBreunig00"></a>Markus&#x00A0;M Breunig, Hans-Peter Kriegel, Raymond&#x00A0;T Ng, and Joerg Sander.
+     {LOF}: Identifying Density-Based Local Outliers.   In <span 
+class="ecti-1200">SIGMOD Conference</span>,
+     pages 93&#8211;104, Dallas, TX, 2000.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+  [5]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XCastagli92Nonlinear"></a>M&#x00A0;Castagli and S&#x00A0;Eubank.  <span 
+class="ecti-1200">Nonlinear Modeling and Forecasting</span>.  Addison
+     Wesley, 1992.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+  [6]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/cikm/ChakrabartiF02"></a>Deepayan Chakrabarti and Christos Faloutsos.  F4: large-scale automated
+     forecasting using fractals. In <span 
+class="ecti-1200">Proceedings of the 2002 ACM CIKM International</span>
+     <span 
+class="ecti-1200">Conference on Information and Knowledge Management, McLean, VA, USA,</span>
+     <span 
+class="ecti-1200">November 4-9, 2002</span>, pages 2&#8211;9, 2002.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+  [7]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XCiaccia97M"></a>Paolo Ciaccia, Marco Patella, and Pavel Zezula. M-tree: An Efficient Access
+     Method for Similarity Search in Metric Spaces. <span 
+class="ecti-1200">VLDB</span>, pages 426&#8211;435, 1997.
+                                                                                  
+                                                                                  
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+  [8]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDamerau64Technique"></a>F&#x00A0;J  Damerau.   A  Technique  for  Computer  Detection  and  Correction  of
+     Spelling Errors. <span 
+class="ecti-1200">CACM</span>, 7(3):171&#8211;176, March 1964.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+  [9]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDaubechies92Ten"></a>Ingrid  Daubechies.    <span 
+class="ecti-1200">Ten  Lectures  on  Wavelets</span>.    Capital  City  Press,
+     Montpelier, Vermont, 1992.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [10]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDumais94Latent"></a>Susan&#x00A0;T Dumais.  Latent Semantic Indexing ({LSI}) and {TREC}-2.  In
+     D&#x00A0;K Harman, editor, <span 
+class="ecti-1200">The Second Text Retrieval Conference (TREC-2)</span>, pages
+     105&#8211;115, Gaithersburg, MD, March 1994. NIST.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [11]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/sigmod/FaloutsosL95"></a>Christos  Faloutsos  and  King-Ip  Lin.    FastMap:  A  Fast  Algorithm  for
+     Indexing,  Data-Mining  and  Visualization  of  Traditional  and  Multimedia
+     Datasets. In <span 
+class="ecti-1200">Proceedings of the 1995 ACM SIGMOD International Conference</span>
+     <span 
+class="ecti-1200">on Management of Data, San Jose, California, May 22-25, 1995</span>, pages 163&#8211;174,
+     1995.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [12]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XFoltz92Personalized"></a>Peter&#x00A0;W Foltz and Susan&#x00A0;T Dumais.  Personalized Information Delivery:
+     An  Analysis  of  Information  Filtering  Methods.   <span 
+class="ecti-1200">Comm.  of  ACM  (CACM)</span>,
+     35(12):51&#8211;60, December 1992.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [13]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XGaede98Multidimensional"></a>Volker  Gaede  and  Oliver  Guenther.   Multidimensional  Access  Methods.
+     <span 
+class="ecti-1200">Computing Surveys</span>, 30(2):170&#8211;231, 1998.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [14]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XGarofalakis09Data"></a>Minos Garofalakis, Johannes Gehrke, and Rajeev Rastogi.   <span 
+class="ecti-1200">Data Stream</span>
+     <span 
+class="ecti-1200">Management: Processing High-Speed Data Streams</span>. Springer, 2009.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [15]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XGehrke01Computing"></a>J&#x00A0;E Gehrke, Flip Korn, and Divesh Srivastava.  On Computing Correlated
+     Aggregates Over Continual Data Streams. <span 
+class="ecti-1200">ACM Sigmod</span>, May 2001.
+                                                                                  
+                                                                                  
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [16]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xzoubin96lds"></a>Zoubin  Ghahramani  and  Geoffrey&#x00A0;E.  Hinton.   Parameter  estimation  for
+     linear dynamical systems. Technical Report CRG-TR-96-2, February 1996.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [17]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XGhahramani2000Variational"></a>Zoubin  Ghahramani  and  Geoffrey&#x00A0;E.  Hinton.    Variational  learning  for
+     switching state-space models. <span 
+class="ecti-1200">Neural Computation</span>, 12(4):831&#8211;864, 2000.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [18]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XGordon1993Novel"></a>N.&#x00A0;J. Gordon, D.&#x00A0;J. Salmond, and A.&#x00A0;F.&#x00A0;M. Smith.   Novel approach to
+     nonlinear/non-gaussian bayesian state estimation. <span 
+class="ecti-1200">IEE Proceedings F Radar and</span>
+     <span 
+class="ecti-1200">Signal Processing</span>, 140(2):107&#8211;113, 1993.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [19]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XGunopulos01Time"></a>Dimitrios Gunopulos and Gautam Das. Time Series Similarity Measures and
+     Time Series Indexing. In <span 
+class="ecti-1200">SIGMOD Conference</span>, Santa Barbara, CA, 2001.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [20]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XGuttman84R"></a>A&#x00A0;Guttman. R-Trees: {A} Dynamic Index Structure for Spatial Searching.
+     In <span 
+class="ecti-1200">Proc. ACM SIGMOD</span>, pages 47&#8211;57, Boston, Mass, June 1984.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [21]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XHyvarinen01Independent"></a>A&#x00A0;Hyvarinen, J&#x00A0;Karhunen, and E&#x00A0;Oja.  <span 
+class="ecti-1200">Independent Component Analysis</span>.
+     John Wiley and Sons, 2001.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [22]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/vldb/JensenP07"></a>Christian&#x00A0;S Jensen and Stardas Pakalnis.  TRAX - Real-World Tracking
+     of  Moving  Objects.      In  Christoph  Koch,  Johannes  Gehrke,  Minos&#x00A0;N
+     Garofalakis,  Divesh  Srivastava,  Karl  Aberer,  Anand  Deshpande,  Daniela
+     Florescu, Chee&#x00A0;Yong Chan, Venkatesh Ganti, Carl-Christian Kanne, Wolfgang
+     Klas, and Erich&#x00A0;J Neuhold, editors, <span 
+class="ecti-1200">VLDB</span>, pages 1362&#8211;1365. ACM, 2007.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [23]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XJolliffe02PCA"></a>I&#x00A0;Jolliffe. <span 
+class="ecti-1200">Principal Component Analysis</span>. Springer, 2002.
+                                                                                  
+                                                                                  
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [24]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XKalman1960a"></a>R.&#x00A0;E. Kalman. A new approach to linear filtering and prediction problems.
+     <span 
+class="ecti-1200">Transactions  of  the  ASME  </span><span 
+class="ecti-1200">Â</span><span 
+class="ecti-1200">&#353;C  Journal  of  Basic  Engineering</span>,  (82  (Series
+     D)):35&#8211;45, 1960.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [25]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XKeogh01Locally"></a>Eamonn&#x00A0;J Keogh, Kaushik Chakrabarti, Sharad Mehrotra, and Michael&#x00A0;J
+     Pazzani.  Locally Adaptive Dimensionality Reduction for Indexing Large Time
+     Series Databases. In <span 
+class="ecti-1200">SIGMOD Conference</span>, Santa Barbara, CA, 2001.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [26]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XKeogh04Towards"></a>Eamonn&#x00A0;J Keogh, Stefano Lonardi, and Chotirat&#x00A0;(Ann) Ratanamahatana.
+     Towards  parameter-free  data  mining.   In  <span 
+class="ecti-1200">KDD  Conference</span>,  pages  206&#8211;215,
+     Seattle, WA, 2004.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [27]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/vldb/PalpanasCGKZ04"></a>Eamonn&#x00A0;J   Keogh,   Themis   Palpanas,   Victor&#x00A0;B   Zordan,   Dimitrios
+     Gunopulos,  and  Marc  Cardle.    Indexing  Large  Human-Motion  Databases.
+     In Mario&#x00A0;A Nascimento, M&#x00A0;Tamer Özsu, Donald Kossmann, Renée&#x00A0;J Miller,
+     José&#x00A0;A  Blakeley,  and  K&#x00A0;Bernhard  Schiefer,  editors,  <span 
+class="ecti-1200">VLDB</span>,  pages  780&#8211;791.
+     Morgan Kaufmann, 2004.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [28]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/spieSR/KoblaDLF97"></a>Vikrant Kobla, David&#x00A0;S Doermann, King-Ip Lin, and Christos Faloutsos.
+     Compressed-Domain Video Indexing Techniques Using DCT and Motion Vector
+     Information in MPEG Video.  In <span 
+class="ecti-1200">Storage and Retrieval for Image and Video</span>
+     <span 
+class="ecti-1200">Databases (SPIE)</span>, pages 200&#8211;211, 1997.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [29]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XKruskal78Multidimensional"></a>Joseph&#x00A0;B  Kruskal  and  Myron  Wish.   <span 
+class="ecti-1200">Multidimensional  scaling</span>.   SAGE
+     publications, Beverly Hills, 1978.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [30]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/kdd/LiFGMF08"></a>Lei  Li,  Wenjie  Fu,  Fan  Guo,  Todd&#x00A0;C  Mowry,  and  Christos  Faloutsos.
+     Cut-and-stitch: efficient parallel learning of linear dynamical systems on smps. In
+     <span 
+class="ecti-1200">Proceedings of the 14th ACM SIGKDD International Conference on Knowledge</span>
+     <span 
+class="ecti-1200">Discovery and Data Mining, Las Vegas, Nevada, USA, August 24-27, 2008</span>,
+     pages 471&#8211;479, 2008.
+                                                                                  
+                                                                                  
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [31]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XLi2008Laziness"></a>Lei Li, James McCann, Christos Faloutsos, and Nancy Pollard. Laziness is a
+     virtue: Motion stitching using effort minimization. In <span 
+class="ecti-1200">Short Papers Proceedings</span>
+     <span 
+class="ecti-1200">of EUROGRAPHICS</span>, 2008.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [32]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/kdd/LiMPF09"></a>Lei   Li,   James   McCann,   Nancy&#x00A0;S   Pollard,   and   Christos   Faloutsos.
+     DynaMMo: mining and summarization of coevolving sequences with missing
+     values. In <span 
+class="ecti-1200">Proceedings of the 15th ACM SIGKDD International Conference on</span>
+     <span 
+class="ecti-1200">Knowledge Discovery and Data Mining, Paris, France, June 28 - July 1, 2009</span>,
+     pages 507&#8211;516, 2009.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [33]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XLi2010"></a>Lei&#x00A0;(CMU) Li, B.&#x00A0;Aditya&#x00A0;(CMU) Prakash, and Christos&#x00A0;(CMU) Faloutsos.
+     Parsimonious Linear Fingerprinting for Time Series. In <span 
+class="ecti-1200">VLDB</span>, Singapore, 2010.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [34]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/icde/MegalooikonomouWLF05"></a>Vasileios Megalooikonomou, Qiang Wang, Guo Li, and Christos Faloutsos.
+     A Multiresolution Symbolic Representation of Time Series.  In <span 
+class="ecti-1200">Proceedings of</span>
+     <span 
+class="ecti-1200">the 21st International Conference on Data Engineering, ICDE 2005, 5-8 April</span>
+     <span 
+class="ecti-1200">2005, Tokyo, Japan</span>, pages 668&#8211;679, 2005.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [35]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XOppenheim02MEMS"></a>I&#x00A0;J  Oppenheim,  A&#x00A0;Jain,  and  D&#x00A0;W  Greve.     A  {MEMS}  Ultrasonic
+     Transducer  for  Resident  Monitoring  of  Steel  Structures.    In  <span 
+class="ecti-1200">SPIE  Smart</span>
+     <span 
+class="ecti-1200">Structures Conference SS05</span>, San Diego, March 2002.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [36]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/pakdd/PanKFH04"></a>Jia-Yu   Pan,   Hiroyuki   Kitagawa,   Christos   Faloutsos,   and   Masafumi
+     Hamamoto.   AutoSplit: Fast and Scalable Discovery of Hidden Variables in
+     Stream and Multimedia Databases.  In <span 
+class="ecti-1200">Advances in Knowledge Discovery and</span>
+     <span 
+class="ecti-1200">Data Mining, 8th Pacific-Asia Conference, PAKDD 2004, Sydney, Australia,</span>
+     <span 
+class="ecti-1200">May 26-28, 2004, Proceedings</span>, pages 519&#8211;528, 2004.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [37]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xpapadimitriou98latent"></a>Christos&#x00A0;H  Papadimitriou,  Hisao  Tamaki,  Prabhakar  Raghavan,  and
+     Santosh  Vempala.    Latent  Semantic  Indexing:  {A}  Probabilistic  Analysis.
+     <span 
+class="ecti-1200">JOURNAL OF COMPUTER AND SYSTEM SCIENCES</span>, 61(2):217&#8211;235, 2000.
+                                                                                  
+                                                                                  
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [38]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/vldb/PapadimitriouBF03"></a>Spiros Papadimitriou, Anthony Brockwell, and Christos Faloutsos. Adaptive,
+     Hands-Off Stream Mining. In <span 
+class="ecti-1200">VLDB</span>, pages 560&#8211;571, 2003.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [39]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/vldb/PapadimitriouSF05"></a>Spiros  Papadimitriou,  Jimeng  Sun,  and  Christos  Faloutsos.    Streaming
+     Pattern  Discovery  in  Multiple  Time-Series.     In  <span 
+class="ecti-1200">Proceedings  of  the  31st</span>
+     <span 
+class="ecti-1200">International  Conference  on  Very  Large  Data  Bases,  Trondheim,  Norway,</span>
+     <span 
+class="ecti-1200">August 30 - September 2, 2005</span>, pages 697&#8211;708, 2005.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [40]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XPress92Numerical"></a>William&#x00A0;H Press, Saul&#x00A0;A Teukolsky, William&#x00A0;T Vetterling, and Brian&#x00A0;P
+     Flannery. <span 
+class="ecti-1200">Numerical Recipes in {C}</span>. Cambridge University Press, 2nd edition,
+     1992.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [41]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XRabiner93Fundamentals"></a>Lawrence  Rabiner  and  Biing-Hwang  Juang.    <span 
+class="ecti-1200">Fundamentals  of  Speach</span>
+     <span 
+class="ecti-1200">Recognition</span>. Prentice Hall, 1993.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [42]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XRauch1965Maximum"></a>H.&#x00A0;Rauch, F&#x00A0;Tung, and C&#x00A0;T Striebel.  Maximum likelihood estimates of
+     linear dynamic systems. <span 
+class="ecti-1200">AIAA Journal</span>, pages 1445&#8211;1450, 1965.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [43]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/icde/SakuraiFY07"></a>Yasushi  Sakurai,  Christos  Faloutsos,  and  Masashi  Yamamuro.    Stream
+     Monitoring  under  the  Time  Warping  Distance.   In  <span 
+class="ecti-1200">Proceedings  of  the  23rd</span>
+     <span 
+class="ecti-1200">International Conference on Data Engineering, ICDE 2007, April 15-20, 2007,</span>
+     <span 
+class="ecti-1200">The Marmara Hotel, Istanbul, Turkey</span>, pages 1046&#8211;1055, 2007.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [44]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/icde/SakuraiPF05"></a>Yasushi Sakurai, Spiros Papadimitriou, and Christos Faloutsos.  AutoLag:
+     Automatic Discovery of Lag Correlations in Stream Data.  In <span 
+class="ecti-1200">Proceedings of</span>
+     <span 
+class="ecti-1200">the 21st International Conference on Data Engineering, ICDE 2005, 5-8 April</span>
+     <span 
+class="ecti-1200">2005, Tokyo, Japan</span>, pages 159&#8211;160, 2005.
+     </p>
+                                                                                  
+                                                                                  
+     <p class="bibitem" ><span class="biblabel">
+ [45]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/pods/SakuraiYF05"></a>Yasushi  Sakurai,  Masatoshi  Yoshikawa,  and  Christos  Faloutsos.   FTW:
+     fast  similarity  search  under  the  time  warping  distance.   In  <span 
+class="ecti-1200">Proceedings  of</span>
+     <span 
+class="ecti-1200">the Twenty-fourth ACM SIGACT-SIGMOD-SIGART Symposium on Principles</span>
+     <span 
+class="ecti-1200">of  Database  Systems,  June  13-15,  2005,  Baltimore,  Maryland,  USA</span>,  pages
+     326&#8211;337, 2005.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [46]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XSauer94Time"></a>T&#x00A0;Sauer. Time series prediction using delay coordinate embedding. In A&#x00A0;S
+     Weigend and N&#x00A0;A Gershenfeld, editors, <span 
+class="ecti-1200">Time Series Prediction: Forecasting the</span>
+     <span 
+class="ecti-1200">Future and Understanding the Past</span>. Addison-Wesley, 1994.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [47]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xshumway82approach"></a>R.&#x00A0;H. Shumway and D.&#x00A0;S. Stoffer. An approach to time series smoothing and
+     forecasting using the em algorithm. <span 
+class="ecti-1200">Journal of Time Series Analysis</span>, 3:253&#8211;264,
+     1982.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [48]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/icde/SunPF05"></a>Jimeng Sun, Spiros Papadimitriou, and Christos Faloutsos.  Online Latent
+     Variable Detection in Sensor Networks. In <span 
+class="ecti-1200">Proceedings of the 21st International</span>
+     <span 
+class="ecti-1200">Conference on Data Engineering, ICDE 2005, 5-8 April 2005, Tokyo, Japan</span>,
+     pages 1126&#8211;1127, 2005.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [49]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/pakdd/SunPF06"></a>Jimeng  Sun,  Spiros  Papadimitriou,  and  Christos  Faloutsos.   Distributed
+     Pattern Discovery in Multiple Streams.  In <span 
+class="ecti-1200">Advances in Knowledge Discovery</span>
+     <span 
+class="ecti-1200">and Data Mining, 10th Pacific-Asia Conference, PAKDD 2006, Singapore, April</span>
+     <span 
+class="ecti-1200">9-12, 2006, Proceedings</span>, pages 713&#8211;718, 2006.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [50]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XTakens81Detecting"></a>F&#x00A0;Takens.  Detecting strange attractors in fluid turbulence.  In <span 
+class="ecti-1200">Dynamical</span>
+     <span 
+class="ecti-1200">Systems and Turbulence</span>. Springer-Verlag., Berlin, 1981.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [51]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/sigmod/TaoFPL04"></a>Yufei Tao, Christos Faloutsos, Dimitris Papadias, and Bin Liu.  Prediction
+     and Indexing of Moving Objects with Unknown Motion Patterns. In <span 
+class="ecti-1200">Proceedings</span>
+     <span 
+class="ecti-1200">of the ACM SIGMOD International Conference on Management of Data, Paris,</span>
+     <span 
+class="ecti-1200">France, June 13-18, 2004</span>, pages 611&#8211;622, 2004.
+                                                                                  
+                                                                                  
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [52]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/icde/WangCPFM02"></a>Mengzhi Wang, Ngai&#x00A0;Hang Chan, Spiros Papadimitriou, Christos Faloutsos,
+     and Tara&#x00A0;M Madhyastha.  Data Mining Meets Performance Evaluation: Fast
+     Algorithms for Modeling Bursty Traffic. In <span 
+class="ecti-1200">Proceedings of the 18th International</span>
+     <span 
+class="ecti-1200">Conference on Data Engineering, 26 February - 1 March 2002, San Jose, CA</span>,
+     pages 507&#8211;516, 2002.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [53]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XWeigend94Time"></a>Andreas&#x00A0;S  Weigend  and  Neil&#x00A0;A  Gerschenfeld.   <span 
+class="ecti-1200">Time  Series  Prediction:</span>
+     <span 
+class="ecti-1200">Forecasting the Future and Understanding the Past</span>. Addison Wesley, 1994.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [54]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/vldb/YiF00"></a>Byoung-Kee  Yi  and  Christos  Faloutsos.   Fast  Time  Sequence  Indexing
+     for Arbitrary Lp Norms.   In <span 
+class="ecti-1200">VLDB 2000, Proceedings of 26th International</span>
+     <span 
+class="ecti-1200">Conference on Very Large Data Bases, September 10-14, 2000, Cairo, Egypt</span>,
+     pages 385&#8211;394, 2000.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [55]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/icde/YiJF98"></a>Byoung-Kee Yi, H&#x00A0;V Jagadish, and Christos Faloutsos. Efficient Retrieval of
+     Similar Time Sequences Under Time Warping. In <span 
+class="ecti-1200">Proceedings of the Fourteenth</span>
+     <span 
+class="ecti-1200">International Conference on Data Engineering, February 23-27, 1998, Orlando,</span>
+     <span 
+class="ecti-1200">Florida, USA</span>, pages 201&#8211;208, 1998.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [56]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XDBLP:conf/icde/YiSJJFB00"></a>Byoung-Kee Yi, Nikolaos Sidiropoulos, Theodore Johnson, H&#x00A0;V Jagadish,
+     Christos Faloutsos, and Alexandros Biliris. Online Data Mining for Co-Evolving
+     Time Sequences. In <span 
+class="ecti-1200">ICDE</span>, pages 13&#8211;22, 2000.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [57]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="Xzhu03burst"></a>Y&#x00A0;Zhu and D&#x00A0;Shasha.  Efficient Elastic Burst Detection in Data Streams.
+     In <span 
+class="ecti-1200">KDD</span>, 2003.
+     </p>
+     <p class="bibitem" ><span class="biblabel">
+ [58]<span class="bibsp">&#x00A0;&#x00A0;&#x00A0;</span></span><a 
+ id="XZhu02"></a>Yunyue  Zhu  and  Dennis  Shasha.   StatStream:  Statistical  Monitoring  of
+     Thousands of Data Streams in Real Time. In <span 
+class="ecti-1200">VLDB</span>, pages 358&#8211;369, 2002.
+</p>
+     </div>
+    
+</body></html> 
+
+                                                                                  
+
+
