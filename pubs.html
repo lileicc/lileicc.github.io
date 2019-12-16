@@ -121,9 +121,7 @@
           <a href="#top" style="display: inline"><em>(Top
               of the page)</em></a>
           <div style="padding-bottom:10px;"></div>
-          <div class="templates">
-            <span class="year"></span> 
-          </div>
+          <div class="templates"></div>
           <!-- div class="sort month" extra="DESC date">
             
           </div -->
@@ -134,6 +132,7 @@
       <div class="if bibtex_template" style="display: none;">
         <ul>
           <li> 
+            <div class="if BIBTEXTYPEKEY==@article|@inproceedings|@misc|@phdthesis|@mastersthesis|@bachelorsthesis|@techreport|@book">
             <span class="if title"> 
               <a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
                 extra="BIBTEXKEY"><span style="text-decoration: underline;" class="title"></span></a>,
@@ -240,6 +239,7 @@
               <span class="if topic">
                 <span class="topic"></span>
               </span>
+            </div>
             </div>
           </li>
         </ul>
