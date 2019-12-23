@@ -1,5 +1,26 @@
 % Encoding: UTF-8
 
+@InProceedings{ye2020variational,
+  author    = {Rong Ye and Wenxian Shi and Hao Zhou and Zhongyu Wei and Lei Li},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {Variational Template Machine for Data-to-Text Generation},
+  year      = {2020},
+  month     = apr,
+  abstract  = {How to generate descriptions from structured data organized in tables? Existing approaches using neural encoder-decoder models often suffer from lacking diversity. We claim that an open set of templates is crucial for enriching the phrase constructions and realizing varied generations.Learning such templates is prohibitive since it often requires a large paired <table,description>, which is seldom available. This paper explores the problem of automatically learning reusable "templates" from paired and non-paired data. We propose the variational template machine (VTM), a novel method to generate text descriptions from data tables. Our contributions include:  a) we carefully devise a specific model architecture and losses to explicitly disentangle text template and semantic content information, in the latent spaces, and b) we utilize both small parallel data and large raw text without aligned tables to enrich the template learning. Experiments on datasets from a variety of different domains show that VTM is able generate more diversely while keeping a good fluency and quality.},
+}
+
+@InProceedings{zheng2020mirror,
+  author    = {Zaixiang Zheng and Hao Zhou and Shujian Huang and Lei Li and Xinyu Dai and Jiajun Chen},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {Mirror Generative Models for Neural Machine Translation},
+  year      = {2020},
+  month     = apr,
+  abstract  = {Training neural machine translation models (NMT) requires a large amount of parallel corpus, which is scarce for many language pairs. However, raw non-parallel corpora are often easy to obtain. Existing approaches have not exploited the full potential of non-parallel bilingual data either in training or decoding. In this paper, we propose the mirror-generative NMT (MGNMT), a single unified architecture that simultaneously integrates the source to target translation model, the target to source translation model, and two language models. Both translation models and language models share the same latent semantic space, therefore both translation directions can learn from non-parallel data more effectively. Besides, the translation models and language models can collaborate together during decoding. Our experiments show that the proposed MGNMT consistently outperforms existing approaches in all a variety of scenarios and language pairs, including resource-rich and low-resource languages.},
+  addendum  = {Oral, 1.9\% acceptance rate},
+  owner     = {lilei.02},
+  url       = {https://openreview.net/forum?id=HkxQRTNYPH},
+}
+
 @InProceedings{huang2020span,
   author    = {Xunpeng Huang and Xianfeng Liang and Zhengyang Liu and Lei Li and Yue Yu},
   booktitle = {the 34th {AAAI} Conference on Artificial Intelligence (AAAI)},
@@ -16,6 +37,7 @@
   year      = {2020},
   month     = feb,
   abstract  = {Monocular depth estimation enables 3D perception from a single 2D image, thus attracting much research attention for years. Almost all methods treat foreground and background regions (``things and stuff'') in an image equally. However, not all pixels are equal. Depth of foreground objects plays a crucial role in 3D object recognition and localization. To date how to boost the depth prediction accuracy of foreground objects is rarely discussed. In this paper, we first analyse the data distributions and interaction of foreground and background, then propose the foreground-background separated monocular depth estimation (ForeSeE) method, to estimate the foreground depth and background depth using separate optimization objectives and depth decoders. Our method significantly improves the depth estimation performance on foreground objects. Applying ForeSeE to 3D object detection, we achieve 7.5 AP gains and set new state-of-the-art results among other monocular methods.},
+  addendum  = {Oral presentation},
 }
 
 @InProceedings{wu2020importance,
@@ -80,20 +102,6 @@ While for the large WMT14 English-French task with 40 millions of sentence-pairs
   year   = {2019},
 }
 
-@Unpublished{ye2019variational,
-  author = {Rong Ye and Wenxian Shi and Hao Zhou and Lei Li},
-  note   = {in submission},
-  title  = {Variational Template Machine for Data-to-Text Generation},
-  year   = {2019},
-}
-
-@Unpublished{zheng2019mirror,
-  author = {Zaixiang Zheng and Hao Zhou and Shujian Huang and Jiajun Chen and Xinyu Dai and Lei Li},
-  note   = {in submission},
-  title  = {Mirror Generative Models for Neural Machine Translation},
-  year   = {2019},
-}
-
 @InProceedings{miao2019kernelized,
   author    = {Miao, Ning and Zhou, Hao and Zhao, Chengqi and Shi, Wenxian and Li, Lei},
   booktitle = {the 33rd Conference on Neural Information Processing Systems (NeurIPS)},
@@ -136,8 +144,8 @@ While for the large WMT14 English-French task with 40 millions of sentence-pairs
   title     = {{VATEX}: A Large-Scale, High-Quality Multilingual Dataset for Video-and-Language Research},
   year      = {2019},
   month     = oct,
-  note      = {Oral Presentation},
   abstract  = {We present a new large-scale multilingual video description dataset, VATEX, which contains over 41,250 videos and 825,000 captions in both English and Chinese. Among the captions, there are over 206,000 English-Chinese parallel translation pairs. Compared to the widely-used MSR-VTT dataset, VATEX is multilingual, larger, linguistically complex, and more diverse in terms of both video and natural language descriptions. We also introduce two tasks for video-and-language research based on VATEX: (1) Multilingual Video Captioning, aimed at describing a video in various languages with a compact unified captioning model, and (2) Video-guided Machine Translation, to translate a source language description into the target language using the video information as additional spatiotemporal context. Extensive experiments on the VATEX dataset show that, first, the unified multilingual model can not only produce both English and Chinese descriptions for a video more efficiently, but also offer improved performance over the monolingual models. Furthermore, we demonstrate that the spatiotemporal video context can be effectively utilized to align source and target languages and thus assist machine translation. In the end, we discuss the potentials of using VATEX for other video-and-language research.},
+  addendum  = {Oral},
   url       = {https://vatex.org/main/index.html},
 }
 
@@ -172,6 +180,7 @@ While for the large WMT14 English-French task with 40 millions of sentence-pairs
   month     = aug,
   note      = {Demos},
   pages     = {6569--6571},
+  addendum  = {demo},
   doi       = {10.24963/ijcai.2019/959},
   url       = {https://doi.org/10.24963/ijcai.2019/959},
 }
@@ -221,7 +230,6 @@ While for the large WMT14 English-French task with 40 millions of sentence-pairs
   title     = {Unified Visual-Semantic Embeddings: Bridging Vision and Language with Structured Meaning Representations},
   year      = {2019},
   month     = jun,
-  note      = {Oral Presentation},
   abstract  = {We propose Unified Visual-Semantic Embeddings (VSE)
 for learning a joint space for scene representation and textual
 semantics. It unifies the embeddings of concepts at different
@@ -240,6 +248,7 @@ of the semantic coverage improves models’ robustness in
 defending text-domain adversarial attacks. Moreover, such
 robustness empowers the use of visual cues to accurately
 resolve word dependencies in novel sentences.},
+  addendum  = {Oral},
   file      = {:pubs/wu-cvpr2019-vse.pdf:PDF},
 }
 
@@ -269,6 +278,7 @@ paraphrasing, and unsupervised sentence error correction.
 CGMH achieves high performance compared with previous
 supervised methods for sentence generation. Our code
 is released at https://github.com/NingMiao/CGMH},
+  addendum  = {Oral},
   file      = {:pubs/miao-aaai2019-cgmh.pdf:PDF;Software:https\:/github.com/NingMiao/CGMH:URL;PPT:pubs/miao2019cgmh - {CGMH_} Constrained Sentence Generation by Metropolis-Hastings Sampling.pdf:PDF},
   url       = {http://arxiv.org/abs/1811.10996},
 }
