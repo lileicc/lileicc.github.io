@@ -291,6 +291,8 @@ function BibtexParser() {
 
 function BibtexDisplay() {
 
+    this.totalEntries = 0;
+
     this.invert = function(obj) {
         var new_obj = {};
         for (var prop in obj) {
@@ -827,6 +829,7 @@ function BibtexDisplay() {
                     if (tpl) {
                         structure.find(".templates").append(tpl);
                         tpl.show();
+                        this.totalEntries ++;
                     }
                 }
             }
@@ -836,6 +839,7 @@ function BibtexDisplay() {
 
     this.displayBibtex = function(input, output) {
         // parse bibtex input
+        this.totalEntries = 0;
         var b = new BibtexParser();
         b.setInput(input);
         b.bibtex();
@@ -860,11 +864,13 @@ function BibtexDisplay() {
                 if (tpl) {
                     output.append(tpl);
                     tpl.show();
+                    this.totalEntries ++;
                 }
             }
         }
         // remove old entries
         old.remove();
+        setSearchStat(this.totalEntries);
     }
 
 }
@@ -912,6 +918,7 @@ BibTex Searcher is used with input form
 function BibTeXSearcher() {
     this.inputArray = new Array("");
     this.inputLength = 0;
+    this.resultSize = -1;
 
     this.setInputArray = function(val) {
         this.inputArray = val;
@@ -975,12 +982,15 @@ function BibTeXSearcher() {
     }
 
     this.unhideAll = function() {
+        var funcCaller = this;
+        this.resultSize = 0;
         $("div#bibtex_display, div.bibtex_display").children().each(
             function() {
                 $(this).show();
                 $(this).find(".bibtexentry").each(
                     function() {
                         $(this).show();
+                        !funcCaller.resultSize ++;
                     });
             });
     }
@@ -994,6 +1004,7 @@ function BibTeXSearcher() {
                 function() {
                     if (!funcCaller.checkEntry($(this), word)) {
                         $(this).hide();
+                        !funcCaller.resultSize --;
                     }
                 });
         } else {
@@ -1005,6 +1016,7 @@ function BibTeXSearcher() {
                         function() {
                             if (!funcCaller.checkEntry($(this), word)) {
                                 $(this).hide();
+                                !funcCaller.resultSize --;
                             } else {
                                 shouldHide = false;
                             }
@@ -1124,6 +1136,15 @@ function combineSearcher(searcherClass, needToRestart) {
         }
     });
     searcherClass.searcher(string, needToRestart);
+    setSearchStat(searcherClass.resultSize);
+}
+
+
+function setSearchStat(num){
+    var stat = $(".bibtex_search_stats");
+    if (stat.length) {
+        stat.text(num);
+    }
 }
 
 function authorList(object) {
