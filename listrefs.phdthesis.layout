@@ -1,5 +1,5 @@
 <tr id="\format{\bibtexkey}" class="entry">
-	<td>\begin{author}\format[AuthorFirstFirstCommas,HTMLChars]{\author}\end{author}, <i>"\format[HTMLChars]{\title}"</i>\begin{booktitle}, In \format[HTMLChars]{\booktitle}.\end{booktitle}
+	<td>\begin{author}\format[AuthorFirstFirstCommas,HTMLChars]{\author}\end{author}, <a href="pubs/\format{\bibtexkey}.pdf"><i>"\format[HTMLChars]{\title}"</i></a>\begin{booktitle}, In \format[HTMLChars]{\booktitle}.\end{booktitle}
 	\begin{school}. <i>Ph.D. Dissertation</i>, \format[HTMLChars]{\school}.\end{school}
 	\begin{howpublished}, \howpublished.\end{howpublished}\begin{address} \format[HTMLChars]{\address}\end{address} \begin{volume} Vol. \volume\end{volume}\begin{number}(\format[FormatPagesForHTML]{\number})\end{number}\begin{pages}, pp. \format[FormatPagesForHTML]{\pages}.\end{pages}\begin{publisher} \format[HTMLChars]{\publisher}\end{publisher}
   \begin{year}, \format[HTMLChars]{\year}\end{year}.

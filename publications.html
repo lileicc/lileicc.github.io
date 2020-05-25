@@ -1,0 +1,2218 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<title>Lei Li's publications</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript">
+<!--
+// QuickSearch script for JabRef HTML export 
+// Version: 2.0
+//
+// Copyright (c) 2006-2008, Mark Schenk
+//
+// This software is distributed under a Creative Commons Attribution 3.0 License
+// http://creativecommons.org/licenses/by/3.0/
+
+// Some features:
+// + optionally searches Abstracts and Reviews
+// + allows RegExp searches
+//   e.g. to search for entries between 1980 and 1989, type:  198[0-9]
+//   e.g. for any entry ending with 'symmetry', type:  symmetry$
+//   e.g. for all reftypes that are books: ^book$, or ^article$
+//   e.g. for entries by either John or Doe, type john|doe
+// + easy toggling of Abstract/Review/BibTeX
+
+// Search settings
+var searchAbstract = true;
+var searchReview = true;
+
+// Speed optimisation introduced some esoteric problems with certain RegExp searches
+// e.g. if the previous search is 200[-7] and the next search is 200[4-7] then the search doesn't work properly until the next 'keyup'
+// hence the searchOpt can be turned off for RegExp adepts
+var searchOpt = true;
+
+if (window.addEventListener) {
+	window.addEventListener("load",initSearch,false); }
+else if (window.attachEvent) {
+	window.attachEvent("onload", initSearch); }
+
+function initSearch() {
+	// basic object detection
+	if(!document.getElementById || !document.getElementsByTagName) { return; }
+	if (!document.getElementById('qstable')||!document.getElementById('qs')) { return; }
+
+	// find QS table and appropriate rows
+	searchTable = document.getElementById('qstable');
+	var allRows = searchTable.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+
+	// split all rows into entryRows and infoRows (e.g. abstract, review, bibtex)
+	entryRows = new Array();
+	infoRows = new Array(); absRows = new Array(); revRows = new Array();
+
+	for (var i=0, k=0, j=0; i<allRows.length;i++) {
+		if (allRows[i].className.match(/entry/)) {
+			entryRows[j++] = allRows[i];
+		} else {
+			infoRows[k++] = allRows[i];
+			// check for abstract/review
+			if (allRows[i].className.match(/abstract/)) {
+				absRows.push(allRows[i]);
+			} else if (allRows[i].className.match(/review/)) {
+				revRows.push(allRows[i]);
+			}
+		}
+	}
+
+	//number of entries and rows
+	numRows = allRows.length;
+	numEntries = entryRows.length;
+	numInfo = infoRows.length;
+	numAbs = absRows.length;
+	numRev = revRows.length;
+
+	//find the query field
+	qsfield = document.getElementById('qsfield');
+
+	// previous search term; used for speed optimisation
+	prevSearch = '';
+
+	//find statistics location
+	stats = document.getElementById('stat');
+	setStatistics(-1);
+
+	// creates the appropriate search settings
+	createQSettingsDialog();
+
+	// shows the searchfield
+	document.getElementById('qs').style.display = 'block';
+	document.getElementById('qsfield').onkeyup = testEvent;
+}
+
+function quickSearch(tInput){
+
+	 if (tInput.value.length == 0) {
+		showAll();
+		setStatistics(-1);
+		qsfield.className = '';
+		return;
+	} else {
+		// only search for valid RegExp
+		try {
+			var searchText = new RegExp(tInput.value,"i")
+			closeAllInfo();
+			qsfield.className = '';
+		}
+		catch(err) {
+			prevSearch = tInput.value;
+			qsfield.className = 'invalidsearch';
+			return;
+		}
+	}
+	
+	// count number of hits
+	var hits = 0;
+
+	// start looping through all entry rows
+	for (var i = 0; cRow = entryRows[i]; i++){
+
+		// only show search the cells if it isn't already hidden OR if the search term is getting shorter, then search all
+		// some further optimisation is possible: if the search string is getting shorter, and the row is already visible, skip it. Then be careful with hits!
+		if(!searchOpt || cRow.className.indexOf('noshow')==-1 || tInput.value.length <= prevSearch.length){
+			var found = false; 
+
+			var inCells = cRow.getElementsByTagName('td');
+			var numCols = inCells.length;
+				
+			for (var j=0; j<numCols; j++) {
+				cCell = inCells[j];
+				var t = cCell.innerText?cCell.innerText:getTextContent(cCell);
+				if (t.search(searchText) != -1){ 
+					found=true; 
+					break;
+				} 
+			}
+
+			// look for further hits in Abstract and Review
+			if(!found) {
+				var articleid = cRow.id;
+				if(searchAbstract && (abs = document.getElementById('abs_'+articleid))) {
+					if (getTextContent(abs).search(searchText) != -1){ found=true; } 
+				}
+				if(searchReview && (rev = document.getElementById('rev_'+articleid))) {
+					if (getTextContent(rev).search(searchText) != -1){ found=true; } 
+				}
+			}
+			
+			if(found) {
+				cRow.className = 'entry show';
+				hits++;
+			} else {
+				cRow.className = 'entry noshow';
+			}
+		}
+	}
+
+	// update statistics
+	setStatistics(hits)
+	
+	// set previous search value
+	prevSearch = tInput.value;
+}
+
+function toggleInfo(articleid,info) {
+
+	var entry = document.getElementById(articleid);
+	var abs = document.getElementById('abs_'+articleid);
+	var rev = document.getElementById('rev_'+articleid);
+	var bib = document.getElementById('bib_'+articleid);
+	
+	if (abs && info == 'abstract') {
+		if(abs.className.indexOf('abstract') != -1) {
+		abs.className.indexOf('noshow') == -1?abs.className = 'abstract noshow':abs.className = 'abstract';
+		}
+	} else if (rev && info == 'review') {
+		if(rev.className.indexOf('review') != -1) {
+		rev.className.indexOf('noshow') == -1?rev.className = 'review noshow':rev.className = 'review';
+		}
+	} else if (bib && info == 'bibtex') {
+		if(bib.className.indexOf('bibtex') != -1) {
+		bib.className.indexOf('noshow') == -1?bib.className = 'bibtex noshow':bib.className = 'bibtex';
+		}		
+	} else { 
+		return;
+	}
+
+	// check if one or the other is available
+	var revshow = false;
+	var absshow = false;
+	var bibshow = false;
+	(abs && abs.className.indexOf('noshow') == -1)? absshow = true: absshow = false;
+	(rev && rev.className.indexOf('noshow') == -1)? revshow = true: revshow = false;	
+	(bib && bib.className == 'bibtex')? bibshow = true: bibshow = false;
+	
+	// highlight original entry
+	if(entry) {
+		if (revshow || absshow || bibshow) {
+		entry.className = 'entry highlight show';
+		} else {
+		entry.className = 'entry show';
+		}		
+	}
+	
+	// When there's a combination of abstract/review/bibtex showing, need to add class for correct styling
+	if(absshow) {
+		(revshow||bibshow)?abs.className = 'abstract nextshow':abs.className = 'abstract';
+	} 
+	if (revshow) {
+		bibshow?rev.className = 'review nextshow': rev.className = 'review';
+	}
+	
+}
+
+function setStatistics (hits) {
+	if(hits < 0) { hits=numEntries; }
+	if(stats) { stats.firstChild.data = hits + '/' + numEntries}
+}
+
+function getTextContent(node) {
+	// Function written by Arve Bersvendsen
+	// http://www.virtuelvis.com
+	
+	if (node.nodeType == 3) {
+	return node.nodeValue;
+	} // text node
+	if (node.nodeType == 1) { // element node
+	var text = [];
+	for (var chld = node.firstChild;chld;chld=chld.nextSibling) {
+		text.push(getTextContent(chld));
+	}
+	return text.join("");
+	} return ""; // some other node, won't contain text nodes.
+}
+
+function showAll(){
+	// first close all abstracts, reviews, etc.
+	closeAllInfo();
+
+	for (var i = 0; i < numEntries; i++){
+		entryRows[i].className = 'entry show'; 
+	}
+}
+
+function closeAllInfo(){
+	for (var i=0; i < numInfo; i++){
+		if (infoRows[i].className.indexOf('noshow') ==-1) {
+			infoRows[i].className = infoRows[i].className + ' noshow';
+		}
+	}
+}
+
+function testEvent(e){
+	if (!e) var e = window.event;
+	quickSearch(this);
+}
+
+function clearQS() {
+	qsfield.value = '';
+	quickSearch(qsfield);
+}
+
+function redoQS(){
+	showAll();
+	quickSearch(qsfield);
+}
+
+// Create Search Settings
+
+function toggleQSettingsDialog() {
+
+	var qssettings = document.getElementById('qssettings');
+	
+	if(qssettings.className.indexOf('active')==-1) {
+		qssettings.className = 'active';
+
+		if(absCheckBox && searchAbstract == true) { absCheckBox.checked = 'checked'; }
+		if(revCheckBox && searchReview == true) { revCheckBox.checked = 'checked'; }
+
+	} else {
+		qssettings.className= '';
+	}
+}
+
+function createQSettingsDialog(){
+	var qssettingslist = document.getElementById('qssettings').getElementsByTagName('ul')[0];
+	
+	if(numAbs!=0) {
+		var x = document.createElement('input');
+		x.id = "searchAbs";
+		x.type = "checkbox";
+		x.onclick = toggleQSetting;
+		var y = qssettingslist.appendChild(document.createElement('li')).appendChild(document.createElement('label'));
+		y.appendChild(x);
+		y.appendChild(document.createTextNode('search abstracts'));		
+	}
+	if(numRev!=0) {
+		var x = document.createElement('input');
+		x.id = "searchRev";
+		x.type = "checkbox";		
+		x.onclick = toggleQSetting;
+		var y = qssettingslist.appendChild(document.createElement('li')).appendChild(document.createElement('label'));		
+		y.appendChild(x);		
+		y.appendChild(document.createTextNode('search reviews'));
+	}
+		
+	// global variables
+	absCheckBox = document.getElementById('searchAbs');
+	revCheckBox = document.getElementById('searchRev');
+	
+	// show search settings
+	if(absCheckBox||revCheckBox) {
+		document.getElementById('qssettings').style.display = 'block';
+	}
+}
+
+function toggleQSetting() {
+	if(this.id=='searchAbs') { searchAbstract = !searchAbstract; }
+	if(this.id=='searchRev') { searchReview = !searchReview; }
+	redoQS()
+} 
+-->
+</script>	
+<style type="text/css">
+body { background-color: white; font-family: "Trebuchet MS", Arial, sans-serif; font-size: 14px; line-height: 1.2; padding: 1em; color: #2E2E2E; width: 50em; margin: auto auto; }
+
+#qs { width: auto; border-style: solid; border-color: gray; border-width: 1px 1px 1px 1px; padding: 0.5em 0.5em; display:none; position:relative; }
+#qs form { padding: 0px; margin: 0px; }
+#qs form p { padding: 0px; margin: 0px; }
+
+.invalidsearch { background-color: red; }
+
+table { border: 1px gray none; width: 100%; empty-cells: show; border-spacing: 0em 0.3em; margin-top: 1em; }
+th, td { border-width: 0px 0px; border-color: gray; border-style: solid; padding: 0.5em; vertical-align: top;  }
+td { text-align: justify; vertical-align: top; }
+
+td a { color: navy; text-decoration: none; }
+td a:hover  { text-decoration: underline; }
+
+tr.noshow { display: none;}
+
+tr.highlight td { background-color: #F1F1F1; border-top: 2px black solid; font-weight: bold; }
+tr.abstract td, tr.review td, tr.bibtex td { background-color: #F1F1F1; border-bottom: 2px black solid; text-align: justify; }
+tr.nextshow td { border-bottom: none; }
+
+tr.bibtex pre { width: 100%; overflow: auto;}
+
+p.infolinks { margin: 0.5em 0em 0em 0em; padding: 0px; }
+
+#qssettings { padding: 0.5em; position: absolute; top: 0.2em; right: 0.2em; border: 1px gray solid; background-color: white; display: none; }
+#qssettings p { font-weight: bold; cursor: pointer; }
+#qssettings ul { display: none; list-style-type: none; padding-left: 0; margin: 0; }
+#qssettings.active ul { display: block; }
+
+@media print {
+	p.infolinks, #qssettings, #qs { display: none !important; }
+	tr { page-break-inside: avoid; }
+}
+
+.note {color: green; font-size: 67%; text-indent:2em; margin-top:1px; margin-bottom:-3px;}
+</style>
+</head>
+<body>
+
+<div id="qs">
+	<form action="">
+	<p>QuickSearch: <input type="text" name="qsfield" id="qsfield" autocomplete="off" title="Allows plain text as well as RegExp searches" /><input type="button" onclick="clearQS()" value="clear" />&nbsp; Number of matching entries: <span id="stat">0</span>.</p>
+	<div id="qssettings">
+		<p onclick="toggleQSettingsDialog()">Search Settings</p>
+		<ul>
+		</ul>
+	</div>
+	</form>
+</div>
+<table id="qstable" border="1">
+<tbody>
+<tr id="ru2020quachie" class="entry">
+	<td>Dongyu Ru, Zhenghui Wang, Lin Qiu, Hao Zhou, Lei Li, Weinan Zhang and Yong Yu, <a href="pubs/ru2020quachie.pdf"><i>"QuAChIE: Question Answering based Chinese Information Extraction System"</i></a>, In the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval - System Demonstrations, 2020.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('ru2020quachie','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_ru2020quachie" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{ru2020quachie,
+  author = {Dongyu Ru and Zhenghui Wang and Lin Qiu and Hao Zhou and Lei Li and Weinan Zhang and Yong Yu},
+  title = {QuAChIE: Question Answering based Chinese Information Extraction System},
+  booktitle = {the 43rd International ACM SIGIR Conference on Research and Development in Information Retrieval - System Demonstrations},
+  year = {2020}
+}
+</pre></td>
+</tr><tr id="song2020improving" class="entry">
+	<td>Yuxuan Song, Ning Miao, Hao Zhou, Lantao Yu, Mingxuan Wang and Lei Li, <a href="pubs/song2020improving.pdf"><i>"Improving Maximum Likelihood Training for Text Generation with Density Ratio Estimation"</i></a>, In The 23rd International Conference on Artificial Intelligence and Statistics (AIStats), 2020.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('song2020improving','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_song2020improving" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{song2020improving,
+  author = {Yuxuan Song and Ning Miao and Hao Zhou and Lantao Yu and Mingxuan Wang and Lei Li},
+  title = {Improving Maximum Likelihood Training for Text Generation with Density Ratio Estimation},
+  booktitle = {The 23rd International Conference on Artificial Intelligence and Statistics (AIStats)},
+  year = {2020}
+}
+</pre></td>
+</tr><tr id="miao2020do" class="entry">
+	<td>Ning Miao, Yuxuan Song, Hao Zhou and Lei Li, <a href="pubs/miao2020do.pdf"><i>"Do you have the right scissors? Tailoring Pre-trained Language Models via Monte-Carlo Methods"</i></a>, In the 58th Annual Meeting of the Association for Computational Linguistics (ACL) - short papers, 2020.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('miao2020do','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('miao2020do','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_miao2020do" class="abstract noshow">
+	<td><b>Abstract</b>: It has been a common approach to pre-train a language model on a large corpus and fine-tune it on task-specific data.  In practice, we observe that fine-tuning a pre-trained model on a small dataset may lead to  over- and/or under-estimation problem.  In this paper, we propose MC-Taylor, a novel method to alleviate the above issue in text generation tasks by truncating and transferring the probability mass from over-estimated regions to under-estimated ones. Experiments on a variety of text generation datasets show that MC-Taylor consistently and significantly outperforms the fine-tuning approach. Our code is available at https://github.com/NingMiao/MC-tailor.</td>
+</tr>
+
+<tr id="bib_miao2020do" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{miao2020do,
+  author = {Ning Miao and Yuxuan Song and Hao Zhou and Lei Li},
+  title = {Do you have the right scissors? Tailoring Pre-trained Language Models via Monte-Carlo Methods},
+  booktitle = {the 58th Annual Meeting of the Association for Computational Linguistics (ACL) - short papers},
+  year = {2020}
+}
+</pre></td>
+</tr><tr id="xu2020xiaomingbot" class="entry">
+	<td>Runxin Xu, Jun Cao, Mingxuan Wang, Jiaze Chen, Hao Zhou, Ying Zeng, Yuping Wang, Li Chen, Xiang Yin, Xijin Zhang, Songcheng Jiang, Yuxuan Wang and Lei Li, <a href="pubs/xu2020xiaomingbot.pdf"><i>"Xiaomingbot: A Multilingual Robot News Reporter"</i></a>, In the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations, 2020.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('xu2020xiaomingbot','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('xu2020xiaomingbot','bibtex')">[BibTeX]</a>
+  
+  
+   <a href="https://xiaomingbot.github.io">[URL]</a>
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_xu2020xiaomingbot" class="abstract noshow">
+	<td><b>Abstract</b>: This paper proposes the building of Xiaomingbot, an intelligent, multilingual and multi-modal software robot equipped with four integral capabilities: news generation, news translation, news reading and avatar animation. Its system summarizes Chinese news that it automatically generates from data tables. Next, it translates the summary or the full article into multiple languages, and reads the multilingual rendition through synthesized speech. Notably, Xiaomingbot utilizes a voice cloning technology to synthesize the speech trained from a real person’s voice data in one input language. The proposed system enjoys several merits: it has an animated avatar, and is able to generate and read multilingual news. Since it was put into practice, Xiaomingbot has written over 600,000 articles, and gained over 150,000 followers on social media platforms.</td>
+</tr>
+
+<tr id="bib_xu2020xiaomingbot" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{xu2020xiaomingbot,
+  author = {Runxin Xu and Jun Cao and Mingxuan Wang and Jiaze Chen and Hao Zhou and Ying Zeng and Yuping Wang and Li Chen and Xiang Yin and Xijin Zhang and Songcheng Jiang and Yuxuan Wang and Lei Li},
+  title = {Xiaomingbot: A Multilingual Robot News Reporter},
+  booktitle = {the 58th Annual Meeting of the Association for Computational Linguistics: System Demonstrations},
+  year = {2020},
+  url = {https://xiaomingbot.github.io}
+}
+</pre></td>
+</tr><tr id="ye2020variational" class="entry">
+	<td>Rong Ye, Wenxian Shi, Hao Zhou, Zhongyu Wei and Lei Li, <a href="pubs/ye2020variational.pdf"><i>"Variational Template Machine for Data-to-Text Generation"</i></a>, In International Conference on Learning Representations (ICLR), 2020.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('ye2020variational','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('ye2020variational','bibtex')">[BibTeX]</a>
+  
+  
+   <a href="https://openreview.net/forum?id=HkejNgBtPB">[URL]</a>
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_ye2020variational" class="abstract noshow">
+	<td><b>Abstract</b>: How to generate descriptions from structured data organized in tables? Existing approaches using neural encoder-decoder models often suffer from lacking diversity. We claim that an open set of templates is crucial for enriching the phrase constructions and realizing varied generations.Learning such templates is prohibitive since it often requires a large paired <table,description>, which is seldom available. This paper explores the problem of automatically learning reusable "templates" from paired and non-paired data. We propose the variational template machine (VTM), a novel method to generate text descriptions from data tables. Our contributions include:  a) we carefully devise a specific model architecture and losses to explicitly disentangle text template and semantic content information, in the latent spaces, and b) we utilize both small parallel data and large raw text without aligned tables to enrich the template learning. Experiments on datasets from a variety of different domains show that VTM is able generate more diversely while keeping a good fluency and quality.</td>
+</tr>
+
+<tr id="bib_ye2020variational" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{ye2020variational,
+  author = {Rong Ye and Wenxian Shi and Hao Zhou and Zhongyu Wei and Lei Li},
+  title = {Variational Template Machine for Data-to-Text Generation},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year = {2020},
+  url = {https://openreview.net/forum?id=HkejNgBtPB}
+}
+</pre></td>
+</tr><tr id="zheng2020mirror" class="entry">
+	<td>Zaixiang Zheng, Hao Zhou, Shujian Huang, Lei Li, Xinyu Dai and Jiajun Chen, <a href="pubs/zheng2020mirror.pdf"><i>"Mirror Generative Models for Neural Machine Translation"</i></a>, In International Conference on Learning Representations (ICLR), 2020.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('zheng2020mirror','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('zheng2020mirror','bibtex')">[BibTeX]</a>
+  
+  
+   <a href="https://openreview.net/forum?id=HkxQRTNYPH">[URL]</a>
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_zheng2020mirror" class="abstract noshow">
+	<td><b>Abstract</b>: Training neural machine translation models (NMT) requires a large amount of parallel corpus, which is scarce for many language pairs. However, raw non-parallel corpora are often easy to obtain. Existing approaches have not exploited the full potential of non-parallel bilingual data either in training or decoding. In this paper, we propose the mirror-generative NMT (MGNMT), a single unified architecture that simultaneously integrates the source to target translation model, the target to source translation model, and two language models. Both translation models and language models share the same latent semantic space, therefore both translation directions can learn from non-parallel data more effectively. Besides, the translation models and language models can collaborate together during decoding. Our experiments show that the proposed MGNMT consistently outperforms existing approaches in all a variety of scenarios and language pairs, including resource-rich and low-resource languages.</td>
+</tr>
+
+<tr id="bib_zheng2020mirror" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{zheng2020mirror,
+  author = {Zaixiang Zheng and Hao Zhou and Shujian Huang and Lei Li and Xinyu Dai and Jiajun Chen},
+  title = {Mirror Generative Models for Neural Machine Translation},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  year = {2020},
+  url = {https://openreview.net/forum?id=HkxQRTNYPH}
+}
+</pre></td>
+</tr><tr id="huang2020span" class="entry">
+	<td>Xunpeng Huang, Xianfeng Liang, Zhengyang Liu, Yue Yu and Lei Li, <a href="pubs/huang2020span.pdf"><i>"SPAN: A Stochastic Projected Approximate Newton Method"</i></a>, In the 34th AAAI Conference on Artificial Intelligence (AAAI), 2020.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('huang2020span','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('huang2020span','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_huang2020span" class="abstract noshow">
+	<td><b>Abstract</b>: Second-order optimization methods have desirable convergence properties. However, the exact Newton method requires expensive computation for the Hessian and its inverse. In this paper, we propose SPAN, a novel approximate and fast Newton method. SPAN computes the inverse of the Hessian matrix via low-rank approximation and stochastic Hessian-vector products. Our experiments on multiple benchmark datasets demonstrate that SPAN outperforms existing first-order and second-order optimization methods in terms of the convergence wall-clock time. Furthermore, we provide a theoretical analysis of the per-iteration complexity, the approximation error, and the convergence rate. Both the theoretical analysis and experimental results show that our proposed method achieves a better trade-off between the convergence rate and the per-iteration efficiency.</td>
+</tr>
+
+<tr id="bib_huang2020span" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{huang2020span,
+  author = {Xunpeng Huang and Xianfeng Liang and Zhengyang Liu and Yue Yu and Lei Li},
+  title = {SPAN: A Stochastic Projected Approximate Newton Method},
+  booktitle = {the 34th AAAI Conference on Artificial Intelligence (AAAI)},
+  year = {2020}
+}
+</pre></td>
+</tr><tr id="wang2020task" class="entry">
+	<td>Xinlong Wang, Wei Yin, Tao Kong, Yuning Jiang, Lei Li and Chunhua Shen, <a href="pubs/wang2020task.pdf"><i>"Task-Aware Monocular Depth Estimation for 3D Object Detection"</i></a>, In the 34th AAAI Conference on Artificial Intelligence (AAAI), 2020.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('wang2020task','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('wang2020task','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_wang2020task" class="abstract noshow">
+	<td><b>Abstract</b>: Monocular depth estimation enables 3D perception from a single 2D image, thus attracting much research attention for years. Almost all methods treat foreground and background regions (``things and stuff'') in an image equally. However, not all pixels are equal. Depth of foreground objects plays a crucial role in 3D object recognition and localization. To date how to boost the depth prediction accuracy of foreground objects is rarely discussed. In this paper, we first analyse the data distributions and interaction of foreground and background, then propose the foreground-background separated monocular depth estimation (ForeSeE) method, to estimate the foreground depth and background depth using separate optimization objectives and depth decoders. Our method significantly improves the depth estimation performance on foreground objects. Applying ForeSeE to 3D object detection, we achieve 7.5 AP gains and set new state-of-the-art results among other monocular methods.</td>
+</tr>
+
+<tr id="bib_wang2020task" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{wang2020task,
+  author = {Xinlong Wang and Wei Yin and Tao Kong and Yuning Jiang and Lei Li and Chunhua Shen},
+  title = {Task-Aware Monocular Depth Estimation for 3D Object Detection},
+  booktitle = {the 34th AAAI Conference on Artificial Intelligence (AAAI)},
+  year = {2020}
+}
+</pre></td>
+</tr><tr id="wu2020importance" class="entry">
+	<td>Qingyang Wu, Lei Li, Hao Zhou, Ying Zeng and Zhou Yu, <a href="pubs/wu2020importance.pdf"><i>"Importance-Aware Learning for Neural Headline Editing"</i></a>, In the 34th AAAI Conference on Artificial Intelligence (AAAI), 2020.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('wu2020importance','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('wu2020importance','bibtex')">[BibTeX]</a>
+  
+  
+   <a href="https://arxiv.org/abs/1912.01114">[URL]</a>
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_wu2020importance" class="abstract noshow">
+	<td><b>Abstract</b>: Many social media news writers are not professionally trained. Therefore, social media platforms have to hire professional editors to adjust amateur headlines to attract more readers. We propose to automate this headline editing process through neural network models to provide more immediate writing support for these social media news writers. To train such a neural headline editing model, we collected a dataset which contains articles with original headlines and professionally edited headlines. However, it is expensive to collect a large number of professionally edited headlines. To solve this low-resource problem, we design an encoder-decoder model which leverages large scale pre-trained language models. We further improve the pre-trained model's quality by introducing a headline generation task as an intermediate task before the headline editing task. Also, we propose Self Importance-Aware (SIA) loss to address the different levels of editing in the dataset by down-weighting the importance of easily classified tokens and sentences. With the help of Pre-training, Adaptation, and SIA, the model learns to generate headlines in the professional editor's style. Experimental results show that our method significantly improves the quality of headline editing comparing against previous methods.</td>
+</tr>
+
+<tr id="bib_wu2020importance" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{wu2020importance,
+  author = {Qingyang Wu and Lei Li and Hao Zhou and Ying Zeng and Zhou Yu},
+  title = {Importance-Aware Learning for Neural Headline Editing},
+  booktitle = {the 34th AAAI Conference on Artificial Intelligence (AAAI)},
+  year = {2020},
+  url = {https://arxiv.org/abs/1912.01114}
+}
+</pre></td>
+</tr><tr id="yang2020towards" class="entry">
+	<td>Jiacheng Yang, Mingxuan Wang, Hao Zhou, Chengqi Zhao, Weinan Zhang, Yong Yu and Lei Li, <a href="pubs/yang2020towards.pdf"><i>"Towards Making the Most of BERT in Neural Machine Translation"</i></a>, In the 34th AAAI Conference on Artificial Intelligence (AAAI), 2020.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('yang2020towards','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('yang2020towards','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_yang2020towards" class="abstract noshow">
+	<td><b>Abstract</b>: GPT-2 and BERT demonstrate the effectiveness of using pre-trained language models (LMs) on various natural language processing tasks. However, LM fine-tuning often suffers from catastrophic forgetting when applied to resource-rich tasks.<br>In this work, we introduce a concerted training framework ( that is the key to integrate the pre-trained LMs to neural machine translation (NMT).<br>Our proposed method consists of three techniques:<br>inparaenum[<i>a)]<br>\item asymptotic distillation to ensure that the NMT model can retain the previous pre-trained knowledge;<br>\item a dynamic switching gate to avoid catastrophic forgetting of pre-trained knowledge; and<br>\item a strategy to adjust the learning paces according to a scheduled policy.<br>\end{inparaenum}<br>Our experiments in machine translation show \method gains of up to 3 BLEU score on the WMT14 English-German language pair which even surpasses the previous state-of-the-art pre-training aided NMT by 1.4 BLEU score.<br>While for the large WMT14 English-French task with 40 millions of sentence-pairs, our base model still significantly improves upon the state-of-the-art Transformer big model by more than 1 BLEU score.</i></td>
+</tr>
+
+<tr id="bib_yang2020towards" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{yang2020towards,
+  author = {Jiacheng Yang and Mingxuan Wang and Hao Zhou and Chengqi Zhao and Weinan Zhang and Yong Yu and Lei Li},
+  title = {Towards Making the Most of BERT in Neural Machine Translation},
+  booktitle = {the 34th AAAI Conference on Artificial Intelligence (AAAI)},
+  year = {2020}
+}
+</pre></td>
+</tr><tr id="wang2019solo" class="entry">
+	<td>Xinlong Wang, Tao Kong, Chunhua Shen, Yuning Jiang and Lei Li, <a href="pubs/wang2019solo.pdf"><i>"SOLO: Segmenting Objects by Locations"</i></a>. , 2019.
+	<p class="infolinks"> <a href="javascript:toggleInfo('wang2019solo','bibtex')">[BibTeX]</a>
+  
+  
+   <a href="https://arxiv.org/abs/1912.04488">[URL]</a>
+  
+  
+  
+	</td>
+</tr>
+<tr id="bib_wang2019solo" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@techreport{wang2019solo,
+  author = {Xinlong Wang and Tao Kong and Chunhua Shen and Yuning Jiang and Lei Li},
+  title = {SOLO: Segmenting Objects by Locations},
+  year = {2019},
+  url = {https://arxiv.org/abs/1912.04488}
+}
+</pre></td>
+</tr>
+<tr id="miao2019kernelized" class="entry">
+	<td>Ning Miao, Hao Zhou, Chengqi Zhao, Wenxian Shi and Lei Li, <a href="pubs/miao2019kernelized.pdf"><i>"Kernelized Bayesian Softmax for Text Generation"</i></a>, In the 33rd Conference on Neural Information Processing Systems (NeurIPS), 2019.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('miao2019kernelized','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_miao2019kernelized" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{miao2019kernelized,
+  author = {Miao, Ning and Zhou, Hao and Zhao, Chengqi and Shi, Wenxian and Li, Lei},
+  title = {Kernelized Bayesian Softmax for Text Generation},
+  booktitle = {the 33rd Conference on Neural Information Processing Systems (NeurIPS)},
+  year = {2019}
+}
+</pre></td>
+</tr><tr id="zhao2019what" class="entry">
+	<td>Zhichen Zhao, Lei Li, Bowen Zhang, Meng Wang, Yuning Jiang, Li Xu, Fengkun Wang and Weiying Ma, <a href="pubs/zhao2019what.pdf"><i>"What You Look Matters: Offline Evaluation of Advertising Creatives for Cold Start Problem"</i></a>, In the 28th ACM International Conference on Information and Knowledge Management (CIKM), 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('zhao2019what','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('zhao2019what','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_zhao2019what" class="abstract noshow">
+	<td><b>Abstract</b>: Modern online-auction-based advertising systems utilize user and item features to automatically place ads. In order to train a model to rank the most profitable ads, new ad creatives have to be placed online for hours to receive sufficient user-click data. This corresponds to the cold-start stage. Random strategy lead to inefficiency and inferior selections of potential ads. In this paper, we analyze the effectiveness of content-based selection during the cold-start stage. Specifically, we propose Pre Evaluation of Ad Creative Model (PEAC), a novel method to evaluate and select ad creatives offline before being placed online. Our proposed PEAC utilizes the automatically extracted deep feature from ad content to predict and rank their potential online placement performance. It does not rely on any user-click data, which is scarce during the cold-starting phase. A large-scale system based on our method has been deployed in a real online advertising platform. The online A/B testing shows the ads system with PEAC pre-ranking obtains significant improvement in revenue gain compared to the prior system. Furthermore, we provide detailed analyses on what the model learned, which gives further suggestions to improve ad creative design.</td>
+</tr>
+
+<tr id="bib_zhao2019what" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{zhao2019what,
+  author = {Zhao, Zhichen and Li, Lei and Zhang, Bowen and Wang, Meng and Jiang, Yuning and Xu, Li and Wang, Fengkun and Ma, Weiying},
+  title = {What You Look Matters: Offline Evaluation of Advertising Creatives for Cold Start Problem},
+  booktitle = {the 28th ACM International Conference on Information and Knowledge Management (CIKM)},
+  year = {2019}
+}
+</pre></td>
+</tr><tr id="wang2019towards" class="entry">
+	<td>Mingxuan Wang, Jun Xie, Zhixing Tan, Jinsong Su, Deyi Xiong and Lei Li, <a href="pubs/wang2019towards.pdf"><i>"Towards Linear Time Neural Machine Translation with Capsule Networks"</i></a>, In the Conference on Empirical Methods in Natural Language Processing (EMNLP), 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('wang2019towards','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('wang2019towards','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_wang2019towards" class="abstract noshow">
+	<td><b>Abstract</b>: In this study, we first investigate a novel capsule network with dynamic routing for linear time Neural Machine Translation (NMT), referred as CAPSNMT. CAPSNMT uses an aggregation mechanism to map the source sentence into a matrix with pre-determined size, and then applys a deep LSTM network to decode the target sequence from the source representation. Unlike the previous work (Sutskever et al., 2014) to store the source sentence with a passive and bottom-up way, the dynamic routing policy encodes the source sentence with an iterative process to decide the credit attribution between nodes from lower and higher layers. CAPSNMT has two core properties: it runs in time that is linear in the length of the sequences and provides a more flexible way to aggregate the part-whole information of the source sentence. On WMT14 English-German task and a larger WMT14 English-French task, CAPSNMT achieves comparable results with the Transformer system. We also devise new hybrid architectures intended to combine the strength of CAPSNMT and the RNMT model. Our hybrid models obtain state-of-the-arts results on both benchmark datasets. To the best of our knowledge, this is the first work that capsule networks have been empirically inves- tigated for sequence to sequence problems</td>
+</tr>
+
+<tr id="bib_wang2019towards" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{wang2019towards,
+  author = {Wang, Mingxuan and Xie, Jun and Tan, Zhixing and Su, Jinsong and Xiong, Deyi and Li, Lei},
+  title = {Towards Linear Time Neural Machine Translation with Capsule Networks},
+  booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year = {2019}
+}
+</pre></td>
+</tr><tr id="jiang2019svd" class="entry">
+	<td>Qing-Yuan Jiang, Yi He, Gen Li, Jian Lin, Lei Li and Wu-Jun Li., <a href="pubs/jiang2019svd.pdf"><i>"SVD: A Large-Scale Short Video Dataset for Near Duplicate Video Retrieval."</i></a>, In International Conference on Computer Vision (ICCV), 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('jiang2019svd','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('jiang2019svd','bibtex')">[BibTeX]</a>
+  
+  
+   <a href="https://svdbase.github.io">[URL]</a>
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_jiang2019svd" class="abstract noshow">
+	<td><b>Abstract</b>: With the explosive growth of video data in real applications, near-duplicate video retrieval (NDVR) has become indispensable and challenging, especially for short videos. However, all existing NDVR datasets are introduced for long videos. Furthermore, most of them are small-scale and lack of diversity due to the high cost of collecting and labeling near-duplicate videos. In this paper, we introduce a large-scale short video dataset, called SVD, for the NDVR task. SVD contains over 500,000 short videos and over 30,000 labeled videos of near-duplicates. We use multiple video mining techniques to construct positive/negative pairs. Furthermore, we design temporal and spatial transformations to mimic user-attack behavior in real applications for constructing more difficult variants of SVD. Experiments show that existing state-of-the-art NDVR methods, including real-value based and hashing based methods, fail to achieve satisfactory performance on this challenging dataset. The release of SVD dataset will foster research and system engineering in the NDVR area. The SVD dataset is available at https://svdbase.github.io.</td>
+</tr>
+
+<tr id="bib_jiang2019svd" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{jiang2019svd,
+  author = {Jiang, Qing-Yuan and He, Yi and Li, Gen and Lin, Jian and Li, Lei and Li., Wu-Jun},
+  title = {SVD: A Large-Scale Short Video Dataset for Near Duplicate Video Retrieval.},
+  booktitle = {International Conference on Computer Vision (ICCV)},
+  year = {2019},
+  url = {https://svdbase.github.io}
+}
+</pre></td>
+</tr><tr id="wang2019vatex" class="entry">
+	<td>Xin Wang, Jiawei Wu, Junkun Chen, Lei Li, Yuan-Fang Wang and William Yang Wang, <a href="pubs/wang2019vatex.pdf"><i>"VATEX: A Large-Scale, High-Quality Multilingual Dataset for Video-and-Language Research"</i></a>, In International Conference on Computer Vision (ICCV), 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('wang2019vatex','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('wang2019vatex','bibtex')">[BibTeX]</a>
+  
+  
+   <a href="https://vatex.org/main/index.html">[URL]</a>
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_wang2019vatex" class="abstract noshow">
+	<td><b>Abstract</b>: We present a new large-scale multilingual video description dataset, VATEX, which contains over 41,250 videos and 825,000 captions in both English and Chinese. Among the captions, there are over 206,000 English-Chinese parallel translation pairs. Compared to the widely-used MSR-VTT dataset, VATEX is multilingual, larger, linguistically complex, and more diverse in terms of both video and natural language descriptions. We also introduce two tasks for video-and-language research based on VATEX: (1) Multilingual Video Captioning, aimed at describing a video in various languages with a compact unified captioning model, and (2) Video-guided Machine Translation, to translate a source language description into the target language using the video information as additional spatiotemporal context. Extensive experiments on the VATEX dataset show that, first, the unified multilingual model can not only produce both English and Chinese descriptions for a video more efficiently, but also offer improved performance over the monolingual models. Furthermore, we demonstrate that the spatiotemporal video context can be effectively utilized to align source and target languages and thus assist machine translation. In the end, we discuss the potentials of using VATEX for other video-and-language research.</td>
+</tr>
+
+<tr id="bib_wang2019vatex" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{wang2019vatex,
+  author = {Wang, Xin and Wu, Jiawei and Chen, Junkun and Li, Lei and Wang, Yuan-Fang and Wang, William Yang},
+  title = {VATEX: A Large-Scale, High-Quality Multilingual Dataset for Video-and-Language Research},
+  booktitle = {International Conference on Computer Vision (ICCV)},
+  year = {2019},
+  url = {https://vatex.org/main/index.html}
+}
+</pre></td>
+</tr><tr id="fu2019rethinking" class="entry">
+	<td>Yao Fu, Hao Zhou, Jiaze Chen and Lei Li, <a href="pubs/fu2019rethinking.pdf"><i>"Rethinking Text Attribute Transfer: A Lexical Analysis"</i></a>, In the 12th International Conference on Natural Language Generation (INLG), 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('fu2019rethinking','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('fu2019rethinking','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_fu2019rethinking" class="abstract noshow">
+	<td><b>Abstract</b>: Text attribute transfer is modifying certain linguistic attributes (e.g. sentiment, style, authorship, etc.) of a sentence and transforming them from one type to another. In this paper, we aim to analyze and interpret what is changed during the transfer process. We start from the observation that in many existing models and datasets, certain words within a sentence play important roles in determining the sentence attribute class. These words are referred to as the Pivot Words. Based on these pivot words, we propose a lexical analysis framework, the Pivot Analysis, to quantitatively analyze the effects of these words in text attribute classification and transfer. We apply this framework to existing datasets and models, and show that: (1) the pivot words are strong features for the classification of sentence attributes; (2) to change the attribute of a sentence, many datasets only requires to change certain pivot words; (3) consequently, many transfer models only perform the lexical-level modification, while leaving higher-level sentence structures unchanged. Our work provides an in-depth understanding of linguistic attribute transfer and further identifies the future requirements and challenges of this task.</td>
+</tr>
+
+<tr id="bib_fu2019rethinking" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{fu2019rethinking,
+  author = {Fu, Yao and Zhou, Hao and Chen, Jiaze and Li, Lei},
+  title = {Rethinking Text Attribute Transfer: A Lexical Analysis},
+  booktitle = {the 12th International Conference on Natural Language Generation (INLG)},
+  year = {2019}
+}
+</pre></td>
+</tr><tr id="lu2019uncovering" class="entry">
+	<td>Yunfei Lu, Linyun Yu, Peng Cui, Chengxi Zang, Renzhe Xu, Yihao Liu, Lei Li and Wenwu Zhu, <a href="pubs/lu2019uncovering.pdf"><i>"Uncovering the Co-driven Mechanism of Social and Content Links in User Churn Phenomena"</i></a>, In the 25th SIGKDD Conference on Knowledge Discovery and Data Mining (KDD), New York, NY, USA ACM, 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('lu2019uncovering','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('lu2019uncovering','bibtex')">[BibTeX]</a>
+   <a href="pubs/lu-kdd2019-social-content-links.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_lu2019uncovering" class="abstract noshow">
+	<td><b>Abstract</b>: Recent years witness the merge of social networks and user-generatedcontent (UGC) platforms. In these new platforms, users establishlinks to others not only driven by their social relationships in thephysical world but also driven by the contents published by others.During this merging process, social networks gradually integrateboth social and content links and become unprecedentedly complicated,with the motivation to exploit both the advantages of socialviscosity and content attractiveness to reach the best customerretention situation. However, due to the lack of fine-grained datarecording such merging phenomena, the co-driven mechanism ofsocial and content links in churn phenomena remains unexplored.How do social and content factors jointly influence customers’churn? What is the best ratio of social and content links for a user’sretention? Is there a model to capture this co-driven mechanism inusers’ churn phenomena?In this paper, we collect a real-world dataset with more than 5.77million users and 925 million links, with each link being tagged asa social one or a content one. We find that both social and contentlinks have a significant impact on users’ churn and theywork jointlyas a complicated mixture effect. As a result, we propose a novelsurvival model, which incorporates both social and content factors,to predict churn probability over time. Our model successfully fitsthe churn distribution in reality and accurately predicts the churnrate of different subpopulations in the future. By analyzing themodeling parameters, we try to strike a balance between socialdrivenand content-driven links in a user’s social network to reachthe lowest churn rate. Our model and findings may have potentialimplications for the design of future social media.</td>
+</tr>
+
+<tr id="bib_lu2019uncovering" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{lu2019uncovering,
+  author = {Lu, Yunfei and Yu, Linyun and Cui, Peng and Zang, Chengxi and Xu, Renzhe and Liu, Yihao and Li, Lei and Zhu, Wenwu},
+  title = {Uncovering the Co-driven Mechanism of Social and Content Links in User Churn Phenomena},
+  booktitle = {the 25th SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)},
+  publisher = {ACM},
+  year = {2019}
+}
+</pre></td>
+</tr><tr id="sun2019graspsnooker" class="entry">
+	<td>Zhaoyue Sun, Jiaze Chen, Hao Zhou, Deyu Zhou, Lei Li and Mingmin Jiang, <a href="pubs/sun2019graspsnooker.pdf"><i>"GraspSnooker: Automatic Chinese Commentary Generation for Snooker Videos"</i></a>, In the 28th International Joint Conference on Artificial Intelligence (IJCAI), pp. 6569-6571., 2019.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('sun2019graspsnooker','bibtex')">[BibTeX]</a>
+  
+   <a href="https://doi.org/10.24963/ijcai.2019/959">[DOI]</a>
+   <a href="https://doi.org/10.24963/ijcai.2019/959">[URL]</a>
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_sun2019graspsnooker" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{sun2019graspsnooker,
+  author = {Sun, Zhaoyue and Chen, Jiaze and Zhou, Hao and Zhou, Deyu and Li, Lei and Jiang, Mingmin},
+  title = {GraspSnooker: Automatic Chinese Commentary Generation for Snooker Videos},
+  booktitle = {the 28th International Joint Conference on Artificial Intelligence (IJCAI)},
+  year = {2019},
+  pages = {6569--6571},
+  url = {https://doi.org/10.24963/ijcai.2019/959},
+  doi = {https://doi.org/10.24963/ijcai.2019/959}
+}
+</pre></td>
+</tr><tr id="weng2019correct" class="entry">
+	<td>Rongxiang Weng, Hao Zhou, Shujian Huang, Yifan Xia, Lei Li and Jiajun Chen, <a href="pubs/weng2019correct.pdf"><i>"Correct-and-Memorize: Learning to Translate from Interactive Revisions"</i></a>, In the 28th International Joint Conference on Artificial Intelligence (IJCAI), 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('weng2019correct','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('weng2019correct','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_weng2019correct" class="abstract noshow">
+	<td><b>Abstract</b>: State-of-the-art machine translation models are stillnot on a par with human translators. Previous worktakes human interactions into the neural machine translation process to obtain improved results in target languages. However, not all model-translation errors are equal some are critical while others are minor. In the mean while, same translation mistakes occur repeatedly in similar context. To solve bothissues, we propose CAMIT, a novel method for translating in an interactive environment. Our proposed method works with critical revision instructions,therefore allows human to correct arbitrary words in model-translated sentences. In addition,CAMIT learns from and softly memorizes revision actions based on the context, alleviating the issue of repeating mistakes. Experiments in both ideal and real interactive translation settings demonstrate that our proposed CAMIT enhances machine translation results significantly while requires fewer revision instructions from human compared to previous methods.</td>
+</tr>
+
+<tr id="bib_weng2019correct" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{weng2019correct,
+  author = {Weng, Rongxiang and Zhou, Hao and Huang, Shujian and Xia, Yifan and Li, Lei and Chen, Jiajun},
+  title = {Correct-and-Memorize: Learning to Translate from Interactive Revisions},
+  booktitle = {the 28th International Joint Conference on Artificial Intelligence (IJCAI)},
+  year = {2019}
+}
+</pre></td>
+</tr><tr id="bao2019generating" class="entry">
+	<td>Yu Bao, Hao Zhou, Shujian Huang, Lei Li, Lili Mou, Olga Vechtomova, Xinyu Dai and Jiajun Chen, <a href="pubs/bao2019generating.pdf"><i>"Generating Sentences from Disentangled Syntactic and Semantic Spaces"</i></a>, In the 57th Annual Meeting of the Association for Computational Linguistics (ACL), 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('bao2019generating','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('bao2019generating','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_bao2019generating" class="abstract noshow">
+	<td><b>Abstract</b>: Variational auto-encoders (VAEs) are widely used in natural language generation due to the regularization of the latent space. However, generating sentences from the continuous latent space does not explicitly model the syntactic information. In this paper, we propose to generate sentences from disentangled syntactic and semantic spaces. Our proposed method explicitly models syntactic information in the VAE’s latent space by using the linearized tree sequence, leading to better performance of language generation. Additionally, the advantage of sampling in the disentangled syntactic and semantic latent spaces enables us to perform novel applications, such as the unsupervised paraphrase generation and syntax-transfer generation. Experimental results show that our proposed model achieves similar or better performance in various tasks, compared with state-of-the-art related work.</td>
+</tr>
+
+<tr id="bib_bao2019generating" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{bao2019generating,
+  author = {Bao, Yu and Zhou, Hao and Huang, Shujian and Li, Lei and Mou, Lili and Vechtomova, Olga and Dai, Xinyu and Chen, Jiajun},
+  title = {Generating Sentences from Disentangled Syntactic and Semantic Spaces},
+  booktitle = {the 57th Annual Meeting of the Association for Computational Linguistics (ACL)},
+  year = {2019}
+}
+</pre></td>
+</tr><tr id="qiu2019dynamically" class="entry">
+	<td>Lin Qiu, Yunxuan Xiao, Yanru Qu, Hao Zhou, Lei Li, Weinan Zhang and Yong Yu, <a href="pubs/qiu2019dynamically.pdf"><i>"Dynamically Fused Graph Network for Multi-hop Reasoning"</i></a>, In the 57th Annual Meeting of the Association for Computational Linguistics (ACL), 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('qiu2019dynamically','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('qiu2019dynamically','bibtex')">[BibTeX]</a>
+   <a href="pubs/qiu-acl2019-dfgn.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_qiu2019dynamically" class="abstract noshow">
+	<td><b>Abstract</b>: Text-based question answering (TBQA) has been studied extensively in recent years. Most existing approaches focus on finding the answer to a question within a single paragraph. However, many difficult questions require multiple supporting evidence from scattered text across two or more documents. In this paper, we propose the Dynamically Fused Graph Network (DFGN), a novel method to answer those questions requiring multiple scattered evidence and reasoning over them. Inspired by human’s step-by-step reasoning behavior, DFGN includes a dynamic fusion layer that starts from the entities mentioned in the given query, explores along the entity graph dynamically built from the text, and gradually finds relevant supporting entities from the given documents. We evaluate DFGN on HotpotQA, a public TBQA dataset requiring multi-hop reasoning. DFGN achieves competitive results on the public board. Furthermore, our analy- sis shows DFGN could produce interpretable reasoning chains.</td>
+</tr>
+
+<tr id="bib_qiu2019dynamically" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{qiu2019dynamically,
+  author = {Qiu, Lin and Xiao, Yunxuan and Qu, Yanru and Zhou, Hao and Li, Lei and Zhang, Weinan and Yu, Yong},
+  title = {Dynamically Fused Graph Network for Multi-hop Reasoning},
+  booktitle = {the 57th Annual Meeting of the Association for Computational Linguistics (ACL)},
+  year = {2019}
+}
+</pre></td>
+</tr><tr id="zhang2019generating" class="entry">
+	<td>Huangzhao Zhang, Ning Miao, Hao Zhou and Lei Li, <a href="pubs/zhang2019generating.pdf"><i>"Generating Fluent Adversarial Examples for Natural Languages"</i></a>, In the 57th Annual Meeting of the Association for Computational Linguistics (ACL) - short papers, 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('zhang2019generating','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('zhang2019generating','bibtex')">[BibTeX]</a>
+   <a href="pubs/zhang-acl2019generation-cgmh-adversarial.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_zhang2019generating" class="abstract noshow">
+	<td><b>Abstract</b>: Efficiently building an adversarial attacker fornatural language processing (NLP) tasks is areal challenge. Firstly, as the sentence spaceis discrete, it is difficult to make small perturbations along the direction of gradients. Secondly,the fluency of the generated examples can not be guaranteed. In this paper, we propose MHA, which addresses both problemsby performing Metropolis-Hastings sampling,whose proposal is designed with the guidanceof gradients. Experiments on IMDB and SNLIshow that our proposed MHA outperforms thebaseline model on attacking capability. Adversarial training with MHA also leads to better robustness and performance.</td>
+</tr>
+
+<tr id="bib_zhang2019generating" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{zhang2019generating,
+  author = {Zhang, Huangzhao and Miao, Ning and Zhou, Hao and Li, Lei},
+  title = {Generating Fluent Adversarial Examples for Natural Languages},
+  booktitle = {the 57th Annual Meeting of the Association for Computational Linguistics (ACL) - short papers},
+  year = {2019}
+}
+</pre></td>
+</tr><tr id="wu2019unified" class="entry">
+	<td>Hao Wu, Jiayuan Mao, Yufeng Zhang, Weiwei Sun, Yuning Jiang, Lei Li and Wei-Ying Ma, <a href="pubs/wu2019unified.pdf"><i>"Unified Visual-Semantic Embeddings: Bridging Vision and Language with Structured Meaning Representations"</i></a>, In The IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('wu2019unified','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('wu2019unified','bibtex')">[BibTeX]</a>
+   <a href="pubs/wu-cvpr2019-vse.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_wu2019unified" class="abstract noshow">
+	<td><b>Abstract</b>: We propose Unified Visual-Semantic Embeddings (VSE)<br>for learning a joint space for scene representation and textual<br>semantics. It unifies the embeddings of concepts at different<br>levels: objects, attributes, relations and full scenes. We<br>view the sentential semantics as a combination of different<br>semantic components such as object or relational descriptors,<br>and align their embeddings with different regions of a<br>scene. A contrastive learning approach is proposed for the<br>effective learning of such fine-grained alignment from only<br>image-caption pairs. We also present a simple yet effective<br>approach that enforces the coverage of caption embeddings<br>on the semantic components that appear in the sentence. We<br>demonstrate that the Unified VSE outperforms other baselines<br>on cross-modal retrieval tasks and the enforcement<br>of the semantic coverage improves models’ robustness in<br>defending text-domain adversarial attacks. Moreover, such<br>robustness empowers the use of visual cues to accurately<br>resolve word dependencies in novel sentences.</td>
+</tr>
+
+<tr id="bib_wu2019unified" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{wu2019unified,
+  author = {Wu, Hao and Mao, Jiayuan and Zhang, Yufeng and Sun, Weiwei and Jiang, Yuning and Li, Lei and Ma, Wei-Ying},
+  title = {Unified Visual-Semantic Embeddings: Bridging Vision and Language with Structured Meaning Representations},
+  booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  year = {2019}
+}
+</pre></td>
+</tr><tr id="miao2019cgmh" class="entry">
+	<td>Ning Miao, Hao Zhou, Lili Mou, Rui Yan and Lei Li, <a href="pubs/miao2019cgmh.pdf"><i>"CGMH: Constrained Sentence Generation by Metropolis-Hastings Sampling"</i></a>, In the 33rd AAAI Conference on Artificial Intelligence (AAAI), 2019.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('miao2019cgmh','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('miao2019cgmh','bibtex')">[BibTeX]</a>
+   <a href="pubs/miao-aaai2019-cgmh.pdf">&#91;PDF&#93;</a><a href="pubs/miao2019cgmh - {CGMH_} Constrained Sentence Generation by Metropolis-Hastings Sampling.pdf">&#91;PPT_PDF&#93;</a>
+  
+   <a href="http://arxiv.org/abs/1811.10996">[URL]</a>
+	
+	
+	  <a href="https:/github.com/NingMiao/CGMH">&#91;Software&#93;</a> 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_miao2019cgmh" class="abstract noshow">
+	<td><b>Abstract</b>: In real-world applications of natural language generation,<br>there are often constraints on the target sentences in addition<br>to fluency and naturalness requirements. Existing language<br>generation techniques are usually based on recurrent<br>neural networks (RNNs). However, it is non-trivial to impose<br>constraints on RNNs while maintaining generation quality,<br>since RNNs generate sentences sequentially (or with beam<br>search) from the first word to the last. In this paper, we propose<br>CGMH, a novel approach using Metropolis-Hastings<br>sampling for constrained sentence generation. CGMH allows<br>complicated constraints such as the occurrence of multiple<br>keywords in the target sentences, which cannot be handled in<br>traditional RNN-based approaches. Moreover, CGMH works<br>in the inference stage, and does not require parallel corpora<br>for training.We evaluate our method on a variety of tasks, including<br>keywords-to-sentence generation, unsupervised sentence<br>paraphrasing, and unsupervised sentence error correction.<br>CGMH achieves high performance compared with previous<br>supervised methods for sentence generation. Our code<br>is released at https://github.com/NingMiao/CGMH</td>
+</tr>
+
+<tr id="bib_miao2019cgmh" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{miao2019cgmh,
+  author = {Miao, Ning and Zhou, Hao and Mou, Lili and Yan, Rui and Li, Lei},
+  title = {CGMH: Constrained Sentence Generation by Metropolis-Hastings Sampling},
+  booktitle = {the 33rd AAAI Conference on Artificial Intelligence (AAAI)},
+  year = {2019},
+  url = {http://arxiv.org/abs/1811.10996}
+}
+</pre></td>
+</tr><tr id="cao2018brits" class="entry">
+	<td>Wei Cao, Dong Wang, Jian Li, Hao Zhou, Yitan Li and Lei Li, <a href="pubs/cao2018brits.pdf"><i>"BRITS: Bidirectional Recurrent Imputation for Time Series"</i></a>, In the 32nd Conference on Neural Information Processing Systems (NeurIPS), 2018.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('cao2018brits','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('cao2018brits','bibtex')">[BibTeX]</a>
+  
+  
+   <a href="https://arxiv.org/abs/1805.10572">[URL]</a>
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_cao2018brits" class="abstract noshow">
+	<td><b>Abstract</b>: Time series are widely used as signals in many classification/regression tasks. It is ubiquitous that time series contains many missing values. Given multiple correlated time series data, how to fill in missing values and to predict their class labels? Existing imputation methods often impose strong assumptions of the underlying data generating process, such as linear dynamics in the state space. In this paper, we propose BRITS, a novel method based on recurrent neural networks for missing value imputation in time series data. Our proposed method directly learns the missing values in a bidirectional recurrent dynamical system, without any specific assumption. The imputed values are treated as variables of RNN graph and can be effectively updated during the backpropagation.BRITS has three advantages: (a) it can handle multiple correlated missing values in time series; (b) it generalizes to time series with nonlinear dynamics underlying; (c) it provides a data-driven imputation procedure and applies to general settings with missing data.We evaluate our model on three real-world datasets, including an air quality dataset, a health-care data, and a localization data for human activity. Experiments show that our model outperforms the state-of-the-art methods in both imputation and classification/regression accuracies.</td>
+</tr>
+
+<tr id="bib_cao2018brits" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{cao2018brits,
+  author = {Cao, Wei and Wang, Dong and Li, Jian and Zhou, Hao and Li, Yitan and Li, Lei},
+  title = {BRITS: Bidirectional Recurrent Imputation for Time Series},
+  booktitle = {the 32nd Conference on Neural Information Processing Systems (NeurIPS)},
+  year = {2018},
+  url = {https://arxiv.org/abs/1805.10572}
+}
+</pre></td>
+</tr><tr id="shi2018tree" class="entry">
+	<td>Haoyue Shi, Hao Zhou, Jiaze Chen and Lei Li, <a href="pubs/shi2018tree.pdf"><i>"On Tree-Based Neural Sentence Modeling"</i></a>, In Conference on Empirical Methods in Natural Language Processing (EMNLP), 2018.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('shi2018tree','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('shi2018tree','bibtex')">[BibTeX]</a>
+   <a href="pubs/shi2018tree - On Tree-Based Neural Sentence Modeling.pdf">&#91;PDF&#93;</a>
+  
+   <a href="https://arxiv.org/abs/1808.09644">[URL]</a>
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_shi2018tree" class="abstract noshow">
+	<td><b>Abstract</b>: Neural networks with tree-based sentence encoders have shown better results on many downstream tasks. Most of existing tree-based encoders adopt syntactic parsing trees as the explicit structure prior. To study the effectiveness of different tree structures, we replace the parsing trees with trivial trees (i.e., binary balanced tree, left-branching tree and right-branching tree) in the encoders. Though trivial trees contain no syntactic information, those encoders get competitive or even better results on all of the ten downstream tasks we investigated. This surprising result indicates that explicit syntax guidance may not be the main contributor to the superior performances of tree-based neural sentence modeling. Further analysis show that tree modeling gives better results when crucial words are closer to the final representation. Additional experiments give more clues on how to design an effective tree-based encoder.</td>
+</tr>
+
+<tr id="bib_shi2018tree" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{shi2018tree,
+  author = {Shi, Haoyue and Zhou, Hao and Chen, Jiaze and Li, Lei},
+  title = {On Tree-Based Neural Sentence Modeling},
+  booktitle = {Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  year = {2018},
+  url = {https://arxiv.org/abs/1808.09644}
+}
+</pre></td>
+</tr><tr id="li2018jersey" class="entry">
+	<td>Gen Li, Shikun Xu, Xiang Liu, Lei Li and Changhu Wang, <a href="pubs/li2018jersey.pdf"><i>"Jersey Number Recognition with Semi-Supervised Spatial Transformer Network"</i></a>, In IEEE Conference on Computer Vision and Pattern Recognition workshops, Computer Vision in Sports, pp. 1864 -1871., 2018.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('li2018jersey','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('li2018jersey','bibtex')">[BibTeX]</a>
+  
+  
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_li2018jersey" class="abstract noshow">
+	<td><b>Abstract</b>: It is still a challenging task to recognize the jersey number <br>of players on the court in soccer match videos, as the<br>jersey numbers are very small in the object detection task<br>and annotated data are not easy to collect. Based on the<br>object detection results of all the players on the court, a<br>CNN model is first introduced to classify these numbers on<br>the deteced players’ images. To localize the jersey number<br>more precisely without involving another digit detector and<br>extra consumption, we then improve the former network to<br>an end-to-end framework by fusing with the spatial transformer<br>network (STN). To further improve the accuracy, we<br>bring extra supervision to STN and upgrade the model to<br>a semi-supervised multi-task learning system, by labeling a<br>small portion of the number areas in the dataset by quadrangle.<br>Extensive experiments illustrate the effectiveness of<br>the proposed framework.</td>
+</tr>
+
+<tr id="bib_li2018jersey" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{li2018jersey,
+  author = {Li, Gen and Xu, Shikun and Liu, Xiang and Li, Lei and Wang, Changhu},
+  title = {Jersey Number Recognition with Semi-Supervised Spatial Transformer Network},
+  booktitle = {IEEE Conference on Computer Vision and Pattern Recognition workshops, Computer Vision in Sports},
+  year = {2018},
+  pages = {1864 --1871}
+}
+</pre></td>
+</tr><tr id="wu2018reinforced" class="entry">
+	<td>Jiawei Wu, Lei Li and William Yang Wang, <a href="pubs/wu2018reinforced.pdf"><i>"Reinforced Co-Training"</i></a>, In Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT), New Orleans, Louisiana, pp. 1252-1262. Association for Computational Linguistics, 2018.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('wu2018reinforced','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('wu2018reinforced','bibtex')">[BibTeX]</a>
+  
+  
+   <a href="http://arxiv.org/abs/1804.06035">[URL]</a>
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_wu2018reinforced" class="abstract noshow">
+	<td><b>Abstract</b>: Co-training is a popular semi-supervised learning framework to utilize a<br>large amount of unlabeled data in addition to a small labeled set. Co-training<br>methods exploit predicted labels on the unlabeled data and select samples based<br>on prediction confidence to augment the training. However, the selection of<br>samples in existing co-training methods is based on a predetermined policy,<br>which ignores the sampling bias between the unlabeled and the labeled subsets,<br>and fails to explore the data space. In this paper, we propose a novel method,<br>Reinforced Co-Training, to select high-quality unlabeled samples to better<br>co-train on. More specifically, our approach uses Q-learning to learn a data<br>selection policy with a small labeled dataset, and then exploits this policy to<br>train the co-training classifiers automatically. Experimental results on<br>clickbait detection and generic text classification tasks demonstrate that our<br>proposed method can obtain more accurate text classification results.</td>
+</tr>
+
+<tr id="bib_wu2018reinforced" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{wu2018reinforced,
+  author = {Wu, Jiawei and Li, Lei and Wang, William Yang},
+  title = {Reinforced Co-Training},
+  booktitle = {Proceedings of the 2018 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)},
+  publisher = {Association for Computational Linguistics},
+  year = {2018},
+  pages = {1252--1262},
+  url = {http://arxiv.org/abs/1804.06035}
+}
+</pre></td>
+</tr><tr id="erol2017nearly" class="entry">
+	<td>Yusuf B. Erol, Yi Wu, Lei Li and Stuart Russell, <a href="pubs/erol2017nearly.pdf"><i>"A Nearly-Black-Box Online Algorithm for Joint Parameter and State Estimation in Temporal Models"</i></a>, In the 31st AAAI Conference on Artificial Intelligence (AAAI), 2017.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('erol2017nearly','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('erol2017nearly','bibtex')">[BibTeX]</a>
+   <a href="pubs/erol2017nearly - A Nearly-Black-Box Online Algorithm for Joint Parameter and State Estimation in Temporal Models.pdf">&#91;PDF&#93;</a><a href="pubs/erol-aaai2017-apf-appendix.pdf">&#91;Appendix_PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_erol2017nearly" class="abstract noshow">
+	<td><b>Abstract</b>: Online joint parameter and state estimation is a core problem for temporal models. Most existing methods are either restricted to a particular class of models (e.g., the Storvik filter) or computationally expensive (e.g., particle MCMC). We propose a novel nearly-black-box algorithm, the Assumed Parameter Filter (APF), a hybrid of particle filtering for state variables and assumed density filtering for parameter variables. It has the following advantages: (a) it is online and computationally efficient; (b) it is applicable to both discrete and continuous parameter spaces with arbitrary transition dynamics. On a variety of toy and real models, APF generates more accurate results within a fixed computation budget compared to several standard algorithms from the literature.</td>
+</tr>
+
+<tr id="bib_erol2017nearly" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{erol2017nearly,
+  author = {Erol, Yusuf B. and Wu, Yi and Li, Lei and Russell, Stuart},
+  title = {A Nearly-Black-Box Online Algorithm for Joint Parameter and State Estimation in Temporal Models},
+  booktitle = {the 31st AAAI Conference on Artificial Intelligence (AAAI)},
+  year = {2017}
+}
+</pre></td>
+</tr><tr id="matsubara2017non" class="entry">
+	<td>Yasuko Matsubara, Yasushi Sakurai, B. Aditya Prakash, Lei Li and Christos Faloutsos, <a href="pubs/matsubara2017non.pdf"><i>"Non-linear Dynamics of Information Diffusion in Social Networks"</i></a>, ACM Transactions on the Web, Volume 11(1), 2017.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('matsubara2017non','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('matsubara2017non','bibtex')">[BibTeX]</a>
+  
+  
+  
+  
+  
+  
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_matsubara2017non" class="abstract noshow">
+	<td><b>Abstract</b>: The recent explosion in the adoption of search engines and new media such as blogs and Twitter have facilitated the faster propagation of news and rumors. How quickly does a piece of news spread over these media? How does its popularity diminish over time? Does the rising and falling pattern follow a simple universal law? In this paper, we propose SPIKEM, a concise yet flexible analytical model of the rise and fall patterns of information diffusion. Our model has the following advantages: (a) unification power: it explains earlier empirical observations and generalizes theoretical models including the SI and SIR models. We provide the threshold of the take-off vs. die-out conditions for SPIKEM, and discuss the generality of our model, by applying it to an arbitrary graph topology; (b) practicality: it matches the observed behavior of diverse sets of real data; (c) parsimony: it requires only a handful of parameters; and (d) usefulness: it makes it possible to perform analytic tasks such as forecasting, spotting anomalies, and interpretation by reverse engineering the system parameters of interest (e.g. quality of news, number of interested bloggers, etc.). We also introduce an efficient and effective algorithm for the real-time monitoring of information diffusion, namely, SPIKESTREAM, which identifies multiple diffusion patterns in a large collection of online event streams. Extensive experiments on real datasets demonstrate that SPIKEM accurately and succinctly describes all the patterns of the rise-and-fall spikes in social networks.</td>
+</tr>
+
+<tr id="bib_matsubara2017non" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{matsubara2017non,
+  author = {Matsubara, Yasuko and Sakurai, Yasushi and Prakash, B. Aditya and Li, Lei and Faloutsos, Christos},
+  title = {Non-linear Dynamics of Information Diffusion in Social Networks},
+  journal = {ACM Transactions on the Web},
+  year = {2017},
+  volume = {11},
+  number = {1}
+}
+</pre></td>
+</tr>
+<tr id="wu2016swift" class="entry">
+	<td>Yi Wu, Lei Li, Stuart J. Russell and Rastislav Bodik, <a href="pubs/wu2016swift.pdf"><i>"Swift: Compiled Inference for Probabilistic Programming Languages"</i></a>, In 25th International Joint Conference on Artificial Intelligence (IJCAI), 2016.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('wu2016swift','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('wu2016swift','bibtex')">[BibTeX]</a>
+   <a href="pubs/wu2016swift - Swift_ Compiled Inference for Probabilistic Programming Languages.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	  <a href="http:/arxiv.org/abs/1606.09242">&#91;Arxiv&#93;</a>  <a href="https:/github.com/lileicc/swift">&#91;Software&#93;</a> 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_wu2016swift" class="abstract noshow">
+	<td><b>Abstract</b>: A probabilistic program defines a probability measure over its semantic structures. One common goal of probabilistic programming languages (PPLs) is to compute posterior probabilities for arbitrary models and queries, given observed evidence, using a generic inference engine. Most PPL inference engines—even the compiled ones—incur significant runtime interpretation overhead, especially for contingent and open-universe models. This paper describes Swift, a compiler for the BLOG PPL. Swift-generated code incorporates optimizations that eliminate interpretation overhead, maintain dynamic dependencies efficiently, and handle memory management for possible worlds of varying sizes. Experiments comparing Swift with other PPL engines on a variety of inference problems demonstrate speedups ranging from 12x to 326x.</td>
+</tr>
+
+<tr id="bib_wu2016swift" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{wu2016swift,
+  author = {Wu, Yi and Li, Lei and Russell, Stuart J. and Bodik, Rastislav},
+  title = {Swift: Compiled Inference for Probabilistic Programming Languages},
+  booktitle = {25th International Joint Conference on Artificial Intelligence (IJCAI)},
+  year = {2016}
+}
+</pre></td>
+</tr><tr id="dai2016cfo" class="entry">
+	<td>Zihang Dai, Lei Li and Wei Xu, <a href="pubs/dai2016cfo.pdf"><i>"CFO: Conditional Focused Neural Question Answering with Large-scale Knowledge Bases"</i></a>, In ACL, 2016.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('dai2016cfo','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('dai2016cfo','bibtex')">[BibTeX]</a>
+   <a href="pubs/dai2016cfo - CFO_ Conditional Focused Neural Question Answering with Large-scale Knowledge Bases.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	  <a href="https:/arxiv.org/abs/1606.01994">&#91;Arxiv&#93;</a>  <a href="https:/github.com/zihangdai/CFO">&#91;Source repo&#93;</a> 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_dai2016cfo" class="abstract noshow">
+	<td><b>Abstract</b>: How can we enable computers to automatically answer questions like ``Who created the character Harry Potter''? Carefully built knowledge bases provide rich sources of facts. However, it remains a challenge to answer factoid questions raised in natural language due to numerous expressions of one question. In particular, we focus on the most common questions --- ones that can be answered with a single fact in the knowledge base. We propose CFO, a Conditional Focused neural-network-based approach to answering factoid questions with knowledge bases. Our approach first zooms in a question to find more probable candidate subject mentions, and infers the final answers with a unified conditional probabilistic framework. Powered by deep recurrent neural networks and neural embeddings, our proposed CFO achieves an accuracy of 75.7&#37; on a dataset of 108k questions - the largest public one to date. It outperforms the current state of the art by an absolute margin of 11.8%.</td>
+</tr>
+
+<tr id="bib_dai2016cfo" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{dai2016cfo,
+  author = {Dai, Zihang and Li, Lei and Xu, Wei},
+  title = {CFO: Conditional Focused Neural Question Answering with Large-scale Knowledge Bases},
+  booktitle = {ACL},
+  year = {2016}
+}
+</pre></td>
+</tr><tr id="lu2015twisted" class="entry">
+	<td>Zefu Lu, Lei Li and Wei Xu, <a href="pubs/lu2015twisted.pdf"><i>"Twisted Recurrent Network for Named Entity Recognition"</i></a>
+  , 2015.
+	<p class="infolinks"> <a href="javascript:toggleInfo('lu2015twisted','bibtex')">[BibTeX]</a>
+  
+  
+  
+  
+  
+  
+  </p>
+	</td>
+</tr>
+<tr id="bib_lu2015twisted" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@misc{lu2015twisted,
+  author = {Lu, Zefu and Li, Lei and Xu, Wei},
+  title = {Twisted Recurrent Network for Named Entity Recognition},
+  booktitle = {Bay Area Machine Learning Symposium},
+  year = {2015}
+}
+</pre></td>
+</tr>
+<tr id="pham2015optimization" class="entry">
+	<td>Hieu Pham, Zihang Dai and Lei Li, <a href="pubs/pham2015optimization.pdf"><i>"On Optimization Algorithms for Recurrent Networks with Long Short-Term Memory"</i></a>
+  , 2015.
+	<p class="infolinks"> <a href="javascript:toggleInfo('pham2015optimization','bibtex')">[BibTeX]</a>
+  
+  
+  
+  
+  
+  
+  </p>
+	</td>
+</tr>
+<tr id="bib_pham2015optimization" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@misc{pham2015optimization,
+  author = {Pham, Hieu and Dai, Zihang and Li, Lei},
+  title = {On Optimization Algorithms for Recurrent Networks with Long Short-Term Memory},
+  booktitle = {Bay Area Machine Learning Symposium},
+  year = {2015}
+}
+</pre></td>
+</tr>
+<tr id="wu2014bfit" class="entry">
+	<td>Yi Wu, Lei Li and Stuart J. Russell, <a href="pubs/wu2014bfit.pdf"><i>"BFiT: From Possible-World Semantics to Random-Evaluation Semantics in Open Universe"</i></a>, In Neural Information Processing Systems, Probabilistic Programming workshop, 2014.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('wu2014bfit','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('wu2014bfit','bibtex')">[BibTeX]</a>
+   <a href="pubs/wu2014bfit - BFiT_ From Possible-World Semantics to Random-Evaluation Semantics in Open Universe.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	 <a href="pubs/wu-2014-bfit-poster.pdf">[PPT]</a>
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_wu2014bfit" class="abstract noshow">
+	<td><b>Abstract</b>: In recent years, several probabilistic programming languages (PPLs) have emerged, such as Bayesian Logic (BLOG), Church, and Figaro. These languages can be classified into two categories: PPLs interpreted using possible-world se- mantics and ones using random-evaluation semantics. In this paper, we explic- itly analyze the equivalence between these two semantics in the context of open- universe probability models (OUPMs). We propose a novel dynamic memoization technique to construct OUPMs using procedural instructions in random-evaluation based PPLs. We implemented a translator named BFiT, which converts code in BLOG (possible-world based) to Figaro (random-evaluation based). The trans- lated program in Figaro exhibits a merely constant blowup factor in program size while yielding the same inference results as the original model in BLOG.</td>
+</tr>
+
+<tr id="bib_wu2014bfit" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{wu2014bfit,
+  author = {Wu, Yi and Li, Lei and Russell, Stuart J.},
+  title = {BFiT: From Possible-World Semantics to Random-Evaluation Semantics in Open Universe},
+  booktitle = {Neural Information Processing Systems, Probabilistic Programming workshop},
+  year = {2014}
+}
+</pre></td>
+</tr><tr id="du2014maxios" class="entry">
+	<td>Simon Shaolei Du, Yilin Liu, Boyi Chen and Lei Li, <a href="pubs/du2014maxios.pdf"><i>"Maxios: Large Scale Nonnegative Matrix Factorization for Collaborative Filtering"</i></a>, In Neural Information Processing Systems, workshop on Distributed Machine Learning and Matrix Computations, 2014.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('du2014maxios','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('du2014maxios','bibtex')">[BibTeX]</a>
+   <a href="pubs/du2014maxios - Maxios_ Large Scale Nonnegative Matrix Factorization for Collaborative Filtering.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	 <a href="pubs/du-2014-maxios-poster.pdf">[PPT]</a>
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_du2014maxios" class="abstract noshow">
+	<td><b>Abstract</b>: Nonnegative matrix factorization proved useful in many applications, including collaborative filtering – from existing ratings data one would like to predict new product ratings by users. However, factorizing a user-product score matrix is computation and memory intensive. We propose Maxios, a novel approach to fill missing values for large scale and highly sparse matrices efficiently and ac- curately. We formulate the matrix-completion problem as weighted nonnegative matrix factorization. In addition, we develop distributed update rules using alter- nating direction method of multipliers. We have implemented the Maxios system on top of Spark, a distributed in-memory computation framework. Experiments on commercial clusters show that Maxios is competitive in terms of scalability and accuracy against the existing solutions on a variety of datasets.</td>
+</tr>
+
+<tr id="bib_du2014maxios" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{du2014maxios,
+  author = {Du, Simon Shaolei and Liu, Yilin and Chen, Boyi and Li, Lei},
+  title = {Maxios: Large Scale Nonnegative Matrix Factorization for Collaborative Filtering},
+  booktitle = {Neural Information Processing Systems, workshop on Distributed Machine Learning and Matrix Computations},
+  year = {2014}
+}
+</pre></td>
+</tr><tr id="juan2014poisson" class="entry">
+	<td>Da-Cheng Juan, Lei Li, Huan-Kai Peng, Diana Marculescu and Christos Faloutsos, <a href="pubs/juan2014poisson.pdf"><i>"Beyond Poisson: Modeling Inter-Arrival Times of Requests in a Datacenter"</i></a>, In The Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD), 2014.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('juan2014poisson','bibtex')">[BibTeX]</a>
+   <a href="pubs/juan2014poisson - Beyond Poisson_ Modeling Inter-Arrival Times of Requests in a Datacenter.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_juan2014poisson" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{juan2014poisson,
+  author = {Juan, Da-Cheng and Li, Lei and Peng, Huan-Kai and Marculescu, Diana and Faloutsos, Christos},
+  title = {Beyond Poisson: Modeling Inter-Arrival Times of Requests in a Datacenter},
+  booktitle = {The Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD)},
+  year = {2014}
+}
+</pre></td>
+</tr><tr id="li2013dynamic" class="entry">
+	<td>Lei Li, Bharath Ramsundar and Stuart Russell, <a href="pubs/li2013dynamic.pdf"><i>"Dynamic Scaled Sampling for Deterministic Constraints"</i></a>, In 16th International Conference on Artificial Intelligence and Statistics, 2013.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('li2013dynamic','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('li2013dynamic','bibtex')">[BibTeX]</a>
+   <a href="pubs/li2013dynamic - Dynamic Scaled Sampling for Deterministic Constraints.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_li2013dynamic" class="abstract noshow">
+	<td><b>Abstract</b>: Deterministic and near-deterministic relationships among subsets of random variables in multivariate systems are known to cause serious problems for Monte Carlo algorithms. We examine the case in which the relationship Z = f(X1,...,Xk) holds, where each Xi has a continuous prior pdf and we wish to obtain samples from the conditional distribution P(X1,...,Xk | Z = s). When f is addition, the problem is NP-hard even when the Xi are independent. In more restricted cases—for example, i.i.d. Boolean or categorical Xi—efficient exact samplers have been obtained previously. For the general continuous case, we propose a dynamic scaling algorithm (DYSC), and prove that it has O(k) expected running time and finite variance. We discuss generalizations of DYSC to functions f described by binary operation trees. We evaluate the algorithm on several examples.</td>
+</tr>
+
+<tr id="bib_li2013dynamic" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{li2013dynamic,
+  author = {Li, Lei and Ramsundar, Bharath and Russell, Stuart},
+  title = {Dynamic Scaled Sampling for Deterministic Constraints},
+  booktitle = {16th International Conference on Artificial Intelligence and Statistics},
+  year = {2013}
+}
+</pre></td>
+</tr><tr id="vikram2013handwriting" class="entry">
+	<td>Sharad Vikram, Lei Li and Stuart Russell, <a href="pubs/vikram2013handwriting.pdf"><i>"Handwriting and Gestures in the Air, Recognizing on the Fly"</i></a>, In ACM Conference on Human Factors in Computing Systems (CHI) Extended Abstracts, 2013.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('vikram2013handwriting','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('vikram2013handwriting','bibtex')">[BibTeX]</a>
+   <a href="pubs/vikram2013handwriting - Handwriting and Gestures in the Air, Recognizing on the Fly.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_vikram2013handwriting" class="abstract noshow">
+	<td><b>Abstract</b>: Recent technologies in vision sensors are capable of capturing 3D finger positions and movements. We propose a novel way to control and interact with computers by moving fingers in the air. The positions of fingers are precisely captured by a computer vision device. By tracking the moving patterns of fingers, we can then recognize users’ intended control commands or input information. We demonstrate this human input approach through an example application of handwriting recognition. By treating the input as a time series of 3D positions, we propose a fast algorithm using dynamic time warping to recognize characters in online fashion. We employ various optimization techniques to recognize in real time as one writes. Experiments show promising recognition performance and speed.</td>
+</tr>
+
+<tr id="bib_vikram2013handwriting" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{vikram2013handwriting,
+  author = {Vikram, Sharad and Li, Lei and Russell, Stuart},
+  title = {Handwriting and Gestures in the Air, Recognizing on the Fly},
+  booktitle = {ACM Conference on Human Factors in Computing Systems (CHI) Extended Abstracts},
+  year = {2013}
+}
+</pre></td>
+</tr><tr id="liu2013hibernating" class="entry">
+	<td>Siyuan Liu, Lei Li and Ramayya Krishnan, <a href="pubs/liu2013hibernating.pdf"><i>"Hibernating Process: Modelling Mobile Calls at Multiple Scales"</i></a>, In IEEE International Conference on Data Mining, 2013.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('liu2013hibernating','bibtex')">[BibTeX]</a>
+   <a href="pubs/liu2013hibernating - Hibernating Process_ Modelling Mobile Calls at Multiple Scales.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_liu2013hibernating" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{liu2013hibernating,
+  author = {Liu, Siyuan and Li, Lei and Krishnan, Ramayya},
+  title = {Hibernating Process: Modelling Mobile Calls at Multiple Scales},
+  booktitle = {IEEE International Conference on Data Mining},
+  year = {2013}
+}
+</pre></td>
+</tr><tr id="erol2013extended" class="entry">
+	<td>Yusuf Erol, Lei Li, Bharath Ramsundar and Stuart J. Russell, <a href="pubs/erol2013extended.pdf"><i>"The Extended Parameter Filter"</i></a>, In Proceedings of the 30th International Conference on Machine learning, 2013.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('erol2013extended','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('erol2013extended','bibtex')">[BibTeX]</a>
+   <a href="pubs/erol2013extended - The Extended Parameter Filter.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_erol2013extended" class="abstract noshow">
+	<td><b>Abstract</b>: The parameters of temporal models, such as dynamic Bayesian networks, may be modelled in a Bayesian context as static or atemporal variables that influence transition probabilities at every time step. Particle filters fail for models that include such variables, while methods that use Gibbs sampling of parameter variables may incur a per-sample cost that grows linearly with the length of the observation sequence. Storvik devised a method for incremental computation of exact sufficient statistics that, for some cases, reduces the per-sample cost to a constant. In this paper, we demonstrate a connection between Storvik's filter and a Kalman filter in parameter space and establish more general conditions under which Storvik's filter works. Drawing on an analogy to the extended Kalman filter, we develop and analyze, both theoretically and experimentally, a Taylor approximation to the parameter posterior that allows Storvik's method to be applied to a broader class of models. Our experiments on both synthetic examples and real applications show improvement over existing methods.</td>
+</tr>
+
+<tr id="bib_erol2013extended" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{erol2013extended,
+  author = {Erol, Yusuf and Li, Lei and Ramsundar, Bharath and Russell, Stuart J.},
+  title = {The Extended Parameter Filter},
+  booktitle = {Proceedings of the 30th International Conference on Machine learning},
+  year = {2013}
+}
+</pre></td>
+</tr><tr id="fu2013why" class="entry">
+	<td>Bin Fu, Jialiu Lin, Lei Li, Christos Faloutsos, Jason Hong and Norman Sadeh, <a href="pubs/fu2013why.pdf"><i>"Why People Hate Your App - Making Sense of User Feedback in a Mobile App Store"</i></a>, In the 19th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD), New York, NY, USA ACM, 2013.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('fu2013why','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('fu2013why','bibtex')">[BibTeX]</a>
+   <a href="pubs/fu2013why - Why People Hate Your App - Making Sense of User Feedback in a Mobile App Store.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_fu2013why" class="abstract noshow">
+	<td><b>Abstract</b>: User review is a crucial component of open mobile app mar- kets such as the Google Play Store. How do we automatically summarize millions of user reviews and make sense out of them? Unfortunately, beyond simple summaries such as histograms of user ratings, there are few analytic tools that can provide insights into user reviews. In this paper, we propose WisCom, a system that can analyze tens of millions user ratings and comments in mobile app markets at three different levels of detail. Our system is able to (a) discover inconsistencies in reviews; (b) identify reasons why users like or dislike a given app, and provide an interactive, zoomable view of how users’ reviews evolve over time; and (c) provide valuable insights into the entire app market, identifying users’ major concerns and preferences of different types of apps. Results using our techniques are reported on a 32GB dataset consisting of over 13 million user reviews of 171,493 Android apps in the Google Play Store. We discuss how the techniques presented herein can be deployed to help a mobile app market operator such as Google as well as individual app developers and end-users.</td>
+</tr>
+
+<tr id="bib_fu2013why" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{fu2013why,
+  author = {Fu, Bin and Lin, Jialiu and Li, Lei and Faloutsos, Christos and Hong, Jason and Sadeh, Norman},
+  title = {Why People Hate Your App - Making Sense of User Feedback in a Mobile App Store},
+  booktitle = {the 19th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)},
+  publisher = {ACM},
+  year = {2013}
+}
+</pre></td>
+</tr><tr id="rogers2013multilinear" class="entry">
+	<td>Mark Rogers, Lei Li and Stuart J. Russell, <a href="pubs/rogers2013multilinear.pdf"><i>"Multilinear Dynamical Systems for Tensor Time Series"</i></a>, In the 27th Conference on Neural Information Processing Systems(NeurIPS), 2013.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('rogers2013multilinear','bibtex')">[BibTeX]</a>
+   <a href="pubs/rogers2013multilinear - Multilinear Dynamical Systems for Tensor Time Series.pdf">&#91;PDF&#93;</a>
+  
+  
+	 <a href="software/mlds-r662.zip">[Software]</a>
+	
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_rogers2013multilinear" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{rogers2013multilinear,
+  author = {Rogers, Mark and Li, Lei and Russell, Stuart J.},
+  title = {Multilinear Dynamical Systems for Tensor Time Series},
+  booktitle = {the 27th Conference on Neural Information Processing Systems(NeurIPS)},
+  year = {2013}
+}
+</pre></td>
+</tr><tr id="matsubara2013f" class="entry">
+	<td>Yasuko Matsubara, Lei Li, Evangelos E. Papalexakis, David Lo, Yasushi Sakurai and Christos Faloutsos, <a href="pubs/matsubara2013f.pdf"><i>"F-Trail: Finding Patterns in Taxi Trajectories"</i></a>, In The Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD), pp. 86-98., 2013.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('matsubara2013f','bibtex')">[BibTeX]</a>
+   <a href="pubs/matsubara-The Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD)13-ftrail.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_matsubara2013f" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{matsubara2013f,
+  author = {Matsubara, Yasuko and Li, Lei and Papalexakis, Evangelos E. and Lo, David and Sakurai, Yasushi and Faloutsos, Christos},
+  title = {F-Trail: Finding Patterns in Taxi Trajectories},
+  booktitle = {The Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD)},
+  year = {2013},
+  pages = {86--98}
+}
+</pre></td>
+</tr><tr id="li2013blog" class="entry">
+	<td>Lei Li and Stuart J. Russell, <a href="pubs/li2013blog.pdf"><i>"The BLOG Language Reference"</i></a>. EECS Department, University of California, BerkeleyEECS Department, University of California, Berkeley, Technical Report UCB/EECS-2013-51, May, 2013.
+	<p class="infolinks"><a href="javascript:toggleInfo('li2013blog','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('li2013blog','bibtex')">[BibTeX]</a>
+   <a href="pubs/li2013blog - The BLOG Language Reference.pdf">&#91;PDF&#93;</a>
+  
+  
+  
+  
+    <a href="http:/www.eecs.berkeley.edu/Pubs/TechRpts/2013/EECS-2013-51.html">&#91;Tech report&#93;</a> 
+	</td>
+</tr>
+<tr id="abs_li2013blog" class="abstract noshow">
+	<td><b>Abstract</b>: This document introduces the syntax of BLOG, a probabilistic programming language, for describing random variables and their probabilistic dependencies. BLOG defines probabilistic generative models over first-order structures. For example, all Bayesian networks can be easily described by BLOG. BLOG has the following features: (a) it employs open-universe semantics; (b) it can describe relational uncertainty; (c) it can handle identity uncertainty; and (d) it is empowered by first-order logic. The syntax as described in this document corresponds to BLOG version 0.6. The current version represents a significant redesign and extension to previous versions of BLOG, based on the principles of usability and implementation efficiency.</td>
+</tr>
+<tr id="bib_li2013blog" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@techreport{li2013blog,
+  author = {Li, Lei and Russell, Stuart J.},
+  title = {The BLOG Language Reference},
+  school = {EECS Department, University of California, Berkeley},
+  year = {2013},
+  number = {UCB/EECS-2013-51}
+}
+</pre></td>
+</tr>
+<tr id="henderson2012rolx" class="entry">
+	<td>Keith Henderson, Brian Gallagher, Tina Eliassi-Rad, Hanghang Tong, Sugato Basu, Leman Akoglu, Danai Koutra, Christos Faloutsos and Lei Li, <a href="pubs/henderson2012rolx.pdf"><i>"RolX: Structural Role Extraction and Mining in Large Graphs"</i></a>, In KDD '12: Proceeding of the 18th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, New York, NY, USA ACM, 2012.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('henderson2012rolx','bibtex')">[BibTeX]</a>
+   <a href="pubs/henderson2012rolx - RolX_ Structural Role Extraction and Mining in Large Graphs.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_henderson2012rolx" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{henderson2012rolx,
+  author = {Henderson, Keith and Gallagher, Brian and Eliassi-Rad, Tina and Tong, Hanghang and Basu, Sugato and Akoglu, Leman and Koutra, Danai and Faloutsos, Christos and Li, Lei},
+  title = {RolX: Structural Role Extraction and Mining in Large Graphs},
+  booktitle = {KDD '12: Proceeding of the 18th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  publisher = {ACM},
+  year = {2012}
+}
+</pre></td>
+</tr><tr id="matsubara2012rise" class="entry">
+	<td>Yasuko Matsubara, Yasushi Sakurai, B. Aditya Prakash, Lei Li and Christos Faloutsos, <a href="pubs/matsubara2012rise.pdf"><i>"Rise and Fall Patterns of Information Diffusion: Model and Implications"</i></a>, In KDD '12: Proceeding of the 18th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, New York, NY, USA ACM, 2012.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('matsubara2012rise','bibtex')">[BibTeX]</a>
+   <a href="pubs/matsubara2012rise - Rise and Fall Patterns of Information Diffusion_ Model and Implications.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_matsubara2012rise" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{matsubara2012rise,
+  author = {Matsubara, Yasuko and Sakurai, Yasushi and Prakash, B. Aditya and Li, Lei and Faloutsos, Christos},
+  title = {Rise and Fall Patterns of Information Diffusion: Model and Implications},
+  booktitle = {KDD '12: Proceeding of the 18th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  publisher = {ACM},
+  year = {2012}
+}
+</pre></td>
+</tr><tr id="liu2011mobile" class="entry">
+	<td>Siyuan Liu, Lei Li, Christos Faloutsos and Lionel Ni, <a href="pubs/liu2011mobile.pdf"><i>"Mobile Phone Graph Evolution: Findings, Model and Interpretation"</i></a>, In IEEE International Conference on Data Mining, workshop on Data Mining Technologies for Computational Collective Intelligence, 2011.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('liu2011mobile','bibtex')">[BibTeX]</a>
+   <a href="pubs/liu2011mobile - Mobile Phone Graph Evolution_ Findings, Model and Interpretation.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_liu2011mobile" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{liu2011mobile,
+  author = {Liu, Siyuan and Li, Lei and Faloutsos, Christos and Ni, Lionel},
+  title = {Mobile Phone Graph Evolution: Findings, Model and Interpretation},
+  booktitle = {IEEE International Conference on Data Mining, workshop on Data Mining Technologies for Computational Collective Intelligence},
+  year = {2011}
+}
+</pre></td>
+</tr><tr id="henderson2011its" class="entry">
+	<td>Keith Henderson, Brian Gallagher, Lei Li, Leman Akoglu, Tina Eliassi-Rad, Hanghang Tong and Christos Faloutsos, <a href="pubs/henderson2011its.pdf"><i>"It's Who You Know: Graph Mining Using Recursive Structural Features"</i></a>, In KDD '11: Proceeding of the 17th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, New York, NY, USA ACM, 2011.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('henderson2011its','bibtex')">[BibTeX]</a>
+   <a href="pubs/henderson2011its - It's Who You Know_ Graph Mining Using Recursive Structural Features.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_henderson2011its" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{henderson2011its,
+  author = {Henderson, Keith and Gallagher, Brian and Li, Lei and Akoglu, Leman and Eliassi-Rad, Tina and Tong, Hanghang and Faloutsos, Christos},
+  title = {It's Who You Know: Graph Mining Using Recursive Structural Features},
+  booktitle = {KDD '11: Proceeding of the 17th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  publisher = {ACM},
+  year = {2011}
+}
+</pre></td>
+</tr><tr id="li2011thermocast" class="entry">
+	<td>Lei Li, Chieh-Jan Mike Liang, Jie Liu, Suman Nath, Andreas Terzis and Christos Faloutsos, <a href="pubs/li2011thermocast.pdf"><i>"ThermoCast: A Cyber-Physical Forecasting Model for Data Centers"</i></a>, In KDD '11: Proceeding of the 17th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining, New York, NY, USA ACM, 2011.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('li2011thermocast','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('li2011thermocast','bibtex')">[BibTeX]</a>
+   <a href="pubs/li2011thermocast - ThermoCast_ A Cyber-Physical Forecasting Model for Data Centers.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	 <a href="pubs/li2011thermocast-poster.pdf">[PPT]</a>
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_li2011thermocast" class="abstract noshow">
+	<td><b>Abstract</b>: Efficient thermal management is important in modern data centers as cooling consumes up to 50% of the total energy. Unlike previous work, we consider proactive thermal management, whereby servers can predict potential overheating events due to dynamics in data center configuration and workload, giving operators enough time to react. However, such forecasting is very challenging due to data center scales and complexity. Moreover, such a physical system is influenced by cyber effects, including workload scheduling in servers. We propose ThermoCast, a novel thermal forecasting model to predict the temperatures surrounding the servers in a data center, based on continuous streams of temperature and airflow measurements. Our approach is (a) capable of capturing cyber- physical interactions and automatically learning them from data; (b) computationally and physically scalable to data center scales; (c) able to provide online prediction with real-time sensor mea- surements. The paper’s main contributions are: (i) We provide a systematic approach to integrate physical laws and sensor observa- tions in a data center; (ii) We provide an algorithm that uses sensor data to learn the parameters of a data center’s cyber-physical sys- tem. In turn, this ability enables us to reduce model complexity compared to full-fledged fluid dynamics models, while maintain- ing forecast accuracy; (iii) Unlike previous simulation-based stud- ies, we perform experiments in a production data center. Using real data traces, we show that ThermoCast forecasts temperature 2× better than a machine learning approach solely driven by data, and can successfully predict thermal alarms 4.2 minutes ahead of time.</td>
+</tr>
+
+<tr id="bib_li2011thermocast" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{li2011thermocast,
+  author = {Li, Lei and Liang, Chieh-Jan Mike and Liu, Jie and Nath, Suman and Terzis, Andreas and Faloutsos, Christos},
+  title = {ThermoCast: A Cyber-Physical Forecasting Model for Data Centers},
+  booktitle = {KDD '11: Proceeding of the 17th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining},
+  publisher = {ACM},
+  year = {2011}
+}
+</pre></td>
+</tr><tr id="li2011time" class="entry">
+	<td>Lei Li and B. Aditya Prakash, <a href="pubs/li2011time.pdf"><i>"Time Series Clustering: Complex is Simpler!"</i></a>, In Proceedings of the 28th International Conference on Machine learning, Bellevue, Washington, 2011.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('li2011time','bibtex')">[BibTeX]</a>
+   <a href="pubs/li2011time - Time Series Clustering_ Complex is Simpler!.pdf">&#91;PDF&#93;</a>
+  
+  
+	 <a href="software/clds-r347.zip">[Software]</a>
+	 <a href="pubs/li2011time-slides.pdf">[PPT]</a>
+	  <a href="software/li2011time - Time Series Clustering_ Complex is Simpler!.zip">&#91;Dataset1-mocap16&#93;</a>  <a href="software/mocap35-rfoot_amc.zip">&#91;Dataset2-mocap35&#93;</a> 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_li2011time" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{li2011time,
+  author = {Li, Lei and Prakash, B. Aditya},
+  title = {Time Series Clustering: Complex is Simpler!},
+  booktitle = {Proceedings of the 28th International Conference on Machine learning},
+  year = {2011}
+}
+</pre></td>
+</tr><tr id="sakurai2011windmine" class="entry">
+	<td>Yasushi Sakurai, Lei Li, Yasuko Matsubara and Christos Faloutsos, <a href="pubs/sakurai2011windmine.pdf"><i>"WindMine: Fast and Effective Mining of Web-click Sequences"</i></a>, In SIAM International Conference on Data Mining, 2011.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('sakurai2011windmine','bibtex')">[BibTeX]</a>
+   <a href="pubs/sakurai2011windmine - WindMine_ Fast and Effective Mining of Web-click Sequences.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_sakurai2011windmine" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{sakurai2011windmine,
+  author = {Sakurai, Yasushi and Li, Lei and Matsubara, Yasuko and Faloutsos, Christos},
+  title = {WindMine: Fast and Effective Mining of Web-click Sequences},
+  booktitle = {SIAM International Conference on Data Mining},
+  year = {2011}
+}
+</pre></td>
+</tr><tr id="li2011fast" class="entry">
+	<td>Lei Li, <a href="pubs/li2011fast.pdf"><i>"Fast algorithms for mining co-evolving time series"</i></a>
+	. <i>Ph.D. Dissertation</i>, Carnegie Mellon University.
+	, Available as technical report CMU-CS-11-127. 
+  , 2011.
+	<p class="infolinks"> <a href="javascript:toggleInfo('li2011fast','bibtex')">[BibTeX]</a>
+  
+  
+  
+  
+   <a href="pubs/leili-talk2011-defense.pdf">[PPT]</a>
+  
+	</p>
+	</td>
+</tr>
+<tr id="bib_li2011fast" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@phdthesis{li2011fast,
+  author = {Li, Lei},
+  title = {Fast algorithms for mining co-evolving time series},
+  school = {Carnegie Mellon University},
+  year = {2011}
+}
+</pre></td>
+</tr>
+<tr id="li2010fast" class="entry">
+	<td>Lei Li, <a href="pubs/li2010fast.pdf"><i>"Fast Algorithms for Time Series Mining"</i></a>, In 26th IEEE International Conference on Data Engineering, PHD Workshop, pp. 341-344., 2010.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('li2010fast','bibtex')">[BibTeX]</a>
+   <a href="pubs/li2010fast - Fast Algorithms for Time Series Mining.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	 <a href="pubs/li-icde10-slides.pdf">[PPT]</a>
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_li2010fast" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{li2010fast,
+  author = {Li, Lei},
+  title = {Fast Algorithms for Time Series Mining},
+  booktitle = {26th IEEE International Conference on Data Engineering, PHD Workshop},
+  year = {2010},
+  pages = {341--344}
+}
+</pre></td>
+</tr><tr id="henderson2010metric" class="entry">
+	<td>Keith Henderson, Tina Eliassi-Rad, Christos Faloutsos, Leman Akoglu, Lei Li, Koji Maruhashi, B. Aditya Prakash and Hanghang Tong, <a href="pubs/henderson2010metric.pdf"><i>"Metric forensics: a multi-level approach for mining volatile graphs"</i></a>, In KDD '10: Proceedings of the 16th ACM SIGKDD international conference on Knowledge discovery and data mining, New York, NY, USA, pp. 163-172. ACM, 2010.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('henderson2010metric','bibtex')">[BibTeX]</a>
+   <a href="pubs/henderson2010metric - Metric forensics_ a multi-level approach for mining volatile graphs.pdf">&#91;PDF&#93;</a>
+   <a href="https://doi.org/10.1145/1835804.1835828">[DOI]</a>
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_henderson2010metric" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{henderson2010metric,
+  author = {Henderson, Keith and Eliassi-Rad, Tina and Faloutsos, Christos and Akoglu, Leman and Li, Lei and Maruhashi, Koji and Prakash, B. Aditya and Tong, Hanghang},
+  title = {Metric forensics: a multi-level approach for mining volatile graphs},
+  booktitle = {KDD '10: Proceedings of the 16th ACM SIGKDD international conference on Knowledge discovery and data mining},
+  publisher = {ACM},
+  year = {2010},
+  pages = {163--172},
+  doi = {https://doi.org/10.1145/1835804.1835828}
+}
+</pre></td>
+</tr><tr id="li2010bolero" class="entry">
+	<td>Lei Li, James McCann, Nancy Pollard and Christos Faloutsos, <a href="pubs/li2010bolero.pdf"><i>"BoLeRO: a principled technique for including bone length constraints in motion capture occlusion filling"</i></a>, In Proceedings of the 2010 ACM SIGGRAPH/Eurographics Symposium on Computer Animation, Aire-la-Ville, Switzerland, Switzerland, pp. 179-188. Eurographics Association, 2010.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('li2010bolero','bibtex')">[BibTeX]</a>
+   <a href="pubs/li2010bolero - BoLeRO_ a principled technique for including bone length constraints in motion capture occlusion filling.pdf">&#91;PDF&#93;</a>
+  
+  
+	 <a href="software/bolero-r349.zip">[Software]</a>
+	
+	  <a href="pubs/BoLeRO-final-v1_xvid.avi">&#91;demo&#93;</a> 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_li2010bolero" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{li2010bolero,
+  author = {Li, Lei and McCann, James and Pollard, Nancy and Faloutsos, Christos},
+  title = {BoLeRO: a principled technique for including bone length constraints in motion capture occlusion filling},
+  booktitle = {Proceedings of the 2010 ACM SIGGRAPH/Eurographics Symposium on Computer Animation},
+  publisher = {Eurographics Association},
+  year = {2010},
+  pages = {179--188}
+}
+</pre></td>
+</tr><tr id="li2010efficient" class="entry">
+	<td>Lei Li, Bin Fu and Christos Faloutsos, <a href="pubs/li2010efficient.pdf"><i>"Efficient Parallel Learning of Hidden Markov Chain Models on SMPs"</i></a>, IEICE Transactions on Information and Systems, Volume E93.D(6), pp. 1330-1342., 2010.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('li2010efficient','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('li2010efficient','bibtex')">[BibTeX]</a>
+   <a href="pubs/li2010efficient - Efficient Parallel Learning of Hidden Markov Chain Models on SMPs.pdf">&#91;PDF&#93;</a>
+  
+  
+  
+  
+   
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_li2010efficient" class="abstract noshow">
+	<td><b>Abstract</b>: Quad-core cpus have been a common desktop configuration for today’s office. The increasing number of processors on a single chip opens new opportunity for parallel computing. Our goal is to make use of the multi-core as well as multi-processor architectures to speed up large-scale data mining algorithms. In this paper, we present a general par- allel learning framework, Cut-And-Stitch, for training hidden Markov chain models. Particularly, we propose two model-specific variants, CAS-LDS for learning linear dynamical systems (LDS) and CAS-HMM for learning hidden Markov models (HMM). Our main contribution is a novel method to handle the data dependencies due to the chain structure of hidden variables, so as to parallelize the EM-based parameter learning algorithm. We imple- ment CAS-LDS and CAS-HMM using OpenMP on two supercomputers and a quad-core commercial desktop. The experimental results show that parallel algorithms using Cut-And-Stitch achieve comparable accuracy and almost linear speedups over the traditional serial version.</td>
+</tr>
+
+<tr id="bib_li2010efficient" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{li2010efficient,
+  author = {Li, Lei and Fu, Bin and Faloutsos, Christos},
+  title = {Efficient Parallel Learning of Hidden Markov Chain Models on SMPs},
+  journal = {IEICE Transactions on Information and Systems},
+  year = {2010},
+  volume = {E93.D},
+  number = {6},
+  pages = {1330--1342}
+}
+</pre></td>
+</tr>
+<tr id="li2010parsimonious" class="entry">
+	<td>Lei Li, B. Aditya Prakash and Christos Faloutsos, <a href="pubs/li2010parsimonious.pdf"><i>"Parsimonious linear fingerprinting for time series"</i></a>, The Proceedings of the Very Large Data Bases Endowment (VLDB), Volume 3, pp. 385-396. VLDB Endowment, 2010.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('li2010parsimonious','bibtex')">[BibTeX]</a>
+   <a href="pubs/li2010parsimonious - Parsimonious linear fingerprinting for time series.pdf">&#91;PDF&#93;</a>
+  
+  
+   <a href="software/plif-r345.zip">[Software]</a>
+   <a href="pubs/li-vldb10-plif-slides.pdf">[PPT]</a>
+   
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_li2010parsimonious" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{li2010parsimonious,
+  author = {Li, Lei and Prakash, B. Aditya and Faloutsos, Christos},
+  title = {Parsimonious linear fingerprinting for time series},
+  journal = {The Proceedings of the Very Large Data Bases Endowment (VLDB)},
+  publisher = {VLDB Endowment},
+  year = {2010},
+  volume = {3},
+  pages = {385--396}
+}
+</pre></td>
+</tr>
+<tr id="li2009dynammo" class="entry">
+	<td>Lei Li, James McCann, Nancy Pollard and Christos Faloutsos, <a href="pubs/li2009dynammo.pdf"><i>"DynaMMo: Mining and Summarization of Coevolving Sequences with Missing Values"</i></a>, In KDD '09: Proceeding of the 15th ACM SIGKDD international conference on Knowledge discovery and data mining, New York, NY, USA ACM, 2009.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('li2009dynammo','bibtex')">[BibTeX]</a>
+   <a href="pubs/li2009dynammo - DynaMMo_ Mining and Summarization of Coevolving Sequences with Missing Values.pdf">&#91;PDF&#93;</a>
+  
+  
+	 <a href="software/dynammo-r346.zip">[Software]</a>
+	 <a href="pubs/li-kdd09-dynammo-slides.pdf">[PPT]</a>
+	  <a href="https:/github.com/lileicc/dynammo">&#91;Source repo&#93;</a> 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_li2009dynammo" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{li2009dynammo,
+  author = {Li, Lei and McCann, James and Pollard, Nancy and Faloutsos, Christos},
+  title = {DynaMMo: Mining and Summarization of Coevolving Sequences with Missing Values},
+  booktitle = {KDD '09: Proceeding of the 15th ACM SIGKDD international conference on Knowledge discovery and data mining},
+  publisher = {ACM},
+  year = {2009}
+}
+</pre></td>
+</tr><tr id="guo2009tailoring" class="entry">
+	<td>Fan Guo, Lei Li and Christos Faloutsos, <a href="pubs/guo2009tailoring.pdf"><i>"Tailoring click models to user goals"</i></a>, In Proceedings of the 2009 workshop on Web Search Click Data, New York, NY, USA, pp. 88-92. ACM, 2009.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('guo2009tailoring','bibtex')">[BibTeX]</a>
+  
+   <a href="https://doi.org/10.1145/1507509.1507523">[DOI]</a>
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_guo2009tailoring" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{guo2009tailoring,
+  author = {Guo, Fan and Li, Lei and Faloutsos, Christos},
+  title = {Tailoring click models to user goals},
+  booktitle = {Proceedings of the 2009 workshop on Web Search Click Data},
+  publisher = {ACM},
+  year = {2009},
+  pages = {88--92},
+  doi = {https://doi.org/10.1145/1507509.1507523}
+}
+</pre></td>
+</tr><tr id="xu2008inferring" class="entry">
+	<td>Wanhong Xu, Xi Zhou and Lei Li, <a href="pubs/xu2008inferring.pdf"><i>"Inferring privacy information via social relations"</i></a>, In IEEE 24th International Conference on Data Engineering workshops, pp. 525-530., 2008.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('xu2008inferring','bibtex')">[BibTeX]</a>
+  
+   <a href="https://doi.org/10.1109/ICDEW.2008.4498373">[DOI]</a>
+  
+	
+	
+	
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_xu2008inferring" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{xu2008inferring,
+  author = {Xu, Wanhong and Zhou, Xi and Li, Lei},
+  title = {Inferring privacy information via social relations},
+  booktitle = {IEEE 24th International Conference on Data Engineering workshops},
+  year = {2008},
+  pages = {525--530},
+  doi = {https://doi.org/10.1109/ICDEW.2008.4498373}
+}
+</pre></td>
+</tr><tr id="li2008cut" class="entry">
+	<td>Lei Li, Wenjie Fu, Fan Guo, Todd C. Mowry and Christos Faloutsos, <a href="pubs/li2008cut.pdf"><i>"Cut-and-Stitch: efficient parallel learning of linear dynamical systems on smps"</i></a>, In KDD '08: Proceeding of the 14th ACM SIGKDD international conference on Knowledge discovery and data mining, New York, NY, USA, pp. 471-479. ACM, 2008.
+	
+	<p class="infolinks"><a href="javascript:toggleInfo('li2008cut','abstract')">[Abstract]</a> <a href="javascript:toggleInfo('li2008cut','bibtex')">[BibTeX]</a>
+   <a href="pubs/li2008cut - Cut-and-stitch_ efficient parallel learning of linear dynamical systems on smps.pdf">&#91;PDF&#93;</a>
+  
+  
+	 <a href="software/paralearn.0.1.zip">[Software]</a>
+	 <a href="pub/li-2008-cut-slides.pdf">[PPT]</a>
+	 
+	</p>
+	</td>
+</tr>
+
+<tr id="abs_li2008cut" class="abstract noshow">
+	<td><b>Abstract</b>: Multi-core processors with ever increasing number of cores per chip are becoming prevalent in modern parallel computing. Our goal is to make use of the multi-core as well as multi-processor architectures to speed up data mining algorithms. Specifically, we present a parallel algorithm for approximate learning of Linear Dynamical Systems (LDS), also known as Kalman Filters (KF). LDSs are widely used in time series analysis such as motion capture modeling and visual tracking etc. We propose Cut-And-Stitch (CAS), a novel method to handle the data dependencies due to the chain structure of hidden variables in LDS, so as to parallelize the EM- based parameter learning algorithm. We implement the algorithm using OpenMP on both a supercomputer and a quad-core commercial desktop. The experimental results show that parallel algorithms using Cut-And-Stitch achieve comparable accuracy and almost linear speedups over the serial version. In addition, Cut-And-Stitch can be generalized to other models with similar linear structures such as Hidden Markov Models (HMM) and Switching Kalman Filters (SKF).</td>
+</tr>
+
+<tr id="bib_li2008cut" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{li2008cut,
+  author = {Li, Lei and Fu, Wenjie and Guo, Fan and Mowry, Todd C. and Faloutsos, Christos},
+  title = {Cut-and-Stitch: efficient parallel learning of linear dynamical systems on smps},
+  booktitle = {KDD '08: Proceeding of the 14th ACM SIGKDD international conference on Knowledge discovery and data mining},
+  publisher = {ACM},
+  year = {2008},
+  pages = {471--479}
+}
+</pre></td>
+</tr><tr id="sakurai2008efficient" class="entry">
+	<td>Yasushi Sakurai, Rosalynn Chong, Lei Li and Christos Faloutsos, <a href="pubs/sakurai2008efficient.pdf"><i>"Efficient Distribution Mining and Classification"</i></a>, In SIAM International Conference on Data Mining, pp. 632-643., 2008.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('sakurai2008efficient','bibtex')">[BibTeX]</a>
+   
+  
+  
+	
+	
+	  <a href="http:/www.siam.org/proceedings/datamining/2008/dm08_58_sakurai.pdf">&#91;&#93;</a> 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_sakurai2008efficient" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{sakurai2008efficient,
+  author = {Sakurai, Yasushi and Chong, Rosalynn and Li, Lei and Faloutsos, Christos},
+  title = {Efficient Distribution Mining and Classification},
+  booktitle = {SIAM International Conference on Data Mining},
+  year = {2008},
+  pages = {632--643}
+}
+</pre></td>
+</tr><tr id="li2008laziness" class="entry">
+	<td>Lei Li, James McCann, Christos Faloutsos and Nancy Pollard, <a href="pubs/li2008laziness.pdf"><i>"Laziness is a virtue: Motion stitching using effort minimization"</i></a>, In The 29th Annual Conference of the European Association for Computer Graphics, Short Paper Proceedings, 2008.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('li2008laziness','bibtex')">[BibTeX]</a>
+   <a href="pubs/li2008laziness - Laziness is a virtue_ Motion stitching using effort minimization.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_li2008laziness" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{li2008laziness,
+  author = {Li, Lei and McCann, James and Faloutsos, Christos and Pollard, Nancy},
+  title = {Laziness is a virtue: Motion stitching using effort minimization},
+  booktitle = {The 29th Annual Conference of the European Association for Computer Graphics, Short Paper Proceedings},
+  year = {2008}
+}
+</pre></td>
+</tr><tr id="guo2008c" class="entry">
+	<td>Fan Guo, Lei Li, Christos Faloutsos and Eric P. Xing, <a href="pubs/guo2008c.pdf"><i>"C-DEM: a multi-modal query system for Drosophila Embryo databases"</i></a>, The Proceedings of the Very Large Data Bases Endowment (VLDB), Volume 1, pp. 1508-1511. VLDB Endowment, 2008.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('guo2008c','bibtex')">[BibTeX]</a>
+   <a href="pubs/guo2008c - C-DEM_ a multi-modal query system for Drosophila Embryo databases.pdf">&#91;PDF&#93;</a>
+  
+  
+  
+  
+   
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_guo2008c" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@article{guo2008c,
+  author = {Guo, Fan and Li, Lei and Faloutsos, Christos and Xing, Eric P.},
+  title = {C-DEM: a multi-modal query system for Drosophila Embryo databases},
+  journal = {The Proceedings of the Very Large Data Bases Endowment (VLDB)},
+  publisher = {VLDB Endowment},
+  year = {2008},
+  volume = {1},
+  pages = {1508--1511}
+}
+</pre></td>
+</tr>
+<tr id="li2006providing" class="entry">
+	<td>Lei Li, Qiaoling Liu, Yunfeng Tao, Lei Zhang, Jian Zhou and Yong Yu, <a href="pubs/li2006providing.pdf"><i>"Providing an Uncertainty Reasoning Service for Semantic Web Application"</i></a>, In Asia-Pacific Web Conference, pp. 628-639., 2006.
+	
+	<p class="infolinks"> <a href="javascript:toggleInfo('li2006providing','bibtex')">[BibTeX]</a>
+   <a href="pubs/li2006providing - Providing an Uncertainty Reasoning Service for Semantic Web Application.pdf">&#91;PDF&#93;</a>
+  
+  
+	
+	
+	 
+	</p>
+	</td>
+</tr>
+
+
+<tr id="bib_li2006providing" class="bibtex noshow">
+<td><b>BibTeX</b>:
+<pre>
+@inproceedings{li2006providing,
+  author = {Li, Lei and Liu, Qiaoling and Tao, Yunfeng and Zhang, Lei and Zhou, Jian and Yu, Yong},
+  title = {Providing an Uncertainty Reasoning Service for Semantic Web Application},
+  booktitle = {Asia-Pacific Web Conference},
+  year = {2006},
+  pages = {628--639}
+}
+</pre></td>
+</tr></tbody>
+</table>
+<p>
+ <small>Created by <a href="http://jabref.sourceforge.net">JabRef</a> on 2020/05/25.</small> Return to <a href="./">Home</a>
+</p>
+<!-- File generated by JabRef ; Export Filter written by Mark Schenk, (C) 2008, Modified by Lei Li (C) 2011,2017 -->
+</body>
+</html>
