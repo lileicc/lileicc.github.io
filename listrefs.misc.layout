@@ -1,5 +1,5 @@
 <tr id="\format{\bibtexkey}" class="entry">
-	<td>\begin{author}\format[AuthorFirstFirstCommas,HTMLChars]{\author}\end{author}, <i>"\format[HTMLChars]{\title}"</i>\begin{howpublished}, \howpublished\end{howpublished}
+	<td>\begin{author}\format[AuthorFirstFirstCommas,HTMLChars]{\author}\end{author}, <a href="pubs/\format{\bibtexkey}.pdf"><i>"\format[HTMLChars]{\title}"</i></a>\begin{howpublished}, \howpublished\end{howpublished}
   \begin{year}, \format[HTMLChars]{\year}\end{year}.
 	<p class="infolinks">\begin{abstract}<a href="javascript:toggleInfo('\format{\bibtexkey}','abstract')">[Abstract]</a>\end{abstract}\begin{review} [<a href="javascript:toggleInfo('\format{\bibtexkey}','review')">Review</a>] \end{review} <a href="javascript:toggleInfo('\format{\bibtexkey}','bibtex')">[BibTeX]</a>
   \begin{file} \format[WrapFileLinks(<a href="\r">&#91;\d_\f&#93;</a>,pdf),Replace(>&#91;_,>&#91;)]{\file}\end{file}
