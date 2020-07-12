@@ -91,6 +91,7 @@
   title     = {Improving Maximum Likelihood Training for Text Generation with Density Ratio Estimation},
   year      = {2020},
   month     = aug,
+  abstract  = {Auto-regressive  sequence  generative  models trained by Maximum Likelihood Estimation suffer  the  exposure  bias  problem  in  practical finite sample scenarios.  The crux is that the number of training samples for Maximum Likelihood Estimation is usually limited and the input data distributions are different at training and inference stages.  Many method shave been proposed to solve the above problem (Yu et al., 2017; Lu et al., 2018), which relies  on  sampling  from  the  non-stationary model distribution and suffers from high variance  or  biased  estimations.   In  this  paper, we  proposeψ-MLE,  a  new  training  scheme for auto-regressive sequence generative models, which is effective and stable when operating at large sample space encountered in text generation.   We  derive  our  algorithm  from a  new  perspective  of  self-augmentation  and introduce  bias  correction  with  density  ratio estimation.   Extensive  experimental  results on  synthetic  data  and  real-world  text  generation  tasks  demonstrate  that  our  method stably outperforms Maximum Likelihood Estimation and other state-of-the-art sequence generative  models  in  terms  of  both  quality and diversity.},
   timestamp = {2020-01-07},
 }
 
@@ -110,6 +111,8 @@
   title     = {Dispersing Exponential Family Mixture {VAE}s for Interpretable Text Generation},
   year      = {2020},
   month     = jul,
+  abstract  = {Interpretability is important in text generation for guiding the generation with interpretable attributes. Variational auto-encoder (VAE) with Gaussian distribution as prior has been successfully applied in text generation, but it is hard to interpret the meaning of the latent variable. To enhance the controllability and interpretability, one can replace the Gaussian prior with a mixture of Gaussian distributions (GM-VAE), whose mixture components could be related to some latent attributes of data. Unfortunately, straightforward variational training of GM-VAE leads the mode-collapse problem. In this paper, we find that mode-collapse is a general problem for VAEs with exponential family mixture priors.  We propose DEM-VAE, which introduces an extra dispersion term to induce a well-structured latent space.
+Experimental results show that our approach does obtain a well structured latent space, with which our method outperforms strong baselines in interpretable text generation benchmarks.},
 }
 
 @InProceedings{ru2020quachie,
