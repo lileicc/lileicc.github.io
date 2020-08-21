@@ -112,8 +112,10 @@
             <option value="">Search Topic</option>
             <!-- Add topic values here -->
             <option value="sentence generation">Text Generation</option>
-            <option value="probabilsitic inference|probabilistic models">Probabilistic Inference</option>
-            <option value="question answering|machine reading comprehension">Question Answering</option>
+            <option value="probabilsitic inference|probabilistic models">Probabilistic
+              Inference</option>
+            <option value="question answering|machine reading comprehension">Question
+              Answering</option>
             <option value="time series|time sequences">Time Series Analysis</option>
             <option value="object detection|segmentation|visual">Vision</option>
           </select>
@@ -123,133 +125,81 @@
             type="text">
           <span class="help-block">Example: journal 2015 (finds the intersection
             of the two terms)</span> </div>
-          <span class="bibtex_search_stats">0</span> results
-      </div>
+        <span class="bibtex_search_stats">0</span> results </div>
     </div>
     <div class="bibtex_structure">
-        <div class="group year" extra="DESC number"> 
-          <a href="#top" style="display: inline"><em>(Top
-              of the page)</em></a>
-          <div style="padding-bottom:10px;"></div>
-          <div class="templates"></div>
-          <!-- div class="sort month" extra="DESC date">
-            
-          </div -->
-        </div>
-      </div>
+      <div class="group year" extra="DESC number"> <a href="#top" style="display: inline"><em>(Top
+            of the page)</em></a>
+        <div style="padding-bottom:10px;"></div>
+        <div class="templates"></div>
+        <!-- div class="sort month" extra="DESC date">
+                      </div --> </div>
     </div>
     <div id="bibtex_display">
       <div class="if bibtex_template" style="display: none;">
         <ul>
-          <li class="if BIBTEXTYPEKEY==@ARTICLE || BIBTEXTYPEKEY==@INPROCEEDINGS|| BIBTEXTYPEKEY==@MISC|| BIBTEXTYPEKEY==@PHDTHESIS|| BIBTEXTYPEKEY==@MASTERTHESIS|| BIBTEXTYPEKEY==@BACHELORSTHESIS|| BIBTEXTYPEKEY==@TECHREPORT|| BIBTEXTYPEKEY==@BOOK">  
-            <span class="if title"> 
-              <a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
-                extra="BIBTEXKEY"><span style="text-decoration: underline;" class="title"></span></a>,
+          <li class="if BIBTEXTYPEKEY==@ARTICLE || BIBTEXTYPEKEY==@INPROCEEDINGS|| BIBTEXTYPEKEY==@MISC|| BIBTEXTYPEKEY==@PHDTHESIS|| BIBTEXTYPEKEY==@MASTERTHESIS|| BIBTEXTYPEKEY==@BACHELORSTHESIS|| BIBTEXTYPEKEY==@TECHREPORT|| BIBTEXTYPEKEY==@BOOK">
+            <span class="if title"> <a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
+                extra="BIBTEXKEY"><span
+                  style="text-decoration: underline;"
+                  class="title"></span></a>,
             </span>
-            <div class="if author"><span class="author" conjunction=", and"><span class="first"></span><span class="last"> </span></span>.</div>
-            <div> 
-              <span class="if journal">
-                <em>
-                  <span class="journal"></span>
-                </em>,
-              </span>
-              <span class="if booktitle">In 
-                <em>
-                  <span class="booktitle">
-                  </span>
-                </em>,
-              </span>
-              <span class="if editor">
-                <span class="editor"></span> (editors),
-              </span>
-              <span class="if publisher">
-                <em>
-                  <span class="publisher"></span>
-                </em>,
-              </span>
-              <span class="if BIBTEXTYPEKEY==@TECHREPORT">
-                Technical report 
-                <span class="number"></span>,</span>
-              <span class="if BIBTEXTYPEKEY==@PHDTHESIS">
-                Ph.D. Dissertation, </span>
-              <span class="if school">
-               <span class="school"></span>, </span>
-              <span class="if howpublished">
-               <span class="howpublished"></span>, </span>
-              <span class="if institution">
-                <span class="institution"></span>,
-              </span>
-              <span class="if address">
-                <span class="address"></span>,
-              </span> 
-              <span
-                class="if volume">
-                <span
-                  class="volume"></span>,
-              </span>
-              <span class="if journal number">(
-                <span class="number"></span>),
-              </span>
-              <span class="if pages"> pages <span class="pages"></span>,</span>
-              <span
-                class="if year"><span
-                  class="year"></span>.</span>
-              <span class="if addendum">(<span class="addendum"></span>) </span>
-              <span class="if url"><a class="bibtexVar" href="+URL+" extra="url">[URL]</a></span>
-              <span class="if doi"><a class="bibtexVar" href="+DOI+" extra="doi">[DOI]</a></span>
-              <span class="if software"><a class="bibtexVar" href="+SOFTWARE+" extra="software">[Software]</a></span>
-              <span class="if slides"><a class="bibtexVar" href="+SLIDES+" extra="slides">[Slides]</a></span> 
-              <a class="bibtexVar"
-                role="button"
-                data-toggle="collapse"
-                href="#bib+BIBTEXKEY+"
+            <div class="if author"><span class="author" conjunction=", and"><span
+                  class="first"></span><span
+                  class="last">
+                </span></span>.</div>
+            <div> <span class="if journal"> <em> <span class="journal"></span>
+                </em>, </span> <span class="if booktitle">In <em> <span class="booktitle">
+                  </span> </em>, </span> <span class="if editor"> <span class="editor"></span>
+                (editors), </span> <span class="if publisher"> <em> <span class="publisher"></span>
+                </em>, </span> <span class="if BIBTEXTYPEKEY==@TECHREPORT">
+                Technical report <span class="number"></span>,</span> <span class="if BIBTEXTYPEKEY==@PHDTHESIS">
+                Ph.D. Dissertation, </span> <span class="if school"> <span class="school"></span>,
+              </span> <span class="if howpublished"> <span class="howpublished"></span>,
+              </span> <span class="if institution"> <span class="institution"></span>,
+              </span> <span class="if address"> <span class="address"></span>,
+              </span> <span class="if volume"> <span class="volume"></span>, </span>
+              <span class="if journal number">( <span class="number"></span>),
+              </span> <span class="if pages"> pages <span class="pages"></span>,</span>
+              <span class="if year"><span class="year"></span>.</span> <span class="if addendum">(<span
+                  class="addendum"></span>)
+              </span> <span class="if url">[<a class="bibtexVar" href="+URL+" extra="url">URL</a>]</span>
+              <span class="if doi">[<a class="bibtexVar" href="+DOI+" extra="doi">DOI</a>]</span>
+              <span class="if eprint">[<a class="bibtexVar" href="+EPRINT+" extra="eprint">Eprint</a>]</span>
+              <span class="if software">[<a class="bibtexVar" href="+SOFTWARE+" extra="software">Software</a>]</span>
+              <span class="if code">[<a class="bibtexVar" href="+CODE+" extra="code">Code</a>]</span>
+              <span class="if slides">[<a class="bibtexVar" href="+SLIDES+" extra="slides">Slides</a>]</span>
+              <a class="bibtexVar" role="button" data-toggle="collapse" href="#bib+BIBTEXKEY+"
                 aria-expanded="false"
                 aria-controls="bib+BIBTEXKEY+"
                 extra="BIBTEXKEY">
-                [bib] </a>
-              <span class="if abstract">
-              <a class="bibtexVar"
-                role="button"
-                data-toggle="collapse"
-                href="#abs+BIBTEXKEY+"
-                aria-expanded="false"
-                aria-controls="abs+BIBTEXKEY+"
-                extra="BIBTEXKEY">
+                [bib] </a> <span class="if abstract">
+              <a class="bibtexVar" role="button" data-toggle="collapse" href="#abs+BIBTEXKEY+"
+aria-expanded="false"
+aria-controls="abs+BIBTEXKEY+"
+extra="BIBTEXKEY">
                 [abstract] </a>
-              </span>
-              <span class="if comment"><span class="comment"></span></span>
+              </span> <span class="if comment"><span class="comment"></span></span>
             </div>
             <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
               <div>
                 <pre><span class="bibtexraw noread raw"></span></pre>
                 <!-- <pre><span class="bibtextypekey raw" style="text-transform:lowercase"></span>{<span class="bibtexkey raw"></span>,
-  author = <span class="author raw"></span>,
-  title = "<span class="title raw"></span>",<span class="if booktitle">
-  booktitle = "<span class="booktitle raw"></span>",</span><span class="if journal">
-  journal = "<span class="journal raw"></span>",</span><span class="if publisher">
-  publisher = "<span class="publisher raw"></span>",</span><span class="if school">
-  school = "<span class="school raw"></span>",</span>
-  year = <span class="year raw"></span>,<span class="if volume">
-  volume = "<span class="volume raw"></span>",</span><span class="if number">
-  number = "<span class="number raw"></span>",</span><span class="if pages">
-  pages = "<span class="pages raw"></span>",</span><span class="if edition">
-  edition = "<span class="edition raw"></span>",</span>
-}</pre> -->
-              </div>
+  author = <span class="author raw"></span>,  title = "<span class="title raw"></span>",<span class="if booktitle">
+  booktitle = "<span class="booktitle raw"></span>",</span><span class="if journal">  journal = "<span class="journal raw"></span>",</span><span class="if publisher">
+  publisher = "<span class="publisher raw"></span>",</span><span class="if school">  school = "<span class="school raw"></span>",</span>
+  year = <span class="year raw"></span>,<span class="if volume">  volume = "<span class="volume raw"></span>",</span><span class="if number">
+  number = "<span class="number raw"></span>",</span><span class="if pages">  pages = "<span class="pages raw"></span>",</span><span class="if edition">
+  edition = "<span class="edition raw"></span>",</span>}</pre> --> </div>
             </div>
             <div class="bibtexVar collapse" id="abs+BIBTEXKEY+" extra="BIBTEXKEY">
               <div>
                 <pre><span class="abstract"></span></pre>
               </div>
             </div>
-            <div style="display:none">
-              <span class="bibtextype"></span>
-            </div>
-            <div style="display:none">
-              <span class="if topic">
-                <span class="topic"></span>
-              </span>
-            </div>
+            <div style="display:none"> <span class="bibtextype"></span> </div>
+            <div style="display:none"> <span class="if topic"> <span class="topic"></span>
+              </span> </div>
           </li>
         </ul>
       </div>

@@ -1,4 +1,6 @@
 % Encoding: UTF-8
+\DeclareDatamodelFields[type=field, datatype=verbatim]{thumbnail}
+\DeclareDatamodelEntryfields{thumbnail}
 
 @Unpublished{bai2020self,
   author = {Hongxiao Bai and Mingxuan Wang and Hai Zhao and Lei Li},
@@ -40,7 +42,9 @@
   year    = {2020},
   issn    = {1057-7149},
   pages   = {1-10},
+  code    = {https://github.com/taokong/FoveaBox},
   doi     = {https://doi.org/10.1109/TIP.2020.3002345},
+  eprint  = {https://arxiv.org/abs/1904.03797},
 }
 
 @Unpublished{li2020bidirectional,
@@ -102,7 +106,9 @@
   year      = {2020},
   month     = aug,
   abstract  = {We present a new, embarrassingly simple approach to instance segmentation in images. Compared to many other dense prediction tasks, e.g., semantic segmentation, it is the arbitrary number of instances that have made instance segmentation much more challenging. In order to predict a mask for each instance, mainstream approaches either follow the 'detect-thensegment' strategy as used by Mask R-CNN, or predict category masks first then use clustering techniques to group pixels into individual instances. We view the task of instance segmentation from a completely new perspective by introducing the notion of "instance categories", which assigns categories to each pixel within an instance according to the instance's location and size, thus nicely converting instance mask segmentation into a classification-solvable problem. Now instance segmentation is decomposed into two classification tasks. We demonstrate a much simpler and flexible instance segmentation framework with strong performance, achieving on par accuracy with Mask R-CNN and outperforming recent singleshot instance segmenters in accuracy. We hope that this very simple and strong framework can serve as a baseline for many instance-level recognition tasks besides instance segmentation.},
-  url       = {https://arxiv.org/abs/1912.04488},
+  code      = {https://github.com/WXinlong/SOLO},
+  eprint    = {https://arxiv.org/abs/1912.04488},
+  thumbnail = {wang2020solo_result_663.jpg},
 }
 
 @InProceedings{shi2020dispersed,
@@ -111,8 +117,10 @@
   title     = {Dispersing Exponential Family Mixture {VAE}s for Interpretable Text Generation},
   year      = {2020},
   month     = jul,
-  abstract  = {Interpretability is important in text generation for guiding the generation with interpretable attributes. Variational auto-encoder (VAE) with Gaussian distribution as prior has been successfully applied in text generation, but it is hard to interpret the meaning of the latent variable. To enhance the controllability and interpretability, one can replace the Gaussian prior with a mixture of Gaussian distributions (GM-VAE), whose mixture components could be related to some latent attributes of data. Unfortunately, straightforward variational training of GM-VAE leads the mode-collapse problem. In this paper, we find that mode-collapse is a general problem for VAEs with exponential family mixture priors.  We propose DEM-VAE, which introduces an extra dispersion term to induce a well-structured latent space.
-Experimental results show that our approach does obtain a well structured latent space, with which our method outperforms strong baselines in interpretable text generation benchmarks.},
+  abstract  = {Deep generative models are commonly used for generating images and text. Interpretability of these models is one important pursuit, other than the generation quality. Variational auto-encoder (VAE) with Gaussian distribution as prior has been successfully applied in text generation, but it is hard to interpret the meaning of the latent variable. To enhance the controllability and interpretability, one can replace the Gaussian prior with a mixture of Gaussian distributions (GM-VAE), whose mixture components could be related to hidden semantic aspects of data. In this paper, we generalize the practice and introduce DEM-VAE, a class of models for text generation using VAEs with a mixture distribution of exponential family. Unfortunately, a standard variational training algorithm fails due to the mode-collapse problem. We theoretically identify the root cause of the problem and propose an effective algorithm to train DEM-VAE. Our method penalizes the training with an extra dispersion term to induce a well-structured latent space. Experimental results show that our approach does obtain a meaningful space, and it outperforms strong baselines in text generation benchmarks. The code is available at https://github.com/wenxianxian/demvae.},
+  code      = {https://github.com/wenxianxian/demvae},
+  eprint    = {https://arxiv.org/abs/1906.06719},
+  thumbnail = {shi2020dispersed_dgmvae_latent.png},
 }
 
 @InProceedings{ru2020quachie,
@@ -166,7 +174,7 @@ Experimental results show that our approach does obtain a well structured latent
   pages   = {312-316},
   volume  = {2},
   doi     = {https://doi.org/10.1038/s42256-020-0183-4},
-  url     = {https://rdcu.be/b5vk7},
+  eprint  = {https://rdcu.be/b5vk7},
 }
 
 @InProceedings{ye2020variational,
@@ -176,7 +184,8 @@ Experimental results show that our approach does obtain a well structured latent
   year      = {2020},
   month     = apr,
   abstract  = {How to generate descriptions from structured data organized in tables? Existing approaches using neural encoder-decoder models often suffer from lacking diversity. We claim that an open set of templates is crucial for enriching the phrase constructions and realizing varied generations.Learning such templates is prohibitive since it often requires a large paired <table,description>, which is seldom available. This paper explores the problem of automatically learning reusable "templates" from paired and non-paired data. We propose the variational template machine (VTM), a novel method to generate text descriptions from data tables. Our contributions include:  a) we carefully devise a specific model architecture and losses to explicitly disentangle text template and semantic content information, in the latent spaces, and b) we utilize both small parallel data and large raw text without aligned tables to enrich the template learning. Experiments on datasets from a variety of different domains show that VTM is able generate more diversely while keeping a good fluency and quality.},
-  url       = {https://openreview.net/forum?id=HkejNgBtPB},
+  code      = {https://github.com/ReneeYe/VariationalTemplateMachine},
+  eprint    = {https://openreview.net/forum?id=HkejNgBtPB},
 }
 
 @InProceedings{zheng2020mirror,
@@ -187,8 +196,8 @@ Experimental results show that our approach does obtain a well structured latent
   month     = apr,
   abstract  = {Training neural machine translation models (NMT) requires a large amount of parallel corpus, which is scarce for many language pairs. However, raw non-parallel corpora are often easy to obtain. Existing approaches have not exploited the full potential of non-parallel bilingual data either in training or decoding. In this paper, we propose the mirror-generative NMT (MGNMT), a single unified architecture that simultaneously integrates the source to target translation model, the target to source translation model, and two language models. Both translation models and language models share the same latent semantic space, therefore both translation directions can learn from non-parallel data more effectively. Besides, the translation models and language models can collaborate together during decoding. Our experiments show that the proposed MGNMT consistently outperforms existing approaches in all a variety of scenarios and language pairs, including resource-rich and low-resource languages.},
   addendum  = {Oral, 1.9\% acceptance rate},
+  eprint    = {https://openreview.net/forum?id=HkxQRTNYPH},
   owner     = {lilei.02},
-  url       = {https://openreview.net/forum?id=HkxQRTNYPH},
 }
 
 @InProceedings{huang2020span,
@@ -217,7 +226,7 @@ Experimental results show that our approach does obtain a well structured latent
   year      = {2020},
   month     = feb,
   abstract  = {Many social media news writers are not professionally trained. Therefore, social media platforms have to hire professional editors to adjust amateur headlines to attract more readers. We propose to automate this headline editing process through neural network models to provide more immediate writing support for these social media news writers. To train such a neural headline editing model, we collected a dataset which contains articles with original headlines and professionally edited headlines. However, it is expensive to collect a large number of professionally edited headlines. To solve this low-resource problem, we design an encoder-decoder model which leverages large scale pre-trained language models. We further improve the pre-trained model's quality by introducing a headline generation task as an intermediate task before the headline editing task. Also, we propose Self Importance-Aware (SIA) loss to address the different levels of editing in the dataset by down-weighting the importance of easily classified tokens and sentences. With the help of Pre-training, Adaptation, and SIA, the model learns to generate headlines in the professional editor's style. Experimental results show that our method significantly improves the quality of headline editing comparing against previous methods.},
-  url       = {https://arxiv.org/abs/1912.01114},
+  eprint    = {https://arxiv.org/abs/1912.01114},
 }
 
 @InProceedings{yang2020towards,
@@ -316,9 +325,8 @@ While for the large WMT14 English-French task with 40 millions of sentence-pairs
   month        = aug,
   pages        = {6569--6571},
   addendum     = {Demo},
-  doi          = {10.24963/ijcai.2019/959},
+  doi          = {https://doi.org/10.24963/ijcai.2019/959},
   entrysubtype = {demo},
-  url          = {https://doi.org/10.24963/ijcai.2019/959},
 }
 
 @InProceedings{weng2019correct,
