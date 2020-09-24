@@ -1,0 +1,87 @@
+
+html,body {
+  font-family: Lato, Arial, sans serif;
+  font-size: 17px;
+  font-style: normal;
+  font-variant: normal;
+}
+
+/*h1 {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 20px;
+  font-weight: 700;
+}*/
+
+/*h1.header {
+  margin-left:8px;
+}
+*/
+
+h1.YEAR {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+li {
+  padding-bottom: 0.33em;
+}
+
+bibtex { display: none; }
+.searchbar { margin-left:0px;}
+#bibtex_errors { 
+  margin-top:10px; 
+  color: red;
+}
+
+pre {
+  white-space: pre-wrap;
+  hyphens: auto;
+  word-break: keep-all;
+}
+
+span.title,span.note,span.addendum {
+  font-weight: bold;
+}
+
+/*.note {
+  color: green;
+  font-size: small;
+  text-indent:2em;
+  margin-top:1px; margin-bottom:-3px;
+}*/
+
+span.raw {
+  color: #333;
+  unicode-bidi: embed;
+  font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
+  font-size: 13px;
+}
+
+span.abstract {
+  white-space: pre-wrap;
+  hyphens: auto;
+  word-break: keep-all;
+  font-size:15px;
+}
+
+span.comment {
+  font-size:small;
+  /*margin-block-start: 0.1em;
+  margin-block-end: 0.1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;*/
+  color: green;
+}
+
+span.bibtex_search_stats {
+  color: Orange;
+}
+
+a.label {
+  font-weight: bold;
+}
