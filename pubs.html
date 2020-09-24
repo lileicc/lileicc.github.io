@@ -4,6 +4,10 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta http-equiv="cache-control" content="no-cache">
     <title> Lei Li's publications </title>
+    <!-- <link href="latofonts.css" rel="stylesheet" type="text/css" /> -->
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="jquery-3.4.1.min.js"></script>
     <script src="bibtex_js.js" type="text/javascript" charset="utf-8"></script>
   </head>
@@ -29,77 +33,25 @@
 		}
     </script>
     <style>
-	    html,body,span,h1 {
-	    	font-family: "Times New Roman", Times, serif;
-	    	font-size: 17px;
-	    }
-	    bibtex { display: none; }
-	    .searchbar { margin-left:0px;}
-	    #bibtex_errors { margin-top:10px; color: red;}
-	    h1.header {margin-left:8px;}
-	    h1.YEAR { font-size: 17px; font-weight: bold; display: inline; margin-left:8px;}
-      pre {
-        white-space: pre-wrap;
-        hyphens: auto;
-        word-break: keep-all;
-      }
-      span.note{
-        font-weight: bold;
-      }
-      span.addendum{
-        font-weight: bold;
-      }
-      /*.note {
-        color: green;
-        font-size: small;
-        text-indent:2em;
-        margin-top:1px; margin-bottom:-3px;
-      }*/
-      span.raw {
-        color: #333;
-        unicode-bidi: embed;
-        font-family: Menlo,Monaco,Consolas,"Courier New",monospace;
-        font-size: 13px;
-      }
-      span.abstract {
-        white-space: pre-wrap;
-        hyphens: auto;
-        word-break: keep-all;
-        font-size:15px;
-      }
-      span.comment {
-        display: block;
-        font-size:small;
-        margin-block-start: 0.1em;
-        margin-block-end: 0.5em;
-        margin-inline-start: 0px;
-        margin-inline-end: 0px;
-        color: green;
-      }
-      span.bibtex_search_stats {
-        color: Tomato;
-      }
       [class="Lei Li"] {
         font-weight: bold;
       }
     </style>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <a name="top"></a>
-    <h1 class="header">Lei Li's Publications</h1>
-    <div class="container-fluid">
-      <div class="searchbar">
+    <div class="container">
+      <h1 class="header">Lei Li's Publications</h1>
+      <div class="searchbar row">
         <div style="float:left;"> <button type="button" class="btn btn-default"
             onclick="reset()">Reset</button>
         </div>
-        <div style="float:left;">
+        <!-- <div style="float:left;">
           <select id="authorselectfirst" class="btn bibtex_search bibtex_author"
             style="border: 1px solid lightgrey;"
             extra="first"
             search="author">
             <option value="">Search First Author</option>
           </select>
-        </div>
+        </div> -->
         <div style="float:left;">
           <select id="authorselect" class="btn bibtex_search bibtex_author" style="border: 1px solid lightgrey;"
             search="author">
@@ -123,17 +75,18 @@
         <div style="float:left;"> <input class="bibtex_search form-control" id="searchbar"
             placeholder="Search publications"
             type="text">
-          <span class="help-block">Example: journal 2015 (finds the intersection
+          <span class="help-block">Example: text generation (finds the intersection
             of the two terms)</span> </div>
-        <span class="bibtex_search_stats">0</span> results </div>
-    </div>
+        <span class="bibtex_search_stats badge">0</span> results
+      </div>
     <div class="bibtex_structure">
-      <div class="group year" extra="DESC number"> <a href="#top" style="display: inline"><em>(Top
-            of the page)</em></a>
-        <div style="padding-bottom:10px;"></div>
+      <div class="group year" extra="DESC number">
         <div class="templates"></div>
         <!-- div class="sort month" extra="DESC date">
-                      </div --> </div>
+                      </div --> 
+      	<a href="#top" style="display: inline"><em>(Top
+            of the page)</em></a>
+      </div>
     </div>
     <div id="bibtex_display">
       <div class="if bibtex_template" style="display: none;">
@@ -141,7 +94,6 @@
           <li class="if BIBTEXTYPEKEY==@ARTICLE || BIBTEXTYPEKEY==@INPROCEEDINGS|| BIBTEXTYPEKEY==@MISC|| BIBTEXTYPEKEY==@PHDTHESIS|| BIBTEXTYPEKEY==@MASTERTHESIS|| BIBTEXTYPEKEY==@BACHELORSTHESIS|| BIBTEXTYPEKEY==@TECHREPORT|| BIBTEXTYPEKEY==@BOOK">
             <span class="if title"> <a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
                 extra="BIBTEXKEY"><span
-                  style="text-decoration: underline;"
                   class="title"></span></a>,
             </span>
             <div class="if author"><span class="author" conjunction=", and"><span
@@ -161,36 +113,36 @@
               </span> <span class="if volume"> <span class="volume"></span>, </span>
               <span class="if journal number">( <span class="number"></span>),
               </span> <span class="if pages"> pages <span class="pages"></span>,</span>
-              <span class="if year"><span class="year"></span>.</span> <span class="if addendum">(<span
-                  class="addendum"></span>)
-              </span> <span class="if url">[<a class="bibtexVar" href="+URL+" extra="url">URL</a>]</span>
-              <span class="if doi">[<a class="bibtexVar" href="+DOI+" extra="doi">DOI</a>]</span>
-              <span class="if eprint">[<a class="bibtexVar" href="+EPRINT+" extra="eprint">Eprint</a>]</span>
-              <span class="if software">[<a class="bibtexVar" href="+SOFTWARE+" extra="software">Software</a>]</span>
-              <span class="if code">[<a class="bibtexVar" href="+CODE+" extra="code">Code</a>]</span>
-              <span class="if slides">[<a class="bibtexVar" href="+SLIDES+" extra="slides">Slides</a>]</span>
-              <a class="bibtexVar" role="button" data-toggle="collapse" href="#bib+BIBTEXKEY+"
+              <span class="if year"><span class="year"></span>.</span> <span class="if addendum">(<span class="addendum"></span>)</span></div>
+            <div>
+            	<span class="if comment"><div><span class="comment"></span></div></span>
+              <a class="bibtexVar label label-success" role="button" data-toggle="collapse" href="#bib+BIBTEXKEY+"
                 aria-expanded="false"
                 aria-controls="bib+BIBTEXKEY+"
-                extra="BIBTEXKEY">
-                [bib] </a> <span class="if abstract">
-              <a class="bibtexVar" role="button" data-toggle="collapse" href="#abs+BIBTEXKEY+"
+                extra="BIBTEXKEY">Bib</a>
+              <span class="if eprint"><a class="bibtexVar label label-primary" href="+EPRINT+" role="button" extra="eprint">Eprint</a></span>
+              <span class="if url"><a class="bibtexVar label label-warning" href="+URL+" role="button" extra="url">URL</a></span>
+              <span class="if software"><a class="bibtexVar label label-danger" href="+SOFTWARE+" role="button"
+                  extra="software">Software</a></span>
+              <span class="if code"><a class="bibtexVar label label-danger" href="+CODE+" role="button" extra="code">Code</a></span>
+              <span class="if slides"><a class="bibtexVar label label-warning" href="+SLIDES+" role="button" extra="slides">Slides</a></span>
+              <span class="if abstract">
+              <a class="bibtexVar label label-default" role="button" data-toggle="collapse" href="#abs+BIBTEXKEY+"
 aria-expanded="false"
 aria-controls="abs+BIBTEXKEY+"
-extra="BIBTEXKEY">
-                [abstract] </a>
-              </span> <span class="if comment"><span class="comment"></span></span>
+extra="BIBTEXKEY">Abstract</a>
+              </span>
+              <span class="if doi"><a class="bibtexVar label label-default" href="+DOI+" role="button" extra="doi">DOI</a></span>
+              <span class="if video"><a class="bibtexVar label label-info" href="+VIDEO+" role="button" extra="video">Video</a></span>
             </div>
             <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
               <div>
                 <pre><span class="bibtexraw noread raw"></span></pre>
                 <!-- <pre><span class="bibtextypekey raw" style="text-transform:lowercase"></span>{<span class="bibtexkey raw"></span>,
-  author = <span class="author raw"></span>,  title = "<span class="title raw"></span>",<span class="if booktitle">
-  booktitle = "<span class="booktitle raw"></span>",</span><span class="if journal">  journal = "<span class="journal raw"></span>",</span><span class="if publisher">
-  publisher = "<span class="publisher raw"></span>",</span><span class="if school">  school = "<span class="school raw"></span>",</span>
-  year = <span class="year raw"></span>,<span class="if volume">  volume = "<span class="volume raw"></span>",</span><span class="if number">
-  number = "<span class="number raw"></span>",</span><span class="if pages">  pages = "<span class="pages raw"></span>",</span><span class="if edition">
-  edition = "<span class="edition raw"></span>",</span>}</pre> --> </div>
+  author = <span class="author raw"></span>,  title = "<span class="title raw"></span>",<span class="if booktitle">  booktitle = "<span class="booktitle raw"></span>",</span><span class="if journal">  journal = "<span class="journal raw"></span>",</span><span class="if publisher">
+  publisher = "<span class="publisher raw"></span>",</span><span class="if school">  school = "<span class="school raw"></span>",</span>  year = <span class="year raw"></span>,<span class="if volume">  volume = "<span class="volume raw"></span>",</span><span class="if number">
+  number = "<span class="number raw"></span>",</span><span class="if pages">  pages = "<span class="pages raw"></span>",</span><span class="if edition">  edition = "<span class="edition raw"></span>",</span>}</pre> -->
+              </div>
             </div>
             <div class="bibtexVar collapse" id="abs+BIBTEXKEY+" extra="BIBTEXKEY">
               <div>
@@ -203,6 +155,7 @@ extra="BIBTEXKEY">
           </li>
         </ul>
       </div>
+    </div>
     </div>
     <!-- Latest compiled and minified JavaScript -->
     <script src="bootstrap.min.js"></script>
