@@ -1,5 +1,5 @@
 body {
-  background: #0a0a0a url(images/background.jpg) no-repeat scroll center top;
+  background: #0a0a0a  no-repeat scroll center top;
   color: #cccccc;
   line-height: 1.3em;
 }
@@ -52,7 +52,7 @@ body.wider #layout {
   width: 1200px;
 }
 #footer {
-  background: #0a0a0a url(images/insidebg.jpg) no-repeat scroll center top;
+  background: #0a0a0a  no-repeat scroll center top;
 }
 #footer .col {
   border-top: 1px dotted #1a1a1a;
@@ -217,7 +217,7 @@ ul.menu li a:hover {
   border-bottom: 1px dotted #1a1a1a;
   margin: 0;
   padding: 0;
-  background: #0a0a0a url(images/insidebg2.jpg) no-repeat scroll center bottom;
+  background: #0a0a0a  no-repeat scroll center bottom;
   height: 100px;
 }
 .larger {
@@ -239,7 +239,7 @@ ul.menu li a:hover {
   color: #000000;
 }
 body.light {
-  background: #fafafa url(images/background-light.jpg) no-repeat scroll center top;
+  background: #fafafa  no-repeat scroll center top;
   color: #444444;
 }
 body.light a {
@@ -273,13 +273,13 @@ body.light ul.menu li a:hover {
 }
 body.light .separator {
   border-bottom: 1px dotted #cccccc;
-  background: #f5f5f5 url(images/insidebg2-light.jpg) no-repeat scroll center bottom;
+  background: #f5f5f5  no-repeat scroll center bottom;
 }
 body.light .slogan {
   color: #888888;
 }
 body.light #footer {
-  background: #f5f5f5 url(images/insidebg-light.jpg) no-repeat scroll center top;
+  background: #f5f5f5  no-repeat scroll center top;
 }
 body.light #footer .col {
   border-top: 1px dotted #cccccc;
