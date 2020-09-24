@@ -85,3 +85,33 @@ span.bibtex_search_stats {
 a.label {
   font-weight: bold;
 }
+
+
+/*##### ICONS #####*/
+div.icon {
+    width: 25px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    bottom:-0.3em;
+}
+
+/* Video Cam Icon */
+div.icon div.videoCam {
+    width: 18px;
+    height: 16px;
+    background: white;
+    border-radius: 3px;
+}
+
+div.icon div.videoCam:after {
+    content: '';
+    position: absolute;
+    left: 13px;
+    top: 1px;
+    height: 14px;
+    border: solid white;
+    border-color: transparent white transparent transparent;
+    border-width: 5px 6px 5px 6px;
+    border-radius: 3px;
+}
