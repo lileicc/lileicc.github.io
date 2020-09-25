@@ -53,17 +53,16 @@
           </select>
         </div> -->
         <div style="float:left;">
-          <select id="authorselect" class="btn bibtex_search bibtex_author" style="border: 1px solid lightgrey;"
-            search="author">
+          <select id="authorselect" class="btn bibtex_search bibtex_generate_author" search="author" style="border: 1px solid lightgrey;">
             <option value="">Search Author</option>
           </select>
         </div>
         <div style="float:left;">
           <select id="topicselect" class="btn
-							bibtex_search" style="border: 1px solid lightgrey;" search="topic">
+							bibtex_search" style="border: 1px solid lightgrey;"  search="topic">
             <option value="">Search Topic</option>
             <!-- Add topic values here -->
-            <option value="sentence generation">Text Generation</option>
+            <option value="text generation">Text Generation</option>
             <option value="probabilsitic inference|probabilistic models">Probabilistic
               Inference</option>
             <option value="question answering|machine reading comprehension">Question
@@ -81,7 +80,9 @@
       </div>
     <div class="bibtex_structure">
       <div class="group year" extra="DESC number">
-        <div class="templates"></div>
+        <ul>
+          <div class="templates"></div>
+        </ul>
         <!-- div class="sort month" extra="DESC date">
                       </div --> 
       	<a href="#top" style="display: inline"><em>(Top
@@ -89,13 +90,12 @@
       </div>
     </div>
     <div id="bibtex_display">
-      <div class="if bibtex_template" style="display: none;">
-        <ul>
-          <li class="if BIBTEXTYPEKEY==@ARTICLE || BIBTEXTYPEKEY==@INPROCEEDINGS|| BIBTEXTYPEKEY==@MISC|| BIBTEXTYPEKEY==@PHDTHESIS|| BIBTEXTYPEKEY==@MASTERTHESIS|| BIBTEXTYPEKEY==@BACHELORSTHESIS|| BIBTEXTYPEKEY==@TECHREPORT|| BIBTEXTYPEKEY==@BOOK">
+      <div class="bibtex_template" style="display: none;">
+        
+          <li class="if BIBTEXTYPEKEY==ARTICLE || BIBTEXTYPEKEY==INPROCEEDINGS || BIBTEXTYPEKEY==MISC || BIBTEXTYPEKEY==PHDTHESIS || BIBTEXTYPEKEY==MASTERTHESIS || BIBTEXTYPEKEY==BACHELORSTHESIS || BIBTEXTYPEKEY==TECHREPORT || BIBTEXTYPEKEY==BOOK">
             <span class="if title"> <a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
                 extra="BIBTEXKEY"><span
-                  class="title"></span></a>,
-            </span>
+                  class="title"></span></a>,</span>
             <div class="if author"><span class="author" conjunction=", and"><span
                   class="first"></span><span
                   class="last">
@@ -155,7 +155,7 @@ extra="BIBTEXKEY">Abstract</a>
             <div style="display:none"> <span class="if topic"> <span class="topic"></span>
               </span> </div>
           </li>
-        </ul>
+        
       </div>
     </div>
     </div>
