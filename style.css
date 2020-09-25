@@ -26,9 +26,8 @@ h1.YEAR {
   font-weight: bold;
 }
 
-
 li {
-  padding-bottom: 0.33em;
+  padding-bottom: 0.5em;
 }
 
 bibtex { display: none; }
