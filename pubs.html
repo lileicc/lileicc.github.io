@@ -59,16 +59,17 @@
         </div>
         <div style="float:left;">
           <select id="topicselect" class="btn
-							bibtex_search" style="border: 1px solid lightgrey;"  search="topic">
+							bibtex_search" style="border: 1px solid lightgrey;">
             <option value="">Search Topic</option>
             <!-- Add topic values here -->
-            <option value="text generation">Text Generation</option>
-            <option value="probabilsitic inference|probabilistic models">Probabilistic
-              Inference</option>
+            <option value="dialog generation|sentence generation|text generation|headline generation|language generation|news generation|captioning">Natural Language Generation</option>
+            <option value="BLOG|bayesian|probabilsitic inference|probabilistic model|graphical model">Probabilistic
+              Modelling</option>
+            <option value="machine translation|multilingual translation|NMT|SMT">Machine Translation</option>
             <option value="question answering|machine reading comprehension">Question
               Answering</option>
-            <option value="time series|time sequences">Time Series Analysis</option>
-            <option value="object detection|segmentation|visual">Vision</option>
+            <option value="time series|time sequences|coevolving sequences">Time Series Analysis</option>
+            <option value="image classification|object detection|image segmentation|instance segmentation|visual recognition|visual understanding|image retrieval|video retrieval|image captioning|video captioning">Visual Understanding</option>
           </select>
         </div>
         <div style="float:left;"> <input class="bibtex_search form-control" id="searchbar"
@@ -96,10 +97,7 @@
             <span class="if title"> <a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
                 extra="BIBTEXKEY"><span
                   class="title"></span></a>,</span>
-            <div class="if author"><span class="author" conjunction=", and"><span
-                  class="first"></span><span
-                  class="last">
-                </span></span>.</div>
+            <div class="if author"><span class="author" conjunction=", and"><span class="first"></span> <span class="last"></span></span>.</div>
             <div> <span class="if journal"> <em> <span class="journal"></span>
                 </em>, </span> <span class="if booktitle">In <em> <span class="booktitle">
                   </span> </em>, </span> <span class="if editor"> <span class="editor"></span>
