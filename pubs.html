@@ -53,23 +53,23 @@
           </select>
         </div> -->
         <div style="float:left;">
-          <select id="authorselect" class="btn bibtex_search bibtex_author" style="border: 1px solid lightgrey;"
-            search="author">
+          <select id="authorselect" class="btn bibtex_search bibtex_generate_author" search="author" style="border: 1px solid lightgrey;">
             <option value="">Search Author</option>
           </select>
         </div>
         <div style="float:left;">
           <select id="topicselect" class="btn
-							bibtex_search" style="border: 1px solid lightgrey;" search="topic">
+							bibtex_search" style="border: 1px solid lightgrey;">
             <option value="">Search Topic</option>
             <!-- Add topic values here -->
-            <option value="sentence generation">Text Generation</option>
-            <option value="probabilsitic inference|probabilistic models">Probabilistic
-              Inference</option>
+            <option value="dialog generation|sentence generation|text generation|headline generation|language generation|news generation|captioning">Natural Language Generation</option>
+            <option value="BLOG|bayesian|probabilsitic inference|probabilistic model|graphical model">Probabilistic
+              Modelling</option>
+            <option value="machine translation|multilingual translation|NMT|SMT">Machine Translation</option>
             <option value="question answering|machine reading comprehension">Question
               Answering</option>
-            <option value="time series|time sequences">Time Series Analysis</option>
-            <option value="object detection|segmentation|visual">Vision</option>
+            <option value="time series|time sequences|coevolving sequences">Time Series Analysis</option>
+            <option value="image classification|object detection|image segmentation|instance segmentation|visual recognition|visual understanding|image retrieval|video retrieval|image captioning|video captioning">Visual Understanding</option>
           </select>
         </div>
         <div style="float:left;"> <input class="bibtex_search form-control" id="searchbar"
@@ -81,7 +81,9 @@
       </div>
     <div class="bibtex_structure">
       <div class="group year" extra="DESC number">
-        <div class="templates"></div>
+        <ul>
+          <div class="templates"></div>
+        </ul>
         <!-- div class="sort month" extra="DESC date">
                       </div --> 
       	<a href="#top" style="display: inline"><em>(Top
@@ -89,17 +91,13 @@
       </div>
     </div>
     <div id="bibtex_display">
-      <div class="if bibtex_template" style="display: none;">
-        <ul>
-          <li class="if BIBTEXTYPEKEY==@ARTICLE || BIBTEXTYPEKEY==@INPROCEEDINGS|| BIBTEXTYPEKEY==@MISC|| BIBTEXTYPEKEY==@PHDTHESIS|| BIBTEXTYPEKEY==@MASTERTHESIS|| BIBTEXTYPEKEY==@BACHELORSTHESIS|| BIBTEXTYPEKEY==@TECHREPORT|| BIBTEXTYPEKEY==@BOOK">
+      <div class="bibtex_template" style="display: none;">
+        
+          <li class="if BIBTEXTYPEKEY==ARTICLE || BIBTEXTYPEKEY==INPROCEEDINGS || BIBTEXTYPEKEY==MISC || BIBTEXTYPEKEY==PHDTHESIS || BIBTEXTYPEKEY==MASTERTHESIS || BIBTEXTYPEKEY==BACHELORSTHESIS || BIBTEXTYPEKEY==TECHREPORT || BIBTEXTYPEKEY==BOOK">
             <span class="if title"> <a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
                 extra="BIBTEXKEY"><span
-                  class="title"></span></a>,
-            </span>
-            <div class="if author"><span class="author" conjunction=", and"><span
-                  class="first"></span><span
-                  class="last">
-                </span></span>.</div>
+                  class="title"></span></a>,</span>
+            <div class="if author"><span class="author" conjunction=", and"><span class="first"></span> <span class="last"></span></span>.</div>
             <div> <span class="if journal"> <em> <span class="journal"></span>
                 </em>, </span> <span class="if booktitle">In <em> <span class="booktitle">
                   </span> </em>, </span> <span class="if editor"> <span class="editor"></span>
@@ -155,7 +153,7 @@ extra="BIBTEXKEY">Abstract</a>
             <div style="display:none"> <span class="if topic"> <span class="topic"></span>
               </span> </div>
           </li>
-        </ul>
+        
       </div>
     </div>
     </div>
