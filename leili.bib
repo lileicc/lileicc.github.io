@@ -277,16 +277,9 @@
   title     = {Towards Making the Most of {BERT} in Neural Machine Translation},
   year      = {2020},
   month     = feb,
-  abstract  = {GPT-2 and BERT demonstrate the effectiveness of using pre-trained language models (LMs) on various natural language processing tasks. However, LM fine-tuning often suffers from catastrophic forgetting when applied to resource-rich tasks.
-In this work, we introduce a concerted training framework (\method) that is the key to integrate the pre-trained LMs to neural machine translation (NMT).
-Our proposed \method consists of three techniques:
-\begin{inparaenum}[\it a)]
-\item asymptotic distillation to ensure that the NMT model can retain the previous pre-trained knowledge;
-\item a dynamic switching gate to avoid catastrophic forgetting of pre-trained knowledge; and
-\item a strategy to adjust the learning paces according to a scheduled policy.
-\end{inparaenum}
-Our experiments in machine translation show \method gains of up to 3 BLEU score on the WMT14 English-German language pair which even surpasses the previous state-of-the-art pre-training aided NMT by 1.4 BLEU score.
-While for the large WMT14 English-French task with 40 millions of sentence-pairs, our base model still significantly improves upon the state-of-the-art Transformer big model by more than 1 BLEU score.},
+  abstract  = {GPT-2 and BERT demonstrate the effectiveness of using pretrained language models (LMs) on various natural language processing tasks. However, LM fine-tuning often suffers from catastrophic forgetting when applied to resource-rich tasks. In this work, we introduce a concerted training framework (CTNMT) that is the key to integrate the pre-trained LMs to neural machine translation (NMT). Our proposed CTNMT consists of three techniques: a) asymptotic distillation to ensure that the NMT model can retain the previous pre-trained knowledge; b) a dynamic switching gate to avoid catastrophic forgetting of pre-trained knowledge; and c) a strategy to adjust the learning paces according to a scheduled policy. Our experiments in machine translation show CTNMT gains of up
+to 3 BLEU score on the WMT14 English-German language pair which even surpasses the previous state-of-the-art pretraining aided NMT by 1.4 BLEU score. While for the large WMT14 English-French task with 40 millions of sentencepairs, our base model still significantly improves upon the state-of-the-art Transformer big model by more than 1 BLEU score.},
+  eprint    = {https://arxiv.org/abs/1908.05672},
 }
 
 @InProceedings{miao2019kernelized,
@@ -295,6 +288,8 @@ While for the large WMT14 English-French task with 40 millions of sentence-pairs
   title     = {Kernelized {Bayesian} Softmax for Text Generation},
   year      = {2019},
   month     = dec,
+  abstract  = {Neural models for text generation require a softmax layer with proper word embeddings during the decoding phase. Most existing approaches adopt single point embedding for each word. However, a word may have multiple senses according to different context, some of which might be distinct. In this paper, we propose KerBS, a novel approach for learning better embeddings for text generation. KerBS embodies two advantages: a) it employs a Bayesian composition of embeddings for words with multiple senses; b) it is adaptive to semantic variances of words and
+robust to rare sentence context by imposing learned kernels to capture the closeness of words (senses) in the embedding space. Empirical studies show that KerBS significantly boosts the performance of several text generation tasks.},
   code      = {https://github.com/NingMiao/KerBS},
   eprint    = {https://arxiv.org/abs/1911.00274},
 }
@@ -314,7 +309,8 @@ While for the large WMT14 English-French task with 40 millions of sentence-pairs
   title     = {Towards Linear Time Neural Machine Translation with {Capsule} Networks},
   year      = {2019},
   month     = nov,
-  abstract  = {In this study, we first investigate a novel capsule network with dynamic routing for linear time Neural Machine Translation (NMT), referred as CAPSNMT. CAPSNMT uses an aggregation mechanism to map the source sentence into a matrix with pre-determined size, and then applys a deep LSTM network to decode the target sequence from the source representation. Unlike the previous work (Sutskever et al., 2014) to store the source sentence with a passive and bottom-up way, the dynamic routing policy encodes the source sentence with an iterative process to decide the credit attribution between nodes from lower and higher layers. CAPSNMT has two core properties: it runs in time that is linear in the length of the sequences and provides a more flexible way to aggregate the part-whole information of the source sentence. On WMT14 English-German task and a larger WMT14 English-French task, CAPSNMT achieves comparable results with the Transformer system. We also devise new hybrid architectures intended to combine the strength of CAPSNMT and the RNMT model. Our hybrid models obtain state-of-the-arts results on both benchmark datasets. To the best of our knowledge, this is the first work that capsule networks have been empirically inves- tigated for sequence to sequence problems},
+  abstract  = {In this study, we first investigate a novel capsule network with dynamic routing for linear time Neural Machine Translation (NMT), referred as CAPSNMT. CAPSNMT uses an aggregation mechanism to map the source sentence into a matrix with pre-determined size, and then applys a deep LSTM network to decode the target sequence from the source representation. Unlike the previous work (Sutskever et al., 2014) to store the source sentence with a passive and bottom-up way, the dynamic routing policy encodes the source sentence with an iterative process to decide the credit attribution between nodes from lower and higher layers. CAPSNMT has two core properties: it runs in time that is linear in the length of the sequences and provides a more flexible way to aggregate the part-whole information of the source sentence. On WMT14 English-German task and a larger WMT14 English-French task, CAPSNMT achieves comparable results with the Transformer system. We also devise new hybrid architectures intended to combine the strength of CAPSNMT and the RNMT model. Our hybrid models obtain state-of-the-arts results on both benchmark datasets. To the best of our knowledge, this is the first work that capsule networks have been empirically investigated for sequence to sequence problems},
+  eprint    = {https://arxiv.org/abs/1811.00287},
 }
 
 @InProceedings{jiang2019svd,
@@ -531,18 +527,8 @@ the proposed framework.},
   pages     = {1252--1262},
   publisher = {Association for Computational Linguistics},
   abstract  = {Co-training is a popular semi-supervised learning framework to utilize a
-large amount of unlabeled data in addition to a small labeled set. Co-training
-methods exploit predicted labels on the unlabeled data and select samples based
-on prediction confidence to augment the training. However, the selection of
-samples in existing co-training methods is based on a predetermined policy,
-which ignores the sampling bias between the unlabeled and the labeled subsets,
-and fails to explore the data space. In this paper, we propose a novel method,
-Reinforced Co-Training, to select high-quality unlabeled samples to better
-co-train on. More specifically, our approach uses Q-learning to learn a data
-selection policy with a small labeled dataset, and then exploits this policy to
-train the co-training classifiers automatically. Experimental results on
-clickbait detection and generic text classification tasks demonstrate that our
-proposed method can obtain more accurate text classification results.},
+large amount of unlabeled data in addition to a small labeled set. Co-training methods exploit predicted labels on the unlabeled data and select samples based on prediction confidence to augment the training. However, the selection of samples in existing co-training methods is based on a predetermined policy, which ignores the sampling bias between the unlabeled and the labeled subsets, and fails to explore the data space. In this paper, we propose a novel method, Reinforced Co-Training, to select high-quality unlabeled samples to better co-train on. More specifically, our approach uses Q-learning to learn a data selection policy with a small labeled dataset, and then exploits this policy to train the co-training classifiers automatically. Experimental results on
+clickbait detection and generic text classification tasks demonstrate that our proposed method can obtain more accurate text classification results.},
   eprint    = {http://arxiv.org/abs/1804.06035},
   location  = {New Orleans, Louisiana},
   timestamp = {2018-05-07T10:09:16.000+0200},
