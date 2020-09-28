@@ -566,6 +566,10 @@ function BibtexDisplay() {
             }
         } while (true);
 
+        if (tpl.is(":empty")) {
+            return null;
+        }
+
         tpl.find('.bibtexVar').each(function() {
             var key = $(this).attr("extra").toUpperCase();
             var regEx = new RegExp('\\+' + key + '\\+', "gi");
