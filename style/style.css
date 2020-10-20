@@ -10,8 +10,8 @@
 
 body {
     background: #0a0a0a top center no-repeat;
-    color: #ccc;
-    font: Arial, Helvetica, sans-serif;
+    color: black;
+    font: LatoWeb, Arial, Helvetica, sans-serif;
     line-height: 1.3em;
 }
 
@@ -24,7 +24,6 @@ img.imgright { float: right; margin: 0 0 15px 15px; padding: 5px; border: 0px da
 img.imgleft { float: left; margin: 0 15px 15px 0; padding: 5px; border: 0px dashed #a63a3a; }
 
 /* Main Styles */
-
 
 div .main .project  /* the wrapper for a project description on the main page */
 {
@@ -68,90 +67,6 @@ div .main .project  /* the wrapper for a project description on the main page */
 		{
 			color: #444;
 		}
-	
-	#container #menucont
-	{
-		margin: 0 auto;
-		width: 900px;
-		height: 44px;
-		background: #444 url('../images/bg_menucont.gif') no-repeat right top;
-	}
-	
-		#container #menucont h1
-		{
-			display: inline;
-			height: 50px;
-			margin: 5px 0 5px 20px;
-			font-size: 36px;
-			color: #aaa;
-			font-family: 'Cabin Condensed', sans-serif;
-			letter-spacing: -1px;	
-		}
-
-		#container #menucont ul
-		{
-			float: right;
-			height: 46px;
-		}
-		
-		#container #menucont ul li
-		{
-			float: right;
-			display: block;
-		}
-		
-		#container #menucont ul li a
-		{
-			float: right;
-			display: block;
-			color: #FFF;
-			background: #444 url('../images/bg_menucont.gif') no-repeat right top;
-			padding: 0 25px;
-			line-height: 44px;
-			font-size: 11px;
-			text-decoration: none;
-			font-weight: bold;
-			text-transform: uppercase;
-		}
-		
-		#container #menucont ul ul li a
-		{ 
-			float: none; 
-			width: 160px;
-			padding: 10px 20px;
-			border: 0;
-			line-height: 14px;
-			font-weight: normal;
-		}
-
-		#container #menucont ul li a:hover, #container #menucont ul li.sfHover a, #container #menucont ul ul a
-		{
-			color: #FFF;
-			background: #555;
-		}
-		
-		#container #menucont ul li li a:hover, #container #menucont ul li.sfHover li a:hover
-		{
-			color: #FFF;
-			background: #888;
-		}
-		
-			/*** Start SuckerFish Styles ***/
-			
-				.sf-menu, .sf-menu * { margin: 0; padding: 0; list-style:	none; }
-				.sf-menu { line-height:	1.0; }
-				.sf-menu ul { position: absolute; top: -999em; width: 200px; margin-top: 0; padding-top: 0; }
-				.sf-menu ul li { width:	100%; }
-				.sf-menu li:hover { visibility: inherit; }
-				.sf-menu li { float: right; position: relative; }
-				.sf-menu a { display: block; position: relative; }
-				.sf-menu li:hover ul, .sf-menu li.sfHover ul { left: 0px; top: 44px; z-index: 99; }
-				ul.sf-menu li:hover li ul, ul.sf-menu li.sfHover li ul { top: -999em; }
-				ul.sf-menu li li:hover ul, ul.sf-menu li li.sfHover ul { right: 200px; top: 0; }
-				ul.sf-menu li li:hover li ul, ul.sf-menu li li.sfHover li ul { top: -999em; }
-				ul.sf-menu li li li:hover ul, ul.sf-menu li li li.sfHover ul { right: 10em; top: 0; }		
-			
-			/** End SuckerFish Styles **/
 	
 	#container #maincont
 	{
@@ -235,9 +150,122 @@ div .main .project  /* the wrapper for a project description on the main page */
 
 
 
+/* navigation bar*/
+ul.nav {
+	margin: 0;
+	list-style-type: none;
+	padding-left: 0;
+	overflow: hidden;
+	background-color: #333333;
+}
+ul.nav li {
+	position: relative;
+	float: left;
+	/*background: url(../images/arrow.png) no-repeat 0 11px;*/
+}
+.navbar-inverse ul.nav li {
+	position: relative;
+	float: right;
+	/*background: url(../images/arrow.png) no-repeat 0 11px;*/
+}
+ul.nav li a {
+	font: 14px/1.2em 'Roboto', sans-serif;
+	color: white;
+	padding: 16px;
+	text-align: center;
+	display: inline;
+	position: relative;
+	text-decoration: none;
+}
+
+.navbar-inverse .navbar-brand img {
+	width: 171px;
+}
+
+.navbar-inverse {
+	background: #fff;  
+	margin: 0 auto; 
+}
+.navbar-inverse {
+	border: none;
+}
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > .open ul > a {
+	color: #B8B8B8;
+	font-size: 16px;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus, 
+.navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus,
+.navbar-inverse .navbar-nav > .active > a{
+	background: #3d84e6;
+	color: #fff !important;
+    border-radius: 0px;
+} 
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > .open ul > a {
+	text-align: left;
+}
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover{
+color: #fff !important;
+    border-radius: 0px;
+    background: #3d84e6;
+}
 
 
+.navbar-toggle {
+	background-color: rgba(0, 0, 0, 0.89);
+}
+.navbar-nav>li>a {
+	padding-top: 12px;
+	padding-bottom: 12px;
+	font-family: 'Arial', sans-serif;
+	font-weight: 400 !important;
+}
 
+
+nav#filter {
+	margin-bottom: 1.5em;
+}
+nav#filter li {
+	display: inline-block;
+	margin: 10px;
+}
+nav#filter a {
+	padding: 4px 12px;
+	line-height: 20px;
+	border: 1px solid #3d84e6;
+	text-decoration: none;
+	color: #3d84e6;
+    border-left: 0px;
+	border-right: 0px;
+}
+nav#filter a.current {
+	background: #3d84e6;
+	color: #fff;
+}
+
+@media (max-width: 767px) {
+.navbar-collapse ul {
+	text-align: right;
+	margin-right: 0px;
+}
+}
+
+
+@media (max-width: 768px) {
+.navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > .open ul > a {
+	font-size: 13px;
+}
+    .navbar-inverse .navbar-nav > li > a, .navbar-inverse .navbar-nav > .open ul > a {
+text-align: right;
+}
+}
+
+
+#quote-carousel .carousel-indicators li {
+	background: #c0c0c0;
+}
+#quote-carousel .carousel-indicators .active {
+	background: #333333;
+}
 
 form input
 {
