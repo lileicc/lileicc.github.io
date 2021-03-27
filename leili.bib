@@ -1,47 +1,58 @@
 % Encoding: UTF-8
 
-@Unpublished{bai2020self,
-  author = {Hongxiao Bai and Mingxuan Wang and Hai Zhao and Lei Li},
-  title  = {Self-Training with Heterogeneous Teachers Improves Neural Machine Translation},
-  year   = {2100},
+@InProceedings{long2021generative,
+  author    = {Long, Quanyu and Wang, Mingxuan and Li, Lei},
+  booktitle = {Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)},
+  title     = {Generative Imagination Elevates Machine Translation},
+  year      = {2021},
+  month     = jun,
+  publisher = {Association for Computational Linguistics},
+  abstract  = {There are thousands of languages on earth, but visual perception is shared among peoples. Existing multimodal neural machine translation (MNMT) methods achieve knowledge transfer by enforcing one encoder to learn shared representation across textual and visual modalities. However, the training and inference process heavily relies on well-aligned bilingual sentence - image triplets as input, which are often limited in quantity. In this paper, we hypothesize that visual imagination via synthesizing visual representation from source text could help the neural model map two languages with different symbols, thus helps the translation task. Our proposed end-to-end imagination-based machine translation model (ImagiT) first learns to generate semantic-consistent visual representation from source sentence, and then generate target sentence based on both text representation and imagined visual representation. Experiments demonstrate that our translation model benefits from visual imagination and significantly outperforms the text-only neural machine translation (NMT) baseline. We also conduct analyzing experiments, and the results show that imagination can help fill in missing information when performing the degradation strategy.},
+  eprint    = {https://arxiv.org/abs/2009.09654},
+  location  = {Mexico City, Mexico},
+  owner     = {lilei.02},
+  timestamp = {2021-03-11},
 }
 
-@Unpublished{bai2020triangular,
-  author   = {Hongxiao Bai and Mingxuan Wang and Hai Zhao and Lei Li},
-  title    = {Triangular Unsupervised Neural Machine Translation},
-  year     = {2100},
-  addendum = {in submission},
+@InProceedings{chen2021scale,
+  author    = {Yukang Chen and Yanwei Li and Tao Kong and Lu Qi and Ruihang Chu and Lei Li and Jiaya Jia},
+  booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  title     = {Scale-aware Automatic Augmentation for Object Detection},
+  year      = {2021},
+  month     = jun,
+  owner     = {lilei.02},
 }
 
-@Unpublished{bao2020pnat,
-  author = {Yu Bao and Hao Zhou and Jiangtao Feng and Mingxuan Wang and Shujian Huang and Jiajun Chen and Lei Li},
-  note   = {in submission},
-  title  = {{PNAT}: Non-autoregressive Transformer by Position Learning},
-  year   = {2100},
+@InProceedings{jing2021locate,
+  author    = {Ya Jing and Tao Kong and Wei Wang and Liang Wang and Lei Li and Tieniu Tan},
+  booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  title     = {Locate then Segment: A Strong Pipeline for Referring Image Segmentation},
+  year      = {2021},
+  month     = jun,
+  owner     = {lilei.02},
 }
 
-@Unpublished{li2020bidirectional,
-  author = {Mingwei Li and Qingyuan Jiang and Yi He and Lei Li and Wujun Li},
-  title  = {Bidirectional Attentive Convolutional Neural Network for Near-Duplicate Video Retrieval},
-  year   = {2100},
+@InProceedings{sun2021sparse,
+  author    = {Peize Sun and Rufeng Zhang and Yi Jiang and Tao Kong and Chenfeng Xu and Wei Zhan and Masayoshi Tomizuka and Lei Li and Zehuan Yuan and Changhu Wang and Ping Luo},
+  booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  title     = {Sparse {R-CNN}: End-to-End Object Detection with Learnable Proposals},
+  year      = {2021},
+  month     = jun,
+  code      = {https://github.com/PeizeSun/SparseR-CNN},
+  eprint    = {https://arxiv.org/abs/2011.12450},
+  owner     = {lilei.02},
 }
 
-@Unpublished{sun2020diving,
-  author = {Zewei Sun and Mingxuan Wang and Hao Zhou and Chengqi Zhao and Shujian Huang and Jiajun Chen and Lei Li},
-  title  = {Diving into Document-Level Neural Machine Translation},
-  year   = {2100},
-}
-
-@Unpublished{tian2020conversational,
-  author = {Youzhi Tian and Zhou Yu and Cheng Yang and Hang Li and Lei Li},
-  title  = {Conversational Contextualized Multimodal Representation Learning},
-  year   = {2100},
-}
-
-@Unpublished{yan2020cross,
-  author = {An Yan and Xin Wang and Jiangtao Feng and Lei Li and William Yang Wang},
-  title  = {Cross-Lingual Vision-Language Navigation},
-  year   = {2100},
+@InProceedings{wang2021dense,
+  author    = {Xinlong Wang and Rufeng Zhang and Chunhua Shen and Tao Kong and Lei Li},
+  booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
+  title     = {Dense Contrastive Learning for Self-Supervised Visual Pre-Training},
+  year      = {2021},
+  month     = jun,
+  addendum  = {Oral},
+  code      = {https://github.com/WXinlong/DenseCL},
+  eprint    = {https://arxiv.org/abs/2011.09157},
+  owner     = {lilei.02},
 }
 
 @InProceedings{xie2021mars,
@@ -51,8 +62,10 @@
   year      = {2021},
   month     = may,
   abstract  = {Searching for novel molecules with desired chemical properties is crucial in drug discovery.  Existing work focuses on developing deep generative models to generate either sequences or chemical molecular graphs. However, it remains a great challenge to find novel and diverse compounds satisfying many properties. In this paper, we propose MARS, a method for multi-objective drug molecule discovery. MARS is based on the idea of generating the chemical candidates by iterative editing fragments of molecular graphs. To search for the best candidates, it employs an annealing scheme together with Markov chain Monte Carlo sampling (MCMC) on molecules. To further improve sample efficiency, MARS is equipped with a graph neural network (GNN) as the proposal for candidate edits on molecules, while the GNN is trained on-the-fly utilizing the sample paths in MCMC. Our experiments show that MARS achieves state-of-the-art performance in various multi-objective settings where molecular bio-activity, drug-likeness, and synthesizability are simultaneously considered.  In the most challenging setting where four objectives – bio-activities to two different targets, drug-likeness and synthesizability – are simultaneously considered, our method outperforms the state-of-the-art significantly in a comprehensive evaluation.},
+  addendum  = {Spotlight, 5.6\% acceptance rate},
   eprint    = {https://openreview.net/forum?id=kHSu4ebxFXY},
   owner     = {lilei.02},
+  thumbnail = {xie2021mars_molecule_editing.jpg},
 }
 
 @InProceedings{song2021triangular,
@@ -62,6 +75,7 @@
   year      = {2021},
   month     = mar,
   abstract  = {Sponsored search auction is a crucial component of modern search engines. It requires a set of candidate bidwords that advertisers can place bids on. Existing methods generate bidwords from search queries or advertisement content. However, they suffer from the data noise in <query, bidword> and <advertisement, bidword> pairs. In this paper, we propose a triangular bidword generation model (TRIDENT), which takes the high-quality data of paired <query, advertisement> as a supervision signal to indirectly guide the bidword generation process. Our proposed model is simple yet effective: by using bidword as the bridge between search query and advertisement, the generation of search query, advertisement and bidword can be jointly learned in the triangular training framework. This alleviates the problem that the training data of bidword may be noisy. Experimental results, including automatic and human evaluations, show that our proposed TRIDENT can generate relevant and diverse bidwords for both search queries and advertisements. Our evaluation on online real data validates the effectiveness of the TRIDENT’s generated bidwords for product search.},
+  eprint    = {https://arxiv.org/abs/2101.11349},
   owner     = {lilei.02},
   thumbnail = {song2021triangular_search_bidding_example.jpg},
 }
@@ -74,6 +88,7 @@
   month     = feb,
   eprint    = {https://arxiv.org/abs/2009.09737},
   owner     = {lilei.02},
+  url       = {https://dqqcasia.github.io/projects/COSTT/},
 }
 
 @InProceedings{dong2021listen,
@@ -84,6 +99,7 @@
   month     = feb,
   eprint    = {https://arxiv.org/abs/2009.09704},
   owner     = {lilei.02},
+  url       = {https://dqqcasia.github.io/projects/LUT/},
 }
 
 @InProceedings{huang2021acmo,
@@ -92,9 +108,13 @@
   title     = {ACMo: Angle-Calibrated Moment Methods for Stochastic Optimization},
   year      = {2021},
   month     = feb,
+  abstract  = {Stochastic gradient descent (SGD) is a widely used method for its outstanding generalization ability and simplicity.  daptive gradient methods have been proposed to further accelerate the optimization process.  n this paper, we revisit existing adaptive gradient optimization methods with a new interpretation. 
+Such new perspective leads to a refreshed understanding of the roles of second moments in stochastic optimization.  Based on this, we propose Angle-Calibration Moment method (ACMo), a novel stochastic optimization method. It enjoys the benefits of second moments with only first moment updates. Theoretical analysis shows that ACMo is able to achieve the same convergence rate as mainstream adaptive methods. Experiments on a variety of CV and NLP tasks demonstrate that ACMo has a comparable convergence to state-of-the-art Adam-type optimizers, and even a better generalization performance in most cases. The code is available at https://github.com/Xunpeng746/ACMo.},
   code      = {https://github.com/Xunpeng746/ACMo},
   eprint    = {https://arxiv.org/abs/2006.07065},
   owner     = {lilei.02},
+  thumbnail = {huang2021acmo_illustration.jpg},
+  url       = {https://xunpeng746.github.io/projects/ACMo/ACMo.html},
 }
 
 @InProceedings{liang2021finding,
@@ -103,8 +123,10 @@
   title     = {Finding Sparse Structure for Domain Specific Neural Machine Translation},
   year      = {2021},
   month     = feb,
+  code      = {https://github.com/ohlionel/Prune-Tune},
   eprint    = {https://arxiv.org/abs/2012.10586},
   owner     = {lilei.02},
+  thumbnail = {liang2021finding_prune_tune_diagram.svg},
 }
 
 @InProceedings{wu2021textgail,
@@ -125,6 +147,7 @@
   code      = {https://github.com/JieyuZ2/TMN},
   eprint    = {https://arxiv.org/abs/2101.01896},
   owner     = {lilei.02},
+  thumbnail = {zhang2021taxonomy_completion_task.svg},
 }
 
 @InProceedings{wang2020solov2,
@@ -185,7 +208,9 @@
   month     = nov,
   abstract  = {We investigate the following question for machine translation (MT): can we develop a single universal MT model to serve as the common seed and obtain derivative and improved models on arbitrary language pairs? We propose mRASP, an approach to pre-train a universal multilingual neural machine translation model. Our key idea in mRASP is its novel technique of random aligned substitution, which brings words and phrases with simlar meanings across multiple languages closer in the representation space. We pre-train a mRASP model on 32 language pairs jointly with only public datasets. The model is then fine-tuned on downstream language pairs to obtain specialized MT models. We carry out extensive experiments on 42 translation directions across a diverse settings, including low, medium, rich resource, and as well as transferring to exotic language pairs. Experimental results demonstrate that mRASP achieves significant performance improvement compared to directly training on those target pairs. It is the first time to verify that multiple low-esource language pairs can be utilized to improve rich resource MT. Surprisingly, mRASP is even able to improve the translation quality on exotic languages that never occur in the pre- training corpus.},
   code      = {https://github.com/linzehui/mRASP},
+  comment   = {This version improves over the EMNLP published one. Table 1 and 3 are updated with better hyperparameter tuning for both baselines and mRASP. The conclusion remains valid.},
   eprint    = {https://arxiv.org/abs/2010.03142},
+  thumbnail = {lin2020pre_mrasp_diagram.png},
 }
 
 @InProceedings{zeng2020double,
@@ -232,9 +257,9 @@
   dayfiled    = {10},
   month       = sep,
   monthfiled  = aug,
-  note        = {舆情指数的预测方法及装置、计算机设备和可读存储介质},
   title       = {Sentiment Prediction Method and Device},
   type        = {patent},
+  comment     = {舆情指数的预测方法及装置、计算机设备和可读存储介质},
   owner       = {lilei.02},
 }
 
@@ -332,6 +357,7 @@
   code     = {https://github.com/taokong/FoveaBox},
   doi      = {https://doi.org/10.1109/TIP.2020.3002345},
   eprint   = {https://arxiv.org/abs/1904.03797},
+  url      = {http://www.taokong.org/projects/FoveaBox/},
 }
 
 @Article{wu2020towards,
@@ -424,6 +450,7 @@
   month     = feb,
   abstract  = {Second-order optimization methods have desirable convergence properties. However, the exact Newton method requires expensive computation for the Hessian and its inverse. In this paper, we propose SPAN, a novel approximate and fast Newton method. SPAN computes the inverse of the Hessian matrix via low-rank approximation and stochastic Hessian-vector products. Our experiments on multiple benchmark datasets demonstrate that SPAN outperforms existing first-order and second-order optimization methods in terms of the convergence wall-clock time. Furthermore, we provide a theoretical analysis of the per-iteration complexity, the approximation error, and the convergence rate. Both the theoretical analysis and experimental results show that our proposed method achieves a better trade-off between the convergence rate and the per-iteration efficiency.},
   eprint    = {https://arxiv.org/abs/2002.03687},
+  url       = {https://xunpeng746.github.io/projects/SPAN/SPAN.html},
 }
 
 @InProceedings{wang2020task,
@@ -778,7 +805,7 @@ is released at https://github.com/NingMiao/CGMH},
   addendum  = {Oral},
   code      = {https://github.com/NingMiao/CGMH},
   eprint    = {http://arxiv.org/abs/1811.10996},
-  file      = {:pubs/miao-aaai2019-cgmh.pdf:PDF;Software:https\:/github.com/NingMiao/CGMH:URL;PPT:pubs/miao2019cgmh - {CGMH_} Constrained Sentence Generation by Metropolis-Hastings Sampling.pdf:PDF},
+  slides    = {pubs/miao2019cgmh-ppt.pdf},
 }
 
 @Patent{li2019target,
@@ -1407,6 +1434,50 @@ clickbait detection and generic text classification tasks demonstrate that our p
   year      = {2006},
   pages     = {628--639},
   file      = {:pubs/li2006providing - Providing an Uncertainty Reasoning Service for Semantic Web Application.pdf:PDF},
+}
+
+@Unpublished{bai2020self,
+  author = {Hongxiao Bai and Mingxuan Wang and Hai Zhao and Lei Li},
+  title  = {Self-Training with Heterogeneous Teachers Improves Neural Machine Translation},
+  year   = {Draft},
+}
+
+@Unpublished{bai2020triangular,
+  author   = {Hongxiao Bai and Mingxuan Wang and Hai Zhao and Lei Li},
+  title    = {Triangular Unsupervised Neural Machine Translation},
+  year     = {Draft},
+  addendum = {in submission},
+}
+
+@Unpublished{bao2020pnat,
+  author = {Yu Bao and Hao Zhou and Jiangtao Feng and Mingxuan Wang and Shujian Huang and Jiajun Chen and Lei Li},
+  note   = {in submission},
+  title  = {{PNAT}: Non-autoregressive Transformer by Position Learning},
+  year   = {Draft},
+}
+
+@Unpublished{li2020bidirectional,
+  author = {Mingwei Li and Qingyuan Jiang and Yi He and Lei Li and Wujun Li},
+  title  = {Bidirectional Attentive Convolutional Neural Network for Near-Duplicate Video Retrieval},
+  year   = {Draft},
+}
+
+@Unpublished{sun2020diving,
+  author = {Zewei Sun and Mingxuan Wang and Hao Zhou and Chengqi Zhao and Shujian Huang and Jiajun Chen and Lei Li},
+  title  = {Diving into Document-Level Neural Machine Translation},
+  year   = {Draft},
+}
+
+@Unpublished{tian2020conversational,
+  author = {Youzhi Tian and Zhou Yu and Cheng Yang and Hang Li and Lei Li},
+  title  = {Conversational Contextualized Multimodal Representation Learning},
+  year   = {Draft},
+}
+
+@Unpublished{yan2020cross,
+  author = {An Yan and Xin Wang and Jiangtao Feng and Lei Li and William Yang Wang},
+  title  = {Cross-Lingual Vision-Language Navigation},
+  year   = {Draft},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
