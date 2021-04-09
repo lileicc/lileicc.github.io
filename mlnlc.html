@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lilei's Publications in MLNLC</title>
+
+  <!-- 使用 Vue 框架 -->
+  <!-- https://vuejs.org/ -->
+
+
+  <!-- 使用 element UI 组件库 -->
+  <!-- https://element.eleme.io/#/zh-CN/component/installation -->
+  <!-- https://element.eleme.io/#/zh-CN/component/button -->
+
+  <style>
+    html, body {
+      padding: 0px;
+      margin: 0px;
+      min-height: 100vh;
+    }
+
+    .search-container {
+      border-right: 2px solid #999;
+      padding: 16px;
+      height: 100vh;
+      overflow-y: scroll;
+    }
+
+    .detail-container {
+      padding: 16px;
+      height: 100vh;
+    }
+  </style>
+
+  <!-- 引入element ui样式 -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+</head>
+<body>
+
+<div id="app" style="height: 100vh">
+  <el-row style="height:100vh">
+    <!--左侧 搜索，占8/24宽度-->
+    <el-col :span="8" class="search-container">
+      <div style="margin-bottom: 16px">
+        <el-link type="primary" href="https://lileicc.github.io/">Back</el-link>
+      </div>
+      <!--搜索表单-->
+      <div class="search-form">
+        <el-form :inline="true">
+          <el-form-item label="Author">
+            <el-input v-model="searchForm.author" placeholder="author" size="small"></el-input>
+          </el-form-item>
+          <el-form-item label="Title">
+            <el-input v-model="searchForm.title" placeholder="title" size="small"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="onSearch" size="small">Search</el-button>
+          </el-form-item>
+        </el-form>
+      </div>
+
+      <h2>Search Result</h2>
+
+      <!-- 如果搜不到数据，给个友好的提示 -->
+      <div v-if="searchResults.length===0">
+        Can't find data.
+      </div>
+
+      <!-- 如果搜到数据，展示数据内容 -->
+      <div v-if="searchResults.length>0">
+        <!-- 循环渲染 searchResults -->
+        <el-card
+          v-for="searchResult in searchResults"
+          style="margin:16px"
+          shadow="hover"
+          @click.native="onPublicationCardClick(searchResult)"
+        >
+          <div slot="header" class="clearfix">
+            <span>{{searchResult.title}}</span>
+          </div>
+          <div class="author" style="margin-bottom:16px">
+            <!-- 循环渲染 authors -->
+            <span v-for="author in searchResult.authors" :key="author" style="margin-right:8px">{{author}}</span>
+          </div>
+          <div class="link">
+            {{searchResult.link}}
+          </div>
+        </el-card>
+      </div>
+    </el-col>
+
+    <!--右侧 详情，占16/24宽度-->
+    <el-col :span="16" class="detail-container">
+      <iframe id="detail-frame" :src="detailLink" style="border:none;width:100%;height:100%"></iframe>
+    </el-col>
+  </el-row>
+</div>
+
+<!-- 引入Vue框架 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+<!-- 引入element ui组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script>
+new Vue({
+  // 挂载到 <div id="app">
+  el: '#app',
+  // 定义了所有的数据、变量
+  data: {
+    // 所有可以被搜索到的publication，如果要添加/修改，可以修改json
+    publications: [
+      {
+        title: "机器翻译中的 BERT 应用",
+        authors: ["王明轩", "李磊"],
+        link: "https://mlnlc.github.io/blogs/mt/2020/ctnmt/" // push后自动发布 https://github.com/mlnlc/mlnlc.github.io
+      },
+      {
+        title: "Document-level Relation Extraction",
+        authors: ["许润昕", "李磊"],
+        link: "https://mlnlc.github.io/blogs/nlp/2020/GAIN/" // push后自动发布 https://github.com/mlnlc/mlnlc.github.io
+      },
+      {
+        title: "BERT-Flow",
+        authors: ["李博涵", "李磊"],
+        link: "https://mlnlc.github.io/blogs/nlp/2020/bert-flow/" // push后自动发布 https://github.com/mlnlc/mlnlc.github.io
+      },
+    ],
+    // 搜索框
+    searchForm: {
+      title: '',
+      author: '',
+    },
+    // 搜索结果，是 publications 的一部分，用filter过滤
+    searchResults: [],
+    // 右侧的iframe框，详情
+    detailLink: ''
+  },
+  // 定义了可执行的方法
+  methods: {
+    // 当 Search 按钮被点击执行
+    onSearch() {
+      this.searchResults = this.publications
+        .filter(item => {
+          // 如果为空，符合条件。如果不为空，但在作者列表内，符合条件。
+          return this.searchForm.author === '' || item.authors.indexOf(this.searchForm.author) !== -1
+        })
+        .filter(item => {
+          // 如果为空，符合条件。如果不为空，但关键字在标题中，符合条件。
+          return this.searchForm.title === '' || item.title.indexOf(this.searchForm.title) !== -1
+        })
+    },
+
+    // 当publication card被点击执行
+    onPublicationCardClick(publication) {
+      this.detailLink = publication.link
+    }
+  },
+  // 页面初始化，加载完成时执行的方法
+  mounted() {
+    // 默认搜索结果为所有publications
+    this.searchResults = this.publications
+    // 详情默认展示第一个
+    this.detailLink = this.publications[0].link
+  }
+})
+</script>
+</body>
+</html>
