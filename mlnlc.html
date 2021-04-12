@@ -81,7 +81,7 @@
           </div>
           <div class="author" style="margin-bottom:16px">
             <!-- 循环渲染 authors -->
-            <span v-for="author in searchResult.authors" :key="author" style="margin-right:8px">{{author}}</span>
+            <span v-for="author in searchResult.authors" :key="author" style="margin-right:16px">{{author}}</span>
           </div>
           <div class="link">
             {{searchResult.link}}
@@ -109,6 +109,11 @@ new Vue({
   data: {
     // 所有可以被搜索到的publication，如果要添加/修改，可以修改json
     publications: [
+      {
+        title: "Multilingual MT Pre-training --- mRASP",
+        authors: ["Xiao Pan", "Lei Li"],
+        link: "https://mlnlc.github.io/blogs/mt/2020/mrasp/" // push后自动发布 https://github.com/mlnlc/mlnlc.github.io
+      },
       {
         title: "机器翻译中的 BERT 应用",
         authors: ["王明轩", "李磊"],
