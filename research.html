@@ -1,9 +1,157 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en">  <head>    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />    <meta name="description" content="Lei Li" />    <meta name="keywords" content="machine learning deep learning natural language processing probabilistic programming" />    <meta name="author" content="Lei Li" />    <link rel="stylesheet" type="text/css" href="style/origo.css" media="all" />    <!--link rel="stylesheet" type="text/css" href="style/style.css" media="all" /-->    <title>Lei LI's Research Projects</title>  </head>  <body class="blue light">    <div id="layout">      <ul class="menu">        <li><a href="index.html">Home</a></li>        <li class="active"><a href="research.html">Research</a></li>        <li><a href="pubs.html">Publications</a></li>        <li><a href="software.html">Software</a></li>        <li><a href="talks.html">Talks</a></li>        <li><a href="leili-bio.html">Bio</a></li>      </ul>      <div class="row">        <div class="main col">          <h1>Research Projects</h1>          <h2>Intelligent Writing and Deep Text Generation</h2>          <ul>            <li>Xiaomingbot: an intelligent news-writing robot. [<a href="https://xiaomingbot.github.io">Demo</a>]</li>            <li>developing controllable and interpretable methods for effective              text generation. </li>            <li>Bayesian sampling methods for controllable text generation: <a                href="pubs/miao2019cgmh.pdf">CGMH</a>,              <a href="pubs/zhang2019generating.pdf">MHA</a>, <a href="pubs/zhang2020language.pdf">TSMH</a>,              controlling the language generation explicitly using various              constraints. </li>            <li>VAE with hierarchical latent priors. Solving the training              problem for VAE with mixture of exponential family distribution. <a                href="pubs/shi2020dispersed.pdf">DEMVAE</a></li>            <li>Training better data-to-text generation with both data-text              pairs and additional raw text. check out <a href="pubs/ye2020variational.pdf">variational
-                template machine</a> that learns infinite templates for              generation in the latent space. </li>            <li>One embedding is not enough to represent a word! <a href="pubs/miao2019kernelized.pdf">Bayesian
-                Softmax</a> improves text generation. </li>          </ul>          <h2>Multi-lingual Machine Translation </h2>          <p>How to develop a unified model that can translation many language            pairs well? Existing neural machine translation relies on rich            parallel bilingual corpus, which not readily available for many            non-English language pairs. </p>          <ul>            <li>Does pre-trained monolingual language models such as BERT/GPT              benefit bilingual neural machine translation? check out CTNMT <a                href="pubs/yang2020towards.pdf">paper</a></li>            <li><img src="mrasp-logo.png" alt="" title="mRASP" style="width: 149px; height: 56px;"                align="left" />Can
-              we build a universal pre-trained neural model that can improve on              any pairs of language translation? Even if the languages do not              occur in the pre-training corpus? The <a href="pubs/lin2020pre.pdf">mRASP
-                paper</a> tries to answer this question. </li>            <li>Building a model like human who knows two languages: integrating              the translation capabilities from one to the other and vice versa,              as well as the capabilities to compose sentences in both              languages. check out Mirror Generative Neural Machine Translation              <a href="pubs/zheng2020mirror.pdf">paper</a>.</li>            <li>Prune-tune: a method that continually learns multiple domains of              translation. It improves domain-specific translation successively              without degenerating on the general domain, avoiding the common              catastrophic forgetting problem. check out <a href="pubs/liang2021finding.pdf">Prune-tune
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta name="description" content="Lei Li" />
+    <meta name="keywords" content="machine learning deep learning natural language processing probabilistic programming" />
+    <meta name="author" content="Lei Li" />
+    <link rel="stylesheet" type="text/css" href="style/origo.css" media="all" />
+    <!--link rel="stylesheet" type="text/css" href="style/style.css" media="all" /-->
+    <title>Lei LI's Research Projects</title>
+  </head>
+  <body class="blue light">
+    <div id="layout">
+      <ul class="menu">
+        <li><a href="index.html">Home</a></li>
+        <li class="active"><a href="research.html">Research</a></li>
+        <li><a href="pubs.html">Publications</a></li>
+        <li><a href="software.html">Software</a></li>
+        <li><a href="talks.html">Talks</a></li>
+        <li><a href="leili-bio.html">Bio</a></li>
+      </ul>
+      <div class="row">
+        <div class="main col">
+          <h1>Research Projects</h1>
+          <h2>Intelligent Writing and Deep Text Generation</h2>
+          <ul>
+            <li>Xiaomingbot: an intelligent news-writing robot. [<a href="https://xiaomingbot.github.io">Demo</a>]</li>
+            <li>developing controllable and interpretable methods for effective
+              text generation. </li>
+            <li>Bayesian sampling methods for controllable text generation: <a
+                href="pubs/miao2019cgmh.pdf">CGMH</a>,
+              <a href="pubs/zhang2019generating.pdf">MHA</a>, <a href="pubs/zhang2020language.pdf">TSMH</a>,
+              controlling the language generation explicitly using various
+              constraints. </li>
+            <li>VAE with hierarchical latent priors. Solving the training
+              problem for VAE with mixture of exponential family distribution. <a
+                href="pubs/shi2020dispersed.pdf">DEMVAE</a></li>
+            <li>Training better data-to-text generation with both data-text
+              pairs and additional raw text. check out <a href="pubs/ye2020variational.pdf">variational
+                template machine</a> that learns infinite templates for
+              generation in the latent space. </li>
+            <li>One embedding is not enough to represent a word! <a href="pubs/miao2019kernelized.pdf">Bayesian
+                Softmax</a> improves text generation. </li>
+          </ul>
+          <h2>Multi-lingual Machine Translation </h2>
+          <p>How to develop a unified model that can translation many language
+            pairs well? Existing neural machine translation relies on rich
+            parallel bilingual corpus, which not readily available for many
+            non-English language pairs. </p>
+          <ul>
+            <li>Does pre-trained monolingual language models such as BERT/GPT
+              benefit bilingual neural machine translation? check out CTNMT <a
+                href="pubs/yang2020towards.pdf">paper</a></li>
+            <li><img src="mrasp-logo.png" alt="" title="mRASP" style="width: 149px; height: 56px;"
+                align="left" />Can
+              we build a universal pre-trained neural model that can improve on
+              any pairs of language translation? Even if the languages do not
+              occur in the pre-training corpus? The <a href="pubs/lin2020pre.pdf">mRASP
+                paper</a> tries to answer this question. </li>
+            <li>Building a model like human who knows two languages: integrating
+              the translation capabilities from one to the other and vice versa,
+              as well as the capabilities to compose sentences in both
+              languages. check out Mirror Generative Neural Machine Translation
+              <a href="pubs/zheng2020mirror.pdf">paper</a>.</li>
+            <li>Prune-tune: a method that continually learns multiple domains of
+              translation. It improves domain-specific translation successively
+              without degenerating on the general domain, avoiding the common
+              catastrophic forgetting problem. check out <a href="pubs/liang2021finding.pdf">Prune-tune
                 paper</a>. [<a href="https://ohlionel.github.io/project/Prune-Tune/">project
-                page</a>]</li>            <li>How to achieve the top performance in multiple language              directions in WMT 20 (Chinese-English, German-English,              French-German, English-Khmer, English-Pashto). check out our              experience in this <a href="https://arxiv.org/abs/2010.14806">report</a>,              and this <a href="https://arxiv.org/abs/2010.14029">report</a>. </li>            <li>The algorithms are deployed to production, check out <a href="https://translate.volcengine.cn">VolcTrans</a>              that serves hundred millions of translation requests daily, in 55              languages. </li>          </ul>          <h2>Speech-to-text Translation</h2>          <p>Can we build a single unified model that takes voice input in one            language and output translation in another language? Existing            systems are cascaded, combining an ASR system and a MT system. This            project aims to build real working system that can achieve it in            end-to-end fashion. The major challenges are two folds. A model            should translate from the source language to the other, and it has            to convert from one modality (audio) to the other (text). In            addition, existing open datasets for speech translation are limited,            usually a few hundred hours, much less than that for machine            translation (e.g. 4 million pairs of sentences for English-German)</p>          <ul>            <li>Can we utilize the additional transcription text in the source              language to help train a better encoder for speech translation?              Inspired by human's listen, understand, and translate steps, we              propose LUT method that utilizes triplets of source audio, source              text, target text, and a pre-trained BERT model to train a better              end-to-end speech-to-text translation system. check out LUT <a href="https://arxiv.org/abs/2009.09704">paper</a>.              [<a href="https://dqqcasia.github.io/projects/LUT/%20">project                page</a>]</li>            <li>Can we utilize additional large parallel bilingual sentence              pairs for machine translation to enhance speech translation? A              idea based on consecutive decoding can achieve this. checkout              COSTT <a href="https://arxiv.org/abs/2009.09737">paper</a>. [<a href="https://dqqcasia.github.io/projects/COSTT/">project
-                page</a>]</li>          </ul>          <ul>          </ul>          <ul>          </ul>          <h2>AI-powered Drug Discovery</h2>          <p>The purpose of this project is to use AI and machine learning to            power the whole process of drug discovery, test, trial validation            and manufacturing. </p>          <ul>            <li>Find novel and diverse molecules that are effective in terms of              multiple chemical properties and target proteins. check out the              MARS <a href="https://openreview.net/forum?id=kHSu4ebxFXY">paper</a>.            </li>          </ul>          <h1>Old Projects:</h1>          <h3>Probabilistic programming languages and Bayesian inference</h3>          <ul>            <li> <a href="http://bayesianlogic.cs.berkeley.edu/">Bayesian Logic                (BLOG)</a> and its inference system. </li>          </ul>          <h3>Time series learning</h3>          <ul>            <li> Modelling, summarization, clustering, imputation, and              forecasting for multiple co-evolving time series data, with or              without missing values. [<a href="pubs/li2009dynammo.pdf">DynaMMo                paper</a>] [<a href="pubs/cao2018brits.pdf">BRITS neural based                approach</a>] </li>            <li>Human motion and motion capture analysis: <a href="mocap.stitch/index.html">natural
-                motion stitching</a>, <a href="pubs/li2011time.pdf">motion                clustering,</a> </li>            <li>Data center monitoring: to forecast temperature distribution              across servers using approximate thermo-dynamics, therefore to              control the cooling with minimal energy consumption in data              centers. [ThermoCast paper]</li>            <li> <a href="mlds/index.html">Tensor time series (MLDS)</a> </li>          </ul>          <h3>Parallel Learning for Sequential Models</h3>          <ul>            <li> <a href="paralearn/index.html"> Parallel algorithms for                graphical model on multicore </a> : (finished) </li>          </ul>          <h3>Network analysis</h3>          <ul>            <li>social network and social media analysis</li>            <li> <a href="http://www.db.cs.cmu.edu/db-site/Projects/cdem">CDEM</a>              :fly embryo gene pattern mining. (finished) </li>          </ul>        </div>      </div>    </div>  </body></html>
+                page</a>]</li>
+            <li>How to achieve the top performance in multiple language
+              directions in WMT 20 (Chinese-English, German-English,
+              French-German, English-Khmer, English-Pashto). check out our
+              experience in this <a href="https://arxiv.org/abs/2010.14806">report</a>,
+              and this <a href="https://arxiv.org/abs/2010.14029">report</a>. </li>
+            <li>The algorithms are deployed to production, check out <a href="https://translate.volcengine.cn">VolcTrans</a>
+              that serves hundred millions of translation requests daily, in 55
+              languages. </li>
+          </ul>
+          <h2>Speech-to-text Translation</h2>
+          <p>Can we build a single unified model that takes voice input in one
+            language and output translation in another language? Existing
+            systems are cascaded, combining an ASR system and a MT system. This
+            project aims to build real working system that can achieve it in
+            end-to-end fashion. The major challenges are two folds. A model
+            should translate from the source language to the other, and it has
+            to convert from one modality (audio) to the other (text). In
+            addition, existing open datasets for speech translation are limited,
+            usually a few hundred hours, much less than that for machine
+            translation (e.g. 4 million pairs of sentences for English-German)</p>
+          <ul>
+            <li>Can we utilize the additional transcription text in the source
+              language to help train a better encoder for speech translation?
+              Inspired by human's listen, understand, and translate steps, we
+              propose LUT method that utilizes triplets of source audio, source
+              text, target text, and a pre-trained BERT model to train a better
+              end-to-end speech-to-text translation system. check out LUT <a href="https://arxiv.org/abs/2009.09704">paper</a>.
+              [<a href="https://dqqcasia.github.io/projects/LUT/">project
+                page</a>]</li>
+            <li>Can we utilize additional large parallel bilingual sentence
+              pairs for machine translation to enhance speech translation? A
+              idea based on consecutive decoding can achieve this. checkout
+              COSTT <a href="https://arxiv.org/abs/2009.09737">paper</a>. [<a href="https://dqqcasia.github.io/projects/COSTT/">project
+                page</a>]</li>
+          </ul>
+          <ul>
+          </ul>
+          <ul>
+          </ul>
+          <h2>AI-powered Drug Discovery</h2>
+          <p>The purpose of this project is to use AI and machine learning to
+            power the whole process of drug discovery, test, trial validation
+            and manufacturing. </p>
+          <ul>
+            <li>Find novel and diverse molecules that are effective in terms of
+              multiple chemical properties and target proteins. check out the
+              MARS <a href="https://openreview.net/forum?id=kHSu4ebxFXY">paper</a>.
+            </li>
+          </ul>
+          <h1>Old Projects:</h1>
+          <h3>Probabilistic programming languages and Bayesian inference</h3>
+          <ul>
+            <li> <a href="http://bayesianlogic.cs.berkeley.edu/">Bayesian Logic
+                (BLOG)</a> and its inference system. </li>
+          </ul>
+          <h3>Time series learning</h3>
+          <ul>
+            <li> Modelling, summarization, clustering, imputation, and
+              forecasting for multiple co-evolving time series data, with or
+              without missing values. [<a href="pubs/li2009dynammo.pdf">DynaMMo
+                paper</a>] [<a href="pubs/cao2018brits.pdf">BRITS neural based
+                approach</a>] </li>
+            <li>Human motion and motion capture analysis: <a href="mocap.stitch/index.html">natural
+                motion stitching</a>, <a href="pubs/li2011time.pdf">motion
+                clustering,</a> </li>
+            <li>Data center monitoring: to forecast temperature distribution
+              across servers using approximate thermo-dynamics, therefore to
+              control the cooling with minimal energy consumption in data
+              centers. [ThermoCast paper]</li>
+            <li> <a href="mlds/index.html">Tensor time series (MLDS)</a> </li>
+          </ul>
+          <h3>Parallel Learning for Sequential Models</h3>
+          <ul>
+            <li> <a href="paralearn/index.html"> Parallel algorithms for
+                graphical model on multicore </a> : (finished) </li>
+          </ul>
+          <h3>Network analysis</h3>
+          <ul>
+            <li>social network and social media analysis</li>
+            <li> <a href="http://www.db.cs.cmu.edu/db-site/Projects/cdem">CDEM</a>
+              :fly embryo gene pattern mining. (finished) </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
