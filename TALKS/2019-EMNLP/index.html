@@ -1,5 +1,155 @@
-<!DOCTYPE html><html lang="en">  <head>    <meta http-equiv="content-type" content="text/html; charset=UTF-8">    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <meta http-equiv="X-UA-Compatible" content="ie=edge">    <title>VertiCard by TemplateMo</title>    <link rel="stylesheet" href="css/bootstrap.min.css">    <link rel="stylesheet" href="css/templatemo-style.css">    <!--Verticard Templatehttps://templatemo.com/tm-533-verticard<nav class="tm-nav">          <ul>            <li class="active"> <a href="index.html"><span class="tm-nav-deco"></span>Intro</a>            </li>            <li> <a href="gallery.html"><span class="tm-nav-deco"></span>Gallery</a>            </li>            <li> <a href="contact.html"><span class="tm-nav-deco"></span>Contact</a>            </li>          </ul>        </nav>-->  </head>  <body>    <div class="tm-page-container mx-auto">      <header class="tm-header text-center">        <h1 class="tm-title text-uppercase"><a href="https://www.emnlp-ijcnlp2019.org/">EMNLP
-            2019</a> Tutorial: Discreteness in Neural Natural Language          Processing</h1>        <p class="tm-primary-color"><a href="https://lili-mou.github.io/">Lili            Mou</a>, <a href="https://zhouh.github.io/">Hao Zhou</a>, and <a href="https://lileicc.github.io/">Lei
-            Li</a> <br>          November 4, 2019. </p>      </header>      <section class="tm-section">        <div class="tm-content-container">          <!-- <figure class="mb-0"> <img src="img/img-1.jpg" alt="Image" class="img-fluid tm-img">          </figure> -->          <div class="tm-content">            <h2 class="tm-page-title">Description</h2>            <p>This tutorial provides a comprehensive guide to the process of              discreteness in neural NLP. </p>            <p>As a gentle start, we will briefly introduce the background of              deep learning based NLP, where we point out the ubiquitous              discreteness of natural language and its challenges in neural              information processing. Particularly, we will focus on how such              discreteness plays a role in the input space, the latent space,              and the output space of a neural network. In each part, we will              provide examples, discuss machine learning techniques, as well as              demonstrate NLP applications.</p>            <h2 class="tm-page-title">Slides</h2>            <p><a href="emnlp19-discrete-part1.pdf">Part 1</a>, <a href="emnlp19-discrete-part2.pdf">Part
-                2</a>, <a href="emnlp19-discrete-part3.pdf">Part 3</a></p>            <h2 class="tm-page-title">Videos</h2>            <p> <a href="https://vimeo.com/439770809">Part I</a>, <a href="https://vimeo.com/439774101">Part
-                II</a></p>            <h2 class="tm-page-title">Content and Outline</h2>            <ol>              <li> Tutorial Introduction</li>              <ul>                <li>The role of distributed representation in deep learning</li>                <li>Ubiquitous discreteness in natural language processing</li>                <li>Challenges of dealing with discreteness in neural NLP</li>              </ul>              <li>Discrete Input Space </li>              <ul>                <li>Examples of discrete input space</li>                <li>Embedding discrete input as distributed vectors</li>                <li>Incorporating discrete structures into neural architectures                </li>              </ul>              <li>Discrete Latent Space</li>              <ul>                <li>Definitions &amp; Examples</li>                <li>General techniques</li>                <ul>                  <li>Maximum likelihood estimation</li>                  <li>Reinforcement learning</li>                  <li>Gumbel-softmax</li>                  <li>Step-by-step Attention</li>                </ul>                <li>Case studies</li>                <ul>                  <li>Weakly supervised semantic parsing</li>                  <li>Unsupervised syntactic parsing</li>                </ul>              </ul>              <li>Discrete Output Space</li>              <ul>                <li>Examples of discrete output space</li>                <li>Challenges and Solutions of Discrete Output Space</li>                <ul>                  <li>From Continuous Outputs to Discrete Outputs: Embedding                    Matching by Softmax</li>                  <li>Non-differentiable: Difficult for non-MLE training (e.g.,                    GAN)</li>                  <ul>                    <li>RL for Generation</li>                    <li>Gumbel Softmax for Generation</li>                  </ul>                  <li>Exponential Search Space</li>                  <ul>                    <li>Hard for Global Inference</li>                    <li>Hard for Constrained Decoding</li>                  </ul>                </ul>                <li>Case Study</li>                <ul>                  <li>Kernelized Bayesian Softmax</li>                  <li>SeqGAN</li>                  <li>Constrained Sentence Generation with CGMH</li>                </ul>              </ul>              <ol>              </ol>              <li>Conclusion and Take Away </li>            </ol>            <h2 class="tm-page-title">Tutorial Presenters</h2>            <p><a href="https://lili-mou.github.io">Lili Mou</a> (University of              Waterloo) </p>            <p>Lili Mou is currently a postdoctoral fellow at the University of              Waterloo. Lili Mou received his BS and PhD degrees in 2012 and              2017, respectively, from School of EECS, Peking University. His              research interests include deep learning applied to natural              language processing as well as programming language processing. He              is currently focusing on neural-symbolic approaches and generative              models for NLP. He has publications at top conferences and              journals like AAAI, ACL, CIKM, COLING, EMNLP, ICML, IJCAI,              INTERSPEECH, and TACL. He has also published a monograph with              Springer.</p>            <p><a href="https://http://zhouh.github.io">Hao Zhou</a> (ByteDance              AI Lab)</p>            <p>Hao Zhou is a researcher at ByteDance AI Lab. His research              interests are machine learning and its applications for natural              language processing, including syntax parsing, machine translation              and text generation. Currently he focuses on deep generative              models for NLP. Previously he received his Ph.D. degrees in 2017,              from Nanjing University. He has publications in prestigious              conferences and journals, including ACL, EMNLP, NIPS, AAAI, TACL              and JAIR. </p>            <p><a href="https://lileicc.github.io">Lei Li</a> (ByteDance AI Lab)</p>            <p>Dr. Lei Li is Director of ByteDance AI Lab. Lei received his B.S.              in Computer Science and Engineering from Shanghai Jiao Tong              University (ACM class) and Ph.D. in Computer Science from Carnegie              Mellon University, respectively. His dissertation work on fast              algorithms for mining co-evolving time series was awarded ACM KDD              best dissertation (runner up). His recent work on AI writing              received 2nd-class award of WU Wenjun AI prize. Before ByteDance,              he worked at Baidu’s Institute of Deep Learning in Silicon Valley              as a Principal Research Scientist. Before that, he was working in              EECS department of UC Berkeley as a Post-Doctoral Researcher. He              has served in the Program Committee for ICML 2014, ECML/PKDD              2014/2015, SDM 2013/2014, IJCAI 2011/2013/2016/2019, KDD              2015/2016, 2017 KDD Cup co-Chair, KDD 2018 hands-on tutorial              co-chair, EMNLP 2018, AAAI 2019 senior PC, and as a lecturer in              2014 summer school on Probabilistic Programming for Advancing              Machine Learning. He has published over 40 technical papers and              holds 3 US patents. </p>          </div>        </div>      </section>      <footer> <span>Copyright 2019 Simple Profile</span> <span>designed by          TemplateMo and modified</span> </footer>    </div>  </body></html>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EMNLP2019 Tutorial: Discreteness in Neural Natural Language Processing</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/templatemo-style.css">
+    <!--
+Verticard Templatehttps://templatemo.com/tm-533-verticard<nav class="tm-nav">          <ul>            <li class="active"> <a href="index.html"><span class="tm-nav-deco"></span>Intro</a>            </li>            <li> <a href="gallery.html"><span class="tm-nav-deco"></span>Gallery</a>            </li>            <li> <a href="contact.html"><span class="tm-nav-deco"></span>Contact</a>            </li>          </ul>        </nav>-->
+  </head>
+  <body>
+    <div class="tm-page-container mx-auto">
+      <header class="tm-header text-center">
+        <h1 class="tm-title text-uppercase"><a href="https://www.emnlp-ijcnlp2019.org/">EMNLP
+            2019</a> Tutorial: Discreteness in Neural Natural Language
+          Processing</h1>
+        <p class="tm-primary-color"><a href="https://lili-mou.github.io/">Lili
+            Mou</a>, <a href="https://zhouh.github.io/">Hao Zhou</a>, and <a href="https://lileicc.github.io/">Lei
+            Li</a> <br>
+          November 4, 2019. </p>
+      </header>
+      <section class="tm-section">
+        <div class="tm-content-container">
+          <!-- <figure class="mb-0"> <img src="img/img-1.jpg" alt="Image" class="img-fluid tm-img">
+          </figure> -->
+          <div class="tm-content">
+            <h2 class="tm-page-title">Description</h2>
+            <p>This tutorial provides a comprehensive guide to the process of
+              discreteness in neural NLP. </p>
+            <p>As a gentle start, we will briefly introduce the background of
+              deep learning based NLP, where we point out the ubiquitous
+              discreteness of natural language and its challenges in neural
+              information processing. Particularly, we will focus on how such
+              discreteness plays a role in the input space, the latent space,
+              and the output space of a neural network. In each part, we will
+              provide examples, discuss machine learning techniques, as well as
+              demonstrate NLP applications.</p>
+            <h2 class="tm-page-title">Slides</h2>
+            <p><a href="emnlp19-discrete-part1.pdf">Part 1</a>, <a href="emnlp19-discrete-part2.pdf">Part
+                2</a>, <a href="emnlp19-discrete-part3.pdf">Part 3</a></p>
+            <h2 class="tm-page-title">Videos</h2>
+            <p> <a href="https://vimeo.com/439770809">Part I</a>, <a href="https://vimeo.com/439774101">Part
+                II</a></p>
+            <h2 class="tm-page-title">Content and Outline</h2>
+            <ol>
+              <li> Tutorial Introduction</li>
+              <ul>
+                <li>The role of distributed representation in deep learning</li>
+                <li>Ubiquitous discreteness in natural language processing</li>
+                <li>Challenges of dealing with discreteness in neural NLP</li>
+              </ul>
+              <li>Discrete Input Space </li>
+              <ul>
+                <li>Examples of discrete input space</li>
+                <li>Embedding discrete input as distributed vectors</li>
+                <li>Incorporating discrete structures into neural architectures
+                </li>
+              </ul>
+              <li>Discrete Latent Space</li>
+              <ul>
+                <li>Definitions &amp; Examples</li>
+                <li>General techniques</li>
+                <ul>
+                  <li>Maximum likelihood estimation</li>
+                  <li>Reinforcement learning</li>
+                  <li>Gumbel-softmax</li>
+                  <li>Step-by-step Attention</li>
+                </ul>
+                <li>Case studies</li>
+                <ul>
+                  <li>Weakly supervised semantic parsing</li>
+                  <li>Unsupervised syntactic parsing</li>
+                </ul>
+              </ul>
+              <li>Discrete Output Space</li>
+              <ul>
+                <li>Examples of discrete output space</li>
+                <li>Challenges and Solutions of Discrete Output Space</li>
+                <ul>
+                  <li>From Continuous Outputs to Discrete Outputs: Embedding
+                    Matching by Softmax</li>
+                  <li>Non-differentiable: Difficult for non-MLE training (e.g.,
+                    GAN)</li>
+                  <ul>
+                    <li>RL for Generation</li>
+                    <li>Gumbel Softmax for Generation</li>
+                  </ul>
+                  <li>Exponential Search Space</li>
+                  <ul>
+                    <li>Hard for Global Inference</li>
+                    <li>Hard for Constrained Decoding</li>
+                  </ul>
+                </ul>
+                <li>Case Study</li>
+                <ul>
+                  <li>Kernelized Bayesian Softmax</li>
+                  <li>SeqGAN</li>
+                  <li>Constrained Sentence Generation with CGMH</li>
+                </ul>
+              </ul>
+              <ol>
+              </ol>
+              <li>Conclusion and Take Away </li>
+            </ol>
+            <h2 class="tm-page-title">Tutorial Presenters</h2>
+            <p><a href="https://lili-mou.github.io">Lili Mou</a> (University of
+              Waterloo) </p>
+            <p>Lili Mou is currently a postdoctoral fellow at the University of
+              Waterloo. Lili Mou received his BS and PhD degrees in 2012 and
+              2017, respectively, from School of EECS, Peking University. His
+              research interests include deep learning applied to natural
+              language processing as well as programming language processing. He
+              is currently focusing on neural-symbolic approaches and generative
+              models for NLP. He has publications at top conferences and
+              journals like AAAI, ACL, CIKM, COLING, EMNLP, ICML, IJCAI,
+              INTERSPEECH, and TACL. He has also published a monograph with
+              Springer.</p>
+            <p><a href="https://http://zhouh.github.io">Hao Zhou</a> (ByteDance
+              AI Lab)</p>
+            <p>Hao Zhou is a researcher at ByteDance AI Lab. His research
+              interests are machine learning and its applications for natural
+              language processing, including syntax parsing, machine translation
+              and text generation. Currently he focuses on deep generative
+              models for NLP. Previously he received his Ph.D. degrees in 2017,
+              from Nanjing University. He has publications in prestigious
+              conferences and journals, including ACL, EMNLP, NIPS, AAAI, TACL
+              and JAIR. </p>
+            <p><a href="https://lileicc.github.io">Lei Li</a> (ByteDance AI Lab)</p>
+            <p>Dr. Lei Li is Director of ByteDance AI Lab. Lei received his B.S.
+              in Computer Science and Engineering from Shanghai Jiao Tong
+              University (ACM class) and Ph.D. in Computer Science from Carnegie
+              Mellon University, respectively. His dissertation work on fast
+              algorithms for mining co-evolving time series was awarded ACM KDD
+              best dissertation (runner up). His recent work on AI writing
+              received 2nd-class award of WU Wenjun AI prize. Before ByteDance,
+              he worked at Baidu’s Institute of Deep Learning in Silicon Valley
+              as a Principal Research Scientist. Before that, he was working in
+              EECS department of UC Berkeley as a Post-Doctoral Researcher. He
+              has served in the Program Committee for ICML 2014, ECML/PKDD
+              2014/2015, SDM 2013/2014, IJCAI 2011/2013/2016/2019, KDD
+              2015/2016, 2017 KDD Cup co-Chair, KDD 2018 hands-on tutorial
+              co-chair, EMNLP 2018, AAAI 2019 senior PC, and as a lecturer in
+              2014 summer school on Probabilistic Programming for Advancing
+              Machine Learning. He has published over 40 technical papers and
+              holds 3 US patents. </p>
+          </div>
+        </div>
+      </section>
+      <footer> <span>Copyright 2019 Simple Profile</span> <span>designed by
+          TemplateMo and modified</span> </footer>
+    </div>
+  </body>
+</html>
