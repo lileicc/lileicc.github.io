@@ -1,1183 +1,1199 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
-  "http://www.w3.org/TR/html4/loose.dtd">  
-<html > 
-<head><title>ACL2021 Tutorial: Pre-training Methods for Neural Machine
-Translation</title> 
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
-<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
-<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
-<!-- html --> 
-<meta name="src" content="acl-tutorial-proposal-pretrain-nmt.tex"> 
-<link rel="stylesheet" type="text/css" href="latexstyle.css"> 
-</head><body 
->
-  <div class="maketitle">
-                                                                                      
-<h1 class="titleHead">ACL 2021 Tutorial<br /> 
-  Pre-training Methods for Neural Machine Translation</h1>
-<div class="author" ><span 
-class="ptmb7t-x-x-120">Mingxuan Wang  and  Lei Li</span>
-<br /><span 
-class="ptmr7t-x-x-120">ByteDance AI Lab</span>
-<br />
-<span 
-class="ptmr7t-x-x-120">Aug, 2021</span>
-<br />
-</div><br />
-</div>
-  <h3 class="sectionHead"><span class="titlemark">1    </span> <a 
- id="x1-10001"></a>Tutorial Introduction</h3>
-<!--l. 53--><p class="noindent" >Pre-training is a dominant paradigm in Nature
-Language Processing (NLP)&#x00A0;[<a 
-href="#Xradford2019language">29</a>,&#x00A0;<a 
-href="#Xdevlin2019bert">8</a>,&#x00A0;<a 
-href="#Xliu2019roberta">21</a>], Computer
-Vision&#x00A0;(CV)&#x00A0;[<a 
-href="#Xhe2019rethinking">12</a>,&#x00A0;<a 
-href="#Xxie2020self">35</a>] and Auto Speech Recognition
-(ASR)&#x00A0;[<a 
-href="#Xbansal2019pre">3</a>,&#x00A0;<a 
-href="#Xchuang2020speechbert">6</a>,&#x00A0;<a 
-href="#Xpark2019specaugment">25</a>]. Typically, the models are first
-pre-trained on large amount of unlabeled data to
-capture rich representations of the input, and then
-applied to the downstream tasks by either providing
-context-aware representation of the input, or
-initializing the parameters of the downstream model
-for fine-tuning. Recently, the trend of self-supervised
-pre-training and task-specific fine-tuning finally fully
-hits neural machine translation (NMT)&#x00A0;[<a 
-href="#Xzhu2020incorporating">38</a>,&#x00A0;<a 
-href="#Xyang2020towards">36</a>,&#x00A0;<a 
-href="#Xchen2020distilling">5</a>].
-<!--l. 58--><p class="indent" >  Despite its success, introducing a universal
-pre-trained model to NMT is non-trivial and not
-necessarily yields promising results, especially
-for the resource-rich setup. Unique challenges
-remain in several aspects. First, the objective of
-most pretraining methods are different from the
-downstream NMT tasks. For example, BERT&#x00A0;[<a 
-href="#Xdevlin2019bert">8</a>], a
-popular pre-trained model, is designed for language
-understanding with only a transformer encoder, while
-an NMT model usually consists of an encoder and a
-decoder to perform cross-lingual generation. This gap
-makes it not feasible enough to apply pre-training
-for NMT&#x00A0;[<a 
-href="#Xsong2019mass">31</a>]. Besides, machine translation is
-naturally a multi-lingual problem, but general
-pre-training methods for NLP mainly focus on
-English corpus, such as BERT and GPT. Given
-the success of transfer learning in multi-lingual
-machine translation, it is very appealing to introduce
-multi-lingual pre-training for NMT&#x00A0;[<a 
-href="#Xconneau2019cross">7</a>]. Finally, it is
-ideal to perform machine translation with the help of
-speeches and images representations, since humans
-communicate with each other in a multi-modal
-environment. Current approaches for NMT mainly
-focus on text pre-training. Therefor, how to better     integrate multi-modal pre-training for NMT remains a
-   challenge&#x00A0;[<a 
-href="#Xhuang2016attention">15</a>].
-   <!--l. 64--><p class="indent" >    This tutorial provides a comprehensive guide to
-   make the most of pre-training for neural machine
-   translation. Firstly, we will briefly introduce the
-   background of NMT, pre-training methodology,
-   and point out the main challenges when applying
-   pre-training for NMT. Then we will focus on
-   analysing the role of pre-training in enhancing
-   the performance of NMT, how to design a better
-   pre-training model for executing specific NMT
-   tasks and how to better integrate the pre-trained
-   model into NMT system. In each part, we will
-   provide examples, discuss training techniques
-   and analyse what is transferred when applying
-   pre-training.
-   <!--l. 67--><p class="indent" >    The first topic is the <span 
-class="ptmri7t-x-x-109">monolingual pre-training</span>
-   <span 
-class="ptmri7t-x-x-109">for NMT</span>, which is one of the most well-studied
-   field. Monolingual text representations like ELMo,
-   GPT, MASS and BERT have superiorities, which
-   significantly boost the performances of various
-   natural language processing tasks&#x00A0;[<a 
-href="#Xpeters2018deep">26</a>,&#x00A0;<a 
-href="#Xdevlin2019bert">8</a>,&#x00A0;<a 
-href="#Xradford2019language">29</a>,&#x00A0;<a 
-href="#Xsong2019mass">31</a>].
-   However, NMT has several distinct characteristics,
-   such as the availability of large training data (10
-   million or larger) and the high capacity of baseline
-   NMT models, which requires carefully design of
-   pre-training. In this part, we will introduce different
-   pre-training methods and analyse the best practice
-   when applying them to different machine translation
-   scenarios, such as unsupervised NMT, low-resource
-   NMT and rich-source NMT&#x00A0;[<a 
-href="#Xzhu2020incorporating">38</a>,&#x00A0;<a 
-href="#Xyang2020towards">36</a>]. We will cover
-   techniques to finetune the pre-trained models with
-   various strategies, such as knowledge distillation and
-   adapter&#x00A0;[<a 
-href="#Xbapna2019simple">4</a>,&#x00A0;<a 
-href="#Xliang2021finding">17</a>].
-   <!--l. 71--><p class="indent" >    The next topic is <span 
-class="ptmri7t-x-x-109">multi-lingual pre-training for</span>
-   <span 
-class="ptmri7t-x-x-109">NMT</span>. In this context, we aims at mitigating the
-   English-centric bias and suggest that it is possible to
-   build universal representation for different language
-   to improve massive multi-lingual NMT. In this
-   part, we will discuss the general representation of
-                                                                                       
-                                                                                       
-different languages and analyse how knowledge
-transfers across languages. These will allow a better
-design for multi-lingual pre-training, in particular
-for zero-shot transfer to non-English language
-pairs&#x00A0;[<a 
-href="#Xjohnson2017googles">16</a>,&#x00A0;<a 
-href="#Xqi2018when">28</a>,&#x00A0;<a 
-href="#Xconneau2019cross">7</a>,&#x00A0;<a 
-href="#Xpires2019how">27</a>,&#x00A0;<a 
-href="#Xhuang2019unicoder">13</a>,&#x00A0;<a 
-href="#Xlin2020pre">18</a>,&#x00A0;<a 
-href="#Xliu2020multilingual">20</a>,&#x00A0;<a 
-href="#Xpan2021contrastive">24</a>,&#x00A0;<a 
-href="#Xlin2021learning">19</a>].
-<!--l. 75--><p class="indent" >  The last technical part of this tutorial deals with the
-<span 
-class="ptmri7t-x-x-109">multi-modal pre-training for NMT</span>. In particular, we
-focus on speech and visual representation. Existing
-multi-modal neural machine translation (MNMT)
-methods achieve knowledge transfer by enforcing
-the encoder to learn shared representation across
-textual, speech and visual modalities. In this part, we
-will discuss the possibilities of building a general
-representations across modalities and analyze how
-multi-modal pre-training can guild the text generation of
-NMT&#x00A0;[<a 
-href="#Xwang2019vatex">34</a>,&#x00A0;<a 
-href="#Xliu2019end">22</a>,&#x00A0;<a 
-href="#Xbansal2019pre">3</a>,&#x00A0;<a 
-href="#Xwang2020curriculum">33</a>,&#x00A0;<a 
-href="#Xbaevski2020vq">1</a>,&#x00A0;<a 
-href="#Xbaevski2020wav2vec">2</a>,&#x00A0;<a 
-href="#Xhuang2021m3p">14</a>,&#x00A0;<a 
-href="#Xlong2021generative">23</a>,&#x00A0;<a 
-href="#Xdong2021listen">10</a>,&#x00A0;<a 
-href="#Xdong2021consecutive">9</a>,&#x00A0;<a 
-href="#Xhan2021learning">11</a>,&#x00A0;<a 
-href="#Xye2021end">37</a>].
-<!--l. 77--><p class="indent" >  We conclude the tutorial by pointing out the best
-practice when applying pre-training for NMT. The
-topics cover various of pre-training methods for
-different NMT scenarios. After this tutorial, the
-audience will understand why pre-training for NMT is
-different from other tasks and how to make the most
-of pre-training for NMT. Importantly, we will give
-deep analyze about how and why pre-training
-works in NMT, which will inspire future work
-on designing pre-training paradigm specific for
-NMT.
-<!--l. 79--><p class="noindent" >
-  <h3 class="sectionHead"><span class="titlemark">2    </span> <a 
- id="x1-20002"></a>Tutorial Outline</h3>
-<!--l. 80--><p class="noindent" ><span 
-class="ptmb7t-x-x-109">PART I: Introduction </span>(15 min)
-    <ul class="itemize1">
-    <li class="itemize">Background of NMT
-    </li>
-    <li class="itemize">General pre-training paradigm
-    </li>
-    <li class="itemize">Unique Challenges
-        <ul class="itemize2">
-        <li class="itemize">Objective difference
-        </li>
-        <li class="itemize">Multi-lingual generation
-        </li>
-        <li class="itemize">Modality disparity</li></ul>
-    </li></ul>
-<!--l. 97--><p class="noindent" ><span 
-class="ptmb7t-x-x-109">PART II: Monolingual Pre-training for NMT </span>(60
-min)
-    <ul class="itemize1">
-    <li class="itemize">Partial encoder/decoder pre-training
-        <ul class="itemize2">                                                      <li class="itemize">ElMo, BERT, GPT, XLNET, etc.</li></ul>
-           </li>
-           <li class="itemize">Auto-encoder sequence pre-training
-                   <ul class="itemize2">
-                   <li class="itemize">MASS, Bart, etc.</li></ul>
-           </li>
-           <li class="itemize">Fine-tuning strategy
-                   <ul class="itemize2">
-                   <li class="itemize">Layer-freeze,       adapter,       constraint
-                   fine-tuning, knowledge distillation, etc.</li></ul>
-           </li></ul>
-<!--l. 117--><p class="noindent" ><span 
-class="ptmb7t-x-x-109">PART III: Multi-lingual Pre-training for NMT </span>(45
-   min)
-           <ul class="itemize1">
-           <li class="itemize">Multi-lingual monolingual pre-training
-                   <ul class="itemize2">
-                   <li class="itemize">mBart, CLM, mBert, etc.</li></ul>
-           </li>
-           <li class="itemize">Multi-lingual parallel pre-training
-           </li>
-           <li class="itemize">What does Multi-lingual Transfer
-                   <ul class="itemize2">
-                   <li class="itemize">Embedding Transfer
-                   </li>
-                   <li class="itemize">Attention Transfer
-                   </li>
-                   <li class="itemize">Language Group</li></ul>
-           </li></ul>
-   <!--l. 135--><p class="noindent" ><span 
-class="ptmb7t-x-x-109">PART IV: Multi-modal Pre-training for NMT </span>(45
-   min)
-           <ul class="itemize1">
-           <li class="itemize">Speech Translation (ST)
-                   <ul class="itemize2">
-                   <li class="itemize">unsupervised  speech  representation  for
-                   ST
-                   </li>
-                   <li class="itemize">ASR pre-training for ST
-                   </li>
-                   <li class="itemize">MT pre-training for ST</li></ul>
-           </li>
-           <li class="itemize">Visual guided NMT
-                   <ul class="itemize2">
-                   <li class="itemize">unsupervised  visual  representation  for
-                   NMT, image2text pre-training for NMT</li></ul>
-           </li></ul>
-<!--l. 151--><p class="noindent" ><span 
-class="ptmb7t-x-x-109">PART V: Conclusion and Future Directions </span>(15
-   min)
-                                                                                       
-                                                                                       
-<!--l. 155--><p class="noindent" >
-  <h3 class="sectionHead"><span class="titlemark">3    </span> <a 
- id="x1-30003"></a>Type of Tutorial</h3>
-<!--l. 156--><p class="noindent" >Cutting-edge. In this tutorial, we will discuss the most
-advanced techniques of pre-training for neural
-machine translation. The instructors will also present
-their own practical experiences in enhancing a
-machine translation service as a product, which are
-usually not found in papers.
-<!--l. 159--><p class="noindent" >
-  <h3 class="sectionHead"><span class="titlemark">4    </span> <a 
- id="x1-40004"></a>Tutorial Breadth</h3>
-<!--l. 160--><p class="noindent" >Based on the representative set of papers listed in the
-selected bibliography, we anticipate that 70%-80% of
-the tutorial will cover other researchers&#8217; work, while
-the rest concerns the work where at least one of the
-presenters has been actively involved in. We will
-introduce several important work related to the
-monolingual, the multi-lingual and the multi-modal
-pre-training for NMT.
-<!--l. 163--><p class="noindent" >
-  <h3 class="sectionHead"><span class="titlemark">5    </span> <a 
- id="x1-50005"></a>Diversity</h3>
-<!--l. 164--><p class="noindent" >In the tutorial, some multilingual pre-training
-methods will scale to over 50 to 100 different
-languages. Researchers working on the diverse
-language pairs might find this tutorial relevant and
-useful.
-<!--l. 167--><p class="noindent" >
-  <h3 class="sectionHead"><span class="titlemark">6    </span> <a 
- id="x1-60006"></a>Prerequisites</h3>
-<!--l. 168--><p class="noindent" >The tutorial is self-contained. We will address the
-background, the technical details and the examples.
-Basic knowledge about neural networks are
-required, including word embeddings, attention, and
-encoder-decoder models. Prior NLP courses and
-familarity with the machine translation task are
-preferred.
-<!--l. 173--><p class="indent" >  It is recommended (and optional) that audience to
-read the following papers before the tutorial:
-    <dl class="enumerate-enumitem"><dt class="enumerate-enumitem">
-  1. </dt><dd 
-class="enumerate-enumitem">Basic   MT   model:   Attention   is   all   you
-    need&#x00A0;[<a 
-href="#Xvaswani2017attention">32</a>].
-    </dd><dt class="enumerate-enumitem">
-  2. </dt><dd 
-class="enumerate-enumitem">Google&#8217;s     multilingual     neural     machine             translation system&#x00A0;[<a 
-href="#Xjohnson2017googles">16</a>].
-           </dd><dt class="enumerate-enumitem">
-      3.  </dt><dd 
-class="enumerate-enumitem">Text    pre-training    with    BERT&#x00A0;[<a 
-href="#Xdevlin2019bert">8</a>]    and
-           GPT&#x00A0;[<a 
-href="#Xradford2019language">29</a>].
-           </dd><dt class="enumerate-enumitem">
-      4.  </dt><dd 
-class="enumerate-enumitem">Audio    pre-training    with    Wav2vec    and
-           Wav2vec2.0&#x00A0;[<a 
-href="#Xschneider2019wav2vec">30</a>,&#x00A0;<a 
-href="#Xbaevski2020wav2vec">2</a>].
-           </dd><dt class="enumerate-enumitem">
-      5.  </dt><dd 
-class="enumerate-enumitem">Pre-training multilingual NMT&#x00A0;[<a 
-href="#Xlin2020pre">18</a>,&#x00A0;<a 
-href="#Xliu2020multilingual">20</a>].</dd></dl>
-   <!--l. 182--><p class="noindent" >
-       <h3 class="sectionHead"><span class="titlemark">7    </span> <a 
- id="x1-70007"></a>Target Audience</h3>
-   <!--l. 183--><p class="noindent" >This tutorial will be suitable for researchers and
-   practitioners interested in pre-training applications
-   and multilingual NLP, especially for machine
-   translation.
-   <!--l. 185--><p class="indent" >    To the best of our knowledge, this is the first
-   tutorial that focuses on the pre-training methods and
-   practice for NMT.
-   <!--l. 187--><p class="noindent" >
-       <h3 class="sectionHead"><span class="titlemark">8    </span> <a 
- id="x1-80008"></a>Technical Requirements</h3>
-   <!--l. 188--><p class="noindent" >The tutorial will be online. Internet connection with
-   proper live video device is needed.
-   <!--l. 193--><p class="noindent" >
-       <h3 class="sectionHead"><span class="titlemark">9    </span> <a 
- id="x1-90009"></a>Open access</h3>
-   <!--l. 194--><p class="noindent" >Our slides and video is open to public.
-   <!--l. 197--><p class="noindent" >
-       <h3 class="sectionHead"><span class="titlemark">10    </span> <a 
- id="x1-1000010"></a>Tutorial Presenters</h3>
-   <!--l. 199--><p class="noindent" ><span class="paragraphHead"><a 
- id="x1-1100010"></a><span 
-class="ptmb7t-x-x-109">Mingxuan Wang</span></span>
-       (ByteDance AI Lab)
-   <!--l. 201--><p class="noindent" ><a 
-href="https://scholar.google.com/citations?user=hOQ6G6EAAAAJ&hl=en" >Google Scholar</a>
-   <!--l. 203--><p class="indent" >    Dr. Mingxuan Wang is a senior researcher at
-   ByteDance AI Lab. He received his PhD degree from
-   the Chinese Academy of Sciences Institute of
-   Computing Technology in 2017. His research
-   focuses on natural language processing and machine
-   translation. He has published over 20 papers in
-                                                                                       
-                                                                                       
-leading NLP/AI journals and conferences such as
-ACL, AAAI and EMNLP. He has served in the
-Program Committee for ACL/EMNLP 2016-2020,
-AAAI/IJCAI 2018/2019, NeurIPS 2020. He achieved
-outstanding results in various machine translation
-evaluation competitions, including the first place of
-Chinese-to-English translation at at the WMT 2018,
-the third place of Chinese-to-English translation at
-NIST 2015, etc. Together with Dr. Lei Li, he is
-leading a team developing the VolcTrans machine
-translation system.
-<!--l. 206--><p class="indent" >  He has given a tutorial about Machine Translation
-at CCMT 2017 and was an guest lecturer for 2016
-Machine Translation for University of Chinese
-Academy of Sciences (UCAS).
-<!--l. 208--><p class="noindent" ><span class="paragraphHead"><a 
- id="x1-1200010"></a><span 
-class="ptmb7t-x-x-109">Lei Li</span></span>
-  (ByteDance AI Lab)
-<!--l. 210--><p class="noindent" ><a 
-href="https://lileicc.github.io/" >https://lileicc.github.io/</a>
-<!--l. 212--><p class="indent" >  Dr. Lei Li is Director of ByteDance AI Lab, leading
-the research and product development for NLP,
-robotics, and drug discovery. His research interests
-are machine translation, speech translation, text
-generation, and AI powered drug discovery. He
-received his B.S. from Shanghai Jiao Tong University
-and Ph.D. from Carnegie Mellon University,
-respectively. His dissertation work on fast algorithms
-for mining co-evolving time series was awarded ACM
-KDD best dissertation (runner up). His recent
-work on AI writer Xiaomingbot received 2nd-class
-award of Wu Wen-ts�n AI prize in 2017. He is a
-recipient of CCF distinguished speaker in 2017, and
-CCF Young Elite award in 2019. His team won
-first places for five language translation directions
-in WMT 2020 and the best in corpus filtering
-challenge. Before ByteDance, he worked at EECS
-department of UC Berkeley and Baidu&#8217;s Institute of
-Deep Learning in Silicon Valley. He has served
-organizers and area chair/senior PC for multiple
-conferences including KDD, EMNLP, NeurIPS,
-AAAI, IJCAI, and CIKM. He has published over 100
-technical papers in ML, NLP and data mining and
-holds more than 10 patents. He has started and is
-developing ByteDance&#8217;s machine translation system,
-VolcTrans and many of his algorithms have been
-deployed.
-<!--l. 219--><p class="indent" >  He has delivered four tutorials at EMNLP 2019,
-NLPCC 2019, NLPCC 2016, and KDD 2010. He was
-an lecturer for 2014 Probabilistic Programming for
-Advancing Machine Learning summer school at
-Portland, USA.                                  <!--l. 222--><p class="noindent" >
-       <h3 class="sectionHead"><span class="titlemark">11    </span> <a 
- id="x1-1300011"></a>Other Information</h3>
-   <!--l. 223--><p class="noindent" ><span class="paragraphHead"><a 
- id="x1-1400011"></a><span 
-class="ptmb7t-x-x-109">Prior Related Tutorials</span></span>
-       Neural Machine Translation, presented by Thang
-   Luong, Kyunghyun Cho, and Christopher Manning at
-   ACL 2016. This tutorial is related but different from
-   ACL 2016 NMT tutorial. It focuses on pre-training
-   methods for both bilingual, multi-lingual, and
-   multi-modal neural machine translation.
-   <!--l. 227--><p class="indent" >    Unsupervised Cross-Lingual Representation
-   Learning, presented by Sebastian Ruder, Anders
-   S�gaard, and Ivan Vuli&#263; at ACL 2019. This tutorial is
-   related in concerning multi-lingual NLP. However,
-   their tutorial was on representation learning, while our
-   tutorial is on neural machine translation.
-   <!--l. 1--><p class="noindent" >
-       <h3 class="likesectionHead"><a 
- id="x1-1500011"></a><span 
-class="ptmr7t-">References</span></h3>
-   <!--l. 1--><p class="noindent" >
-        <div class="thebibliography">
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xbaevski2020vq"></a><span 
-class="ptmr7t-">[1]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Alexei Baevski, Steffen Schneider, and Michael</span>
-        <span 
-class="ptmr7t-">Auli.      vq-wav2vec:  Self-supervised  learning  of</span>
-        <span 
-class="ptmr7t-">discrete speech representations.   In </span><span 
-class="ptmri7t-">Proc. of ICLR</span><span 
-class="ptmr7t-">,</span>
-        <span 
-class="ptmr7t-">2020.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xbaevski2020wav2vec"></a><span 
-class="ptmr7t-">[2]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Alexei   Baevski,   Yuhao   Zhou,   Abdelrahman</span>
-        <span 
-class="ptmr7t-">Mohamed,  and  Michael  Auli.     wav2vec  2.0:  A</span>
-        <span 
-class="ptmr7t-">framework  for  self-supervised  learning  of  speech</span>
-        <span 
-class="ptmr7t-">representations.  In Hugo Larochelle, Marc&#8217;Aurelio</span>
-        <span 
-class="ptmr7t-">Ranzato,  Raia  Hadsell,  Maria-Florina  Balcan,  and</span>
-        <span 
-class="ptmr7t-">Hsuan-Tien Lin, editors, </span><span 
-class="ptmri7t-">Proc. of NeurIPS</span><span 
-class="ptmr7t-">, 2020.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xbansal2019pre"></a><span 
-class="ptmr7t-">[3]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Sameer                    Bansal,                    Herman</span>
-        <span 
-class="ptmr7t-">Kamper, Karen Livescu, Adam Lopez, and Sharon</span>
-        <span 
-class="ptmr7t-">Goldwater.    Pre-training  on  high-resource  speech</span>
-        <span 
-class="ptmr7t-">recognition  improves  low-resource  speech-to-text</span>
-        <span 
-class="ptmr7t-">translation.  In </span><span 
-class="ptmri7t-">Proc. of NAACL-HLT</span><span 
-class="ptmr7t-">, pages 58&#8211;68,</span>
-        <span 
-class="ptmr7t-">2019.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xbapna2019simple"></a><span 
-class="ptmr7t-">[4]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Ankur Bapna and Orhan Firat.  Simple, scalable</span>
-        <span 
-class="ptmr7t-">adaptation for neural machine translation.  In </span><span 
-class="ptmri7t-">Proc.</span>
-        <span 
-class="ptmri7t-">of EMNLP</span><span 
-class="ptmr7t-">, pages 1538&#8211;1548, 2019.</span>
-                                                                                       
-                                                                                       
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xchen2020distilling"></a><span 
-class="ptmr7t-">[5]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Yen-Chun Chen, Zhe Gan, Yu</span><span 
-class="ptmr7t-">&#x00A0;Cheng, Jingzhou</span>
-  <span 
-class="ptmr7t-">Liu, and Jingjing Liu.  Distilling knowledge learned</span>
-  <span 
-class="ptmr7t-">in BERT for text generation. In </span><span 
-class="ptmri7t-">Proc. of ACL</span><span 
-class="ptmr7t-">, pages</span>
-  <span 
-class="ptmr7t-">7893&#8211;7905, 2020.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xchuang2020speechbert"></a><span 
-class="ptmr7t-">[6]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Yung-Sung                                              Chuang,</span>
-  <span 
-class="ptmr7t-">Chi-Liang Liu, and Hung-Yi Lee. SpeechBERT: An</span>
-  <span 
-class="ptmr7t-">audio-and-text  jointly  learned  language  model  for</span>
-  <span 
-class="ptmr7t-">end-to-end spoken question answering.  In </span><span 
-class="ptmri7t-">Proc. of</span>
-  <span 
-class="ptmri7t-">INTERSPEECH</span><span 
-class="ptmr7t-">, 2020.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xconneau2019cross"></a><span 
-class="ptmr7t-">[7]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Alexis          Conneau          and          Guillaume</span>
-  <span 
-class="ptmr7t-">Lample.  Cross-lingual language model pretraining.</span>
-  <span 
-class="ptmr7t-">In   Hanna</span><span 
-class="ptmr7t-">&#x00A0;M.   Wallach,   Hugo   Larochelle,   Alina</span>
-  <span 
-class="ptmr7t-">Beygelzimer, Florence d&#8217;Alch</span><span 
-class="ptmr7t-">�-Buc, Emily</span><span 
-class="ptmr7t-">&#x00A0;B. Fox,</span>
-  <span 
-class="ptmr7t-">and Roman Garnett, editors, </span><span 
-class="ptmri7t-">Proc. of NeurIPS</span><span 
-class="ptmr7t-">, pages</span>
-  <span 
-class="ptmr7t-">7057&#8211;7067, 2019.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xdevlin2019bert"></a><span 
-class="ptmr7t-">[8]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Jacob  Devlin,  Ming-Wei  Chang,  Kenton  Lee,</span>
-  <span 
-class="ptmr7t-">and   Kristina   Toutanova.        BERT:   Pre-training</span>
-  <span 
-class="ptmr7t-">of   deep   bidirectional   transformers   for   language</span>
-  <span 
-class="ptmr7t-">understanding.     In  </span><span 
-class="ptmri7t-">Proc.  of  NAACL-HLT</span><span 
-class="ptmr7t-">,  pages</span>
-  <span 
-class="ptmr7t-">4171&#8211;4186, 2019.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xdong2021consecutive"></a><span 
-class="ptmr7t-">[9]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Qianqian  Dong,  Mingxuan  Wang,  Hao  Zhou,</span>
-  <span 
-class="ptmr7t-">Shuang  Xu,  Bo</span><span 
-class="ptmr7t-">&#x00A0;Xu,  and  Lei  Li.      Consecutive</span>
-  <span 
-class="ptmr7t-">decoding for speech-to-text translation.  In </span><span 
-class="ptmri7t-">Proc. of</span>
-  <span 
-class="ptmri7t-">AAAI</span><span 
-class="ptmr7t-">, 2021.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xdong2021listen"></a><span 
-class="ptmr7t-">[10]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Qianqian  Dong,  Rong  Ye,  Mingxuan  Wang,</span>
-  <span 
-class="ptmr7t-">Hao   Zhou,   Shuang   Xu,   Bo</span><span 
-class="ptmr7t-">&#x00A0;Xu,   and   Lei   Li.</span>
-  <span 
-class="ptmr7t-">Listen, understand and translate: Triple supervision</span>
-  <span 
-class="ptmr7t-">decouples end-to-end speech-to-text translation.  In</span>
-  <span 
-class="ptmri7t-">Proc.  of  AAAI</span><span 
-class="ptmr7t-">,  volume</span><span 
-class="ptmr7t-">&#x00A0;35,  pages  12749&#8211;12759,</span>
-  <span 
-class="ptmr7t-">2021.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xhan2021learning"></a><span 
-class="ptmr7t-">[11]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Chi Han, Mingxuan Wang, Heng Ji, and Lei Li.</span>
-  <span 
-class="ptmr7t-">Learning  shared  semantic  space  for  speech-to-text</span>
-  <span 
-class="ptmr7t-">translation.    In  </span><span 
-class="ptmri7t-">Proc.  of  ACL  -  Findings</span><span 
-class="ptmr7t-">,  August</span>
-  <span 
-class="ptmr7t-">2021.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xhe2019rethinking"></a><span 
-class="ptmr7t-">[12]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Kaiming   He,   Ross</span><span 
-class="ptmr7t-">&#x00A0;B.   Girshick,   and   Piotr</span>
-  <span 
-class="ptmr7t-">Doll</span><span 
-class="ptmr7t-">�r.  Rethinking imagenet pre-training.  In </span><span 
-class="ptmri7t-">Proc.</span>
-  <span 
-class="ptmri7t-">of ICCV</span><span 
-class="ptmr7t-">, pages 4917&#8211;4926, 2019.</span>                       </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xhuang2019unicoder"></a><span 
-class="ptmr7t-">[13]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Haoyang  Huang,  Yaobo  Liang,  Nan  Duan,</span>
-        <span 
-class="ptmr7t-">Ming  Gong,  Linjun  Shou,  Daxin  Jiang,  and  Ming</span>
-        <span 
-class="ptmr7t-">Zhou.   Unicoder: A universal language encoder by</span>
-        <span 
-class="ptmr7t-">pre-training  with  multiple  cross-lingual  tasks.    In</span>
-        <span 
-class="ptmri7t-">Proc. of EMNLP</span><span 
-class="ptmr7t-">, pages 2485&#8211;2494, 2019.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xhuang2021m3p"></a><span 
-class="ptmr7t-">[14]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Haoyang  Huang,  Lin  Su,  Di</span><span 
-class="ptmr7t-">&#x00A0;Qi,  Nan  Duan,</span>
-        <span 
-class="ptmr7t-">Edward  Cui,  Taroon  Bharti,  Lei  Zhang,  Lijuan</span>
-        <span 
-class="ptmr7t-">Wang, Jianfeng Gao, Bei Liu, et</span><span 
-class="ptmr7t-">&#x00A0;al.  M3p: Learning</span>
-        <span 
-class="ptmr7t-">universal representations via multitask multilingual</span>
-        <span 
-class="ptmr7t-">multimodal pre-training. In </span><span 
-class="ptmri7t-">Proc. of CVPR</span><span 
-class="ptmr7t-">, 2021.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xhuang2016attention"></a><span 
-class="ptmr7t-">[15]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span>
-        <span 
-class="ptmr7t-">Po-Yao Huang, Frederick Liu, Sz-Rung Shiang, Jean</span>
-        <span 
-class="ptmr7t-">Oh,  and  Chris  Dyer.    Attention-based  multimodal</span>
-        <span 
-class="ptmr7t-">neural  machine  translation.   In  </span><span 
-class="ptmri7t-">Proceedings  of  the</span>
-        <span 
-class="ptmri7t-">First Conference on Machine Translation: Volume 2,</span>
-        <span 
-class="ptmri7t-">Shared Task Papers</span><span 
-class="ptmr7t-">, pages 639&#8211;645, 2016.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xjohnson2017googles"></a><span 
-class="ptmr7t-">[16]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Melvin   Johnson,   Mike   Schuster,   Quoc</span><span 
-class="ptmr7t-">&#x00A0;V.</span>
-        <span 
-class="ptmr7t-">Le,  Maxim  Krikun,  Yonghui  Wu,  Zhifeng  Chen,</span>
-        <span 
-class="ptmr7t-">Nikhil Thorat, Fernanda Vi</span><span 
-class="ptmr7t-">�gas, Martin Wattenberg,</span>
-        <span 
-class="ptmr7t-">Greg Corrado, Macduff Hughes, and Jeffrey Dean.</span>
-        <span 
-class="ptmr7t-">Google&#8217;s  multilingual  neural  machine  translation</span>
-        <span 
-class="ptmr7t-">system:  Enabling  zero-shot  translation.      </span><span 
-class="ptmri7t-">TACL</span><span 
-class="ptmr7t-">,</span>
-        <span 
-class="ptmr7t-">5:339&#8211;351, 2017.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xliang2021finding"></a><span 
-class="ptmr7t-">[17]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Jianze Liang, Chengqi Zhao, Mingxuan Wang,</span>
-        <span 
-class="ptmr7t-">Xipeng Qiu, and Lei Li. Finding sparse structure for</span>
-        <span 
-class="ptmr7t-">domain specific neural machine translation. In </span><span 
-class="ptmri7t-">Proc.</span>
-        <span 
-class="ptmri7t-">of AAAI</span><span 
-class="ptmr7t-">, February 2021.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xlin2020pre"></a><span 
-class="ptmr7t-">[18]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Zehui Lin, Xiao Pan, Mingxuan Wang, Xipeng</span>
-        <span 
-class="ptmr7t-">Qiu,   Jiangtao   Feng,   Hao   Zhou,   and   Lei   Li.</span>
-        <span 
-class="ptmr7t-">Pre-training multilingual neural machine translation</span>
-        <span 
-class="ptmr7t-">by  leveraging  alignment  information.   In  </span><span 
-class="ptmri7t-">Proc.  of</span>
-        <span 
-class="ptmri7t-">EMNLP</span><span 
-class="ptmr7t-">, pages 2649&#8211;2663, 2020.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xlin2021learning"></a><span 
-class="ptmr7t-">[19]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Zehui  Lin,  Liwei  Wu,  Mingxuan  Wang,  and</span>
-        <span 
-class="ptmr7t-">Lei Li.  Learning language specific sub-network for</span>
-        <span 
-class="ptmr7t-">multilingual machine translation.  In </span><span 
-class="ptmri7t-">Proc. of ACL</span><span 
-class="ptmr7t-">,</span>
-        <span 
-class="ptmr7t-">August 2021.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xliu2020multilingual"></a><span 
-class="ptmr7t-">[20]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Yinhan Liu, Jiatao Gu, Naman Goyal, Xian Li,</span>
-        <span 
-class="ptmr7t-">Sergey Edunov, Marjan Ghazvininejad, Mike Lewis,</span>
-        <span 
-class="ptmr7t-">and  Luke  Zettlemoyer.      Multilingual  denoising</span>
-                                                                                       
-                                                                                       
-  <span 
-class="ptmr7t-">pre-training for neural machine translation.   </span><span 
-class="ptmri7t-">TACL</span><span 
-class="ptmr7t-">,</span>
-  <span 
-class="ptmr7t-">8:726&#8211;742, 2020.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xliu2019roberta"></a><span 
-class="ptmr7t-">[21]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Yinhan  Liu,  Myle  Ott,  Naman  Goyal,  Jingfei</span>
-  <span 
-class="ptmr7t-">Du, Mandar Joshi, Danqi Chen, Omer Levy, Mike</span>
-  <span 
-class="ptmr7t-">Lewis, Luke</span><span 
-class="ptmr7t-">&#x00A0;S. Zettlemoyer, and Veselin Stoyanov.</span>
-  <span 
-class="ptmr7t-">Roberta:   A   robustly   optimized   bert   pretraining</span>
-  <span 
-class="ptmr7t-">approach. </span><span 
-class="ptmri7t-">ArXiv</span><span 
-class="ptmr7t-">, abs/1907.11692, 2019.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xliu2019end"></a><span 
-class="ptmr7t-">[22]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Yuchen    Liu,    Hao    Xiong,    Jiajun    Zhang,</span>
-  <span 
-class="ptmr7t-">Zhongjun   He,   Hua   Wu,   Haifeng   Wang,   and</span>
-  <span 
-class="ptmr7t-">Chengqing  Zong.     End-to-end  speech  translation</span>
-  <span 
-class="ptmr7t-">with knowledge distillation.   In Gernot Kubin and</span>
-  <span 
-class="ptmr7t-">Zdravko  Kacic,  editors,  </span><span 
-class="ptmri7t-">Proc.  of  INTERSPEECH</span><span 
-class="ptmr7t-">,</span>
-  <span 
-class="ptmr7t-">pages 1128&#8211;1132, 2019.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xlong2021generative"></a><span 
-class="ptmr7t-">[23]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Quanyu   Long,   Mingxuan   Wang,   and   Lei</span>
-  <span 
-class="ptmr7t-">Li.       Generative   imagination   elevates   machine</span>
-  <span 
-class="ptmr7t-">translation.        In   </span><span 
-class="ptmri7t-">Proc.   of   NAACL-HLT</span><span 
-class="ptmr7t-">,   pages</span>
-  <span 
-class="ptmr7t-">5738&#8211;5748, 2021.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xpan2021contrastive"></a><span 
-class="ptmr7t-">[24]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Xiao  Pan,  Liwei  Wu,  Mingxuan  Wang,  and</span>
-  <span 
-class="ptmr7t-">Lei  Li.     Contrastive  learning  for  many-to-many</span>
-  <span 
-class="ptmr7t-">multilingual neural machine translation.  In </span><span 
-class="ptmri7t-">Proc. of</span>
-  <span 
-class="ptmri7t-">ACL</span><span 
-class="ptmr7t-">, August 2021.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xpark2019specaugment"></a><span 
-class="ptmr7t-">[25]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Daniel</span><span 
-class="ptmr7t-">&#x00A0;S   Park,   William   Chan,   Yu</span><span 
-class="ptmr7t-">&#x00A0;Zhang,</span>
-  <span 
-class="ptmr7t-">Chung-Cheng  Chiu,  Barret  Zoph,  Ekin</span><span 
-class="ptmr7t-">&#x00A0;D  Cubuk,</span>
-  <span 
-class="ptmr7t-">and   Quoc</span><span 
-class="ptmr7t-">&#x00A0;V   Le.         Specaugment:   A   simple</span>
-  <span 
-class="ptmr7t-">data  augmentation  method  for  automatic  speech</span>
-  <span 
-class="ptmr7t-">recognition. In </span><span 
-class="ptmri7t-">Proc. of INTERSPEECH</span><span 
-class="ptmr7t-">, 2019.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xpeters2018deep"></a><span 
-class="ptmr7t-">[26]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Matthew Peters, Mark Neumann, Mohit Iyyer,</span>
-  <span 
-class="ptmr7t-">Matt Gardner, Christopher Clark, Kenton Lee, and</span>
-  <span 
-class="ptmr7t-">Luke   Zettlemoyer.       Deep   contextualized   word</span>
-  <span 
-class="ptmr7t-">representations.    In  </span><span 
-class="ptmri7t-">Proc.  of  NAACL-HLT</span><span 
-class="ptmr7t-">,  pages</span>
-  <span 
-class="ptmr7t-">2227&#8211;2237, 2018.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xpires2019how"></a><span 
-class="ptmr7t-">[27]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Telmo Pires, Eva Schlinger, and Dan Garrette.</span>
-  <span 
-class="ptmr7t-">How multilingual is multilingual BERT? In </span><span 
-class="ptmri7t-">Proc. of</span>
-  <span 
-class="ptmri7t-">ACL</span><span 
-class="ptmr7t-">, pages 4996&#8211;5001, 2019.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xqi2018when"></a><span 
-class="ptmr7t-">[28]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Ye</span><span 
-class="ptmr7t-">&#x00A0;Qi,   Devendra   Sachan,   Matthieu   Felix,</span>
-  <span 
-class="ptmr7t-">Sarguna Padmanabhan, and Graham Neubig.  When</span>
-  <span 
-class="ptmr7t-">and  why  are  pre-trained  word  embeddings  useful</span>
-  <span 
-class="ptmr7t-">for   neural   machine   translation?       In   </span><span 
-class="ptmri7t-">Proc.   of</span>
-  <span 
-class="ptmri7t-">NAACL-HLT</span><span 
-class="ptmr7t-">, pages 529&#8211;535, 2018.</span>                      </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xradford2019language"></a><span 
-class="ptmr7t-">[29]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Alec Radford, Jeffrey Wu, Rewon Child, David</span>
-        <span 
-class="ptmr7t-">Luan, Dario Amodei, and Ilya Sutskever.  Language</span>
-        <span 
-class="ptmr7t-">models are unsupervised multitask learners. </span><span 
-class="ptmri7t-">OpenAI</span>
-        <span 
-class="ptmri7t-">Blog</span><span 
-class="ptmr7t-">, 1(8), 2019.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xschneider2019wav2vec"></a><span 
-class="ptmr7t-">[30]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Steffen</span>
-        <span 
-class="ptmr7t-">Schneider,  Alexei  Baevski,  Ronan  Collobert,  and</span>
-        <span 
-class="ptmr7t-">Michael Auli.  wav2vec: Unsupervised pre-training</span>
-        <span 
-class="ptmr7t-">for speech recognition. In </span><span 
-class="ptmri7t-">Proc. of INTERSPEECH</span><span 
-class="ptmr7t-">,</span>
-        <span 
-class="ptmr7t-">2019.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xsong2019mass"></a><span 
-class="ptmr7t-">[31]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Kaitao  Song,  Xu</span><span 
-class="ptmr7t-">&#x00A0;Tan,  Tao  Qin,  Jianfeng  Lu,</span>
-        <span 
-class="ptmr7t-">and  Tie-Yan  Liu.     MASS:  masked  sequence  to</span>
-        <span 
-class="ptmr7t-">sequence  pre-training  for  language  generation.   In</span>
-        <span 
-class="ptmr7t-">Kamalika   Chaudhuri   and   Ruslan   Salakhutdinov,</span>
-        <span 
-class="ptmr7t-">editors, </span><span 
-class="ptmri7t-">Proc. of ICML</span><span 
-class="ptmr7t-">, volume</span><span 
-class="ptmr7t-">&#x00A0;97 of </span><span 
-class="ptmri7t-">Proceedings</span>
-        <span 
-class="ptmri7t-">of  Machine  Learning  Research</span><span 
-class="ptmr7t-">,  pages  5926&#8211;5936,</span>
-        <span 
-class="ptmr7t-">2019.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xvaswani2017attention"></a><span 
-class="ptmr7t-">[32]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span>
-        <span 
-class="ptmr7t-">Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob</span>
-        <span 
-class="ptmr7t-">Uszkoreit,  Llion  Jones,  Aidan</span><span 
-class="ptmr7t-">&#x00A0;N.  Gomez,  Lukasz</span>
-        <span 
-class="ptmr7t-">Kaiser,  and  Illia  Polosukhin.   Attention  is  all  you</span>
-        <span 
-class="ptmr7t-">need. In Isabelle Guyon, Ulrike von Luxburg, Samy</span>
-        <span 
-class="ptmr7t-">Bengio, Hanna</span><span 
-class="ptmr7t-">&#x00A0;M. Wallach, Rob Fergus, S.</span><span 
-class="ptmr7t-">&#x00A0;V.</span><span 
-class="ptmr7t-">&#x00A0;N.</span>
-        <span 
-class="ptmr7t-">Vishwanathan, and Roman Garnett, editors, </span><span 
-class="ptmri7t-">Proc. of</span>
-        <span 
-class="ptmri7t-">NeurIPS</span><span 
-class="ptmr7t-">, pages 5998&#8211;6008, 2017.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xwang2020curriculum"></a><span 
-class="ptmr7t-">[33]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Chengyi   Wang,   Yu</span><span 
-class="ptmr7t-">&#x00A0;Wu,   Shujie   Liu,   Ming</span>
-        <span 
-class="ptmr7t-">Zhou, and Zhenglu Yang.   Curriculum pre-training</span>
-        <span 
-class="ptmr7t-">for end-to-end speech translation.  In </span><span 
-class="ptmri7t-">Proc. of ACL</span><span 
-class="ptmr7t-">,</span>
-        <span 
-class="ptmr7t-">pages 3728&#8211;3738, 2020.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xwang2019vatex"></a><span 
-class="ptmr7t-">[34]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Xin  Wang,  Jiawei  Wu,  Junkun  Chen,  Lei  Li,</span>
-        <span 
-class="ptmr7t-">Yuan-Fang Wang, and William</span><span 
-class="ptmr7t-">&#x00A0;Yang Wang.  Vatex:</span>
-        <span 
-class="ptmr7t-">A large-scale, high-quality multilingual dataset for</span>
-        <span 
-class="ptmr7t-">video-and-language  research.    In  </span><span 
-class="ptmri7t-">Proc.  of  ICCV</span><span 
-class="ptmr7t-">,</span>
-        <span 
-class="ptmr7t-">pages 4580&#8211;4590, 2019.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xxie2020self"></a><span 
-class="ptmr7t-">[35]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Qizhe  Xie,  Minh-Thang  Luong,  Eduard</span><span 
-class="ptmr7t-">&#x00A0;H.</span>
-        <span 
-class="ptmr7t-">Hovy,  and  Quoc</span><span 
-class="ptmr7t-">&#x00A0;V.  Le.    Self-training  with  noisy</span>
-        <span 
-class="ptmr7t-">student improves imagenet classification.   In </span><span 
-class="ptmri7t-">Proc.</span>
-        <span 
-class="ptmri7t-">of CVPR</span><span 
-class="ptmr7t-">, pages 10684&#8211;10695, 2020.</span>
-        </p>
-        <p class="bibitem" ><span class="biblabel">
- <a 
- id="Xyang2020towards"></a><span 
-class="ptmr7t-">[36]</span>  <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Jiacheng  Yang,  Mingxuan  Wang,  Hao  Zhou,</span>
-        <span 
-class="ptmr7t-">Chengqi  Zhao,  Weinan  Zhang,  Yong  Yu,  and  Lei</span>
-                                                                                       
-                                                                                       
-  <span 
-class="ptmr7t-">Li.   Towards  making  the  most  of  BERT  in  neural</span>
-  <span 
-class="ptmr7t-">machine translation. In </span><span 
-class="ptmri7t-">Proc. of AAAI</span><span 
-class="ptmr7t-">, 2020.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xye2021end"></a><span 
-class="ptmr7t-">[37]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Rong   Ye,   Mingxuan   Wang,   and   Lei   Li.</span>
-  <span 
-class="ptmr7t-">End-to-end   speech   translation   via   cross-modal</span>
-  <span 
-class="ptmr7t-">progressive  training.   In  </span><span 
-class="ptmri7t-">Proc.  of  INTERSPEECH</span><span 
-class="ptmr7t-">,</span>
-  <span 
-class="ptmr7t-">August 2021.</span>
-  </p>
-  <p class="bibitem" ><span class="biblabel">
-<a 
- id="Xzhu2020incorporating"></a><span 
-class="ptmr7t-">[38]</span> <span class="bibsp"><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span><span 
-class="ptmr7t-">&#x00A0;</span></span></span><span 
-class="ptmr7t-">Jinhua Zhu, Yingce Xia, Lijun Wu, Di</span><span 
-class="ptmr7t-">&#x00A0;He, Tao</span>
-  <span 
-class="ptmr7t-">Qin, Wengang Zhou, Houqiang Li, and Tie-Yan Liu.</span>
-  <span 
-class="ptmr7t-">Incorporating BERT into neural machine translation.</span>
-  <span 
-class="ptmr7t-">In </span><span 
-class="ptmri7t-">Proc. of ICLR</span><span 
-class="ptmr7t-">, 2020.</span>
-</p>
-  </div>
-   
-</body></html> 
-
-                                           
-                                                                                       
-
-
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Pre-training Methods for Neural Machine Translation</title>
+    <!--Generated by LaTeXML (version 0.8.4) http://dlmf.nist.gov/LaTeXML/.-->
+    <!--Document created on .-->
+    <link rel="stylesheet" href="index.css" type="text/css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  </head>
+  <body>
+    <div class="ltx_page_main">
+      <div class="ltx_page_content">
+        <article class="ltx_document ltx_authors_1line">
+          <h1 class="ltx_title ltx_title_document"><a href="https://2021.aclweb.org/tutorials/program/#t4-pre-training-methods-for-neural-machine-translation">ACL 2021 Tutorial</a><br class="ltx_break">
+            Pre-training Methods for Neural Machine Translation</h1>
+          <div class="ltx_authors"> 
+            <table style="width: 100%" border="0">
+              <tbody>
+                <tr>
+                  <td><span class="ltx_creator ltx_role_author"><span class="ltx_personname"><a href="https://scholar.google.com/citations?user=hOQ6G6EAAAAJ&hl">Mingxuan
+                        Wang</a> <br class="ltx_break">
+                        ByteDance AI Lab </span></span></td>
+                  <td><span class="ltx_creator ltx_role_author"><span class="ltx_personname"><a href="https://www.cs.ucsb.edu/~lilei">Lei
+                        Li</a> <br class="ltx_break">
+                        University of California Santa Barbara </span></span> </td>
+                </tr>
+              </tbody>
+            </table>
+            <span class="ltx_creator ltx_role_author">
+              <span class="ltx_personname">August 1, 2021</span></span>
+          </div>
+          <section id="S1" class="ltx_section">
+            <h2 class="ltx_title ltx_title_section"><span class="ltx_tag ltx_tag_section">1
+              </span>Tutorial Introduction</h2>
+            <div id="S1.p1" class="ltx_para">
+              <p class="ltx_p">Pre-training is a dominant paradigm in Nature
+                Language Processing (NLP)&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a
+                    href="#bib.bib76"
+                    title="Language models are unsupervised multitask learners"
+                    class="ltx_ref">28</a>,
+                  <a href="#bib.bib24" title="BERT: pre-training of deep bidirectional transformers for language understanding"
+                    class="ltx_ref">8</a>,
+                  <a href="#bib.bib127" title="RoBERTa: a robustly optimized bert pretraining approach"
+                    class="ltx_ref">20</a>]</cite>,
+                Computer Vision&nbsp;(CV)&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a
+                    href="#bib.bib121"
+                    title="Rethinking imagenet pre-training"
+                    class="ltx_ref">12</a>,
+                  <a href="#bib.bib136" title="Self-training with noisy student improves imagenet classification"
+                    class="ltx_ref">34</a>]</cite>
+                and Auto Speech Recognition (ASR)&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a
+                    href="#bib.bib6"
+                    title="Pre-training on high-resource speech recognition improves low-resource speech-to-text translation"
+                    class="ltx_ref">3</a>,
+                  <a href="#bib.bib119" title="SpeechBERT: an audio-and-text jointly learned language model for end-to-end spoken question answering"
+                    class="ltx_ref">6</a>,
+                  <a href="#bib.bib68" title="Specaugment: a simple data augmentation method for automatic speech recognition"
+                    class="ltx_ref">24</a>]</cite>.
+                Typically, the models are first pre-trained on large amount of
+                unlabeled data to capture rich representations of the input, and
+                then applied to the downstream tasks by either providing
+                context-aware representation of the input, or initializing the
+                parameters of the downstream model for fine-tuning. Recently,
+                the trend of self-supervised pre-training and task-specific
+                fine-tuning finally fully hits neural machine translation
+                (NMT)&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib138"
+                    title="Incorporating BERT into neural machine translation"
+                    class="ltx_ref">37</a>,
+                  <a href="#bib.bib137" title="Towards making the most of BERT in neural machine translation"
+                    class="ltx_ref">35</a>,
+                  <a href="#bib.bib118" title="Distilling knowledge learned in BERT for text generation"
+                    class="ltx_ref">5</a>]</cite>.</p>
+            </div>
+            <div id="S1.p2" class="ltx_para">
+              <p class="ltx_p">Despite its success, introducing a universal
+                pre-trained model to NMT is non-trivial and not necessarily
+                yields promising results, especially for the resource-rich
+                setup. Unique challenges remain in several aspects. First, the
+                objective of most pretraining methods are different from the
+                downstream NMT tasks. For example, BERT&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a
+                    href="#bib.bib24"
+                    title="BERT: pre-training of deep bidirectional transformers for language understanding"
+                    class="ltx_ref">8</a>]</cite>,
+                a popular pre-trained model, is designed for language
+                understanding with only a transformer encoder, while an NMT
+                model usually consists of an encoder and a decoder to perform
+                cross-lingual generation. This gap makes it not feasible enough
+                to apply pre-training for NMT&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a
+                    href="#bib.bib134"
+                    title="MASS: masked sequence to sequence pre-training for language generation"
+                    class="ltx_ref">30</a>]</cite>.
+                Besides, machine translation is naturally a multi-lingual
+                problem, but general pre-training methods for NLP mainly focus
+                on English corpus, such as BERT and GPT. Given the success of
+                transfer learning in multi-lingual machine translation, it is
+                very appealing to introduce multi-lingual pre-training for
+                NMT&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib51"
+                    title="Cross-lingual language model pretraining"
+                    class="ltx_ref">7</a>]</cite>.
+                Finally, speech translation has attracted much attention
+                recently, while most pre-training methods are focused on text
+                representation. How to leverage the pre-training methods to
+                improve the speech translation becomes a new challenge. </p>
+            </div>
+            <div id="S1.p3" class="ltx_para">
+              <p class="ltx_p">This tutorial provides a comprehensive guide to
+                make the most of pre-training for neural machine translation.
+                Firstly, we will briefly introduce the background of NMT,
+                pre-training methodology, and point out the main challenges when
+                applying pre-training for NMT. Then we will focus on analysing
+                the role of pre-training in enhancing the performance of NMT,
+                how to design a better pre-training model for executing specific
+                NMT tasks and how to better integrate the pre-trained model into
+                NMT system. In each part, we will provide examples, discuss
+                training techniques and analyse what is transferred when
+                applying pre-training.</p>
+            </div>
+            <div id="S1.p4" class="ltx_para">
+              <p class="ltx_p">The first topic is the <em class="ltx_emph ltx_font_italic">monolingual
+                  pre-training for NMT</em>, which is one of the most
+                well-studied field. Monolingual text representations like ELMo,
+                GPT, MASS and BERT have superiorities, which significantly boost
+                the performances of various natural language processing
+                tasks&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib71"
+                    title="Deep contextualized word representations"
+                    class="ltx_ref">25</a>,
+                  <a href="#bib.bib24" title="BERT: pre-training of deep bidirectional transformers for language understanding"
+                    class="ltx_ref">8</a>,
+                  <a href="#bib.bib76" title="Language models are unsupervised multitask learners"
+                    class="ltx_ref">28</a>,
+                  <a href="#bib.bib134" title="MASS: masked sequence to sequence pre-training for language generation"
+                    class="ltx_ref">30</a>]</cite>.
+                However, NMT has several distinct characteristics, such as the
+                availability of large training data (10 million or larger) and
+                the high capacity of baseline NMT models, which requires
+                carefully design of pre-training. In this part, we will
+                introduce different pre-training methods and analyse the best
+                practice when applying them to different machine translation
+                scenarios, such as unsupervised NMT, low-resource NMT and
+                rich-source NMT&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a
+                    href="#bib.bib138"
+                    title="Incorporating BERT into neural machine translation"
+                    class="ltx_ref">37</a>,
+                  <a href="#bib.bib137" title="Towards making the most of BERT in neural machine translation"
+                    class="ltx_ref">35</a>]</cite>.
+                We will cover techniques to finetune the pre-trained models with
+                various strategies, such as knowledge distillation and
+                adapter&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib181"
+                    title="Simple, scalable adaptation for neural machine translation"
+                    class="ltx_ref">4</a>,
+                  <a href="#bib.bib153" title="Finding sparse structure for domain specific neural machine translation"
+                    class="ltx_ref">16</a>]</cite>.</p>
+            </div>
+            <div id="S1.p5" class="ltx_para">
+              <p class="ltx_p">The next topic is <em class="ltx_emph ltx_font_italic">multi-lingual
+                  pre-training for NMT</em>. In this context, we aims at
+                mitigating the English-centric bias and suggest that it is
+                possible to build universal representation for different
+                language to improve massive multi-lingual NMT. In this part, we
+                will discuss the general representation of different languages
+                and analyse how knowledge transfers across languages. These will
+                allow a better design for multi-lingual pre-training, in
+                particular for zero-shot transfer to non-English language
+                pairs&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib125"
+                    title="Google’s multilingual neural machine translation system: enabling zero-shot translation"
+                    class="ltx_ref">15</a>,
+                  <a href="#bib.bib74" title="When and why are pre-trained word embeddings useful for neural machine translation?"
+                    class="ltx_ref">27</a>,
+                  <a href="#bib.bib51" title="Cross-lingual language model pretraining"
+                    class="ltx_ref">7</a>,
+                  <a href="#bib.bib131" title="How multilingual is multilingual BERT?"
+                    class="ltx_ref">26</a>,
+                  <a href="#bib.bib123" title="Unicoder: a universal language encoder by pre-training with multiple cross-lingual tasks"
+                    class="ltx_ref">13</a>,
+                  <a href="#bib.bib126" title="Pre-training multilingual neural machine translation by leveraging alignment information"
+                    class="ltx_ref">17</a>,
+                  <a href="#bib.bib128" title="Multilingual denoising pre-training for neural machine translation"
+                    class="ltx_ref">19</a>,
+                  <a href="#bib.bib140" title="Contrastive learning for many-to-many multilingual neural machine translation"
+                    class="ltx_ref">23</a>,
+                  <a href="#bib.bib139" title="Learning language specific sub-network for multilingual machine translation"
+                    class="ltx_ref">18</a>]</cite>.</p>
+            </div>
+            <div id="S1.p6" class="ltx_para">
+              <p class="ltx_p">The last technical part of this tutorial deals
+                with the <em class="ltx_emph ltx_font_italic">Pre-training for
+                  speech NMT</em>. In particular, we focus on leverage weakly
+                supervised or unsupervised training data to improve speech
+                translation. In this part, we will discuss the possibilities of
+                building a general representations across speech and text. And
+                shows how text or audio pre-training can guild the text
+                generation of NMT&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a
+                    href="#bib.bib135"
+                    title="VaTeX: A large-scale, high-quality multilingual dataset for video-and-language research"
+                    class="ltx_ref">33</a>,
+                  <a href="#bib.bib58" title="End-to-end speech translation with knowledge distillation"
+                    class="ltx_ref">21</a>,
+                  <a href="#bib.bib6" title="Pre-training on high-resource speech recognition improves low-resource speech-to-text translation"
+                    class="ltx_ref">3</a>,
+                  <a href="#bib.bib105" title="Curriculum pre-training for end-to-end speech translation"
+                    class="ltx_ref">32</a>,
+                  <a href="#bib.bib214" title="Vq-wav2vec: self-supervised learning of discrete speech representations"
+                    class="ltx_ref">1</a>,
+                  <a href="#bib.bib3" title="Wav2vec 2.0: A framework for self-supervised learning of speech representations"
+                    class="ltx_ref">2</a>,
+                  <a href="#bib.bib124" title="M3P: learning universal representations via multitask multilingual multimodal pre-training"
+                    class="ltx_ref">14</a>,
+                  <a href="#bib.bib132" title="Generative imagination elevates machine translation"
+                    class="ltx_ref">22</a>,
+                  <a href="#bib.bib32" title="Listen, understand and translate: triple supervision decouples end-to-end speech-to-text translation"
+                    class="ltx_ref">10</a>,
+                  <a href="#bib.bib31" title="Consecutive decoding for speech-to-text translation"
+                    class="ltx_ref">9</a>,
+                  <a href="#bib.bib145" title="Learning shared semantic space for speech-to-text translation"
+                    class="ltx_ref">11</a>,
+                  <a href="#bib.bib318" title="End-to-end speech translation via cross-modal progressive training"
+                    class="ltx_ref">36</a>]</cite>.</p>
+            </div>
+            <div id="S1.p7" class="ltx_para">
+              <p class="ltx_p">We conclude the tutorial by pointing out the best
+                practice when applying pre-training for NMT. The topics cover
+                various of pre-training methods for different NMT scenarios.
+                After this tutorial, the audience will understand why
+                pre-training for NMT is different from other tasks and how to
+                make the most of pre-training for NMT. Importantly, we will give
+                deep analyze about how and why pre-training works in NMT, which
+                will inspire future work on designing pre-training paradigm
+                specific for NMT.</p>
+            </div>
+          </section>
+          <section id="S2" class="ltx_section">
+            <h2 class="ltx_title ltx_title_section"> <span class="ltx_tag ltx_tag_section">2
+              </span>Tutorial Outline</h2>
+            <div id="S2.p1" class="ltx_para ltx_noindent">
+              <p class="ltx_p"><span class="ltx_text ltx_font_bold">PART I:
+                  Introduction</span> (15 min) <a href="pre-training_nmt_ACL_tutorial_2021.pdf">[slides]</a></p>
+              <ul id="S2.I1" class="ltx_itemize">
+                <li id="S2.I1.i1" class="ltx_item">
+                  <div id="S2.I1.i1.p1" class="ltx_para">
+                    <p class="ltx_p">Background of NMT</p>
+                  </div>
+                </li>
+                <li id="S2.I1.i2" class="ltx_item">
+                  <div id="S2.I1.i2.p1" class="ltx_para">
+                    <p class="ltx_p">General pre-training paradigm</p>
+                  </div>
+                </li>
+                <li id="S2.I1.i3" class="ltx_item">
+                  <div id="S2.I1.i3.p1" class="ltx_para">
+                    <p class="ltx_p">Unique Challenges</p>
+                    <ul id="S2.I1.I1" class="ltx_itemize">
+                      <li id="S2.I1.i3.i1" class="ltx_item">
+                        <div id="S2.I1.i3.i1.p1" class="ltx_para">
+                          <p class="ltx_p">Objective difference</p>
+                        </div>
+                      </li>
+                      <li id="S2.I1.i3.i2" class="ltx_item">
+                        <div id="S2.I1.i3.i2.p1" class="ltx_para">
+                          <p class="ltx_p">Multi-lingual generation</p>
+                        </div>
+                      </li>
+                      <li id="S2.I1.i3.i3" class="ltx_item">
+                        <div id="S2.I1.i3.i3.p1" class="ltx_para">
+                          <p class="ltx_p">Modality disparity</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div id="S2.p2" class="ltx_para ltx_noindent">
+              <p class="ltx_p"><span class="ltx_text ltx_font_bold">PART II:
+                  Monolingual Pre-training for NMT</span> (60 min) <a href="pre-training_nmt_ACL_tutorial_2021.pdf">[slides]</a></p>
+              <ul id="S2.I2" class="ltx_itemize">
+                <li id="S2.I2.i1" class="ltx_item">
+                  <div id="S2.I2.i1.p1" class="ltx_para">
+                    <p class="ltx_p">The early stage</p>
+                    <ul id="S2.I2.I1" class="ltx_itemize">
+                      <li id="S2.I2.i1.i1" class="ltx_item">
+                        <div id="S2.I2.i1.i1.p1" class="ltx_para">
+                          <p class="ltx_p">NMT initialized with word2vec</p>
+                        </div>
+                      </li>
+                      <li id="S2.I2.i1.i2" class="ltx_item">
+                        <div id="S2.I2.i1.i2.p1" class="ltx_para">
+                          <p class="ltx_p">NMT initialized with language model</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li id="S2.I2.i2" class="ltx_item">
+                  <div id="S2.I2.i2.p1" class="ltx_para">
+                    <p class="ltx_p">BERT fusion in NMT</p>
+                    <ul id="S2.I2.I2" class="ltx_itemize">
+                      <li id="S2.I2.i2.i1" class="ltx_item">
+                        <div id="S2.I2.i2.i1.p1" class="ltx_para">
+                          <p class="ltx_p">BERT Incorporating methods</p>
+                        </div>
+                      </li>
+                      <li id="S2.I2.i2.i2" class="ltx_item">
+                        <div id="S2.I2.i2.i2.p1" class="ltx_para">
+                          <p class="ltx_p">BERT Tuning methods</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li id="S2.I2.i3" class="ltx_item">
+                  <div id="S2.I2.i3.p1" class="ltx_para">
+                    <p class="ltx_p">Unified sequence-to-sequence pre-training</p>
+                    <ul id="S2.I2.I3" class="ltx_itemize">
+                      <li id="S2.I2.i3.i1" class="ltx_item">
+                        <div id="S2.I2.i3.i1.p1" class="ltx_para">
+                          <p class="ltx_p">MASS, Bart, etc.</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+              <p class="ltx_p"><span class="ltx_text ltx_font_bold">PART III:
+                  Multi-lingual Pre-training for NMT</span> (45 min) <a href="pre-training_nmt_ACL_tutorial_2021.pdf">[slides]</a></p>
+              <ul id="S2.I3" class="ltx_itemize">
+                <li id="S2.I3.i1" class="ltx_item">
+                  <div id="S2.I3.i1.p1" class="ltx_para">
+                    <p class="ltx_p">Multilingual fused pre-training</p>
+                    <ul id="S2.I3.I1" class="ltx_itemize">
+                      <li id="S2.I3.i1.i1" class="ltx_item">
+                        <div id="S2.I3.i1.i1.p1" class="ltx_para">
+                          <p class="ltx_p">Cross-lingual Language Model
+                            Pre-training</p>
+                        </div>
+                      </li>
+                      <li id="S2.I3.i1.i2" class="ltx_item">
+                        <div id="S2.I3.i1.i2.p1" class="ltx_para">
+                          <p class="ltx_p">Alternating Language Modeling
+                            Pre-training</p>
+                        </div>
+                      </li>
+                      <li id="S2.I3.i1.i3" class="ltx_item">
+                        <div id="S2.I3.i1.i3.p1" class="ltx_para">
+                          <p class="ltx_p">XLM-T: Cross-lingual Transformer
+                            Encoders</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+                <li id="S2.I3.i2" class="ltx_item">
+                  <div id="S2.I3.i2.p1" class="ltx_para">
+                    <p class="ltx_p">Multilingual sequence to sequence
+                      pre-training</p>
+                    <ul id="S2.I3.I2" class="ltx_itemize">
+                      <li id="S2.I3.i2.i1" class="ltx_item">
+                        <div id="S2.I3.i2.i1.p1" class="ltx_para">
+                          <p class="ltx_p">mBART</p>
+                        </div>
+                      </li>
+                      <li id="S2.I3.i2.i2" class="ltx_item">
+                        <div id="S2.I3.i2.i2.p1" class="ltx_para">
+                          <p class="ltx_p">CSP</p>
+                        </div>
+                      </li>
+                      <li id="S2.I3.i2.i3" class="ltx_item">
+                        <div id="S2.I3.i2.i3.p1" class="ltx_para">
+                          <p class="ltx_p">mRASP</p>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div id="S2.p3" class="ltx_para ltx_noindent">
+              <p class="ltx_p"><span class="ltx_text ltx_font_bold">PART IV:
+                  Pre-training for Speech Translation</span> (45 min) <a href="pre-training_nmt_ACL_tutorial_2021.pdf">[slides]</a></p>
+              <ul id="S2.I4" class="ltx_itemize">
+                <li id="S2.I4.i1" class="ltx_item">
+                  <div id="S2.I4.i1.p1" class="ltx_para">
+                    <p class="ltx_p">MT pre-training</p>
+                  </div>
+                </li>
+                <li id="S2.I4.i2" class="ltx_item">
+                  <div id="S2.I4.i2.p1" class="ltx_para">
+                    <p class="ltx_p">ASR pre-training</p>
+                  </div>
+                </li>
+                <li id="S2.I4.i3" class="ltx_item">
+                  <div id="S2.I4.i3.p1" class="ltx_para">
+                    <p class="ltx_p">Audio pre-training</p>
+                  </div>
+                </li>
+                <li id="S2.I4.i4" class="ltx_item">
+                  <div id="S2.I4.i4.p1" class="ltx_para">
+                    <p class="ltx_p">Raw text pre-training </p>
+                  </div>
+                </li>
+                <li id="S2.I4.i5" class="ltx_item">
+                  <div id="S2.I4.i5.p1" class="ltx_para">
+                    <p class="ltx_p">Bi-modal pre-training</p>
+                  </div>
+                </li>
+              </ul>
+              <p class="ltx_p"><span class="ltx_text ltx_font_bold">PART V:
+                  Conclusion and Future Directions</span> (15 min)</p>
+            </div>
+          </section>
+          <section id="S6" class="ltx_section">
+            <h2 class="ltx_title ltx_title_section"> <span class="ltx_tag ltx_tag_section">3
+              </span>Prerequisites</h2>
+            <div id="S6.p1" class="ltx_para">
+              <p class="ltx_p">The tutorial is self-contained. We will address
+                the background, the technical details and the examples. Basic
+                knowledge about neural networks are required, including word
+                embeddings, attention, and encoder-decoder models. Prior NLP
+                courses and familarity with the machine translation task are
+                preferred.</p>
+            </div>
+            <div id="S6.p2" class="ltx_para">
+              <p class="ltx_p">It is recommended (and optional) that audience to
+                read the following papers before the tutorial: </p>
+              <ol id="S6.I1" class="ltx_enumerate">
+                <li id="S6.I1.i1" class="ltx_item">
+                  <div id="S6.I1.i1.p1" class="ltx_para">
+                    <p class="ltx_p">Basic MT model: Attention is all you
+                      need&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a href="#bib.bib99"
+                          title="Attention is all you need"
+                          class="ltx_ref">31</a>]</cite>.</p>
+                  </div>
+                </li>
+                <li id="S6.I1.i2" class="ltx_item">
+                  <div id="S6.I1.i2.p1" class="ltx_para">
+                    <p class="ltx_p">Google’s multilingual neural machine
+                      translation system&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a
+                          href="#bib.bib125"
+                          title="Google’s multilingual neural machine translation system: enabling zero-shot translation"
+                          class="ltx_ref">15</a>]</cite>.</p>
+                  </div>
+                </li>
+                <li id="S6.I1.i3" class="ltx_item">
+                  <div id="S6.I1.i3.p1" class="ltx_para">
+                    <p class="ltx_p">Text pre-training with BERT&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a
+                          href="#bib.bib24"
+                          title="BERT: pre-training of deep bidirectional transformers for language understanding"
+                          class="ltx_ref">8</a>]</cite>
+                      and GPT&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a
+                          href="#bib.bib76"
+                          title="Language models are unsupervised multitask learners"
+                          class="ltx_ref">28</a>]</cite>.</p>
+                  </div>
+                </li>
+                <li id="S6.I1.i4" class="ltx_item">
+                  <div id="S6.I1.i4.p1" class="ltx_para">
+                    <p class="ltx_p">Audio pre-training with Wav2vec and
+                      Wav2vec2.0&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a
+                          href="#bib.bib222"
+                          title="Wav2vec: unsupervised pre-training for speech recognition."
+                          class="ltx_ref">29</a>,
+                        <a href="#bib.bib3" title="Wav2vec 2.0: A framework for self-supervised learning of speech representations"
+                          class="ltx_ref">2</a>]</cite>.</p>
+                  </div>
+                </li>
+                <li id="S6.I1.i5" class="ltx_item">
+                  <div id="S6.I1.i5.p1" class="ltx_para">
+                    <p class="ltx_p">Pre-training multilingual NMT&nbsp;<cite class="ltx_cite ltx_citemacro_cite">[<a
+                          href="#bib.bib126"
+                          title="Pre-training multilingual neural machine translation by leveraging alignment information"
+                          class="ltx_ref">17</a>,
+                        <a href="#bib.bib128" title="Multilingual denoising pre-training for neural machine translation"
+                          class="ltx_ref">19</a>]</cite>.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </section>
+          <section id="S7" class="ltx_section">
+            <h2 class="ltx_title ltx_title_section"> <span class="ltx_tag ltx_tag_section">4
+              </span>Target Audience</h2>
+            <div id="S7.p1" class="ltx_para">
+              <p class="ltx_p">This tutorial will be suitable for researchers
+                and practitioners interested in pre-training applications and
+                multilingual NLP, especially for machine translation.</p>
+            </div>
+            <div id="S7.p2" class="ltx_para">
+              <p class="ltx_p">To the best of our knowledge, this is the first
+                tutorial that focuses on the pre-training methods and practice
+                for NMT.</p>
+            </div>
+          </section>
+          <section id="S10" class="ltx_section">
+            <h2 class="ltx_title ltx_title_section"> <span class="ltx_tag ltx_tag_section">5</span>Tutorial
+              Presenters</h2>
+            <section id="S10.SS0.SSS0.Px1" class="ltx_paragraph">
+              <h3 class="ltx_title ltx_title_paragraph">Mingxuan Wang</h3>
+              <div id="S10.SS0.SSS0.Px1.p1" class="ltx_para">
+                <p class="ltx_p">(ByteDance AI Lab)</p>
+              </div>
+              <div id="S10.SS0.SSS0.Px1.p3" class="ltx_para">
+                <p class="ltx_p">Dr. Mingxuan Wang is a senior researcher at
+                  ByteDance AI Lab. He received his PhD degree from the Chinese
+                  Academy of Sciences Institute of Computing Technology in 2017.
+                  His research focuses on natural language processing and
+                  machine translation. He has published over 20 papers in
+                  leading NLP/AI journals and conferences such as ACL, AAAI and
+                  EMNLP. He has served in the Program Committee for ACL/EMNLP
+                  2016-2020, AAAI/IJCAI 2018/2019, NeurIPS 2020. He achieved
+                  outstanding results in various machine translation evaluation
+                  competitions, including the first place of Chinese-to-English
+                  translation at at the WMT 2018, the third place of
+                  Chinese-to-English translation at NIST 2015, etc. Together
+                  with Dr. Lei Li, he is leading a team developing the VolcTrans
+                  machine translation system.</p>
+              </div>
+              <div id="S10.SS0.SSS0.Px1.p4" class="ltx_para">
+                <p class="ltx_p">He has given a tutorial about Machine
+                  Translation at CCMT 2017 and was an guest lecturer for 2016
+                  Machine Translation for University of Chinese Academy of
+                  Sciences (UCAS).</p>
+              </div>
+            </section>
+            <section id="S10.SS0.SSS0.Px2" class="ltx_paragraph">
+              <h3 class="ltx_title ltx_title_paragraph">Lei Li</h3>
+              <div id="S10.SS0.SSS0.Px2.p1" class="ltx_para">
+                <p class="ltx_p">(UCSB)</p>
+              </div>
+              <div id="S10.SS0.SSS0.Px2.p3" class="ltx_para">
+                <p class="ltx_p">Dr. Lei Li is an assistant professor in
+                  Computer Science Department at University of California Santa
+                  Barbara. His research interest lies in natural language
+                  processing, machine translation, and AI-powered drug
+                  discovery. He received his B.S. from Shanghai Jiao Tong
+                  University and Ph.D. from Carnegie Mellon University. His
+                  dissertation work on fast algorithms for mining co-evolving
+                  time series was awarded ACM KDD best dissertation (runner up).
+                  His recent work on AI writer Xiaomingbot received 2nd-class
+                  award of Wu Wen-tsün AI prize in 2017. He is a recipient of
+                  ACL 2021 best paper award, CCF Young Elite award in 2019, and
+                  CCF distinguished speaker in 2017. His team won first places
+                  for five language translation directions in WMT 2020 and the
+                  best in corpus filtering challenge. Previously, he worked at
+                  EECS department of UC Berkeley, Baidu’s Institute of Deep
+                  Learning in Silicon Valley, and at ByteDance as the founding
+                  director of AI Lab. He has served organizers and area
+                  chair/senior PC for multiple conferences including KDD, ACL,
+                  EMNLP, NeurIPS, AAAI, IJCAI, and CIKM. He has published over
+                  100 technical papers in ML, NLP and data mining and holds more
+                  than 10 patents. He has started ByteDance’s machine
+                  translation system, VolcTrans and many of his algorithms have
+                  been deployed in production.</p>
+              </div>
+              <div id="S10.SS0.SSS0.Px2.p4" class="ltx_para">
+                <p class="ltx_p">He has delivered four tutorials at EMNLP 2019,
+                  NLPCC 2019, NLPCC 2016, and KDD 2010. He was an lecturer for
+                  2014 Probabilistic Programming for Advancing Machine Learning
+                  summer school at Portland, USA.</p>
+              </div>
+            </section>
+          </section>
+          <section id="S11" class="ltx_section">
+            <h2 class="ltx_title ltx_title_section"> <span class="ltx_tag ltx_tag_section">6
+              </span>Related Tutorials</h2>
+            <section id="S11.SS0.SSS0.Px1" class="ltx_paragraph">
+              <div id="S11.SS0.SSS0.Px1.p1" class="ltx_para">
+                <p class="ltx_p">Neural Machine Translation, presented by Thang
+                  Luong, Kyunghyun Cho, and Christopher Manning at ACL 2016.
+                  This tutorial is related but different from ACL 2016 NMT
+                  tutorial. It focuses on pre-training methods for both
+                  bilingual, multi-lingual, and multi-modal neural machine
+                  translation.</p>
+              </div>
+              <div id="S11.SS0.SSS0.Px1.p2" class="ltx_para">
+                <p class="ltx_p">Unsupervised Cross-Lingual Representation
+                  Learning, presented by Sebastian Ruder, Anders Søgaard, and
+                  Ivan Vulić at ACL 2019. This tutorial is related in concerning
+                  multi-lingual NLP. However, their tutorial was on
+                  representation learning, while our tutorial is on neural
+                  machine translation. </p>
+              </div>
+            </section>
+          </section>
+          <section id="bib" class="ltx_bibliography">
+            <h2 class="ltx_title ltx_title_bibliography">References</h2>
+            <ul id="bib.L1" class="ltx_biblist">
+              <li id="bib.bib214" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[1]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">A.
+                    Baevski, S. Schneider, and M. Auli</span><span class="ltx_text ltx_bib_year">
+                    (2020)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Vq-wav2vec:
+                    self-supervised learning of discrete speech representations</span>.
+                </span> <span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proc.
+                    of ICLR</span>, </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p6" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib3" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[2]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">A.
+                    Baevski, Y. Zhou, A. Mohamed, and M. Auli</span><span class="ltx_text ltx_bib_year">
+                    (2020)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Wav2vec
+                    2.0: A framework for self-supervised learning of speech
+                    representations</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of NeurIPS</span>,
+                  <span class="ltx_text ltx_bib_editor">H. Larochelle, M.
+                    Ranzato, R. Hadsell, M. Balcan, and H. Lin (Eds.)</span>, </span>
+                <span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#S1.p6"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S6.I1.i4.p1" title="item 4 ‣ 6 Prerequisites ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">item&nbsp;4</span></a>.
+                </span> </li>
+              <li id="bib.bib6" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[3]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">S.
+                    Bansal, H. Kamper, K. Livescu, A. Lopez, and S. Goldwater</span><span
+                    class="ltx_text ltx_bib_year">
+                    (2019)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Pre-training
+                    on high-resource speech recognition improves low-resource
+                    speech-to-text translation</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of NAACL-HLT</span>,
+                </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;58–68</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p1" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S1.p6" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib181" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[4]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">A.
+                    Bapna and O. Firat</span><span class="ltx_text ltx_bib_year">
+                    (2019)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Simple,
+                    scalable adaptation for neural machine translation</span>. </span>
+                <span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proc.
+                    of EMNLP</span>, </span> <span class="ltx_bibblock"><span
+                    class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;1538–1548</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p4" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib118" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[5]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Y.
+                    Chen, Z. Gan, Y. Cheng, J. Liu, and J. Liu</span><span class="ltx_text ltx_bib_year">
+                    (2020)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Distilling
+                    knowledge learned in BERT for text generation</span>. </span>
+                <span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proc.
+                    of ACL</span>, </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;7893–7905</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p1" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib119" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[6]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Y.
+                    Chuang, C. Liu, and H. Lee</span><span class="ltx_text ltx_bib_year">
+                    (2020)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">SpeechBERT:
+                    an audio-and-text jointly learned language model for
+                    end-to-end spoken question answering</span>. </span> <span
+                  class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of INTERSPEECH</span>,
+                </span> <span class="ltx_bibblock ltx_bib_cited">Cited by: <a
+                    href="#S1.p1"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib51" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[7]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">A.
+                    Conneau and G. Lample</span><span class="ltx_text ltx_bib_year">
+                    (2019)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Cross-lingual
+                    language model pretraining</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of NeurIPS</span>,
+                  <span class="ltx_text ltx_bib_editor">H. M. Wallach, H.
+                    Larochelle, A. Beygelzimer, F. d’Alché-Buc, E. B. Fox, and
+                    R. Garnett (Eds.)</span>, </span> <span class="ltx_bibblock"><span
+                    class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;7057–7067</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p2" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S1.p5" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib24" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[8]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">J.
+                    Devlin, M. Chang, K. Lee, and K. Toutanova</span><span class="ltx_text ltx_bib_year">
+                    (2019)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">BERT:
+                    pre-training of deep bidirectional transformers for language
+                    understanding</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of NAACL-HLT</span>,
+                </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;4171–4186</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p1" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S1.p2" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S1.p4" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S6.I1.i3.p1" title="item 3 ‣ 6 Prerequisites ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">item&nbsp;3</span></a>.
+                </span> </li>
+              <li id="bib.bib31" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[9]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Q.
+                    Dong, M. Wang, H. Zhou, S. Xu, B. Xu, and L. Li</span><span
+                    class="ltx_text ltx_bib_year">
+                    (2021)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Consecutive
+                    decoding for speech-to-text translation</span>. </span> <span
+                  class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of AAAI</span>, </span>
+                <span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#S1.p6"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib32" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[10]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Q.
+                    Dong, R. Ye, M. Wang, H. Zhou, S. Xu, B. Xu, and L. Li</span><span
+                    class="ltx_text ltx_bib_year">
+                    (2021)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Listen,
+                    understand and translate: triple supervision decouples
+                    end-to-end speech-to-text translation</span>. </span> <span
+                  class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of AAAI</span>, </span>
+                <span class="ltx_bibblock">Vol. <span class="ltx_text ltx_bib_volume">35</span>,
+                  <span class="ltx_text ltx_bib_pages"> pp.&nbsp;12749–12759</span>.
+                </span> <span class="ltx_bibblock ltx_bib_cited">Cited by: <a
+                    href="#S1.p6"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib145" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[11]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">C.
+                    Han, M. Wang, H. Ji, and L. Li</span><span class="ltx_text ltx_bib_year">
+                    (2021-08)</span> </span> <span class="ltx_bibblock"><span
+                    class="ltx_text ltx_bib_title">Learning
+                    shared semantic space for speech-to-text translation</span>.
+                </span> <span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proc.
+                    of ACL - Findings</span>, </span> <span class="ltx_bibblock">External
+                  Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external"><span><a
+                          href="https://arxiv.org/abs/2105.03095">https://arxiv.org/abs/2105.03095</a></span></span></span>
+                </span> <span class="ltx_bibblock ltx_bib_cited">Cited by: <a
+                    href="#S1.p6"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib121" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[12]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">K.
+                    He, R. B. Girshick, and P. Dollár</span><span class="ltx_text ltx_bib_year">
+                    (2019)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Rethinking
+                    imagenet pre-training</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of ICCV</span>, </span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;4917–4926</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p1" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib123" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[13]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">H.
+                    Huang, Y. Liang, N. Duan, M. Gong, L. Shou, D. Jiang, and M.
+                    Zhou</span><span class="ltx_text ltx_bib_year"> (2019)</span>
+                </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Unicoder:
+                    a universal language encoder by pre-training with multiple
+                    cross-lingual tasks</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of EMNLP</span>, </span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;2485–2494</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p5" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib124" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[14]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">H.
+                    Huang, L. Su, D. Qi, N. Duan, E. Cui, T. Bharti, L. Zhang,
+                    L. Wang, J. Gao, B. Liu, <span class="ltx_text ltx_bib_etal">et
+                      al.</span></span><span class="ltx_text ltx_bib_year">
+                    (2021)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">M3P:
+                    learning universal representations via multitask
+                    multilingual multimodal pre-training</span>. </span> <span
+                  class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of CVPR</span>, </span>
+                <span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#S1.p6"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib125" class="ltx_bibitem ltx_bib_article"> <span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[15]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">M.
+                    Johnson, M. Schuster, Q. V. Le, M. Krikun, Y. Wu, Z. Chen,
+                    N. Thorat, F. Viégas, M. Wattenberg, G. Corrado, M. Hughes,
+                    and J. Dean</span><span class="ltx_text ltx_bib_year">
+                    (2017)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Google’s
+                    multilingual neural machine translation system: enabling
+                    zero-shot translation</span>. </span> <span class="ltx_bibblock"><span
+                    class="ltx_text ltx_bib_journal">TACL</span>
+                  <span class="ltx_text ltx_bib_volume">5</span>, <span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;339–351</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p5" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S6.I1.i2.p1" title="item 2 ‣ 6 Prerequisites ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">item&nbsp;2</span></a>.
+                </span> </li>
+              <li id="bib.bib153" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[16]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">J.
+                    Liang, C. Zhao, M. Wang, X. Qiu, and L. Li</span><span class="ltx_text ltx_bib_year">
+                    (2021-02)</span> </span> <span class="ltx_bibblock"><span
+                    class="ltx_text ltx_bib_title">Finding
+                    sparse structure for domain specific neural machine
+                    translation</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of AAAI</span>, </span>
+                <span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span
+                      class="ltx_text ltx_bib_external"><span><a
+                          href="https://arxiv.org/abs/2012.10586">https://arxiv.org/abs/2012.10586</a></span></span>,
+                    <a href="https://ohlionel.github.io/project/Prune-Tune/" title=""
+                      class="ltx_ref ltx_bib_external">Link</a></span>
+                </span> <span class="ltx_bibblock ltx_bib_cited">Cited by: <a
+                    href="#S1.p4"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib126" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[17]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Z.
+                    Lin, X. Pan, M. Wang, X. Qiu, J. Feng, H. Zhou, and L. Li</span><span
+                    class="ltx_text ltx_bib_year">
+                    (2020)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Pre-training
+                    multilingual neural machine translation by leveraging
+                    alignment information</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of EMNLP</span>, </span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;2649–2663</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p5" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S6.I1.i5.p1" title="item 5 ‣ 6 Prerequisites ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">item&nbsp;5</span></a>.
+                </span> </li>
+              <li id="bib.bib139" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[18]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Z.
+                    Lin, L. Wu, M. Wang, and L. Li</span><span class="ltx_text ltx_bib_year">
+                    (2021-08)</span> </span> <span class="ltx_bibblock"><span
+                    class="ltx_text ltx_bib_title">Learning
+                    language specific sub-network for multilingual machine
+                    translation</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of ACL</span>, </span>
+                <span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span
+                      class="ltx_text ltx_bib_external"><span><a
+                          href="https://arxiv.org/abs/2105.09259">https://arxiv.org/abs/2105.09259</a></span></span></span>
+                </span> <span class="ltx_bibblock ltx_bib_cited">Cited by: <a
+                    href="#S1.p5"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib128" class="ltx_bibitem ltx_bib_article"> <span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[19]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Y.
+                    Liu, J. Gu, N. Goyal, X. Li, S. Edunov, M. Ghazvininejad, M.
+                    Lewis, and L. Zettlemoyer</span><span class="ltx_text ltx_bib_year">
+                    (2020)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Multilingual
+                    denoising pre-training for neural machine translation</span>.
+                </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">TACL</span>
+                  <span class="ltx_text ltx_bib_volume">8</span>, <span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;726–742</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p5" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S6.I1.i5.p1" title="item 5 ‣ 6 Prerequisites ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">item&nbsp;5</span></a>.
+                </span> </li>
+              <li id="bib.bib127" class="ltx_bibitem ltx_bib_article"> <span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[20]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Y.
+                    Liu, M. Ott, N. Goyal, J. Du, M. Joshi, D. Chen, O. Levy, M.
+                    Lewis, L. S. Zettlemoyer, and V. Stoyanov</span><span class="ltx_text ltx_bib_year">
+                    (2019)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">RoBERTa:
+                    a robustly optimized bert pretraining approach</span>. </span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">ArXiv</span>
+                  <span class="ltx_text ltx_bib_volume">abs/1907.11692</span>. </span>
+                <span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#S1.p1"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib58" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[21]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Y.
+                    Liu, H. Xiong, J. Zhang, Z. He, H. Wu, H. Wang, and C. Zong</span><span
+                    class="ltx_text ltx_bib_year">
+                    (2019)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">End-to-end
+                    speech translation with knowledge distillation</span>. </span>
+                <span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proc.
+                    of INTERSPEECH</span>, <span class="ltx_text ltx_bib_editor">G.
+                    Kubin and Z. Kacic (Eds.)</span>, </span> <span class="ltx_bibblock"><span
+                    class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;1128–1132</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p6" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib132" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[22]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Q.
+                    Long, M. Wang, and L. Li</span><span class="ltx_text ltx_bib_year">
+                    (2021)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Generative
+                    imagination elevates machine translation</span>. </span> <span
+                  class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of NAACL-HLT</span>,
+                </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;5738–5748</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p6" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib140" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[23]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">X.
+                    Pan, L. Wu, M. Wang, and L. Li</span><span class="ltx_text ltx_bib_year">
+                    (2021-08)</span> </span> <span class="ltx_bibblock"><span
+                    class="ltx_text ltx_bib_title">Contrastive
+                    learning for many-to-many multilingual neural machine
+                    translation</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of ACL</span>, </span>
+                <span class="ltx_bibblock">External Links: <span class="ltx_text ltx_bib_links"><span
+                      class="ltx_text ltx_bib_external"><span><a
+                          href="https://arxiv.org/abs/2105.09501">https://arxiv.org/abs/2105.09501</a></span></span></span>
+                </span> <span class="ltx_bibblock ltx_bib_cited">Cited by: <a
+                    href="#S1.p5"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib68" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[24]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">D.
+                    S. Park, W. Chan, Y. Zhang, C. Chiu, B. Zoph, E. D. Cubuk,
+                    and Q. V. Le</span><span class="ltx_text ltx_bib_year">
+                    (2019)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Specaugment:
+                    a simple data augmentation method for automatic speech
+                    recognition</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of INTERSPEECH</span>,
+                </span> <span class="ltx_bibblock ltx_bib_cited">Cited by: <a
+                    href="#S1.p1"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib71" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[25]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">M.
+                    Peters, M. Neumann, M. Iyyer, M. Gardner, C. Clark, K. Lee,
+                    and L. Zettlemoyer</span><span class="ltx_text ltx_bib_year">
+                    (2018)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Deep
+                    contextualized word representations</span>. </span> <span
+                  class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of NAACL-HLT</span>,
+                </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;2227–2237</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p4" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib131" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[26]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">T.
+                    Pires, E. Schlinger, and D. Garrette</span><span class="ltx_text ltx_bib_year">
+                    (2019)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">How
+                    multilingual is multilingual BERT?</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of ACL</span>, </span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;4996–5001</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p5" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib74" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[27]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Y.
+                    Qi, D. Sachan, M. Felix, S. Padmanabhan, and G. Neubig</span><span
+                    class="ltx_text ltx_bib_year">
+                    (2018)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">When
+                    and why are pre-trained word embeddings useful for neural
+                    machine translation?</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of NAACL-HLT</span>,
+                </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;529–535</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p5" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib76" class="ltx_bibitem ltx_bib_article"> <span class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[28]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">A.
+                    Radford, J. Wu, R. Child, D. Luan, D. Amodei, and I.
+                    Sutskever</span><span class="ltx_text ltx_bib_year"> (2019)</span>
+                </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Language
+                    models are unsupervised multitask learners</span>. </span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_journal">OpenAI
+                    Blog</span> <span class="ltx_text ltx_bib_volume">1</span>
+                  (<span class="ltx_text ltx_bib_number">8</span>). </span> <span
+                  class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p1" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S1.p4" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S6.I1.i3.p1" title="item 3 ‣ 6 Prerequisites ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">item&nbsp;3</span></a>.
+                </span> </li>
+              <li id="bib.bib222" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[29]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">S.
+                    Schneider, A. Baevski, R. Collobert, and M. Auli</span><span
+                    class="ltx_text ltx_bib_year">
+                    (2019)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Wav2vec:
+                    unsupervised pre-training for speech recognition.</span>. </span>
+                <span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proc.
+                    of INTERSPEECH</span>, </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S6.I1.i4.p1" title="item 4 ‣ 6 Prerequisites ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">item&nbsp;4</span></a>.
+                </span> </li>
+              <li id="bib.bib134" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[30]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">K.
+                    Song, X. Tan, T. Qin, J. Lu, and T. Liu</span><span class="ltx_text ltx_bib_year">
+                    (2019)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">MASS:
+                    masked sequence to sequence pre-training for language
+                    generation</span>. </span> <span class="ltx_bibblock">In <span
+                    class="ltx_text ltx_bib_inbook">Proc.
+                    of ICML</span>, <span class="ltx_text ltx_bib_editor">K.
+                    Chaudhuri and R. Salakhutdinov (Eds.)</span>, </span> <span
+                  class="ltx_bibblock"><span
+                    class="ltx_text ltx_bib_series">Proceedings
+                    of Machine Learning Research</span>, Vol. <span class="ltx_text ltx_bib_volume">97</span>,
+                  <span class="ltx_text ltx_bib_pages"> pp.&nbsp;5926–5936</span>.
+                </span> <span class="ltx_bibblock ltx_bib_cited">Cited by: <a
+                    href="#S1.p2"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S1.p4" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib99" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[31]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">A.
+                    Vaswani, N. Shazeer, N. Parmar, J. Uszkoreit, L. Jones, A.
+                    N. Gomez, L. Kaiser, and I. Polosukhin</span><span class="ltx_text ltx_bib_year">
+                    (2017)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Attention
+                    is all you need</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of NeurIPS</span>,
+                  <span class="ltx_text ltx_bib_editor">I. Guyon, U. von
+                    Luxburg, S. Bengio, H. M. Wallach, R. Fergus, S. V. N.
+                    Vishwanathan, and R. Garnett (Eds.)</span>, </span> <span
+                  class="ltx_bibblock"><span
+                    class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;5998–6008</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S6.I1.i1.p1" title="item 1 ‣ 6 Prerequisites ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">item&nbsp;1</span></a>.
+                </span> </li>
+              <li id="bib.bib105" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[32]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">C.
+                    Wang, Y. Wu, S. Liu, M. Zhou, and Z. Yang</span><span class="ltx_text ltx_bib_year">
+                    (2020)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Curriculum
+                    pre-training for end-to-end speech translation</span>. </span>
+                <span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proc.
+                    of ACL</span>, </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;3728–3738</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p6" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib135" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[33]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">X.
+                    Wang, J. Wu, J. Chen, L. Li, Y. Wang, and W. Y. Wang</span><span
+                    class="ltx_text ltx_bib_year">
+                    (2019)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">VaTeX:
+                    A large-scale, high-quality multilingual dataset for
+                    video-and-language research</span>. </span> <span class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of ICCV</span>, </span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;4580–4590</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p6" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib136" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[34]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">Q.
+                    Xie, M. Luong, E. H. Hovy, and Q. V. Le</span><span class="ltx_text ltx_bib_year">
+                    (2020)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Self-training
+                    with noisy student improves imagenet classification</span>.
+                </span> <span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proc.
+                    of CVPR</span>, </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_pages">
+                    pp.&nbsp;10684–10695</span>. </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p1" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib137" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[35]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">J.
+                    Yang, M. Wang, H. Zhou, C. Zhao, W. Zhang, Y. Yu, and L. Li</span><span
+                    class="ltx_text ltx_bib_year">
+                    (2020)</span> </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Towards
+                    making the most of BERT in neural machine translation</span>.
+                </span> <span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proc.
+                    of AAAI</span>, </span> <span class="ltx_bibblock ltx_bib_cited">Cited
+                  by: <a href="#S1.p1" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S1.p4" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib318" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[36]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">R.
+                    Ye, M. Wang, and L. Li</span><span class="ltx_text ltx_bib_year">
+                    (2021-08)</span> </span> <span class="ltx_bibblock"><span
+                    class="ltx_text ltx_bib_title">End-to-end
+                    speech translation via cross-modal progressive training</span>.
+                </span> <span class="ltx_bibblock">In <span class="ltx_text ltx_bib_inbook">Proc.
+                    of INTERSPEECH</span>, </span> <span class="ltx_bibblock">External
+                  Links: <span class="ltx_text ltx_bib_links"><span class="ltx_text ltx_bib_external"><span><a
+                          href="https://arxiv.org/abs/2104.10380">https://arxiv.org/abs/2104.10380</a></span></span></span>
+                </span> <span class="ltx_bibblock ltx_bib_cited">Cited by: <a
+                    href="#S1.p6"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+              <li id="bib.bib138" class="ltx_bibitem ltx_bib_inproceedings"> <span
+                  class="ltx_tag ltx_bib_key ltx_role_refnum ltx_tag_bibitem">[37]</span>
+                <span class="ltx_bibblock"><span class="ltx_text ltx_bib_author">J.
+                    Zhu, Y. Xia, L. Wu, D. He, T. Qin, W. Zhou, H. Li, and T.
+                    Liu</span><span class="ltx_text ltx_bib_year"> (2020)</span>
+                </span> <span class="ltx_bibblock"><span class="ltx_text ltx_bib_title">Incorporating
+                    BERT into neural machine translation</span>. </span> <span
+                  class="ltx_bibblock">In
+                  <span class="ltx_text ltx_bib_inbook">Proc. of ICLR</span>, </span>
+                <span class="ltx_bibblock ltx_bib_cited">Cited by: <a href="#S1.p1"
+                    title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>,
+                  <a href="#S1.p4" title="1 Tutorial Introduction ‣ Pre-training Methods for Neural Machine Translation"
+                    class="ltx_ref"><span
+                      class="ltx_text ltx_ref_tag">§1</span></a>.
+                </span> </li>
+            </ul>
+          </section>
+        </article>
+      </div>
+      <footer class="ltx_page_footer">
+        <div class="ltx_page_logo">Generated by <a href="http://dlmf.nist.gov/LaTeXML/">LaTeXML
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAsAAAAOCAYAAAD5YeaVAAAAAXNSR0IArs4c6QAAAAZiS0dEAP8A/wD/oL2nkwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAd0SU1FB9wKExQZLWTEaOUAAAAddEVYdENvbW1lbnQAQ3JlYXRlZCB3aXRoIFRoZSBHSU1Q72QlbgAAAdpJREFUKM9tkL+L2nAARz9fPZNCKFapUn8kyI0e4iRHSR1Kb8ng0lJw6FYHFwv2LwhOpcWxTjeUunYqOmqd6hEoRDhtDWdA8ApRYsSUCDHNt5ul13vz4w0vWCgUnnEc975arX6ORqN3VqtVZbfbTQC4uEHANM3jSqXymFI6yWazP2KxWAXAL9zCUa1Wy2tXVxheKA9YNoR8Pt+aTqe4FVVVvz05O6MBhqUIBGk8Hn8HAOVy+T+XLJfLS4ZhTiRJgqIoVBRFIoric47jPnmeB1mW/9rr9ZpSSn3Lsmir1fJZlqWlUonKsvwWwD8ymc/nXwVBeLjf7xEKhdBut9Hr9WgmkyGEkJwsy5eHG5vN5g0AKIoCAEgkEkin0wQAfN9/cXPdheu6P33fBwB4ngcAcByHJpPJl+fn54mD3Gg0NrquXxeLRQAAwzAYj8cwTZPwPH9/sVg8PXweDAauqqr2cDjEer1GJBLBZDJBs9mE4zjwfZ85lAGg2+06hmGgXq+j3+/DsixYlgVN03a9Xu8jgCNCyIegIAgx13Vfd7vdu+FweG8YRkjXdWy329+dTgeSJD3ieZ7RNO0VAXAPwDEAO5VKndi2fWrb9jWl9Esul6PZbDY9Go1OZ7PZ9z/lyuD3OozU2wAAAABJRU5ErkJggg=="
+              alt="[LOGO]"></a>
+        </div>
+      </footer>
+    </div>
+    <script src="index.js" type="text/javascript"></script>
+  </body>
+</html>
