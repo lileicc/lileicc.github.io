@@ -1,0 +1,335 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>DL4MT</title>
+  </head>
+  <body>
+    <h1 align="center">&nbsp;291K Deep Learning for Machine Translation
+      (Fall 2021)<br>
+    </h1>
+    <h2>Course Description </h2>
+    This course will cover deep learning methods for neural machine
+    translation and text generation. It will cover neural models for
+    discrete sequences including Long-short term memory, Transformer,
+    and encoder-decoder frameworks for generating language. It includes
+    training objectives and optimization algorithms for learning those
+    models. It will also include strategy such as back-translation,
+    knowledge distillation. It will cover multilingual machine
+    translation, low-resource translation, and speech translation, as
+    well as engineering techniques to speed-up computation for MT
+    models. <br>
+    <h2>Instructor</h2>
+    <p><a moz-do-not-send="true" href="https://www.cs.ucsb.edu/~lilei">Lei
+
+
+        Li</a><br>
+    </p>
+    <h2>Time and Location</h2>
+    <p>Monday/Wednesday 11:00am-12:50pm&nbsp; Phelps 3526<br>
+    </p>
+    <h2>Textbook</h2>
+    <ul>
+      <li>
+        <meta charset="utf-8">
+        (Optional) Neural Machine Translation,&nbsp;Philipp
+        Koehn,&nbsp;ISBN-10: 1108497322,&nbsp;Publisher: Cambridge
+        University Press. preprint version available <a
+          moz-do-not-send="true" href="https://arxiv.org/abs/1709.07809">online</a>.<br>
+      </li>
+      <li>(Optional) Deep Learning,
+        <meta charset="utf-8">
+        Ian Goodfellow and Yoshua Bengio and Aaron Courville, Publisher:
+        MIT Press. available <a moz-do-not-send="true"
+          href="https://www.deeplearningbook.org/">online</a>.</li>
+      <li>(Optional) Dive into Deep Learning, Aston Zhang, Zachary
+        Lipton, Mu Li, Alexander Smola. available <a
+          moz-do-not-send="true" href="https://d2l.ai/">online</a>. <br>
+      </li>
+      <li>(Optional) Linguistic Fundamentals for Natural Language
+        Processing: 100 Essentials from Morphology and Syntax. Emily
+        Bender. Publisher: Morgan &amp; Claypool.<br>
+      </li>
+    </ul>
+    <h2>Prerequisites</h2>
+    <p>
+      <meta charset="utf-8">
+      Prerequisites:&nbsp;130A or 130B;&nbsp;165A or 165B.<br>
+    </p>
+    <h2>Grading</h2>
+    <ul>
+      <li>Homework 40%<br>
+      </li>
+      <li>In-class Presentation: <a moz-do-not-send="true"
+          href="LanguagePresentation.html">Language in 10 mins</a> 10%</li>
+      <li>Project: 50%</li>
+    </ul>
+    <h2>Policy</h2>
+    <p>Please read the following <a moz-do-not-send="true"
+        href="course_policy.html">Link</a> carefully!<br>
+    </p>
+    <h2>Syllabus</h2>
+    <table width="100%" cellspacing="2" cellpadding="2" border="0">
+      <tbody>
+        <tr>
+          <td>#<br>
+          </td>
+          <td>Date<br>
+          </td>
+          <td>Lecture Topic<br>
+          </td>
+          <td>Reading<br>
+          </td>
+          <td>Homework<br>
+          </td>
+        </tr>
+        <tr>
+          <td>1<br>
+          </td>
+          <td>M 9/27<br>
+          </td>
+          <td>Introduction to MT, History, Probability, Matrix and
+            vectors, Loss<br>
+          </td>
+          <td><br>
+          </td>
+          <td>HW1 </td>
+        </tr>
+        <tr>
+          <td>2<br>
+          </td>
+          <td>W 9/29<br>
+          </td>
+          <td>Data, Vocabulary and Evaluation<br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>3<br>
+          </td>
+          <td>M 10/4<br>
+          </td>
+          <td>Basic Neural Network Layers, Embedding, Feedforward,
+            Softmax<br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>4<br>
+          </td>
+          <td>W 10/6<br>
+          </td>
+          <td>CNN, LSTM, Encoder-decoder <br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>5<br>
+          </td>
+          <td>M 10/11<br>
+          </td>
+          <td>Transformer </td>
+          <td><br>
+          </td>
+          <td>HW1 due, HW2<br>
+          </td>
+        </tr>
+        <tr>
+          <td>6<br>
+          </td>
+          <td>W 10/13 </td>
+          <td>Pre-training Language Models, BERT, GPT, T5<br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>7<br>
+          </td>
+          <td>M 10/18 </td>
+          <td>Learning with monolingual data, Back translation, Dual
+            Learning, Mirror Generative Model<br>
+          </td>
+          <td><br>
+          </td>
+          <td>Project Proposal Due<br>
+          </td>
+        </tr>
+        <tr>
+          <td>8<br>
+          </td>
+          <td>W 10/20 </td>
+          <td>Incorporating pre-trained language model into NMT<br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>9<br>
+          </td>
+          <td>M 10/25 </td>
+          <td>Low-resource scenario and Unsupervised Machine Translation<br>
+          </td>
+          <td><br>
+          </td>
+          <td>HW2 due, HW3 </td>
+        </tr>
+        <tr>
+          <td>10<br>
+          </td>
+          <td>W 10/27 </td>
+          <td>Multilingual NMT, Pre-training, Augmentation,&nbsp; <br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>11<br>
+          </td>
+          <td>M 11/1 </td>
+          <td>Improving Structure Capacity, continual learning, adapter,
+            language-specific sub-network </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>12<br>
+          </td>
+          <td>W 11/3 </td>
+          <td>Data mining for MT<br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>13<br>
+          </td>
+          <td>M 11/8 </td>
+          <td>Speech Translation<br>
+          </td>
+          <td><br>
+          </td>
+          <td>HW3 due, HW4<br>
+          </td>
+        </tr>
+        <tr>
+          <td>14<br>
+          </td>
+          <td>W 11/10 </td>
+          <td>Pre-training for Speech Translation<br>
+          </td>
+          <td><br>
+          </td>
+          <td>Project midterm report due<br>
+          </td>
+        </tr>
+        <tr>
+          <td>15<br>
+          </td>
+          <td>M 11/15 </td>
+          <td>Speed-up inference: Parallel Generation </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>16<br>
+          </td>
+          <td>W 11/17 </td>
+          <td>Scaling Training and Computation for NMT<br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>17<br>
+          </td>
+          <td>M 11/22 </td>
+          <td>Advanced vocabulary and embedding learning </td>
+          <td><br>
+          </td>
+          <td>HW4 due </td>
+        </tr>
+        <tr>
+          <td>18<br>
+          </td>
+          <td>W 11/24 </td>
+          <td>Interactive Machine Translation, Computer-aided
+            Translation<br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>19<br>
+          </td>
+          <td>M 11/29 </td>
+          <td>Applications to other tasks, drug discovery, material </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td>20<br>
+          </td>
+          <td>W 12/1 </td>
+          <td>Industrial Presentation: Lessons from Building Successful
+            MT Products </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+        <tr>
+          <td><br>
+          </td>
+          <td>F 12/3<br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+          <td>Final project due </td>
+        </tr>
+        <tr>
+          <td><br>
+          </td>
+          <td>M 12/6<br>
+          </td>
+          <td>Project Poster Presentation<br>
+          </td>
+          <td><br>
+          </td>
+          <td><br>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+  </body>
+</html>
