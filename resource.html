@@ -14,9 +14,9 @@
       <ul class="menu">
         <li><a href="index.html">Home</a></li>
         <li><a href="research.html">Research</a></li>
+        <li><a href="teaching.html">Teaching</a></li>
         <li><a href="pubs.html">Publications</a></li>
-        <li class="active"><a href="software.html">Software</a></li>
-        <li><a href="talks.html">Talks</a></li>
+        <li class="active"><a href="resource.html">Resource</a></li>
         <li><a href="leili-bio.html">Bio</a></li>
       </ul>
       <div class="row">
@@ -30,6 +30,11 @@
               Generation, and Machine Translation. With the custom CUDA
               implementation, it achieves 10x speed-up over the original
               tensorflow seq2seq package, and faster than other implementations.
+            </li>
+            <li>
+              <a href="https://github.com/bytedance/neurst">
+                NeurST
+              </a>: A toolbok with readily available models for neural machine translation and speech-to-text translation. 
             </li>
             <li><a href="http://bayesianlogic.cs.berkeley.edu">BLOG</a>: a
               probabilistic programming language for machine learning</li>
@@ -49,6 +54,18 @@
               (i.e. Kalman filter) </li>
             <li><a href="software/mlds-r662.zip">MLDS</a>: learning dynamical
               model for tensor time series </li>
+          </ul>
+
+          <h1>Dataset</h1>
+          <ul>
+            <li>
+              TTNews: a dataset for Chinese document summarization. 50,000 news articles with summary for training, and 4,000 news articles for testing. 
+              [<a href="http://tcci.ccf.org.cn/conference/2018/dldoc/taskgline03.pdf">Task description</a>] [<a href="https://pan.baidu.com/s/1bppQ4z1">Training data</a>] [<a href="https://www.dropbox.com/s/luizl5rftml05nc/nlpcc_summarization_2017-2018_evaluation.zip?dl=0">Testing data and evaluation script</a>]
+              [Reports from <a href="pubs/hua2017overview.pdf">NLPCC2017</a> and <a href="pubs/li2018overview.pdf">NLPCC2018</a>]
+            </li>
+            <li>
+              CNewSum: an extended version of TTNews for Chinese document summarization. It includes 304,307 documents and human-written summaries. It includes additional adequacy-level and deducibility-level labels. [<a href="https://dqwang122.github.io/projects/CNewSum/">Project URL</a>]
+            </li>
           </ul>
           <p>
             Please send me email if you find bugs or have comments!
