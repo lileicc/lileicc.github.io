@@ -41,6 +41,18 @@ h3 {
   margin: 0 0 5px;
   font-size: 1.6em;
 }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 1;
+  padding: 23;
+}
+thead {
+  font-weight: 400;
+}
+tr:nth-child(even) {
+  background: rgb(241, 241, 241)
+}
 h1, h2, h3 {
   color: #d06060;
   font-weight: 400;
@@ -302,7 +314,7 @@ body.blue a {
   color: #2f5fee;
 }
 body.blue h1, body.blue h2, body.blue h3 {
-  color: #2348b5;
+  color: #3270cc;
 }
 body.pink a {
   color: #f06ba0;
