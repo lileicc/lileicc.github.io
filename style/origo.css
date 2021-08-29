@@ -3,8 +3,10 @@
 body {
 /*  background: #0a0a0a  no-repeat scroll center top;*/
 /*  color: #cccccc;*/
-  font: Lato, Arial, Helvetica, sans-serif;
-  line-height: 1.3em;
+  font-size: 16px;
+  font-family: Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
 }
 a {
   color: #d06060;
@@ -16,11 +18,10 @@ a:hover {
 }
 p, ul, ol, dl {
   margin: 0 0 15px;
-  line-height: 1.5em;
 }
 h1 {
   color: #888888;
-  font-size: 3.6em;
+  font-size: 2.8em;
   margin-bottom: 0;
 }
 h1 a {
@@ -33,18 +34,28 @@ h1 a:hover {
 }
 h2 {
   margin: 0 0 5px;
-  font-size: 2.2em;
+  font-size: 2.0em;
   color: #333333;
 }
 h3 {
   margin: 0 0 5px;
   font-size: 1.6em;
 }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-spacing: 1;
+  padding: 23;
+}
+thead {
+  font-weight: 400;
+}
+tr:nth-child(even) {
+  background: rgb(241, 241, 241)
+}
 h1, h2, h3 {
   color: #d06060;
   font-weight: 400;
-  line-height: 1.2em;
-  font-family: 'Lato',sans-serif;
 }
 #layout {
   margin: 40px auto 0;
@@ -257,8 +268,6 @@ body.light a:hover {
 }
 body.light h1 {
   color: #888888;
-  font-size: 3.6em;
-  margin-bottom: 0;
 }
 body.light h1 a:hover {
   color: #303030;
@@ -305,7 +314,7 @@ body.blue a {
   color: #2f5fee;
 }
 body.blue h1, body.blue h2, body.blue h3 {
-  color: #2348b5;
+  color: #3270cc;
 }
 body.pink a {
   color: #f06ba0;
