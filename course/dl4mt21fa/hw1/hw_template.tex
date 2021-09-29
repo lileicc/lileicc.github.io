@@ -1,0 +1,94 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{UCSB CMPSC 291K}
+\newcommand\hwnumber{1}                  % <-- homework number
+%\newcommand\name{Lei Li}                % <-- Name of person #1
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{Instructor: Lei Li}
+\chead{\textbf{\Large DL4MT Homework \hwnumber}}
+\rhead{\course \\ \today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+
+\section*{Problem 1: Probability Basics (10')} 
+
+We are playing dart. There are two darts in a box. We are told that one dart is more accurate than the other. 
+The accurate one will shoot on the target board with a Normal distribution $N(8, 1)$, while the defective one will land on the target with a Normal distribution $N(4, 2)$.
+We would like to pick the accurate one, but we can not distinguish one from the other. They look identical. 
+Unfortunately we randomly pick one and fire it towards the target. The location turns out to be $x$ ($0 \leq x \leq 10.9$).
+
+
+\begin{enumerate}
+  \item $x=6.0$, what is the probability of being accurate?
+
+  \item What is the probability of the picked dart being the accurate one? (in terms of x)
+
+\end{enumerate}
+
+
+\paragraph{Answer:}
+
+XXXX
+
+
+\section*{Problem 2: Logistic Regression (25')} 
+Consider a single layer neural network, which takes a real vector input x, and output a class label in $K$ categories. 
+\[f(x) = \mathrm{Softmax}(w\cdot x + b)
+    \]
+Given data $D=\{(x_1,y_1), \dots, (x_N, y_N)\}$, please derive the following
+\begin{enumerate}
+    \item What is a proper loss function and its empirical risk?
+    \item We adopt the SGD method for learning the parameter estimation, please derive the gradient and update rule.
+    \item Please write down the update rule for AdaGrad optimization method.
+    \item What if the dimension of x is extremely large (e.g. one million), while we only have a few samples (e.g. 10 thousand) to train?
+    \item Now we want to use the Newton's method to learn the parameters, please derive the update rule.
+\end{enumerate}    
+
+
+\paragraph{Answer:}
+
+XXXX
+
+
+\end{document}
