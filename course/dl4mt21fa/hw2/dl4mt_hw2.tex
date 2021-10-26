@@ -1,0 +1,113 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{UCSB CMPSC 291K}
+\newcommand\hwnumber{2}                  % <-- homework number
+%\newcommand\name{Lei Li}                % <-- Name of person #1
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{Instructor: Lei Li}
+\chead{\textbf{\Large DL4MT Homework \hwnumber}}
+\rhead{\course \\ October 11, 2021}%\today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+
+\section*{Problem 1: Neural Machine Translation Model} 
+In this homework, you will implement a Transformer-LSTM model for translating from English to Hausa. 
+The embedding and hidden size is set to 256. 
+The encoder uses 2 Transformer layers. The number of heads is set to 8. The FFN dimention after attention is set to 1024.
+The decoder uses 2 LSTM layers with attention to encoder's corresponding layer. 
+The vocabulary size is set to 10k jointly on English and Hausa (use subword-nmt to learn BPE).
+You may refer to the following papers for more technical details. 
+
+\begin{quote}
+  Chen et al. The Best of Both Worlds:
+  Combining Recent Advances in Neural Machine Translation. 2018.
+  
+  Vaswani et al. Attention is All you Need. 2017.
+
+  Bahdanau et al. Neural Machine Translation by Jointly Learning to Align and Translate. 2015.
+\end{quote}
+
+The program should be named as \texttt{hybridnmt.py}.
+You may use basic python package (for example the \texttt{argparse} library for parsing commandline arguments), numpy, pytorch, moses processing code, subword-nmt(for BPE building), and sacreBLEU script. 
+You may NOT use fairseq or NeurST and other external library. 
+
+You may use the following scripts from Moses (\url{https://github.com/moses-smt/mosesdecoder}) and WMT format tool for preprocessing if needed:
+\begin{itemize}
+  \item Tokenizer \verb|tokenizer.perl|
+  \item Detokenizer \verb|detokenizer.perl|
+  \item SGML Wrapper \verb|wrap-xml.perl|
+  \item WMT format tool \url{https://github.com/wmt-conference/wmt-format-tools}
+  \item BPE tool \verb|subword-nmt| \url{https://github.com/rsennrich/subword-nmt}
+\end{itemize}
+
+In this project, you do not need to generate the target sentence (we will do that in next homework). 
+Your program will take the following corpus to train your model. 
+Then plot the training curve (training loss over steps) and validation curve (validation loss over steps). 
+To save time, please evaluate on validate every a few hundred steps. 
+Please try different hyperparameter setup (e.g. learning rate, dropout rate, weight decay, ).
+Submit a report on your training and findings, with the curves, along with the code. 
+
+The training data includes the following.
+\begin{itemize}
+  \item OPUS En-Ha:
+  \url{http://data.statmt.org/wmt21/translation-task/ha-en/opus.ha-en.tsv}
+\end{itemize}
+
+The following are additional optional data for training (but not required).
+\begin{itemize}
+  \item Wikititles En-Ha:
+  \url{http://data.statmt.org/wikititles/v3/wikititles-v3.ha-en.tsv}
+  \item ParaCrawl v8 En-Ha:
+  \url{http://data.statmt.org/wmt21/translation-task/paracrawl8/en-ha.tar}
+  \item Khamenei corpus En-Ha:
+  \url{http://data.statmt.org/wmt21/translation-task/ha-en/khamenei.v1.ha-en.tsv}
+\end{itemize}
+
+
+The validation data can be downloaded at \url{http://data.statmt.org/wmt21/translation-task/dev.tgz}.
+You only need En-Ha part.
+
+Further information can be found on \url{http://statmt.org/wmt21/translation-task.html}.
+
+\end{document}

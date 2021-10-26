@@ -1,0 +1,125 @@
+\documentclass[12pt,letterpaper]{article}
+\usepackage{fullpage}
+\usepackage[top=2cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,amscd}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\usepackage{fancyhdr}
+\usepackage{mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+ 
+\renewcommand\lstlistingname{Algorithm}
+\renewcommand\lstlistlistingname{Algorithms}
+\def\lstlistingautorefname{Alg.}
+
+\lstdefinestyle{Python}{
+    language        = Python,
+    frame           = lines, 
+    basicstyle      = \footnotesize,
+    keywordstyle    = \color{blue},
+    stringstyle     = \color{green},
+    commentstyle    = \color{red}\ttfamily
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+% Edit these as appropriate
+\newcommand\course{UCSB CMPSC 291K}
+\newcommand\hwnumber{3}                  % <-- homework number
+%\newcommand\name{Lei Li}                % <-- Name of person #1
+
+\pagestyle{fancyplain}
+\headheight 35pt
+\lhead{Instructor: Lei Li}
+\chead{\textbf{\Large DL4MT Homework \hwnumber}}
+\rhead{\course \\ October 25, 2021}%\today}
+\lfoot{}
+\cfoot{}
+\rfoot{\small\thepage}
+\headsep 1.5em
+
+\begin{document}
+
+
+\section*{Problem 1: Neural Machine Translation Decoding} 
+In this homework, you will implement a decoder for the Transformer-LSTM model 
+implemented last time. 
+For the basic version, please implement a decoder with the beam search algorithm. 
+The program should be named as \texttt{nmtdecoder.py}.
+Your code need to take an option \verb|-i| followed by a filename to indicate input file. 
+The input file should support two format:
+\begin{enumerate}
+  \item plain text with each line contains one input sentence. 
+  \item WMT xml format with includes the source sentence. Optionally it may contain reference target sentences. 
+\end{enumerate}
+Your code may take a second optional argument \verb|-eval| followed by a string to indicate evaluation metric. For a simple case, you may use \verb|BLEU| to indicate BLEU score for evaluating the quality translation against the reference sentences. 
+Additionally, there can be other useful arguments such as \verb|-dict| to indicate the vocabulary file. Note you should use the same vocabulary as you build for previous homework. 
+
+For output: if no \verb|-eval| argument, you need to output your code to a text file, with each line containing a decoded sentence. 
+If there is \verb|-eval| option, you need to use the indicated method to evaluate the quality and output the score. 
+For BLEU, you should use sacreBLEU script. 
+You may use basic python package (for example the \texttt{argparse} library for parsing commandline arguments), numpy, pytorch, moses processing code, subword-nmt(for BPE), and sacreBLEU script. 
+You may NOT use fairseq or NeurST and other external library. 
+
+
+You may use the following scripts from Moses (\url{https://github.com/moses-smt/mosesdecoder}) and WMT format tool for preprocessing if needed:
+\begin{itemize}
+  \item Tokenizer \verb|tokenizer.perl|
+  \item Detokenizer \verb|detokenizer.perl|
+  \item SGML Wrapper \verb|wrap-xml.perl|
+  \item WMT format tool \url{https://github.com/wmt-conference/wmt-format-tools}
+  \item BPE tool \verb|subword-nmt| \url{https://github.com/rsennrich/subword-nmt}
+\end{itemize}
+
+
+The training data includes the following.
+\begin{itemize}
+  \item OPUS En-Ha:
+  \url{http://data.statmt.org/wmt21/translation-task/ha-en/opus.ha-en.tsv}
+\end{itemize}
+
+The following are additional optional data for training (but not required).
+\begin{itemize}
+  \item Wikititles En-Ha:
+  \url{http://data.statmt.org/wikititles/v3/wikititles-v3.ha-en.tsv}
+  \item ParaCrawl v8 En-Ha:
+  \url{http://data.statmt.org/wmt21/translation-task/paracrawl8/en-ha.tar}
+  \item Khamenei corpus En-Ha:
+  \url{http://data.statmt.org/wmt21/translation-task/ha-en/khamenei.v1.ha-en.tsv}
+\end{itemize}
+
+The validation data can be downloaded at \url{http://data.statmt.org/wmt21/translation-task/dev.tgz}.
+You only need the En-Ha part.
+
+For testing purpose, you may the the data at \url{http://data.statmt.org/wmt21/translation-task/test.tgz}. You only need the En-Ha part. 
+
+Further information can be found on \url{http://statmt.org/wmt21/translation-task.html}.
+
+The submission file should include your source code, your trained model, a report stating the BLEU score you get on the WMT21 test data. 
+
+\section*{Problem 2: Machine Translation Platform Experience} 
+A machine translation product does not only include a model. There are systems, ui, business model, and more aspects involved. 
+In this assignment, you will use the VolcEngine TranStudio platform to translate a video from the class into a target language, and make corrections. 
+The platform can be accessed at \url{https://translate.volcengine.cn/transtudio/}. You will use your email (the email address for your course enrollment) for login name, and email prefix for password. 
+The platform supports target langauges in Chinese, Japanese, and Korean (our video source language is English).  If you are not familiar with any of these languages, please let the instructor know and we will provide a separate video in Chinese, and please choose English as the target langauge in this case. 
+
+The platform is self-explanatory. After you create a project and upload a video, it will create an initial translation result using NMT. You may choose to edit the source text and/or the target text. You may also split or merge sentences. 
+Please try your best to make the translation accurate. You assigned portion can be found in this doc (\url{https://tinyurl.com/2cumrh25}). You may download the videos from Gauchospace. 
+
+In your report (please use the same report document as the previous problem), please state the section you are translating, the source langauge, the target language, and summarize your experiment and feedback for the system, in terms of the userability and translation quality. Please list good and nontrival cases which you think automatic translation does surprisingly well, and bad cases which the translation system does really bad. 
+Please use your guess to analyze the cases why the NMT system produces such errors and any possible ways to improve. This is open-ended. 
+
+\section*{Acknowledgement}
+We thank VolcTrans (\url{https://translate.volcengine.cn}) for providing the cloud resource used in this homework. 
+
+\end{document}
