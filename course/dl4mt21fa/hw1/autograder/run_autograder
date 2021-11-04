@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+
+create_report () {
+cat >results/results.json <<EOL
+{ 
+  "execution_time": 0, 
+  "output": "Total score", 
+  "visibility": "after_due_date", 
+  "stdout_visibility": "visible", 
+  "extra_data": {},
+  "tests": 
+    [
+        {
+            "score": ${prob3_score}, 
+            "number": "3", 
+            "output": "Score: ${prob3_score}", 
+            "tags": ["BPE"], 
+            "visibility": "visible", 
+            "extra_data": {} 
+        },
+        {
+            "score": ${prob4_score}, 
+            "number": "4", 
+            "output": "Score: ${prob4_score}", 
+            "tags": ["skewed BLEU"], 
+            "visibility": "visible", 
+            "extra_data": {} 
+        }
+    ]
+}
+EOL
+}
+
+start_time=$(date +%s)
+prefix=source
+test_case=(30 100 1000 1000 3000 5000 5000)
+unit_score=$(( 35 / ${#test_case[@]} ))
+score=0
+prob4_score=0
+for i in ${!test_case[@]}; do 
+    rm -rf output.txt
+    curr_time=$(date +%s)
+    remaining_time=$(( 2300 - curr_time + start_time ))
+    if [ $remaining_time -gt 1 ]; then
+        set -x
+        timeout ${remaining_time}s python3 submission/bpe_tokenize.py -s ${test_case[$i]} -i ${prefix}/input$i.txt
+        set +x
+    else
+        echo "not enough time to run bpe_tokenize.py on input${i}.txt"
+    fi
+    if [ -f output.txt ]
+    then 
+        DIFF=$(diff -b output.txt ${prefix}/output${i}.txt) 
+        if [ -z "$DIFF" ] 
+        then
+            score=$(( score + unit_score )) 
+        else
+            echo $DIFF
+        fi
+    fi
+    prob3_score=$score
+    create_report
+done
+
+
+test_case=(0.2312 0.3678 0.1861 0.1840 0.4491 0.4110)
+unit_score=$(( 30 / ${#test_case[@]} ))
+score=0
+for i in ${!test_case[@]}; do 
+    rm -rf output.txt
+    curr_time=$(date +%s)
+    remaining_time=$(( 2395 - curr_time + start_time ))
+    if [ $remaining_time -gt 1 ]; then
+        set -x
+        timeout ${remaining_time}s python3 submission/skewed_bleu.py -r ${prefix}/ref${i}.txt -c ${prefix}/cand${i}.txt
+        set +x
+    else
+        echo "not enough time to run skewed_bleu.py on ref${i}.txt and cand${i}.txt"
+    fi
+    if [ -f output.txt ]
+    then 
+        OUTPUT=$(cat output.txt)
+        DIFF=$(echo "( ${OUTPUT} - ${test_case[${i}]} ) ^ 2 > 0.000001" | bc -l) 
+        if [ "$DIFF" -eq "0" ] 
+        then
+            score=$(( score + unit_score )) 
+        else
+            echo "output: " $OUTPUT
+            echo "truth: " ${test_case[${i}]}
+            echo $DIFF
+        fi
+        prob4_score=$score
+        create_report
+    fi
+done
+
