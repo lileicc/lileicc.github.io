@@ -1,342 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <meta />
-    <link rel="stylesheet" type="text/css" href="../../style/origo.css" media="all" />
-    <meta name="author" content="Lei Li" />
-    <title>DL4MT</title>
-  </head>
-  <body>
-    <h1 align="center"> 291K Deep Learning for Machine Translation (Fall 2021)<br />
-    </h1>
-    <h2>Course Description </h2>
-    This course will cover deep learning methods for neural machine translation
-    and text generation. It will cover neural models for discrete sequences
-    including Long-short term memory, Transformer, and encoder-decoder
-    frameworks for generating language. It includes training objectives and
-    optimization algorithms for learning those models. It will also include
-    strategy such as back-translation, knowledge distillation. It will cover
-    multilingual machine translation, low-resource translation, and speech
-    translation, as well as engineering techniques to speed-up computation for
-    MT models. <br />
-    <h2>Instructor</h2>
-    <p><a href="https://www.cs.ucsb.edu/%7Elilei">Lei Li</a><br />
-    </p>
-    <h2>Time and Location</h2>
-    <p>Monday/Wednesday 11:00am-12:50pm  Phelps 3526 (also on zoom)<br />
-    </p>
-    <h2>Office hour: <br />
-    </h2>
-    Via zoom with instructor by appointment.<br />
-    <h2>Textbook</h2>
-    <ul>
-      <li> (Optional) Neural Machine Translation, Philipp Koehn, ISBN-10:
-        1108497322, Publisher: Cambridge University Press. preprint version
-        available <a moz-do-not-send="true" href="https://arxiv.org/abs/1709.07809">online</a>.<br />
-      </li>
-      <li>(Optional) Deep Learning, Ian Goodfellow and Yoshua Bengio and Aaron
-        Courville, Publisher: MIT Press. available <a moz-do-not-send="true" href="https://www.deeplearningbook.org/">online</a>.</li>
-      <li>(Optional) Dive into Deep Learning, Aston Zhang, Zachary Lipton, Mu
-        Li, Alexander Smola. available <a moz-do-not-send="true" href="https://d2l.ai/">online</a>.
-        <br />
-      </li>
-      <li>(Optional) Linguistic Fundamentals for Natural Language Processing:
-        100 Essentials from Morphology and Syntax. Emily Bender. Publisher:
-        Morgan &amp; Claypool.<br />
-      </li>
-    </ul>
-    <h2>Prerequisites</h2>
-    <p> Prerequisites: 130A or 130B; 165A or 165B.<br />
-    </p>
-    <h2>Grading</h2>
-    <ul>
-      <li>Homework<br />
-      </li>
-      <ul>
-        <li>HW1-3: separate assignments (10% each)</li>
-        <li>HW4: In-class Presentation <a href="LanguagePresentation.html">Language
-            in 10 mins (10%)<br />
-          </a></li>
-        <li>HW5: MT Blog (15%). <a href="reading-for-blog.html">Reading List</a></li>
-        <li>Turn-in homework at Gradescope: <a href="https://www.gradescope.com/courses/319418">https://www.gradescope.com/courses/319418</a><br />
-        </li>
-      </ul>
-      <li>Project: 40%</li>
-      <li>Participation in active discussion (5)<br />
-      </li>
-    </ul>
-    <h2>Discussion Forum</h2>
-    <p>Piazza: <a href="https://piazza.com/class/ksousnwx3cl1ux">
-        https://piazza.com/class/ksousnwx3cl1ux </a><br />
-      Piazza is main channel of communication. Questions can be posted and
-      discussed here. </p>
-    <h2>Policy</h2>
-    <p>Please read the following <a href="course_policy.html">Link</a>
-      carefully!<br />
-    </p>
-    <h2>Syllabus</h2>
-    <table>
-      <thead>
-        <tr>
-          <td>#<br />
-          </td>
-          <td>Date<br />
-          </td>
-          <td>Lecture Topic<br />
-          </td>
-          <td>Reading<br />
-          </td>
-          <td>Homework<br />
-          </td>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>1<br />
-          </td>
-          <td>M 9/27<br />
-          </td>
-          <td><a href="lecture1intro.pdf">Introduction to MT, History,
-              Probability, Statsitical MT</a><br />
-          </td>
-          <td><a moz-do-not-send="true" href="Weaver_1949_Translation.pdf">Weaver
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml">  <head>    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />    <meta />    <link rel="stylesheet" type="text/css" href="../../style/origo.css" media="all" />    <meta name="author" content="Lei Li" />    <title>DL4MT</title>  </head>  <body>    <h1 align="center"> 291K Deep Learning for Machine Translation (Fall 2021)<br />    </h1>    <h2>Course Description </h2>    This course will cover deep learning methods for neural machine translation    and text generation. It will cover neural models for discrete sequences    including Long-short term memory, Transformer, and encoder-decoder    frameworks for generating language. It includes training objectives and    optimization algorithms for learning those models. It will also include    strategy such as back-translation, knowledge distillation. It will cover    multilingual machine translation, low-resource translation, and speech    translation, as well as engineering techniques to speed-up computation for    MT models. <br />    <h2>Instructor</h2>    <p><a href="https://www.cs.ucsb.edu/%7Elilei">Lei Li</a><br />    </p>    <h2>Time and Location</h2>    <p>Monday/Wednesday 11:00am-12:50pm  Phelps 3526 (also on zoom)<br />    </p>    <h2>Office hour: <br />    </h2>    Via zoom with instructor by appointment.<br />    <h2>Textbook</h2>    <ul>      <li> (Optional) Neural Machine Translation, Philipp Koehn, ISBN-10:        1108497322, Publisher: Cambridge University Press. preprint version        available <a moz-do-not-send="true" href="https://arxiv.org/abs/1709.07809">online</a>.<br />      </li>      <li>(Optional) Deep Learning, Ian Goodfellow and Yoshua Bengio and Aaron        Courville, Publisher: MIT Press. available <a moz-do-not-send="true" href="https://www.deeplearningbook.org/">online</a>.</li>      <li>(Optional) Dive into Deep Learning, Aston Zhang, Zachary Lipton, Mu        Li, Alexander Smola. available <a moz-do-not-send="true" href="https://d2l.ai/">online</a>.        <br />      </li>      <li>(Optional) Linguistic Fundamentals for Natural Language Processing:        100 Essentials from Morphology and Syntax. Emily Bender. Publisher:        Morgan &amp; Claypool.<br />      </li>    </ul>    <h2>Prerequisites</h2>    <p> Prerequisites: 130A or 130B; 165A or 165B.<br />    </p>    <h2>Grading</h2>    <ul>      <li>Homework<br />      </li>      <ul>        <li>HW1-3: separate assignments (10% each)</li>        <li>HW4: In-class Presentation <a href="LanguagePresentation.html">Language
+            in 10 mins (10%)<br />          </a></li>        <li>HW5: MT Blog (15%). <a href="reading-for-blog.html">Reading List</a></li>        <li>Turn-in homework at Gradescope: <a href="https://www.gradescope.com/courses/319418">https://www.gradescope.com/courses/319418</a><br />        </li>      </ul>      <li>Project: 40%</li>      <li>Participation in active discussion (5)<br />      </li>    </ul>    <h2>Discussion Forum</h2>    <p>Piazza: <a href="https://piazza.com/class/ksousnwx3cl1ux">        https://piazza.com/class/ksousnwx3cl1ux </a><br />      Piazza is main channel of communication. Questions can be posted and      discussed here. </p>    <h2>Policy</h2>    <p>Please read the following <a href="course_policy.html">Link</a>      carefully!<br />    </p>    <h2>Syllabus</h2>    <table>      <thead>        <tr>          <td>#<br />          </td>          <td>Date<br />          </td>          <td>Lecture Topic<br />          </td>          <td>Reading<br />          </td>          <td>Homework<br />          </td>        </tr>      </thead>      <tbody>        <tr>          <td>1<br />          </td>          <td>M 9/27<br />          </td>          <td><a href="lecture1intro.pdf">Introduction to MT, History,              Probability, Statsitical MT</a><br />          </td>          <td><a moz-do-not-send="true" href="Weaver_1949_Translation.pdf">Weaver
               1949</a>, <a moz-do-not-send="true" href="https://aclanthology.org/J93-2003.pdf">Brown
-              1993</a> </td>
-          <td>HW1</td>
-        </tr>
-        <tr>
-          <td>2<br />
-          </td>
-          <td>W 9/29<br />
-          </td>
-          <td><a href="lecture2evaluation.pdf">Data, Vocabulary and Evaluation</a>
-          </td>
-          <td><a moz-do-not-send="true" href="https://aclanthology.org/P02-1040/">Papineni
-              2002 BLEU</a><br />
-            <a moz-do-not-send="true" href="https://aclanthology.org/W18-6319/">Post
-              2018 SacreBLEU</a><br />
-            <a moz-do-not-send="true" href="https://arxiv.org/abs/2104.14478">Freitag
-              2021 Human evaluation</a><br />
-            <a moz-do-not-send="true" href="https://aclanthology.org/P16-1162/">Sennrich
-              2016 BPE</a> </td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>3<br />
-          </td>
-          <td>M 10/4<br />
-          </td>
-          <td><a href="lecture3neuralnet.pdf">Basic Neural Network Layers,
-              Embedding, Model Training</a><br />
-          </td>
-          <td>Chap 6 of DL book. </td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>4<br />
-          </td>
-          <td>W 10/6<br />
-          </td>
-          <td><a href="lecture4cnn.pdf">CNN</a><br />
-          </td>
-          <td><a href="https://www.deeplearningbook.org/contents/convnets.html">Chap
-              9 of DL Book.</a><br />
-            <a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf">He
-              2016 ResNet</a><br />
-            <a href="https://arxiv.org/abs/1404.2188">Kalchbrenner 2014 CNN
-              Sequence</a> </td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>5<br />
-          </td>
-          <td>M 10/11<br />
-          </td>
-          <td><a href="lecture5lstm_s2s.pdf"> Encoder-decoder, LSTM</a></td>
-          <td><a href="https://proceedings.neurips.cc/paper/2014/hash/a14ac55a4f27472c5d894ec1c3c743d2-Abstract.html">Sutskever
-              2014 Seq2seq.</a><br />
-            <a href="https://arxiv.org/abs/1409.0473v7"> Bahdanau 2015 Attention</a><br />
-            <a href="https://aclanthology.org/D15-11661166">Luong 2015 Attention</a><br />
-            <a href="https://direct.mit.edu/neco/article/12/10/2451/6415/Learning-to-Forget-Continual-Prediction-with-LSTM">Gers
-              LSTM-Forget 2000.</a><br />
-          </td>
-          <td>HW1 due, HW2<br />
-          </td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>W 10/13</td>
-          <td><a href="lecture6transformer.pdf">Transformer</a></td>
-          <td><a href="https://proceedings.neurips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html">Vaswani
-              Transformer 2017</a></td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>7<br />
-          </td>
-          <td>M 10/18 </td>
-          <td><a href="lecture7decoding.pdf">Decoding</a><br />
-          </td>
-          <td> <br />
-          </td>
-          <td>Project Proposal Due </td>
-        </tr>
-        <tr>
-          <td>8<br />
-          </td>
-          <td>W 10/20 </td>
-          <td><a href="lecture8pretraininglm.pdf">Pre-training Language Models</a><br />
-          </td>
-          <td><a href="https://aclanthology.org/N19-1423">Devlin 2019 BERT</a><br />
-            <a href="https://aclanthology.org/N18-1202">Peters 2018 ELMo</a><br />
-          </td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>9<br />
-          </td>
-          <td>M 10/25 </td>
-          <td><a href="lecture9bertmt.pdf">BERT for MT and Learned Metrics</a></td>
-          <td><a href="https://arxiv.org/abs/1904.09675">BERTScore</a><br />
-            <a href="https://aclanthology.org/2020.emnlp-main.213">COMET</a> <br />
-            <a href="https://arxiv.org/abs/1908.05672">CTNMT (BERT-NMT)</a></td>
-          <td>HW2 due, HW3 </td>
-        </tr>
-        <tr>
-          <td>10<br />
-          </td>
-          <td>W 10/27 </td>
-          <td><a href="lecture10semisupervised_unsupervised_nmt.pdf" >Semi-supervised and Unsupervised MT</a></td>
-          <td><a href="https://aclanthology.org/P16-1009">Back Translation</a><br />
-            <a href="https://aclanthology.org/P16-1185">Semi-supervised MT</a><br />
-            <a href="http://arxiv.org/abs/1710.11041">Unsupervised MT, Artetxe 2018</a><br />
-            <a href="https://openreview.net/forum?id=rkYTTf-AZ">Unsupervised MT, Lample 2018 </a>
-          
-          </td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>11<br />
-          </td>
-          <td>M 11/1 </td>
-          <td>Latent Generative Models for MT</td>
-          <td>VAE<br />
-            Sentence VAE<br />
-            Mirror Generative NMT<br />
-          </td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>12<br />
-          </td>
-          <td>W 11/3 </td>
-          <td>Multilingual Machine Translation</td>
-          <td>mTransformer, <br />
-            mRASP &amp; mRASP2, <br />
-            mBART, <br />
-            Graformer, <br />
-            Prune-tune, Adapter, CIAT, LaSS </td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>13<br />
-          </td>
-          <td>M 11/8 </td>
-          <td>Speech Pre-training - Guest Lecture by Michael Auli from Facebook</td>
-          <td>Wav2vec, wav2vec2.0, wav2vec-U.<br />
-          </td>
-          <td>HW3 due </td>
-        </tr>
-        <tr>
-          <td>14<br />
-          </td>
-          <td>W 11/10 </td>
-          <td>Speech Translation</td>
-          <td>FAT, Wave2vec1&amp;2, Chimera, XSTNet, E2E Speech Translation,
-            LUT, COSTT, CTC</td>
-          <td>Project midterm report due </td>
-        </tr>
-        <tr>
-          <td>15<br />
-          </td>
-          <td>M 11/15 </td>
-          <td>Speed-up inference: Parallel Generation, Hardware acceleration for
-            NMT </td>
-          <td>NAT, flowSeq, CMLM, PNAT, GLAT, <br />
-            LightSeq, TurboTranformer </td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>16<br />
-          </td>
-          <td>W 11/17 </td>
-          <td>Advanced vocabulary and embedding learning </td>
-          <td>VOLT, KerBS </td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>17<br />
-          </td>
-          <td>M 11/22 </td>
-          <td>Interactive Machine Translation, Computer-aided Translation, Data
-            mining for MT</td>
-          <td>CAMIT, constrained decoding, alignment, kNN-NMT, KSTER</td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>18<br />
-          </td>
-          <td>W 11/24 </td>
-          <td>Text Generation and Summarization</td>
-          <td>VAE. CGMH, VTM<br />
-          </td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>19<br />
-          </td>
-          <td>M 11/29 </td>
-          <td>Applications to other tasks, drug discovery, material </td>
-          <td>VAE, RationalRL, MARS, GA<br />
-          </td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td>20<br />
-          </td>
-          <td>W 12/1 </td>
-          <td>Industrial Presentation: Lessons from Building Successful MT
-            Products </td>
-          <td><br />
-          </td>
-          <td><br />
-          </td>
-        </tr>
-        <tr>
-          <td><br />
-          </td>
-          <td>M 12/6 </td>
-          <td>Project Poster Presentation</td>
-          <td><br />
-          </td>
-          <td>Final project report due </td>
-        </tr>
-      </tbody>
-    </table>
-    <br />
-  </body>
-</html>
+              1993</a> </td>          <td>HW1</td>        </tr>        <tr>          <td>2<br />          </td>          <td>W 9/29<br />          </td>          <td><a href="lecture2evaluation.pdf">Data, Vocabulary and Evaluation</a>          </td>          <td><a moz-do-not-send="true" href="https://aclanthology.org/P02-1040/">Papineni
+              2002 BLEU</a><br />            <a moz-do-not-send="true" href="https://aclanthology.org/W18-6319/">Post
+              2018 SacreBLEU</a><br />            <a moz-do-not-send="true" href="https://arxiv.org/abs/2104.14478">Freitag
+              2021 Human evaluation</a><br />            <a moz-do-not-send="true" href="https://aclanthology.org/P16-1162/">Sennrich
+              2016 BPE</a> </td>          <td><br />          </td>        </tr>        <tr>          <td>3<br />          </td>          <td>M 10/4<br />          </td>          <td><a href="lecture3neuralnet.pdf">Basic Neural Network Layers,              Embedding, Model Training</a><br />          </td>          <td>Chap 6 of DL book. </td>          <td><br />          </td>        </tr>        <tr>          <td>4<br />          </td>          <td>W 10/6<br />          </td>          <td><a href="lecture4cnn.pdf">CNN</a><br />          </td>          <td><a href="https://www.deeplearningbook.org/contents/convnets.html">Chap
+              9 of DL Book.</a><br />            <a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf">He
+              2016 ResNet</a><br />            <a href="https://arxiv.org/abs/1404.2188">Kalchbrenner 2014 CNN              Sequence</a> </td>          <td><br />          </td>        </tr>        <tr>          <td>5<br />          </td>          <td>M 10/11<br />          </td>          <td><a href="lecture5lstm_s2s.pdf"> Encoder-decoder, LSTM</a></td>          <td><a href="https://proceedings.neurips.cc/paper/2014/hash/a14ac55a4f27472c5d894ec1c3c743d2-Abstract.html">Sutskever
+              2014 Seq2seq.</a><br />            <a href="https://arxiv.org/abs/1409.0473v7"> Bahdanau 2015 Attention</a><br />            <a href="https://aclanthology.org/D15-11661166">Luong 2015 Attention</a><br />            <a href="https://direct.mit.edu/neco/article/12/10/2451/6415/Learning-to-Forget-Continual-Prediction-with-LSTM">Gers
+              LSTM-Forget 2000.</a><br />          </td>          <td>HW1 due, HW2<br />          </td>        </tr>        <tr>          <td>6</td>          <td>W 10/13</td>          <td><a href="lecture6transformer.pdf">Transformer</a></td>          <td><a href="https://proceedings.neurips.cc/paper/2017/hash/3f5ee243547dee91fbd053c1c4a845aa-Abstract.html">Vaswani
+              Transformer 2017</a></td>          <td><br />          </td>        </tr>        <tr>          <td>7<br />          </td>          <td>M 10/18 </td>          <td><a href="lecture7decoding.pdf">Decoding</a><br />          </td>          <td> <br />          </td>          <td>Project Proposal Due </td>        </tr>        <tr>          <td>8<br />          </td>          <td>W 10/20 </td>          <td><a href="lecture8pretraininglm.pdf">Pre-training Language Models</a><br />          </td>          <td><a href="https://aclanthology.org/N19-1423">Devlin 2019 BERT</a><br />            <a href="https://aclanthology.org/N18-1202">Peters 2018 ELMo</a><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>9<br />          </td>          <td>M 10/25 </td>          <td><a href="lecture9bertmt.pdf">BERT for MT and Learned Metrics</a></td>          <td><a href="https://arxiv.org/abs/1908.05672">CTNMT (BERT-NMT)</a><br />            <a href="https://arxiv.org/abs/1904.09675">BERTScore</a><br />            <a href="https://aclanthology.org/2020.emnlp-main.213">COMET</a> </td>          <td>HW2 due, HW3 </td>        </tr>        <tr>          <td>10<br />          </td>          <td>W 10/27 </td>          <td><a href="lecture10semisupervised_unsupervised_nmt.pdf">Semi-supervised              and Unsupervised MT</a></td>          <td><a href="https://aclanthology.org/P16-1009">Back Translation</a><br />            <a href="https://aclanthology.org/P16-1185">Semi-supervised MT</a><br />            <a href="http://arxiv.org/abs/1710.11041">Unsupervised MT, Artetxe              2018</a><br />            <a href="https://openreview.net/forum?id=rkYTTf-AZ">Unsupervised MT,              Lample 2018 </a> </td>          <td><br />          </td>        </tr>        <tr>          <td>11<br />          </td>          <td>M 11/1 </td>          <td> <a href="lecture11latentMT.pdf"> Latent Generative Models for MT            </a></td>          <td><a href="http://arxiv.org/abs/1312.6114">VAE</a><br />            <a href="https://aclanthology.org/K16-1002">Sentence VAE</a><br />            <a href="https://openreview.net/pdf?id=HkxQRTNYPH">Mirror Generative              NMT</a> </td>          <td><br />          </td>        </tr>        <tr>          <td>12<br />          </td>          <td>W 11/3 </td>          <td><a href="lecture12multilingualnmt.pdf"> Multilingual Neural              Machine Translation </a> </td>          <td> <a href="https://aclanthology.org/Q17-1024.pdf">Google-MNMT</a><br />            <a href="https://aclanthology.org/N19-1388">mTransformer</a> <br />            <a href="https://aclanthology.org/D19-1165">Serial Adapter</a> <br />            <a href="https://arxiv.org/abs/2104.08154">Parallel adapter - CIAT</a>            <br />            <a href="https://arxiv.org/abs/2105.09259">LaSS</a><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>13<br />          </td>          <td>M 11/8 </td>          <td>Speech Pre-training - Guest Lecture by Michael Auli from Facebook</td>          <td><a href="https://arxiv.org/abs/1904.05862v4">Wav2vec</a>, <a href="http://arxiv.org/abs/2006.11477">wav2vec2.0</a>,            <a href="https://arxiv.org/abs/2105.11084v2">wav2vec-U</a>.<br />          </td>          <td>HW3 due </td>        </tr>        <tr>          <td>14<br />          </td>          <td>W 11/10 </td>          <td>Pre-training for NMT, Monolingual and Multilingual</td>          <td> <a href="https://arxiv.org/abs/2010.03142">mRASP</a> &amp; <a href="https://arxiv.org/abs/2105.09501">mRASP2</a>            <br />            <a href="https://doi.org/10.1162/tacl_a_00343">mBART</a> <br />            <a href="https://arxiv.org/abs/2109.05256"> Graformer</a> <br />            <a href="https://arxiv.org/abs/2012.10586">Prune-tune</a> </td>          <td>Project midterm report due </td>        </tr>        <tr>          <td>15<br />          </td>          <td>M 11/15 </td>          <td>Speech Translation</td>          <td>FAT, Wave2vec1&amp;2, Chimera, XSTNet, E2E Speech Translation,            LUT, COSTT, CTC</td>          <td><br />          </td>        </tr>        <tr>          <td>16<br />          </td>          <td>W 11/17 </td>          <td>Advanced vocabulary and embedding learning </td>          <td>VOLT, KerBS </td>          <td><br />          </td>        </tr>        <tr>          <td>17<br />          </td>          <td>M 11/22 </td>          <td>Speed-up inference: Parallel Generation, Hardware acceleration for            NMT </td>          <td>NAT, flowSeq, CMLM, PNAT, GLAT, <br />            LightSeq, TurboTranformer </td>          <td><br />          </td>        </tr>        <tr>          <td>18<br />          </td>          <td>W 11/24 </td>          <td>Interactive Machine Translation, Computer-aided Translation, Data            mining for MT</td>          <td>CAMIT, constrained decoding, alignment, kNN-NMT, KSTER<br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>19<br />          </td>          <td>M 11/29 </td>          <td>Applications to other tasks, drug discovery, material </td>          <td>VAE, RationalRL, MARS, GA, CGMH, VTM </td>          <td><br />          </td>        </tr>        <tr>          <td>20<br />          </td>          <td>W 12/1 </td>          <td>Industrial Presentation: Lessons from Building Successful MT            Products </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td><br />          </td>          <td>M 12/6 </td>          <td>Project Poster Presentation</td>          <td><br />          </td>          <td>Final project report due </td>        </tr>      </tbody>    </table>    <br />  </body></html>
