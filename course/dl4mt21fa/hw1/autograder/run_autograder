@@ -4,7 +4,7 @@ create_report () {
 cat >results/results.json <<EOL
 { 
   "execution_time": 0, 
-  "output": "Total score", 
+  "output": "", 
   "visibility": "after_due_date", 
   "stdout_visibility": "visible", 
   "extra_data": {},
@@ -13,7 +13,7 @@ cat >results/results.json <<EOL
         {
             "score": ${prob3_score}, 
             "number": "3", 
-            "output": "Score: ${prob3_score}", 
+            "output": "Problem 3 Score: ${prob3_score}", 
             "tags": ["BPE"], 
             "visibility": "visible", 
             "extra_data": {} 
@@ -21,7 +21,7 @@ cat >results/results.json <<EOL
         {
             "score": ${prob4_score}, 
             "number": "4", 
-            "output": "Score: ${prob4_score}", 
+            "output": "Problem 4 Score: ${prob4_score}", 
             "tags": ["skewed BLEU"], 
             "visibility": "visible", 
             "extra_data": {} 
@@ -32,7 +32,8 @@ EOL
 }
 
 start_time=$(date +%s)
-prefix=source
+# prefix=source
+prefix=.
 test_case=(30 100 1000 1000 3000 5000 5000)
 unit_score=$(( 35 / ${#test_case[@]} ))
 score=0
