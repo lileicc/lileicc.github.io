@@ -649,7 +649,12 @@ function BibtexDisplay() {
             } else if (keyUpper == "YEAR") {
                 var getYearFromDate = x => {
                     if ("DATE" in x) {
-                        return moment(x["DATE"]).format("YYYY");
+                        var d = moment(x["DATE"]);
+                        if (d.isValid()) {
+                            return d.format("YYYY");
+                        } else {
+                            return "9999";
+                        }
                     }
                     return "";
                 }
