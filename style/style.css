@@ -37,18 +37,6 @@ bibtex { display: none; }
   color: red;
 }
 
-div.templates {
-  counter-reset: paper_count;
-  display: flex;
-  flex-direction: column-reverse;
-}
-
-div.bibtexentry > p:nth-child(1)::before {
-  counter-increment: paper_count;
-  content: "[" counter(paper_count) "] ";
-  flex: 0 0 auto;
-}
-
 pre {
   white-space: pre-wrap;
   hyphens: auto;
