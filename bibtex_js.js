@@ -524,7 +524,7 @@ function BibtexDisplay() {
         }
 
         // Regex
-        var orRegExp = new RegExp('\\s*[\\|\\|]\\s*', "gi"); // split by "||"
+        var orRegExp = new RegExp('\\s*\\|\\|\\s*', "gi"); // split by "||"
         var eqRegExp = new RegExp('\\s*==\\s*', "gi"); // split by "=="
 
         // find all ifs and check them
