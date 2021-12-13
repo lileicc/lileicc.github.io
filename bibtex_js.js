@@ -653,7 +653,7 @@ function BibtexDisplay() {
                         if (d.isValid()) {
                             return d.format("YYYY");
                         } else {
-                            return "9999";
+                            return x["DATE"];
                         }
                     }
                     return "";
