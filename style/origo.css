@@ -59,7 +59,6 @@ h1, h2, h3 {
 }
 #layout {
   margin: 40px auto 0;
-  width: 760px;
 }
 body.wider #layout {
   margin: 40px auto 0;
@@ -99,7 +98,7 @@ body.wider #layout {
 .row {
   margin: 20px auto 0;
   overflow: hidden;
-  width: 760px;
+  width: 90%;
 }
 .row .row {
   margin: 0 -10px;
@@ -186,7 +185,7 @@ ul.menu {
     padding-left: 0;
     background-color: #5f5f5f;
     text-align: center;
-    float: right;
+    float: left;
     position: -webkit-sticky; /* Safari */
     position: sticky;
     top:0;
@@ -288,6 +287,12 @@ body.light ul.menu li a:hover {
   color: gold;
   border-bottom: 2px solid #2f5fee;
 }
+
+body.light ul.menu li.active {
+  color: rgb(111, 143, 81);
+  background-color: #754588;
+}
+
 body.light .separator {
   border-bottom: 1px dotted #cccccc;
   background: #f5f5f5  no-repeat scroll center bottom;
