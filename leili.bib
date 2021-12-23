@@ -4,6 +4,7 @@
   title     = {{LOREN}: Logic-Regularized Reasoning for Interpretable Fact Verification},
   year      = {2022},
   month     = feb,
+  abstract  = {Given a natural language statement, how to verify its veracity against a large-scale textual knowledge source like Wikipedia? Most existing neural models make predictions without giving clues about which part of a false claim goes wrong. In this paper, we propose LOREN, an approach for interpretable fact verification. We decompose the verification of the whole claim at phrase-level, where the veracity of the phrases serves as explanations and can be aggregated into the final verdict according to logical rules. The key insight of LOREN is to represent claim phrase veracity as three-valued latent variables, which are regularized by aggregation logical rules. The final claim verification is based on all latent variables. Thus, LOREN enjoys the additional benefit of interpretability -- it is easy to explain how it reaches certain results with claim phrase veracity. Experiments on a public fact verification benchmark show that LOREN is competitive against previous approaches while enjoying the merit of faithful and accurate interpretability.},
   code      = {https://github.com/jiangjiechen/LOREN},
   eprint    = {https://arxiv.org/abs/2012.13577},
   url       = {https://huggingface.co/spaces/Jiangjie/loren-fact-checking},
@@ -15,6 +16,7 @@
   title     = {Unsupervised Editing for Counterfactual Stories},
   year      = {2022},
   month     = feb,
+  abstract  = {Creating what-if stories requires reasoning about prior statements and possible outcomes of the changed conditions. One can easily generate coherent endings under new conditions, but it would be challenging for current systems to do it with minimal changes to the original story. Therefore, one major challenge is the trade-off between generating a logical story and rewriting with minimal-edits. In this paper, we propose EDUCAT, an editing-based unsupervised approach for counterfactual story rewriting. EDUCAT includes a target position detection strategy based on estimating causal effects of the what-if conditions, which keeps the causal invariant parts of the story. EDUCAT then generates the stories under fluency, coherence and minimal-edits constraints. We also propose a new metric to alleviate the shortcomings of current automatic metrics and better evaluate the trade-off. We evaluate EDUCAT on a public counterfactual story rewriting benchmark. Experiments show that EDUCAT achieves the best trade-off over unsupervised SOTA methods according to both automatic and human evaluation.},
   code      = {https://github.com/jiangjiechen/EDUCAT},
   eprint    = {https://arxiv.org/abs/2112.05417},
 }
@@ -26,15 +28,17 @@
   title     = {Non-Autoregressive Translation with Layer-Wise Prediction and Deep Supervision},
   year      = {2022},
   month     = feb,
+  abstract  = {How do we perform efficient inference while retaining high translation quality? Existing neural machine translation models, such as Transformer, achieve high performance, but they decode words one by one, which is inefficient. Recent non-autoregressive translation models speed up the inference, but their quality is still inferior. In this work, we propose DSLP, a highly efficient and high-performance model for machine translation. The key insight is to train a non-autoregressive Transformer with Deep Supervision and feed additional Layer-wise Predictions. We conducted extensive experiments on four translation tasks (both directions of WMT'14 EN-DE and WMT'16 EN-RO). Results show that our approach consistently improves the BLEU scores compared with respective base models. Specifically, our best variant outperforms the autoregressive model on three translation tasks, while being 14.8 times more efficient in inference.},
   eprint    = {https://arxiv.org/abs/2110.07515},
 }
 
 @Article{chu2021icm,
-  author  = {Ruihang Chu and Yukang Chen and Tao Kong and Lu Qi and Lei Li},
-  journal = {IEEE Robotics and Automation Letters (RA-L)},
-  title   = {{ICM-3D}: Instantiated Category Modeling for 3D Instance Segmentation},
-  year    = {2021},
-  eprint  = {https://arxiv.org/abs/2108.11771},
+  author   = {Ruihang Chu and Yukang Chen and Tao Kong and Lu Qi and Lei Li},
+  journal  = {IEEE Robotics and Automation Letters (RA-L)},
+  title    = {{ICM-3D}: Instantiated Category Modeling for 3D Instance Segmentation},
+  year     = {2021},
+  abstract = {Separating 3D point clouds into individual instances is an important task for 3D vision. It is challenging due to the unknown and varying number of instances in a scene. Existing deep learning based works focus on a two-step pipeline: first learn a feature embedding and then cluster the points. Such a two-step pipeline leads to disconnected intermediate objectives. In this paper, we propose an integrated reformulation of 3D instance segmentation as a per-point classification problem. We propose ICM-3D, a single-step method to segment 3D instances via instantiated categorization. The augmented category information is automatically constructed from 3D spatial positions. We conduct extensive experiments to verify the effectiveness of ICM-3D and show that it obtains inspiring performance across multiple frameworks, backbones and benchmarks.},
+  eprint   = {https://arxiv.org/abs/2108.11771},
 }
 
 @Article{wang2021solo,
@@ -63,6 +67,7 @@
   title        = {The {Volctrans} {GLAT} System: Non-autoregressive Translation Meets {WMT21}},
   year         = {2021},
   month        = nov,
+  abstract     = {This paper describes the Volctrans' submission to the WMT21 news translation shared task for German->English translation. We build a parallel (i.e., non-autoregressive) translation system using the Glancing Transformer, which enables fast and accurate parallel decoding in contrast to the currently prevailing autoregressive models. To the best of our knowledge, this is the first parallel translation system that can be scaled to such a practical scenario like WMT competition. More importantly, our parallel translation system achieves the best BLEU score (35.0) on German->English translation task, outperforming all strong autoregressive counterparts.},
   entrysubtype = {workshop},
   eprint       = {https://arxiv.org/abs/2109.11247},
 }
@@ -96,6 +101,7 @@
   title     = {Gradient-based Adversarial Factual Consistency Evaluation for Abstractive Summarization},
   year      = {2021},
   month     = nov,
+  abstract  = {Neural abstractive summarization systems have gained significant progress in recent years. However, abstractive summarization often produce inconsisitent statements or false facts. How to automatically generate highly abstract yet factually correct summaries? In this paper, we proposed an efficient weak-supervised adversarial data augmentation approach to form the factual consistency dataset. Based on the artificial dataset, we train an evaluation model that can not only make accurate and robust factual consistency discrimination but is also capable of making interpretable factual errors tracing by backpropagated gradient distribution on token embeddings. Experiments and analysis conduct on public annotated summarization and factual consistency datasets demonstrate our approach effective and reasonable.},
   code      = {https://github.com/parZival27/GrAdualCC},
   eprint    = {https://aclanthology.org/2021.emnlp-main.337/},
 }
@@ -106,6 +112,7 @@
   title     = {Multilingual Translation via Grafting Pre-trained Language Models},
   year      = {2021},
   month     = nov,
+  abstract  = {Can pre-trained BERT for one language and GPT for another be glued together to translate texts? Self-supervised training using only monolingual data has led to the success of pre-trained (masked) language models in many NLP tasks. However, directly connecting BERT as an encoder and GPT as a decoder can be challenging in machine translation, for GPT-like models lack a cross-attention component that is needed in seq2seq decoders. In this paper, we propose Graformer to graft separately pre-trained (masked) language models for machine translation. With monolingual data for pre-training and parallel data for grafting training, we maximally take advantage of the usage of both types of data. Experiments on 60 directions show that our method achieves average improvements of 5.8 BLEU in x2en and 2.9 BLEU in en2x directions comparing with the multilingual Transformer of the same size.},
   code      = {https://github.com/sunzewei2715/Graformer},
   eprint    = {https://arxiv.org/abs/2109.05256},
 }
@@ -140,6 +147,8 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   year      = {2021},
   address   = {Qingdao, China},
   month     = oct,
+  abstract  = {Automatic text summarization aims to produce a brief but crucial summary for the input documents. Both extractive and abstractive methods have witnessed great success in English datasets in recent years. However, there has been a minimal exploration of text summarization in Chinese, limited by the lack of large-scale datasets. In this paper, we present a large-scale Chinese news summarization dataset CNewSum, which consists of 304,307 documents and human-written summaries for the news feed. It has long documents with high-abstractive summaries, which can encourage document-level understanding and generation for current summarization models. An additional distinguishing feature of CNewSum is that its test set contains adequacy and deducibility annotations for the summaries. The adequacy level measures the degree of summary information covered by the document, and the deducibility indicates the reasoning ability the model needs to generate the summary. These annotations can help researchers analyze and target their model performance bottleneck. We examine recent methods on CNewSum and release our dataset to provide a solid testbed for automatic Chinese summarization research.},
+  eprint    = {https://arxiv.org/abs/2110.10874},
   url       = {https://dqwang122.github.io/projects/CNewSum/},
 }
 
@@ -149,6 +158,7 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   title     = {Learning to Design and Construct Bridge without Blueprint},
   year      = {2021},
   month     = sep,
+  abstract  = {Autonomous assembly has been a desired functionality of many intelligent robot systems. We study a new challenging assembly task, designing and constructing a bridge without a blueprint. In this task, the robot needs to first design a feasible bridge architecture for arbitrarily wide cliffs and then manipulate the blocks reliably to construct a stable bridge according to the proposed design. In this paper, we propose a bi-level approach to tackle this task. At the high level, the system learns a bridge blueprint policy in a physical simulator using deep reinforcement learning and curriculum learning. A policy is represented as an attention-based neural network with object-centric input, which enables generalization to different numbers of blocks and cliff widths. For low-level control, we implement a motion-planning-based policy for real-robot motion control, which can be directly combined with a trained blueprint policy for real-world bridge construction without tuning. In our field study, our bi-level robot system demonstrates the capability of manipulating blocks to construct a diverse set of bridges with different architectures.},
   eprint    = {https://arxiv.org/abs/2108.02439},
 }
 
@@ -158,6 +168,7 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   title     = {Simultaneous Semantic and Collision Learning for 6-DoF Grasp Pose Estimation},
   year      = {2021},
   month     = sep,
+  abstract  = {Grasping in cluttered scenes has always been a great challenge for robots, due to the requirement of the ability to well understand the scene and object information. Previous works usually assume that the geometry information of the objects is available, or utilize a step-wise, multi-stage strategy to predict the feasible 6-DoF grasp poses. In this work, we propose to formalize the 6-DoF grasp pose estimation as a simultaneous multi-task learning problem. In a unified framework, we jointly predict the feasible 6-DoF grasp poses, instance semantic segmentation, and collision information. The whole framework is jointly optimized and end-to-end differentiable. Our model is evaluated on large-scale benchmarks as well as the real robot system. On the public dataset, our method outperforms prior state-of-the-art methods by a large margin (+4.08 AP). We also demonstrate the implementation of our model on a real robotic platform and show that the robot can accurately grasp target objects in cluttered scenarios with a high success rate.},
   eprint    = {https://arxiv.org/abs/2108.02425},
 }
 
@@ -167,6 +178,8 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   title     = {Follow Your Path: a Progressive Method for Knowledge Distillation},
   year      = {2021},
   month     = sep,
+  abstract  = {Deep neural networks often have a huge number of parameters, which posts challenges in deployment in application scenarios with limited memory and computation capacity. Knowledge distillation is one approach to derive compact models from bigger ones. However, it has been observed that a converged heavy teacher model is strongly constrained for learning a compact student network and could make the optimization subject to poor local optima. In this paper, we propose ProKT, a new model-agnostic method by projecting the supervision signals of a teacher model into the student's parameter space. Such projection is implemented by decomposing the training objective into local intermediate targets with an approximate mirror descent technique. The proposed method could be less sensitive with the quirks during optimization which could result in a better local optimum. Experiments on both image and text datasets show that our proposed ProKT consistently achieves superior performance compared to other existing knowledge distillation methods.},
+  eprint    = {https://arxiv.org/abs/2107.09305},
 }
 
 @InProceedings{ye2021end,
@@ -175,6 +188,7 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   title     = {End-to-end Speech Translation via Cross-modal Progressive Training},
   year      = {2021},
   month     = aug,
+  abstract  = {End-to-end speech translation models have become a new trend in research due to their potential of reducing error propagation. However, these models still suffer from the challenge of data scarcity. How to effectively use unlabeled or other parallel corpora from machine translation is promising but still an open problem. In this paper, we propose Cross Speech-Text Network (XSTNet), an end-to-end model for speech-to-text translation. XSTNet takes both speech and text as input and outputs both transcription and translation text. The model benefits from its three key design aspects: a self-supervised pre-trained sub-network as the audio encoder, a multi-task training objective to exploit additional parallel bilingual text, and a progressive training procedure. We evaluate the performance of XSTNet and baselines on the MuST-C En-X and LibriSpeech En-Fr datasets. In particular, XSTNet achieves state-of-the-art results on all language directions with an average BLEU of 28.8, outperforming the previous best method by 3.2 BLEU. Code, models, cases, and more detailed analysis are available at.},
   code      = {https://github.com/ReneeYe/XSTNet},
   eprint    = {https://arxiv.org/abs/2104.10380},
 }
@@ -197,6 +211,7 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   title     = {Contrastive Learning for Many-to-many Multilingual Neural Machine Translation},
   year      = {2021},
   month     = aug,
+  abstract  = {Existing multilingual machine translation approaches mainly focus on English-centric directions, while the non-English directions still lag behind. In this work, we aim to build a many-to-many translation system with an emphasis on the quality of non-English language directions. Our intuition is based on the hypothesis that a universal cross-language representation leads to better multilingual translation performance. To this end, we propose mRASP2, a training method to obtain a single unified multilingual translation model. mRASP2 is empowered by two techniques: a) a contrastive learning scheme to close the gap among representations of different languages, and b) data augmentation on both multiple parallel and monolingual data to further align token representations. For English-centric directions, mRASP2 outperforms existing best unified model and achieves competitive or even better performance than the pre-trained and fine-tuned model mBART on tens of WMT's translation directions. For non-English directions, mRASP2 achieves an improvement of average 10+ BLEU compared with the multilingual Transformer baseline.},
   code      = {https://github.com/PANXiao1994/mRASP2},
   eprint    = {https://arxiv.org/abs/2105.09501},
   slides    = {pubs/mRASP2_ACL2021.pdf},
@@ -211,6 +226,7 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   title     = {Glancing Transformer for Non-Autoregressive Neural Machine Translation},
   year      = {2021},
   month     = aug,
+  abstract  = {Recent work on non-autoregressive neural machine translation (NAT) aims at improving the efficiency by parallel decoding without sacrificing the quality. However, existing NAT methods are either inferior to Transformer or require multiple decoding passes, leading to reduced speedup. We propose the Glancing Language Model (GLM), a method to learn word interdependency for single-pass parallel generation models. With GLM, we develop Glancing Transformer (GLAT) for machine translation. With only single-pass parallel decoding, GLAT is able to generate high-quality translation with 8-15 times speedup. Experiments on multiple WMT language directions show that GLAT outperforms all previous single pass non-autoregressive methods, and is nearly comparable to Transformer, reducing the gap to 0.25-0.9 BLEU points.},
   comment   = {The main algorithm that achieves top 1 BLEU scores in WMT21 En-De and De-En machine translation contest.},
   eprint    = {https://arxiv.org/abs/2008.07905},
   timestamp = {2020-05-01},
@@ -243,6 +259,7 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   title     = {Vocabulary Learning via Optimal Transport for Neural Machine Translation},
   year      = {2021},
   month     = aug,
+  abstract  = {The choice of token vocabulary affects the performance of machine translation. This paper aims to figure out what is a good vocabulary and whether one can find the optimal vocabulary without trial training. To answer these questions, we first provide an alternative understanding of the role of vocabulary from the perspective of information theory. Motivated by this, we formulate the quest of vocabularization -- finding the best token dictionary with a proper size -- as an optimal transport (OT) problem. We propose VOLT, a simple and efficient solution without trial training. Empirical results show that VOLT outperforms widely-used vocabularies in diverse scenarios, including WMT-14 English-German and TED's 52 translation directions. For example, VOLT achieves almost 70% vocabulary size reduction and 0.5 BLEU gain on English-German translation. Also, compared to BPE-search, VOLT reduces the search time from 384 GPU hours to 30 GPU hours on English-German translation.},
   addendum  = {ACL Best Paper Award (1/3350)},
   code      = {https://github.com/Jingjing-NLP/VOLT},
   eprint    = {https://arxiv.org/abs/2012.15671},
