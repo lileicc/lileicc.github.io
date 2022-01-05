@@ -1,1 +1,347 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml">  <head>    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />    <meta />    <meta />    <link rel="stylesheet" type="text/css" href="../../style/origo.css" media="all" />    <meta name="author" content="Lei Li" />    <title>MLDL</title>  </head>  <body>    <h1 align="center"> 165B Machine Learning (Winter 2022)<br />    </h1>    <h2 align="center"> Focus on Deep Learning </h2>    <h2>Course Description </h2>    <p>Machine Learning is about developing systems that automatically improve      their performance through experience. It has found applications in many AI      systems and products. Examples include systems that recommend online      videos, automatic translating languages, and autonomous driving vehicles.      This course covers the theory and practical algorithms for machine      learning from a variety of perspectives.This course focus on a sub-field      of machine learning -- Deep Learning, with moderate introduction to      general learning concepts and methods. We cover topics such as supervised      learning, unsupervised learning, and reinforcement learning, and various      neural network architectures including convolutional neural networks,      recurrent neural networks, Transformer, and graph neural networks. We will      cover techniques for designing loss, and training methods. We focus on      both the principles, analytical skills and implementation practice. This      course is suitable for undergraduate students and graduate students who      wants to pursue career in AI or do research in machine learning. </p>    <h2>Instructor</h2>    <p><a href="https://www.cs.ucsb.edu/%7Eleili">Lei Li</a> <br />      Office Hour: Monday 5-6pm (on <a href="https://ucsb.zoom.us/j/82443832810?pwd=OWI0KzFMZVNKUndpemswdzFHMUFpdz09">zoom</a>)    </p>    <h2>Teaching Assistant</h2>    <ul>      <li>Saurabh Sharma (saurabhsharma@) Office Hour: Friday 10-11am </li>      <li>Yanchen Lu (yanchenlu@) Office Hour:Mondays 3-4pm</li>      <li>Yijun Xiao (yijunxiao@) Office hour: Thursday 4-5pm</li>      <li>Arjun Prakash (arjun157@) Office hour: Tuesday 9:30-10:30am  </li>    </ul>    <h2>Time and Location</h2>    <p>Monday/Wednesday 11:00am-12:15pm  On <a href="https://ucsb.zoom.us/j/82443832810?pwd=OWI0KzFMZVNKUndpemswdzFHMUFpdz09">Zoom</a>      for the first two weeks (if in-person teaching, at NH 1006) </p>    <p>TA sessions on Wednesday (use the same zoom) </p>    <ul>      <li>4-5pm GIRV 2119</li>      <li>5-6pm PHELP1448</li>      <li>6-7pm PHELP2532</li>      <li>7-8pm PHELP2532</li>    </ul>    <h2>Textbook</h2>    <ul>      <li>[GBC] Deep Learning, Ian Goodfellow and Yoshua Bengio and Aaron        Courville, Publisher: MIT Press. available <a moz-do-not-send="true" href="https://www.deeplearningbook.org/">online</a>.</li>      <li>(Optional) Dive into Deep Learning, Aston Zhang, Zachary Lipton, Mu        Li, Alexander Smola. available <a moz-do-not-send="true" href="https://d2l.ai/">online</a>.</li>      <li><a href="http://ciml.info/">(Optional) A Course in Machine Learning</a>,        Hal Daumé III. available online.</li>    </ul>    The textbook below is a great resource for those hoping to brush up on the    prerequisite mathematics background for this course.    <ul>      <li>Mathematics for Machine Learning, Marc Peter Deisenroth, A. Aldo        Faisal, and Cheng Soon Ong. Free <a href="https://mml-book.github.io/">online</a>.<br />        <br />      </li>    </ul>    <h2>Prerequisites</h2>    <p> Prerequisites: Students need to grasp knowledge in Linear algebra,      Calculus, Probability and Statistics, basic algorithms, and significant      experience in computer programming (python, C++, or Java).</p>    <p>CS 130A&amp;130B, MATH 3B, PSTAT 120A.<br />    </p>    <h2>Homework Submission &amp; Grading</h2>    <ul>      <li>Gradescope: Please singup <a href="https://www.gradescope.com/courses/344145">here</a>        (Entry Code: N8DPRK) </li>      <ul>      </ul>    </ul>    <h2>Discussion Forum</h2>    <p>We will use Ed platform. Please signup <a href="https://edstem.org/us/join/cPQgXM">here</a>.    </p>    <h2>Policy</h2>    <p>Please read the following <a href="course_policy.html">Link</a>      carefully!<br />    </p>    <h2>Syllabus</h2>    <table width="100%" border="0">      <tbody>        <tr>          <td>#<br />          </td>          <td>Date<br />          </td>          <td>Topic<br />          </td>          <td>Reading<br />          </td>          <td>Homework<br />          </td>        </tr>        <tr>          <td>1<br />          </td>          <td>1/3<br />          </td>          <td> <a href="01-intro.pdf">Introduction </a><br />          </td>          <td>Chap 1 of GBC<br />          </td>          <td>HW1<br />          </td>        </tr>        <tr>          <td>2<br />          </td>          <td>1/5<br />          </td>          <td>Basic Neural Networks<br />          </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>3<br />          </td>          <td>1/10<br />          </td>          <td>Model Training, Empirical risk minimization<br />          </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>4<br />          </td>          <td>1/12<br />          </td>          <td>Vector calculus, Backpropagation<br />          </td>          <td><br />          </td>          <td>HW1 due, HW2 out </td>        </tr>        <tr>          <td><br />          </td>          <td>1/17</td>          <td>holiday. no class</td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>5<br />          </td>          <td>1/19<br />          </td>          <td>Optimization algorithms<br />          </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>6<br />          </td>          <td>1/24<br />          </td>          <td>Regularization and other tricks<br />          </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>7<br />          </td>          <td>1/26<br />          </td>          <td>Convolution Neural Network<br />          </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>8<br />          </td>          <td>1/31<br />          </td>          <td>ResNet and other CNN variants<br />          </td>          <td><br />          </td>          <td>HW2 Due, HW3 out </td>        </tr>        <tr>          <td>9<br />          </td>          <td>2/2<br />          </td>          <td>Backpropogation for CNNs<br />          </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>10<br />          </td>          <td>2/7<br />          </td>          <td>Recurrent Neural Network, Language Modelling<br />          </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>11<br />          </td>          <td>2/9<br />          </td>          <td>Long-short term memory networks<br />          </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>12<br />          </td>          <td>2/14<br />          </td>          <td>Sequence-to-sequence models<br />          </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>13<br />          </td>          <td>2/16<br />          </td>          <td>CTC and Sequence Decoding</td>          <td><br />          </td>          <td>HW3 Due, HW4 out </td>        </tr>        <tr>          <td><br />          </td>          <td>2/21<br />          </td>          <td>holiday. no class<br />          </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>14<br />          </td>          <td>2/23<br />          </td>          <td>Attention, Transformer </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>15<br />          </td>          <td>2/28<br />          </td>          <td>Pretraining for NLP</td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>16<br />          </td>          <td>3/2<br />          </td>          <td>Graph Neural Network </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td>17<br />          </td>          <td>3/7<br />          </td>          <td>Autoencoder and VAE </td>          <td><br />          </td>          <td>HW4 due<br />          </td>        </tr>        <tr>          <td>18<br />          </td>          <td>3/9<br />          </td>          <td>GAN </td>          <td><br />          </td>          <td><br />          </td>        </tr>        <tr>          <td><br />          </td>          <td><br />          </td>          <td>Final Exam<br />          </td>          <td><br />          </td>          <td><br />          </td>        </tr>      </tbody>    </table>    <p><br />    </p>  </body></html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+    <meta />
+    <meta />
+    <link rel="stylesheet" type="text/css" href="../../style/origo.css" media="all" />
+    <meta name="author" content="Lei Li" />
+    <title>MLDL</title>
+  </head>
+  <body>
+    <h1 align="center"> 165B Machine Learning (Winter 2022)<br />
+    </h1>
+    <h2 align="center"> Focus on Deep Learning </h2>
+    <h2>Course Description </h2>
+    <p>Machine Learning is about developing systems that automatically improve
+      their performance through experience. It has found applications in many AI
+      systems and products. Examples include systems that recommend online
+      videos, automatic translating languages, and autonomous driving vehicles.
+      This course covers the theory and practical algorithms for machine
+      learning from a variety of perspectives.This course focus on a sub-field
+      of machine learning -- Deep Learning, with moderate introduction to
+      general learning concepts and methods. We cover topics such as supervised
+      learning, unsupervised learning, and reinforcement learning, and various
+      neural network architectures including convolutional neural networks,
+      recurrent neural networks, Transformer, and graph neural networks. We will
+      cover techniques for designing loss, and training methods. We focus on
+      both the principles, analytical skills and implementation practice. This
+      course is suitable for undergraduate students and graduate students who
+      wants to pursue career in AI or do research in machine learning. </p>
+    <h2>Instructor</h2>
+    <p><a href="https://www.cs.ucsb.edu/%7Eleili">Lei Li</a> <br />
+      Office Hour: Monday 5-6pm (on <a href="https://ucsb.zoom.us/j/82443832810?pwd=OWI0KzFMZVNKUndpemswdzFHMUFpdz09">zoom</a>)
+    </p>
+    <h2>Teaching Assistant</h2>
+    <ul>
+      <li>Saurabh Sharma (saurabhsharma@) Office Hour: Friday 10-11am </li>
+      <li>Yanchen Lu (yanchenlu@) Office Hour:Mondays 3-4pm</li>
+      <li>Yijun Xiao (yijunxiao@) Office hour: Thursday 4-5pm</li>
+      <li>Arjun Prakash (arjun157@) Office hour: Tuesday 9:30-10:30am  </li>
+    </ul>
+    <h2>Time and Location</h2>
+    <p>Monday/Wednesday 11:00am-12:15pm  On <a href="https://ucsb.zoom.us/j/82443832810?pwd=OWI0KzFMZVNKUndpemswdzFHMUFpdz09">Zoom</a>
+      for the first two weeks (if in-person teaching, at NH 1006) </p>
+    <p>TA sessions on Wednesday (use the same zoom) </p>
+    <ul>
+      <li>4-5pm GIRV 2119</li>
+      <li>5-6pm PHELP1448</li>
+      <li>6-7pm PHELP2532</li>
+      <li>7-8pm PHELP2532</li>
+    </ul>
+    <h2>Textbook</h2>
+    <ul>
+      <li>[GBC] Deep Learning, Ian Goodfellow and Yoshua Bengio and Aaron
+        Courville, Publisher: MIT Press. available <a moz-do-not-send="true" href="https://www.deeplearningbook.org/">online</a>.</li>
+      <li>(Optional) Dive into Deep Learning, Aston Zhang, Zachary Lipton, Mu
+        Li, Alexander Smola. available <a moz-do-not-send="true" href="https://d2l.ai/">online</a>.</li>
+      <li><a href="http://ciml.info/">(Optional) A Course in Machine Learning</a>,
+        Hal Daumé III. available online.</li>
+    </ul>
+    The textbook below is a great resource for those hoping to brush up on the
+    prerequisite mathematics background for this course.
+    <ul>
+      <li>Mathematics for Machine Learning, Marc Peter Deisenroth, A. Aldo
+        Faisal, and Cheng Soon Ong. Free <a href="https://mml-book.github.io/">online</a>.<br />
+        <br />
+      </li>
+    </ul>
+    <h2>Prerequisites</h2>
+    <p> Prerequisites: Students need to grasp knowledge in Linear algebra,
+      Calculus, Probability and Statistics, basic algorithms, and significant
+      experience in computer programming (python, C++, or Java).</p>
+    <p>CS 130A&amp;130B, MATH 3B, 6A, PSTAT 120A, 120B.<br />
+    </p>
+    <h2>Homework Submission &amp; Grading</h2>
+    <ul>
+      <li>Gradescope: Please singup <a href="https://www.gradescope.com/courses/344145">here</a>
+      </li>
+      <ul>
+      </ul>
+    </ul>
+    <h2>Discussion Forum</h2>
+    <p>We will use Ed platform. Please signup <a href="https://edstem.org/us/join/cPQgXM">here</a>.
+    </p>
+    <h2>Policy</h2>
+    <p>Please read the following <a href="course_policy.html">Link</a>
+      carefully!<br />
+    </p>
+    <h2>Syllabus</h2>
+    <table width="100%" border="0">
+      <tbody>
+        <tr>
+          <td>#<br />
+          </td>
+          <td>Date<br />
+          </td>
+          <td>Topic<br />
+          </td>
+          <td>Reading<br />
+          </td>
+          <td>Homework<br />
+          </td>
+        </tr>
+        <tr>
+          <td>1<br />
+          </td>
+          <td>1/3<br />
+          </td>
+          <td> <a href="01-intro.pdf">Introduction </a><br />
+          </td>
+          <td>Chap 1 of GBC<br />
+          </td>
+          <td>HW1<br />
+          </td>
+        </tr>
+        <tr>
+          <td>2<br />
+          </td>
+          <td>1/5<br />
+          </td>
+          <td><a href="02-linear-model.pdf"> Linear Models, Vector Calculus </a><br />
+          </td>
+          <td>Chap 5 of GBC<br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>3<br />
+          </td>
+          <td>1/10<br />
+          </td>
+          <td>Logistic Regression, Empirical risk minimization<br />
+          </td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>4<br />
+          </td>
+          <td>1/12<br />
+          </td>
+          <td>Multilayer Perceptron, Backpropagation<br />
+          </td>
+          <td><br />
+          </td>
+          <td>HW1 due, HW2 out </td>
+        </tr>
+        <tr>
+          <td><br />
+          </td>
+          <td>1/17</td>
+          <td>holiday. no class</td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>5<br />
+          </td>
+          <td>1/19<br />
+          </td>
+          <td>Optimization algorithms, Regularization and tricks<br />
+          </td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>6<br />
+          </td>
+          <td>1/24<br />
+          </td>
+          <td>Convolutional Neural Network</td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>7<br />
+          </td>
+          <td>1/26<br />
+          </td>
+          <td>ResNet and other CNN variants </td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>8<br />
+          </td>
+          <td>1/31<br />
+          </td>
+          <td>Backpropogation for CNNs </td>
+          <td><br />
+          </td>
+          <td>HW2 Due, HW3 out </td>
+        </tr>
+        <tr>
+          <td>9<br />
+          </td>
+          <td>2/2<br />
+          </td>
+          <td>Adagrad, Adam, Momentum<br />
+          </td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>10<br />
+          </td>
+          <td>2/7<br />
+          </td>
+          <td>Recurrent Neural Network, Language Modelling<br />
+          </td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>11<br />
+          </td>
+          <td>2/9<br />
+          </td>
+          <td>Long-short term memory networks<br />
+          </td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>12<br />
+          </td>
+          <td>2/14<br />
+          </td>
+          <td>Sequence-to-sequence models<br />
+          </td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>13<br />
+          </td>
+          <td>2/16<br />
+          </td>
+          <td>CTC and Sequence Decoding</td>
+          <td><br />
+          </td>
+          <td>HW3 Due, HW4 out </td>
+        </tr>
+        <tr>
+          <td><br />
+          </td>
+          <td>2/21<br />
+          </td>
+          <td>holiday. no class<br />
+          </td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>14<br />
+          </td>
+          <td>2/23<br />
+          </td>
+          <td>Attention, Transformer </td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>15<br />
+          </td>
+          <td>2/28<br />
+          </td>
+          <td>Pretraining for NLP</td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>16<br />
+          </td>
+          <td>3/2<br />
+          </td>
+          <td>Graph Neural Network </td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td>17<br />
+          </td>
+          <td>3/7<br />
+          </td>
+          <td>Autoencoder and VAE </td>
+          <td><br />
+          </td>
+          <td>HW4 due<br />
+          </td>
+        </tr>
+        <tr>
+          <td>18<br />
+          </td>
+          <td>3/9<br />
+          </td>
+          <td>GAN </td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+        <tr>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+          <td>Final Exam<br />
+          </td>
+          <td><br />
+          </td>
+          <td><br />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <p><br />
+    </p>
+  </body>
+</html>
