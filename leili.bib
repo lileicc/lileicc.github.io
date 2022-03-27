@@ -14,6 +14,8 @@
   title     = {latent-{GLAT}: Glancing at Latent Variables for Parallel Text Generation},
   year      = {2022},
   month     = may,
+  abstract  = {Recently, parallel text generation has received widespread attention due to its success in generation efficiency. Although many advanced techniques are proposed to improve its generation quality, they still need the help of an autoregressive model for training to overcome the one-to-many multi-modal phenomenon in the dataset, limiting their applications. In this paper, we propose latent-GLAT, which employs the discrete latent variables to capture word categorical information and invoke an advanced curriculum learning technique, alleviating the multi-modality problem. Experiment results show that our method outperforms strong baselines without the help of an autoregressive model, which further broadens the application scenarios of the parallel decoding paradigm.},
+  code      = {https://github.com/baoy-nlp/Latent-GLAT},
   eprint    = {https://openreview.net/forum?id=y4xCe0MSoWx},
 }
 
@@ -23,6 +25,8 @@
   title     = {Learning When to Translate for Streaming Speech},
   year      = {2022},
   month     = may,
+  abstract  = {How to find proper moments to generate partial sentence translation given a streaming speech input? Existing approaches waiting-and-translating for a fixed duration often break the acoustic units in speech, since the boundaries between acoustic units in speech are not even. In this paper, we propose MoSST, a simple yet effective method for translating streaming speech content. Given a usually long speech sequence, we develop an efficient monotonic segmentation module inside an encoder-decoder model to accumulate acoustic information incrementally and detect proper speech unit boundaries for the input in speech translation task. Experiments on multiple translation directions of the MuST-C dataset show that MoSST outperforms existing methods and achieves the best trade-off between translation quality (BLEU) and latency.},
+  code      = {https://github.com/dqqcasia/mosst},
   eprint    = {https://openreview.net/forum?id=mBz73IzOI6},
 }
 
@@ -32,6 +36,8 @@
   title     = {{STEMM}: Self-learning with Speech-text Manifold Mixup for Speech Translation},
   year      = {2022},
   month     = may,
+  abstract  = {How to learn a better speech representation for end-to-end speech-to-text translation (ST) with limited labeled data? Existing techniques often attempt to transfer powerful machine translation (MT) capabilities to ST, but neglect the representation discrepancy across modalities. In this paper, we propose the Speech-TExt Manifold Mixup (STEMM) method to calibrate such discrepancy. Specifically, we mix up the representation sequences of different modalities, and take both unimodal speech sequences and multimodal mixed sequences as input to the translation model in parallel, and regularize their output predictions with a self-learning framework. Experiments on MuST- C speech translation benchmark and further analysis show that our method effectively alleviates the cross-modal representation discrepancy, and achieves significant improvements over a strong baseline on eight translation directions.},
+  code      = {https://github.com/ictnlp/STEMM},
   eprint    = {https://openreview.net/forum?id=kazCgft9cCH},
 }
 
@@ -41,6 +47,8 @@
   title     = {Contextual Representation Learning beyond Masked Language Modeling},
   year      = {2022},
   month     = may,
+  abstract  = {How do masked language models (MLMs) such as BERT learn contextual representations? In this work, we analyze the learning dynamics of MLMs. We find that MLMs adopt sampled embeddings as anchors to estimate and inject contextual semantics to representations, which limits the efficiency and effectiveness of MLMs. To address these issues, we propose TACO, a simple yet effective representation learning approach to directly model global semantics. TACO extracts and aligns contextual semantics hidden in contextualized representations to encourage models to attend global semantics when generating contextualized representations. Experiments on the GLUE benchmark show that TACO achieves up to 5x speedup and up to 1.2 points average improvement over existing MLMs.},
+  code      = {https:// github.com/FUZHIYI/TACO},
   eprint    = {https://openreview.net/forum?id=KWL_ElhUejN},
 }
 
@@ -50,7 +58,9 @@
   title     = {{E-KAR}: A Benchmark for Rationalizing Natural Language Analogical Reasoning},
   year      = {2022},
   month     = may,
+  abstract  = {The ability to recognize analogies is fundamental to human cognition. Existing benchmarks to test word analogy do not reveal the underneath process of analogical reasoning of neural models. Holding the belief that models capable of reasoning should be right for the right reasons, we propose a first-of-its- kind Explainable Knowledge-intensive Analogical Reasoning benchmark (E-KAR). Our benchmark consists of 1,655 (in Chinese) and 1,251 (in English) problems sourced from the Civil Service Exams, which require intensive background knowledge to solve. More importantly, we design a free-text explanation scheme to explain whether an analogy should be drawn, and manually annotate them for each and every question and candidate answer. Empirical results suggest that this benchmark is very challenging for some state-of-the-art models for both explanation generation and analogical question answering tasks, which invites further research in this area. Project page of E-KAR can be found at https:// ekar-leaderboard.github.io.},
   eprint    = {https://openreview.net/forum?id=9kXOFRtrEj},
+  url       = {https://ekar-leaderboard.github.io},
 }
 
 @InProceedings{sun2022rethinking,
@@ -59,6 +69,8 @@
   title     = {Rethinking Document-level Neural Machine Translation},
   year      = {2022},
   month     = may,
+  abstract  = {This paper does not aim at introducing a novel model for document-level neural machine translation. Instead, we head back to the original Transformer model and hope to answer the following question: Is the capacity of current models strong enough for document-level translation? Interestingly, we observe that the original Transformer with appropriate training techniques can achieve strong results for document translation, even with a length of 2000 words. We evaluate this model and several recent approaches on nine document-level datasets and two sentence-level datasets across six languages. Experiments show that document-level Transformer models outperforms sentence-level ones and many previous methods in a comprehensive set of metrics, including BLEU, four lexical indices, three newly proposed assistant linguistic indicators, and human evaluation. Our new datasets and evaluation scripts are in https://github. com/sunzewei2715/Doc2Doc_NMT.},
+  code      = {https://github. com/sunzewei2715/Doc2Doc_NMT},
   eprint    = {https://openreview.net/forum?id=sU9fYzNZ3xX},
 }
 
