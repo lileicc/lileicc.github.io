@@ -6,21 +6,26 @@
     <meta name="keywords" content="machine learning deep learning natural language processing probabilistic programming" />
     <meta name="author" content="Lei Li" />
     <link rel="stylesheet" type="text/css" href="style/origo.css" media="all" />
+    <link rel="stylesheet" href="style/skeleton-tabs.css">
     <!--link rel="stylesheet" type="text/css" href="style/style.css" media="all" /-->
-
+    <script src="skeleton-tabs.js"></script>
+    <script src="custom.js"></script>
     <script type="application/javascript">
       function geoip(json){
          
           // Get country code based on IP
-          var country_code = json.country_code;
+          // var country_code = json.country_code;
+          var city = json.city;
          
           // Check country code
-          if(country_code == 'CN') {
+          // if(country_code == 'CN') {
+          if (city == 'Shanghai') {
             document.body.innerHTML = "Under major construction! Please check in a month!";    
           }
       }
     </script>
     <script async src="https://get.geojs.io/v1/ip/geo.js"></script>
+    
     <title>Lei LI</title>
   </head>
   <body class="blue light">
@@ -37,7 +42,7 @@
         <li><a href="https://lileicc.github.io/blog/">Blog</a></li>
       </ul>
       <div class="row">
-        <div class="col c2"> <img src="leili-pic1.jpg" alt="" width="160" /> </div>
+         <div class="col c2"> <img src="leili-pic1.jpg" style="padding:2em 0 0 0" alt="" width="160"  /> </div>
         <div class="col">
           <h1>Lei Li</h1>
           <p> Assistant Professor <br>
@@ -61,78 +66,124 @@
           </div>
       </div>
       <div class="row">
-        <div class="main col" style="overflow-y: scroll; max-height: 16em;">
-          <h3>News</h3>
-          <ul>
-            <li><img src="images/new-icon.gif" style="height:1.2em" /> 7 papers are accepted to ACL 2022 (4 in main and 3 in Findings), about speech translation, document translation, non-autoregressive translation, and representation learning. </li>
-            <li><img src="images/new-icon.gif" style="height:1.2em" /> Our paper on <a href="https://sites.google.com/view/bridge-pmr">bridge construction robot</a> is accepted to ICRA 2022. </li>
-            <li><img src="images/new-icon.gif" style="height:1.2em" /> Two papers is accepted to ICLR 2022. about <a href="https://openreview.net/forum?id=OjPmfr9GkVv">multilingual NLP</a> and <a href="https://openreview.net/forum?id=5HvpvYd68b">multilingual translation</a>.   </li>
-            <li><img src="images/new-icon.gif" style="height:1.2em" /> Three papers are accepted to AAAI 2022. Topics include <a href="https://arxiv.org/abs/2012.13577">natural language reasoning for fact verification</a>, <a href="https://arxiv.org/abs/2012.13577">unsupervised counterfactual story editing</a>, and <a href="https://arxiv.org/abs/2110.07515">non-autoregressive translation</a>.  </li>
-            <li> The paper on reversible machine translation model is accepted to NeurIPS 2021. Check out <a href="https://arxiv.org/abs/2105.03458">here</a>. </li>
-            <li> 6 papers are accepted to EMNLP 2021, three to main confrence, and three to the Findings of EMNLP. The topics are machine translation, information extraction, and summarization.</li>
-            <li> One paper extending the SOLO framework for instance segmentation is accepted to TPAMI. </li>
-            <li> One paper about 3D instance segmentation is accepted to IEEE Robotics and Automation Letters.</li>
-            <li> Our paper Vocabulary Learning via Optimal Transport for Neural Machine Translation won <span style="color:red">the best paper award</span> at ACL 2021. </li>
-            <li> Two papers are accepted to IROS 2021. </li>
-            <li> One paper is accepted to InterSpeech 2021, about multi-task progressive pretraining for speech translation, achieving new SOTA results on MuST-C benchmarks. </li>
-            <li> Dr. Mingxuan Wang and I will be giving a <a href="TALKS/2021-ACL/">tutorial on Pre-training methods for Neural Machine Translation</a> at ACL 2021, July 31 </li>
-            <li> 11 papers to appear at ACL 2021 (6 long, 4 findings, and 1 system demo). Strong results in machine translation and speech translation. Other topics include parallel generation, reasoning, summarization and information extraction. </li>
-            <li> 1 paper is accepted to ICML 2021 about long horizon skill learning. </li>
-            <li> 4 papers (1 main and 3 industry) are presenting at NAACL 2021. Check out the long paper about <a href="https://arxiv.org/abs/2009.09654">how visual imagination will influence machine translation capability</a>. </li>
-            <li> Four papers on object detection and segmentation are accepted to CVPR 2021, including <a href="https://arxiv.org/abs/2011.12450">Sparse R-CNN</a>, DenseCL, Locate-Segment, Auto-Augment. <a href="https://arxiv.org/abs/2011.09157">DenCL</a> is accepted as Oral.  </li>
-            <li> The paper on finding proper molecules for drug is accepted to ICLR 2021 with the spotlight presentation! </li>
-            <li> Six
-              papers are accepted to AAAI 2021, about end-to-end speech
-              translation, knowledge graph completion, optimization, text
-              generation. </li>
-            <li> One paper
-              about new method to generate query-relevant bidwords for search advertising is accepted to WSDM 2021. </li>
-            <li><a href="pubs/wang2020solov2.pdf">SOLOv2</a>
-              is out! One paper about faster object instance segmentation in
-              images is accepted to NeurIPS 2020.</li>
-            <li> Winner of 5 tasks in WMT20 Machine Translation Contest on Chinese-English, German-English, French-German, English-Khmer, English-Pashto languages. Winner of the WMT20 parallel data filtering task on Khmer and Pashto languages. </li>
-            <li> 5 papers
-              accepted to EMNLP 2020! 3 in Long track and 2 in Findings.</li>
-            <li><a href="https://arxiv.org/abs/1912.04488">SOLO</a>
-              paper accepted to ECCV 2020, achieving the SOTA in visual object
-              instance segmentation. </li>
-            <li>1 paper
-              accepted to ICML 2020, about solving a family of deep latent
-              models (exponential family mixture VAEs). </li>
-            <li>1 paper and 1 demo accepted to ACL 2020, about tailoring
-              pretrained language model and the robot reporter Xiaomingbot. </li>
-            <li> I am giving a talk at ICLR 2020 about Learning Deep Latent
-              Models for Text Sequences. You may watch <a href="https://iclr.cc/virtual/expo_2.html">here</a>.
+        <div class="main col">
+          <ul class="tab-nav">
+            <li>
+              <a class="button active" href="#news" onclick="return false">News</a>
             </li>
-            <li> 1 paper accepted to AIStats 2020, about density ratio
-              estimation for text generation. </li>
-            <li> 2 papers accepted at ICLR 2020, about <a href="pubs/zheng2020mirror.pdf">mirror
-                generative model to unite language modelling and machine
-                translation</a>, and <a href="pubs/ye2020variational.pdf">learning
-                data-to-text generation templates via a variational method even
-                without parallel corpus</a>. </li>
-            <li> 4 papers accepted at AAAI 2020, about pretraining method for
-              neural machine translation, text editing, and approximate second
-              order optimization. </li>
-            <li> 1 paper accepted at NeurIPS 2019, about <a href="pubs/miao2019kernelized.pdf">contextualized
-                embedding for text generation and how we use kernels to model
-                distribution and variance of word embeddings</a>. see you in
-              Vancouver. </li>
-            <li> <a href="TALKS/2019-EMNLP">EMNLP 2019 Tutorial on Discreteness
-                in NLP</a> </li>
-            <li> 1 paper accepted at INLG 2019. It is about <a href="pubs/fu2019rethinking.pdf">the
-                style transfer for text generation </a>. </li>
-            <li> 1 paper accepted at EMNLP 2019, about <a href="pubs/wang2019towards.pdf">linear
-                time neural machine translation</a>. </li>
-            <li> 2 papers accepted at ICCV 2019. One is to be presented as an
-              Oral talk. </li>
-            <li> Dr. Hao Zhou and I are going to give a tutorial on deep
-              generative models for text generation at NLPCC-ADL 2019 at
-              Dunhuang, China. </li>
+            <li>
+              <a class="button" href="#papers" onclick="return false">Recent Papers</a>
+            </li>
           </ul>
-
-          
+          <div class="tab-content">
+            <div class="tab-pane active" id="news">
+              <ul>
+                <li><img src="images/new-icon.gif" style="height:1.2em" /> 3 papers are accepted to NAACL 2022 (2 in main and 1
+                  in
+                  Findings), about speech translation, multilingual text generation, and privacy preserving NLP. </li>
+                <li><img src="images/new-icon.gif" style="height:1.2em" /> 7 papers are accepted to ACL 2022 (4 in main and 3 in
+                  Findings), about speech translation, document translation, non-autoregressive translation, and representation
+                  learning. </li>
+                <li><img src="images/new-icon.gif" style="height:1.2em" /> Our paper on <a
+                    href="https://sites.google.com/view/bridge-pmr">bridge construction robot</a> is accepted to ICRA 2022.
+                </li>
+                <li><img src="images/new-icon.gif" style="height:1.2em" /> Two papers is accepted to ICLR 2022. about <a
+                    href="https://openreview.net/forum?id=OjPmfr9GkVv">multilingual NLP</a> and <a
+                    href="https://openreview.net/forum?id=5HvpvYd68b">multilingual translation</a>. </li>
+                <li><img src="images/new-icon.gif" style="height:1.2em" /> Three papers are accepted to AAAI 2022. Topics
+                  include <a href="https://arxiv.org/abs/2012.13577">natural language reasoning for fact verification</a>, <a
+                    href="https://arxiv.org/abs/2012.13577">unsupervised counterfactual story editing</a>, and <a
+                    href="https://arxiv.org/abs/2110.07515">non-autoregressive translation</a>. </li>
+                <li> The paper on reversible machine translation model is accepted to NeurIPS 2021. Check out <a
+                    href="https://arxiv.org/abs/2105.03458">here</a>. </li>
+                <li> 6 papers are accepted to EMNLP 2021, three to main confrence, and three to the Findings of EMNLP. The
+                  topics
+                  are machine translation, information extraction, and summarization.</li>
+                <li> One paper extending the SOLO framework for instance segmentation is accepted to TPAMI. </li>
+                <li> One paper about 3D instance segmentation is accepted to IEEE Robotics and Automation Letters.</li>
+                <li> Our paper Vocabulary Learning via Optimal Transport for Neural Machine Translation won <span
+                    style="color:red">the best paper award</span> at ACL 2021. </li>
+                <li> Two papers are accepted to IROS 2021. </li>
+                <li> One paper is accepted to InterSpeech 2021, about multi-task progressive pretraining for speech translation,
+                  achieving new SOTA results on MuST-C benchmarks. </li>
+                <li> Dr. Mingxuan Wang and I will be giving a <a href="TALKS/2021-ACL/">tutorial on Pre-training methods for
+                    Neural
+                    Machine Translation</a> at ACL 2021, July 31 </li>
+                <li> 11 papers to appear at ACL 2021 (6 long, 4 findings, and 1 system demo). Strong results in machine
+                  translation
+                  and speech translation. Other topics include parallel generation, reasoning, summarization and information
+                  extraction. </li>
+                <li> 1 paper is accepted to ICML 2021 about long horizon skill learning. </li>
+                <li> 4 papers (1 main and 3 industry) are presenting at NAACL 2021. Check out the long paper about <a
+                    href="https://arxiv.org/abs/2009.09654">how visual imagination will influence machine translation
+                    capability</a>. </li>
+                <li> Four papers on object detection and segmentation are accepted to CVPR 2021, including <a
+                    href="https://arxiv.org/abs/2011.12450">Sparse R-CNN</a>, DenseCL, Locate-Segment, Auto-Augment. <a
+                    href="https://arxiv.org/abs/2011.09157">DenCL</a> is accepted as Oral. </li>
+                <li> The paper on finding proper molecules for drug is accepted to ICLR 2021 with the spotlight presentation!
+                </li>
+                <li> Six
+                  papers are accepted to AAAI 2021, about end-to-end speech
+                  translation, knowledge graph completion, optimization, text
+                  generation. </li>
+                <li> One paper
+                  about new method to generate query-relevant bidwords for search advertising is accepted to WSDM 2021. </li>
+                <li><a href="pubs/wang2020solov2.pdf">SOLOv2</a>
+                  is out! One paper about faster object instance segmentation in
+                  images is accepted to NeurIPS 2020.</li>
+                <li> Winner of 5 tasks in WMT20 Machine Translation Contest on Chinese-English, German-English, French-German,
+                  English-Khmer, English-Pashto languages. Winner of the WMT20 parallel data filtering task on Khmer and Pashto
+                  languages. </li>
+                <li> 5 papers
+                  accepted to EMNLP 2020! 3 in Long track and 2 in Findings.</li>
+                <li><a href="https://arxiv.org/abs/1912.04488">SOLO</a>
+                  paper accepted to ECCV 2020, achieving the SOTA in visual object
+                  instance segmentation. </li>
+                <li>1 paper
+                  accepted to ICML 2020, about solving a family of deep latent
+                  models (exponential family mixture VAEs). </li>
+                <li>1 paper and 1 demo accepted to ACL 2020, about tailoring
+                  pretrained language model and the robot reporter Xiaomingbot. </li>
+                <li> I am giving a talk at ICLR 2020 about Learning Deep Latent
+                  Models for Text Sequences. You may watch <a href="https://iclr.cc/virtual/expo_2.html">here</a>.
+                </li>
+                <li> 1 paper accepted to AIStats 2020, about density ratio
+                  estimation for text generation. </li>
+                <li> 2 papers accepted at ICLR 2020, about <a href="pubs/zheng2020mirror.pdf">mirror
+                    generative model to unite language modelling and machine
+                    translation</a>, and <a href="pubs/ye2020variational.pdf">learning
+                    data-to-text generation templates via a variational method even
+                    without parallel corpus</a>. </li>
+                <li> 4 papers accepted at AAAI 2020, about pretraining method for
+                  neural machine translation, text editing, and approximate second
+                  order optimization. </li>
+                <li> 1 paper accepted at NeurIPS 2019, about <a href="pubs/miao2019kernelized.pdf">contextualized
+                    embedding for text generation and how we use kernels to model
+                    distribution and variance of word embeddings</a>. see you in
+                  Vancouver. </li>
+                <li> <a href="TALKS/2019-EMNLP">EMNLP 2019 Tutorial on Discreteness
+                    in NLP</a> </li>
+                <li> 1 paper accepted at INLG 2019. It is about <a href="pubs/fu2019rethinking.pdf">the
+                    style transfer for text generation </a>. </li>
+                <li> 1 paper accepted at EMNLP 2019, about <a href="pubs/wang2019towards.pdf">linear
+                    time neural machine translation</a>. </li>
+                <li> 2 papers accepted at ICCV 2019. One is to be presented as an
+                  Oral talk. </li>
+                <li> Dr. Hao Zhou and I are going to give a tutorial on deep
+                  generative models for text generation at NLPCC-ADL 2019 at
+                  Dunhuang, China. </li>
+              </ul>
+            </div>
+          </div>
+          <div class="tab-pane" id="papers">
+            under construction ...
+          </div>
         </div>
+
+
+        <!-- <div class="main col" style="overflow-y: scroll; max-height: 24em;">
+          
+        </div> -->
       </div>
       <div id="footer"> <a href="publications.html" style="color: white;">Publications</a>
         <h4>Contact</h4>

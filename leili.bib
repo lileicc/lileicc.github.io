@@ -1,3 +1,36 @@
+@InProceedings{chen2022mtg,
+  author    = {Chen, Yiran and Song, Zhenqiao and Wu, Xianze and Wang, Danqing and Xu, Jingjing and Chen, Jiaze and Zhou, Hao and Li, Lei},
+  booktitle = {Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT Findings)},
+  title     = {MTG: A Benchmark Suite for Multilingual Text Generation},
+  year      = {2022},
+  month     = jul,
+  publisher = {Association for Computational Linguistics},
+  abstract  = {We introduce MTG, a new benchmark suite for training and evaluating multilingual text generation. It is the first and largest multilingual multiway text generation benchmark with 400k human-annotated data for four generation tasks (story generation, question generation, title generation and text summarization) across five languages (English, German, French, Spanish and Chinese). Its multiway characteristic makes it possible to achieve direct cross-lingual generation between any two languages, thus facilitating knowledge transfer. Based on MTG, we set various evaluation scenarios and conduct deep analyses of several popular multilingual generation models from different aspects. Our benchmark suite can foster model performance enhancement with more human-annotated parallel data and encourage model evaluation with more diverse generation scenarios.},
+  owner     = {lilei.02},
+}
+
+@InProceedings{ye2022cross,
+  author    = {Ye, Rong and Wang, Mingxuan and Li, Lei},
+  booktitle = {Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)},
+  title     = {Cross-modal Contrastive Learning for Speech Translation},
+  year      = {2022},
+  month     = jul,
+  publisher = {Association for Computational Linguistics},
+  abstract  = {How to learn similar representations for spoken utterances and their written text? We believe a unified and aligned representation of speech and text will lead to improvement in speech translation. To this end, we propose ConST, a cross-modal contrastive learning method for end-to-end speech-to-text translation. We evaluate ConST and a variety of previous baselines on multiple language directions (En-De/Fr/Ru) of a popular benchmark MuST-C. Experiments show that the proposed ConST consistently outperforms all previous methods, and achieves the state-of-the-art average BLEU of 28.5. The analysis further verifies that ConST indeed closes the representation gap of different modalities --- its learned representation improves the accuracy of cross-modal text retrieval from 4% to 88%.},
+  owner     = {lilei.02},
+}
+
+@InProceedings{zhao2022provably,
+  author    = {Zhao, Xuandong and Li, Lei and Wang, Yu-Xiang},
+  booktitle = {Proceedings of the 2022 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)},
+  title     = {Provably Confidential Language Modelling},
+  year      = {2022},
+  month     = jul,
+  publisher = {Association for Computational Linguistics},
+  abstract  = {Large language models are shown to memorize privacy information such as social security numbers in training data. Given the sheer scale of the training corpus, it is challenging to screen and filter these privacy data, either manually or automatically. In this paper, we propose Confidentially Redacted Training (CRT), a method to train language generation models while protecting the confidential segments. We borrow ideas from differential privacy (which solves a related but distinct problem) and show that our method is able to provably prevent unintended memorization by randomizing parts of the training process. Moreover, we show that redaction with an approximately correct screening policy amplifies the confidentiality guarantee. We implement the method for both LSTM and GPT language models. Our experimental results show that the models trained by CRT obtain almost the same perplexity while preserving strong confidentiality.},
+  owner     = {lilei.02},
+}
+
 @InProceedings{li2022learning,
   author    = {Yunfei Li and Tao Kong and Lei Li and Yi Wu},
   booktitle = {{IEEE} International Conference on Robotics and Automation ({ICRA})},
@@ -453,17 +486,15 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
 }
 
 @InProceedings{long2021generative,
-  title = "Generative Imagination Elevates Machine Translation",
-    author = "Long, Quanyu  and
-      Wang, Mingxuan  and
-      Li, Lei",
-    booktitle = "Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)",
-    month = jun,
-    year = "2021",
-    address = "Online",
-    publisher = "Association for Computational Linguistics",
-    pages = "5738--5748",
-    abstract = "There are common semantics shared across text and images. Given a sentence in a source language, whether depicting the visual scene helps translation into a target language? Existing multimodal neural machine translation methods (MNMT) require triplets of bilingual sentence - image for training and tuples of source sentence - image for inference. In this paper, we propose ImagiT, a novel machine translation method via visual imagination. ImagiT first learns to generate visual representation from the source sentence, and then utilizes both source sentence and the {``}imagined representation{''} to produce a target translation. Unlike previous methods, it only needs the source sentence at the inference time. Experiments demonstrate that ImagiT benefits from visual imagination and significantly outperforms the text-only neural machine translation baselines. Further analysis reveals that the imagination process in ImagiT helps fill in missing information when performing the degradation strategy.",
+  author    = {X},
+  booktitle = {Proceedings of the 2021 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies (NAACL-HLT)},
+  title     = {Generative Imagination Elevates Machine Translation},
+  year      = {2021},
+  address   = {Online},
+  month     = jun,
+  pages     = {5738--5748},
+  publisher = {Association for Computational Linguistics},
+  abstract  = {There are common semantics shared across text and images. Given a sentence in a source language, whether depicting the visual scene helps translation into a target language? Existing multimodal neural machine translation methods (MNMT) require triplets of bilingual sentence - image for training and tuples of source sentence - image for inference. In this paper, we propose ImagiT, a novel machine translation method via visual imagination. ImagiT first learns to generate visual representation from the source sentence, and then utilizes both source sentence and the {``}imagined representation{''} to produce a target translation. Unlike previous methods, it only needs the source sentence at the inference time. Experiments demonstrate that ImagiT benefits from visual imagination and significantly outperforms the text-only neural machine translation baselines. Further analysis reveals that the imagination process in ImagiT helps fill in missing information when performing the degradation strategy.},
   eprint    = {https://arxiv.org/abs/2009.09654},
   owner     = {lilei.02},
   timestamp = {2021-03-11},
