@@ -32,6 +32,14 @@
   owner     = {lilei.02},
 }
 
+@InProceedings{huang2022learning,
+  author    = {Fei Huang and Tianhua Tao and Hao Zhou and Lei Li and Minlie Huang},
+  booktitle = {Proceedings of the 39th International Conference on Machine Learning (ICML)},
+  title     = {On the Learning of Non-autoregressive Transformers},
+  year      = {2022},
+  month     = jul,
+}
+
 @InProceedings{li2022learning,
   author    = {Yunfei Li and Tao Kong and Lei Li and Yi Wu},
   booktitle = {{IEEE} International Conference on Robotics and Automation ({ICRA})},
@@ -40,9 +48,9 @@
   month     = may,
   abstract  = {Can a robot autonomously learn to design and construct a bridge from varying-sized blocks without a blueprint? It is a challenging task with long horizon and sparse reward – the robot has to figure out physically stable design schemes and feasible actions to manipulate and transport blocks. Due to diverse block sizes, the state space and action trajectories are vast to explore. In this paper, we propose a hierarchical approach for this problem. It consists of a reinforcement-learning designer to propose high-level building instructions and a motion-planning-based action generator to manipulate blocks at the low level. For high-level learning, we develop a novel technique, prioritized memory resetting (PMR) to improve exploration. PMR adaptively resets the state to those most critical configurations from a replay buffer so that the robot can resume training on partial architectures instead of from scratch. Furthermore, we augment PMR with auxiliary training objectives and fine-tune the designer with the locomotion generator. Our experiments in simulation and on a real deployed robotic system demonstrate that it is able to effectively construct bridges with blocks of varying sizes at a high success rate. Demos can be found at https://sites.google. com/view/bridge-pmr.},
   code      = {https://github.com/IrisLi17/bridge_construction},
-  url       = {https://sites.google.com/view/bridge-pmr},
+  eprint    = {https://arxiv.org/abs/2204.05509},
   thumbnail = {li2022bridge_robot.jpg},
-
+  url       = {https://sites.google.com/view/bridge-pmr},
 }
 
 @InProceedings{bao2022latent,
@@ -85,7 +93,7 @@
   year      = {2022},
   month     = may,
   abstract  = {How do masked language models (MLMs) such as BERT learn contextual representations? In this work, we analyze the learning dynamics of MLMs. We find that MLMs adopt sampled embeddings as anchors to estimate and inject contextual semantics to representations, which limits the efficiency and effectiveness of MLMs. To address these issues, we propose TACO, a simple yet effective representation learning approach to directly model global semantics. TACO extracts and aligns contextual semantics hidden in contextualized representations to encourage models to attend global semantics when generating contextualized representations. Experiments on the GLUE benchmark show that TACO achieves up to 5x speedup and up to 1.2 points average improvement over existing MLMs.},
-  code      = {https:// github.com/FUZHIYI/TACO},
+  code      = {https://github.com/FUZHIYI/TACO},
   eprint    = {https://openreview.net/forum?id=KWL_ElhUejN},
 }
 
@@ -107,7 +115,7 @@
   year      = {2022},
   month     = may,
   abstract  = {This paper does not aim at introducing a novel model for document-level neural machine translation. Instead, we head back to the original Transformer model and hope to answer the following question: Is the capacity of current models strong enough for document-level translation? Interestingly, we observe that the original Transformer with appropriate training techniques can achieve strong results for document translation, even with a length of 2000 words. We evaluate this model and several recent approaches on nine document-level datasets and two sentence-level datasets across six languages. Experiments show that document-level Transformer models outperforms sentence-level ones and many previous methods in a comprehensive set of metrics, including BLEU, four lexical indices, three newly proposed assistant linguistic indicators, and human evaluation. Our new datasets and evaluation scripts are in https://github. com/sunzewei2715/Doc2Doc_NMT.},
-  code      = {https://github. com/sunzewei2715/Doc2Doc_NMT},
+  code      = {https://github.com/sunzewei2715/Doc2Doc_NMT},
   eprint    = {https://openreview.net/forum?id=sU9fYzNZ3xX},
 }
 
@@ -1458,7 +1466,7 @@ robust to rare sentence context by imposing learned kernels to capture the close
 }
 
 @InProceedings{wu2019unified,
-  author    = {Wu, Hao and Mao, Jiayuan and Zhang, Yufeng and Sun, Weiwei and Jiang, Yuning and Li, Lei and Ma, Wei-Ying},
+  author    = {Wu, Hao and Mao, Jiayuan and Zhang, Yufeng and Sun, Weiwei and Jiang, Yuning and Li, Lei and Ma, Weiying},
   booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
   title     = {Unified Visual-Semantic Embeddings: Bridging Vision and Language with Structured Meaning Representations},
   year      = {2019},
@@ -1685,7 +1693,7 @@ clickbait detection and generic text classification tasks demonstrate that our p
 }
 
 @InProceedings{wu2014bfit,
-  author       = {Wu, Yi and Li, Lei and Russell, Stuart J.},
+  author       = {Wu, Yi and Li, Lei and Russell, Stuart},
   booktitle    = {Neural Information Processing Systems, Probabilistic Programming workshop},
   title        = {{BFiT}: From Possible-World Semantics to Random-Evaluation Semantics in Open Universe},
   year         = {2014},
@@ -1753,7 +1761,7 @@ clickbait detection and generic text classification tasks demonstrate that our p
 }
 
 @InProceedings{erol2013extended,
-  author    = {Erol, Yusuf and Li, Lei and Ramsundar, Bharath and Russell, Stuart J.},
+  author    = {Erol, Yusuf and Li, Lei and Ramsundar, Bharath and Russell, Stuart},
   booktitle = {Proceedings of the 30th International Conference on Machine learning (ICML)},
   title     = {The Extended Parameter Filter},
   year      = {2013},
@@ -1778,7 +1786,7 @@ clickbait detection and generic text classification tasks demonstrate that our p
 }
 
 @InProceedings{rogers2013multilinear,
-  author    = {Rogers, Mark and Li, Lei and Russell, Stuart J.},
+  author    = {Rogers, Mark and Li, Lei and Russell, Stuart},
   booktitle = {the 27th Conference on Neural Information Processing Systems(NeurIPS)},
   title     = {Multilinear Dynamical Systems for Tensor Time Series},
   year      = {2013},
@@ -1798,12 +1806,12 @@ clickbait detection and generic text classification tasks demonstrate that our p
 }
 
 @TechReport{li2013blog,
-  author      = {Li, Lei and Russell, Stuart J.},
-  title       = {The BLOG Language Reference},
+  author      = {Li, Lei and Russell, Stuart},
   institution = {EECS Department, University of California, Berkeley},
+  title       = {The BLOG Language Reference},
   year        = {2013},
-  number      = {UCB/EECS-2013-51},
   month       = may,
+  number      = {UCB/EECS-2013-51},
   abstract    = {This document introduces the syntax of BLOG, a probabilistic programming language, for describing random variables and their probabilistic dependencies. BLOG defines probabilistic generative models over first-order structures. For example, all Bayesian networks can be easily described by BLOG. BLOG has the following features: (a) it employs open-universe semantics; (b) it can describe relational uncertainty; (c) it can handle identity uncertainty; and (d) it is empowered by first-order logic. The syntax as described in this document corresponds to BLOG version 0.6. The current version represents a significant redesign and extension to previous versions of BLOG, based on the principles of usability and implementation efficiency.},
   file        = {:pubs/li2013blog - The BLOG Language Reference.pdf:PDF;Tech report:http\:/www.eecs.berkeley.edu/Pubs/TechRpts/2013/EECS-2013-51.html:URL},
 }
