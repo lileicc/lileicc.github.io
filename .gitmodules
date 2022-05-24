@@ -1,0 +1,3 @@
+[submodule "course/ml22fa"]
+	path = course/ml22fa
+	url = git@github.com:lileicc/ucsbcs291k_machine_learning_fall2022.git
