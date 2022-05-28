@@ -53,6 +53,20 @@
   url       = {https://sites.google.com/view/bridge-pmr},
 }
 
+@InProceedings{ouyang2022impact,
+  author       = {Ouyang, Siqi and Ye, Rong and Li, Lei},
+  booktitle    = {Proceedings of the 19th International Conference on Spoken Language Translation (IWSLT 2022)},
+  title        = {On the Impact of Noises in Crowd-Sourced Data for Speech Translation},
+  year         = {2022},
+  address      = {Dublin, Ireland (in-person and online)},
+  month        = may,
+  pages        = {92--97},
+  publisher    = {Association for Computational Linguistics},
+  abstract     = {Training speech translation (ST) models requires large and high-quality datasets. MuST-C is one of the most widely used ST benchmark datasets. It contains around 400 hours of speech-transcript-translation data for each of the eight translation directions. This dataset passes several quality-control filters during creation. However, we find that MuST-C still suffers from three major quality issues: audiotext misalignment, inaccurate translation, and unnecessary speaker{'}s name. What are the impacts of these data quality issues for model development and evaluation? In this paper, we propose an automatic method to fix or filter the above quality issues, using English-German (En-De) translation as an example. Our experiments show that ST models perform better on clean test sets, and the rank of proposed models remains consistent across different test sets. Besides, simply removing misaligned data points from the training set does not lead to a better ST model.},
+  entrysubtype = {workshop},
+  url          = {https://aclanthology.org/2022.iwslt-1.9},
+}
+
 @InProceedings{bao2022latent,
   author    = {Yu Bao and Hao Zhou and Shujian Huang and Dongqi Wang and Lihua Qian and Xinyu Dai and Jiajun Chen and Lei Li},
   booktitle = {the 60th Annual Meeting of the Association for Computational Linguistics (ACL)},
@@ -203,7 +217,11 @@
   author   = {Ruihang Chu and Yukang Chen and Tao Kong and Lu Qi and Lei Li},
   journal  = {IEEE Robotics and Automation Letters (RA-L)},
   title    = {{ICM-3D}: Instantiated Category Modeling for 3D Instance Segmentation},
-  year     = {2021},
+  year={2022},
+  volume={7},
+  number={1},
+  pages={57-64},
+  doi={10.1109/LRA.2021.3108483}}
   abstract = {Separating 3D point clouds into individual instances is an important task for 3D vision. It is challenging due to the unknown and varying number of instances in a scene. Existing deep learning based works focus on a two-step pipeline: first learn a feature embedding and then cluster the points. Such a two-step pipeline leads to disconnected intermediate objectives. In this paper, we propose an integrated reformulation of 3D instance segmentation as a per-point classification problem. We propose ICM-3D, a single-step method to segment 3D instances via instantiated categorization. The augmented category information is automatically constructed from 3D spatial positions. We conduct extensive experiments to verify the effectiveness of ICM-3D and show that it obtains inspiring performance across multiple frameworks, backbones and benchmarks.},
   eprint   = {https://arxiv.org/abs/2108.11771},
 }
