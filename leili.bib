@@ -36,6 +36,7 @@
   abstract  = {We introduce MTG, a new benchmark suite for training and evaluating multilingual text generation. It is the first and largest multilingual multiway text generation benchmark with 400k human-annotated data for four generation tasks (story generation, question generation, title generation and text summarization) across five languages (English, German, French, Spanish and Chinese). Its multiway characteristic makes it possible to achieve direct cross-lingual generation between any two languages, thus facilitating knowledge transfer. Based on MTG, we set various evaluation scenarios and conduct deep analyses of several popular multilingual generation models from different aspects. Our benchmark suite can foster model performance enhancement with more human-annotated parallel data and encourage model evaluation with more diverse generation scenarios.},
   eprint    = {https://arxiv.org/abs/2108.07140},
   owner     = {lilei.02},
+  url       = {https://mtg-benchmark.netlify.app},
 }
 
 @InProceedings{ye2022cross,
@@ -46,6 +47,8 @@
   month     = jul,
   publisher = {Association for Computational Linguistics},
   abstract  = {How to learn similar representations for spoken utterances and their written text? We believe a unified and aligned representation of speech and text will lead to improvement in speech translation. To this end, we propose ConST, a cross-modal contrastive learning method for end-to-end speech-to-text translation. We evaluate ConST and a variety of previous baselines on multiple language directions (En-De/Fr/Ru) of a popular benchmark MuST-C. Experiments show that the proposed ConST consistently outperforms all previous methods, and achieves the state-of-the-art average BLEU of 28.5. The analysis further verifies that ConST indeed closes the representation gap of different modalities --- its learned representation improves the accuracy of cross-modal text retrieval from 4% to 88%.},
+  code      = {https://github.com/ReneeYe/ConST},
+  eprint    = {https://arxiv.org/abs/2205.02444},
   owner     = {lilei.02},
 }
 
@@ -57,6 +60,7 @@
   month     = jul,
   publisher = {Association for Computational Linguistics},
   abstract  = {Large language models are shown to memorize privacy information such as social security numbers in training data. Given the sheer scale of the training corpus, it is challenging to screen and filter these privacy data, either manually or automatically. In this paper, we propose Confidentially Redacted Training (CRT), a method to train language generation models while protecting the confidential segments. We borrow ideas from differential privacy (which solves a related but distinct problem) and show that our method is able to provably prevent unintended memorization by randomizing parts of the training process. Moreover, we show that redaction with an approximately correct screening policy amplifies the confidentiality guarantee. We implement the method for both LSTM and GPT language models. Our experimental results show that the models trained by CRT obtain almost the same perplexity while preserving strong confidentiality.},
+  eprint    = {https://arxiv.org/abs/2205.01863},
   owner     = {lilei.02},
 }
 
@@ -167,6 +171,7 @@
   title     = {Compressing Sentence Representation via Homomorphic Projective Distillation},
   year      = {2022},
   month     = may,
+  code      = {https://github.com/XuandongZhao/HPD},
   eprint    = {https://openreview.net/forum?id=n3cvM4Phez9},
 }
 
@@ -187,6 +192,7 @@
   title     = {Enhancing Cross-lingual Transfer by Manifold Mixup},
   year      = {2022},
   month     = apr,
+  code      = {https://github.com/yhy1117/X-Mixup},
   eprint    = {https://openreview.net/forum?id=OjPmfr9GkVv},
   owner     = {lilei.02},
 }
@@ -238,6 +244,7 @@
   year      = {2022},
   month     = feb,
   abstract  = {How do we perform efficient inference while retaining high translation quality? Existing neural machine translation models, such as Transformer, achieve high performance, but they decode words one by one, which is inefficient. Recent non-autoregressive translation models speed up the inference, but their quality is still inferior. In this work, we propose DSLP, a highly efficient and high-performance model for machine translation. The key insight is to train a non-autoregressive Transformer with Deep Supervision and feed additional Layer-wise Predictions. We conducted extensive experiments on four translation tasks (both directions of WMT'14 EN-DE and WMT'16 EN-RO). Results show that our approach consistently improves the BLEU scores compared with respective base models. Specifically, our best variant outperforms the autoregressive model on three translation tasks, while being 14.8 times more efficient in inference.},
+  code      = {https://github.com/chenyangh/DSLP},
   eprint    = {https://arxiv.org/abs/2110.07515},
 }
 
@@ -260,7 +267,8 @@
   title     = {Duplex Sequence-to-Sequence Learning for Reversible Machine Translation},
   year      = {2021},
   month     = dec,
-  abstract  = {In this work, we design a simple, direct, and fast framework for instance segmentation with strong performance. To this end, we propose a novel and effective approach, termed SOLOv2, following the principle of the SOLO method. First, our new framework is empowered by an efficient and holistic instance mask representation scheme, which dynamically segments each instance in the image, without resorting to bounding box detection. Specifically, the object mask generation is decoupled into a mask kernel prediction and mask feature learning, which are responsible for generating convolution kernels and the feature maps to be convolved with, respectively. Second, SOLOv2 significantly reduces inference overhead with our novel matrix non-maximum suppression (NMS) technique. Our Matrix NMS performs NMS with parallel matrix operations in one shot, and yields better results. We demonstrate that the proposed SOLOv2 achieves the state-of-the- art performance with high efficiency, making it suitable for both mobile and cloud applications. A light-weight version of SOLOv2 executes at 31.3 FPS and yields 37.1% AP on COCO test-dev. Moreover, our state-of-the-art results in object detection (from our mask byproduct) and panoptic segmentation show the potential of SOLOv2 to serve as a new strong baseline for many instance-level recognition tasks.},
+  abstract  = {Sequence-to-sequence learning naturally has two directions. How to effectively utilize supervision signals from both directions? Existing approaches either require two separate models, or a multitask-learned model but with inferior performance. In this paper, we propose REDER (REversible Duplex TransformER), a parameter-efficient model and apply it to machine translation. Either end of REDER can simultaneously input and output a distinct language. Thus REDER enables reversible machine translation by simply flipping the input and output ends. Experiments verify that REDER achieves the first success of reversible machine translation, which helps outperform its multitask-trained baselines up to 1.3 BLEU.},
+  code      = {https://github.com/zhengzx-nlp/REDER},
   eprint    = {https://arxiv.org/abs/2105.03458},
   owner     = {lilei.02},
 }
@@ -296,6 +304,7 @@
   month     = nov,
   abstract  = {Document-level relation extraction aims to identify relations between entities in a whole document. Prior efforts to capture long-range dependencies have relied heavily on implicitly powerful representations learned through (graph) neural networks, which makes the model less transparent. To tackle this challenge, in this paper, we propose LogiRE, a novel probabilistic model for document-level relation extraction by learning logic rules. LogiRE treats logic rules as latent variables and consists of two modules: a rule generator and a relation extractor. The rule generator is to generate logic rules potentially contributing to final predictions, and the relation extractor outputs final predictions based on the generated logic rules. Those two modules can be efficiently optimized with the expectation--maximization (EM) algorithm. By introducing logic rules into neural networks, LogiRE can explicitly capture long-range dependencies as well as enjoy better interpretation. Empirical results show that LogiRE significantly outperforms several strong baselines in terms of relation performance (∼1.8 F1 score) and logical consistency (over 3.3 logic score). Our code is available at https://github. com/rudongyu/LogiRE.},
   code      = {https://github.com/rudongyu/LogiRE},
+  eprint    = {https://arxiv.org/abs/2111.05407},
   video     = {https://underline.io/lecture/38055-learning-logic-rules-for-document-level-relation-extraction},
 }
 
