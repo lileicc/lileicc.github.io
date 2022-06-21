@@ -490,10 +490,10 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   month     = aug,
   abstract  = {The choice of token vocabulary affects the performance of machine translation. This paper aims to figure out what is a good vocabulary and whether one can find the optimal vocabulary without trial training. To answer these questions, we first provide an alternative understanding of the role of vocabulary from the perspective of information theory. Motivated by this, we formulate the quest of vocabularization -- finding the best token dictionary with a proper size -- as an optimal transport (OT) problem. We propose VOLT, a simple and efficient solution without trial training. Empirical results show that VOLT outperforms widely-used vocabularies in diverse scenarios, including WMT-14 English-German and TED's 52 translation directions. For example, VOLT achieves almost 70% vocabulary size reduction and 0.5 BLEU gain on English-German translation. Also, compared to BPE-search, VOLT reduces the search time from 384 GPU hours to 30 GPU hours on English-German translation.},
   addendum  = {ACL Best Paper Award (1/3350)},
+  blog      = {https://jingjing-nlp.github.io/volt-blog/},
   code      = {https://github.com/Jingjing-NLP/VOLT},
   eprint    = {https://arxiv.org/abs/2012.15671},
   timestamp = {2020-05-01},
-  url       = {https://jingjing-nlp.github.io/volt-blog/},
   video     = {https://underline.io/lecture/25691-vocabulary-learning-via-optimal-transport-for-neural-machine-translation},
 }
 
@@ -1413,6 +1413,7 @@ Such new perspective leads to a refreshed understanding of the roles of second m
   month     = feb,
   abstract  = {GPT-2 and BERT demonstrate the effectiveness of using pretrained language models (LMs) on various natural language processing tasks. However, LM fine-tuning often suffers from catastrophic forgetting when applied to resource-rich tasks. In this work, we introduce a concerted training framework (CTNMT) that is the key to integrate the pre-trained LMs to neural machine translation (NMT). Our proposed CTNMT consists of three techniques: a) asymptotic distillation to ensure that the NMT model can retain the previous pre-trained knowledge; b) a dynamic switching gate to avoid catastrophic forgetting of pre-trained knowledge; and c) a strategy to adjust the learning paces according to a scheduled policy. Our experiments in machine translation show CTNMT gains of up
 to 3 BLEU score on the WMT14 English-German language pair which even surpasses the previous state-of-the-art pretraining aided NMT by 1.4 BLEU score. While for the large WMT14 English-French task with 40 millions of sentencepairs, our base model still significantly improves upon the state-of-the-art Transformer big model by more than 1 BLEU score.},
+  code      = {https://github.com/bytedance/neurst/tree/master/examples/ctnmt},
   eprint    = {https://arxiv.org/abs/1908.05672},
 }
 
