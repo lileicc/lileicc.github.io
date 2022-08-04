@@ -1,13 +1,3 @@
-@Article{chu2021icm,
-  author   = {Ruihang Chu and Yukang Chen and Tao Kong and Lu Qi and Lei Li},
-  journal  = {IEEE Robotics and Automation Letters (RA-L)},
-  title    = {{ICM-3D}: Instantiated Category Modeling for 3D Instance Segmentation},
-  year={2022},
-  volume={7},
-  number={1},
-  pages={57-64},
-  doi={10.1109/LRA.2021.3108483}}
-
 @InProceedings{wang2022lightseq2,
   author    = {Xiaohui Wang and Yang Wei and Ying Xiong and Guyue Huang and Xian Qian and Yufei Ding and Mingxuan Wang and Lei Li},
   booktitle = {Proceedings of The International Conference for High Performance Computing, Networking, Storage and Analysis ({SC}'22)},
@@ -246,6 +236,18 @@
   abstract  = {How do we perform efficient inference while retaining high translation quality? Existing neural machine translation models, such as Transformer, achieve high performance, but they decode words one by one, which is inefficient. Recent non-autoregressive translation models speed up the inference, but their quality is still inferior. In this work, we propose DSLP, a highly efficient and high-performance model for machine translation. The key insight is to train a non-autoregressive Transformer with Deep Supervision and feed additional Layer-wise Predictions. We conducted extensive experiments on four translation tasks (both directions of WMT'14 EN-DE and WMT'16 EN-RO). Results show that our approach consistently improves the BLEU scores compared with respective base models. Specifically, our best variant outperforms the autoregressive model on three translation tasks, while being 14.8 times more efficient in inference.},
   code      = {https://github.com/chenyangh/DSLP},
   eprint    = {https://arxiv.org/abs/2110.07515},
+}
+
+@Article{chu2021icm,
+  author  = {Ruihang Chu and Yukang Chen and Tao Kong and Lu Qi and Lei Li},
+  journal = {IEEE Robotics and Automation Letters (RA-L)},
+  title   = {{ICM-3D}: Instantiated Category Modeling for 3D Instance Segmentation},
+  year    = {2022},
+  month   = jan,
+  number  = {1},
+  pages   = {57-64},
+  volume  = {7},
+  doi     = {10.1109/LRA.2021.3108483},
 }
 
   abstract = {Separating 3D point clouds into individual instances is an important task for 3D vision. It is challenging due to the unknown and varying number of instances in a scene. Existing deep learning based works focus on a two-step pipeline: first learn a feature embedding and then cluster the points. Such a two-step pipeline leads to disconnected intermediate objectives. In this paper, we propose an integrated reformulation of 3D instance segmentation as a per-point classification problem. We propose ICM-3D, a single-step method to segment 3D instances via instantiated categorization. The augmented category information is automatically constructed from 3D spatial positions. We conduct extensive experiments to verify the effectiveness of ICM-3D and show that it obtains inspiring performance across multiple frameworks, backbones and benchmarks.},
