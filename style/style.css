@@ -45,6 +45,8 @@ pre {
   border: 1px solid #ccc;
   border-radius: 4px;
   padding: 9.5px;
+  line-height: 1.42857143;
+  margin: 0 0 10px;
 }
 
 span.title,span.note,span.addendum {
