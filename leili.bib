@@ -1,3 +1,34 @@
+@InProceedings{xu2022not,
+  author    = {Wenda Xu and Yilin Tuan and Yujie Lu and Michael Saxon and Lei Li and William Yang Wang},
+  booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP) - Findings},
+  title     = {Not All Errors are Equal: Learning Text Generation Metrics using Stratified Error Synthesis},
+  year      = {2022},
+  abstract  = {Is it possible to build a general and automatic natural language generation (NLG) evaluation metric? Existing learned metrics either perform unsatisfactorily or are restricted to tasks where large human rating data is already available. We introduce SESCORE, a model-based metric that is highly correlated with human judgements without requiring human annotation, by utilizing a novel, iterative error synthesis and severity scoring pipeline. This pipeline applies a series of plausible errors to raw text and assigns severity labels by simulating human judgements with entailment. We evaluate SESCORE against existing metrics by comparing how their scores correlate with human ratings. SESCORE outperforms all prior unsupervised metrics on multiple diverse NLG tasks including machine translation, image captioning, and WebNLG text generation. For WMT 20/21 En-De and Zh-En, SESCORE improve the average Kendall correlation with human judgement from 0.154 to 0.195. SESCORE even achieves comparable performance to the best supervised metric COMET, despite receiving no human-annotated training data.},
+  eprint    = {https://arxiv.org/abs/2210.05035},
+}
+
+@InProceedings{dong2022calibrating,
+  author    = {Qingxiu Dong and Damai Dai and Yifan Song and Jingjing Xu and Zhifang Sui and Lei Li},
+  booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP) - Findings},
+  title     = {Calibrating Factual Knowledge in Pretrained Language Models},
+  year      = {2022},
+  month     = dec,
+  abstract  = {Previous literature has proved that Pretrained Language Models (PLMs) can store factual knowledge. However, we find that facts stored in the PLMs are not always correct. It motivates us to explore a fundamental question: How do we calibrate factual knowledge in PLMs without re-training from scratch? In this work, we propose a simple and lightweight method CaliNet to achieve this goal. To be specific, we first detect whether PLMs can learn the right facts via a contrastive score between right and fake facts. If not, we then use a lightweight method to add and adapt new parameters to specific factual texts. Experiments on the knowledge probing task show the calibration effectiveness and efficiency. In addition, through closed-book question answering, we find that the calibrated PLM possesses knowledge generalization ability after fine-tuning. Beyond the calibration performance, we further investigate and visualize the knowledge calibration mechanism.},
+  code      = {https://github.com/dqxiu/calinet},
+  eprint    = {https://arxiv.org/abs/2210.03329},
+}
+
+@InProceedings{zhao2022distillation,
+  author    = {Xuandong Zhao and Lei Li and Yu-Xiang Wang},
+  booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP) - Findings},
+  title     = {Distillation-Resistant Watermarking for Model Protection in NLP},
+  year      = {2022},
+  month     = dec,
+  abstract  = {How can we protect the intellectual property of trained NLP models? Modern NLP models are prone to stealing by querying and distilling from their publicly exposed APIs. However, existing protection methods such as watermarking only work for images but are not applicable to text. We propose Distillation-Resistant Watermarking (DRW), a novel technique to protect NLP models from being stolen via distillation. DRW protects a model by injecting watermarks into the victim's prediction probability corresponding to a secret key and is able to detect such a key by probing a suspect model. We prove that a protected model still retains the original accuracy within a certain bound. We evaluate DRW on a diverse set of NLP tasks including text classification, part-of-speech tagging, and named entity recognition. Experiments show that DRW protects the original model and detects stealing suspects at 100% mean average precision for all four tasks while the prior method fails on two.},
+  code      = {https://github.com/xuandongzhao/drw},
+  eprint    = {https://arxiv.org/abs/2210.03312},
+}
+
 @InProceedings{wang2022lightseq2,
   author    = {Xiaohui Wang and Yang Wei and Ying Xiong and Guyue Huang and Xian Qian and Yufei Ding and Mingxuan Wang and Lei Li},
   booktitle = {Proceedings of The International Conference for High Performance Computing, Networking, Storage and Analysis ({SC}'22)},
@@ -491,6 +522,7 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   year      = {2021},
   month     = aug,
   abstract  = {Recent work on non-autoregressive neural machine translation (NAT) aims at improving the efficiency by parallel decoding without sacrificing the quality. However, existing NAT methods are either inferior to Transformer or require multiple decoding passes, leading to reduced speedup. We propose the Glancing Language Model (GLM), a method to learn word interdependency for single-pass parallel generation models. With GLM, we develop Glancing Transformer (GLAT) for machine translation. With only single-pass parallel decoding, GLAT is able to generate high-quality translation with 8-15 times speedup. Experiments on multiple WMT language directions show that GLAT outperforms all previous single pass non-autoregressive methods, and is nearly comparable to Transformer, reducing the gap to 0.25-0.9 BLEU points.},
+  code      = {https://github.com/FLC777/GLAT},
   comment   = {The main algorithm that achieves top 1 BLEU scores in WMT21 En-De and De-En machine translation contest.},
   eprint    = {https://arxiv.org/abs/2008.07905},
   timestamp = {2020-05-01},
@@ -502,6 +534,7 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   title     = {UniRE: A Unified Label Space for Entity Relation Extraction},
   year      = {2021},
   month     = aug,
+  code      = {https://github.com/Receiling/UniRE},
   eprint    = {https://arxiv.org/abs/2107.04292},
   timestamp = {2020-05-01},
 }
@@ -1549,7 +1582,7 @@ robust to rare sentence context by imposing learned kernels to capture the close
   month     = oct,
   abstract  = {We present a new large-scale multilingual video description dataset, VATEX, which contains over 41,250 videos and 825,000 captions in both English and Chinese. Among the captions, there are over 206,000 English-Chinese parallel translation pairs. Compared to the widely-used MSR-VTT dataset, VATEX is multilingual, larger, linguistically complex, and more diverse in terms of both video and natural language descriptions. We also introduce two tasks for video-and-language research based on VATEX: (1) Multilingual Video Captioning, aimed at describing a video in various languages with a compact unified captioning model, and (2) Video-guided Machine Translation, to translate a source language description into the target language using the video information as additional spatiotemporal context. Extensive experiments on the VATEX dataset show that, first, the unified multilingual model can not only produce both English and Chinese descriptions for a video more efficiently, but also offer improved performance over the monolingual models. Furthermore, we demonstrate that the spatiotemporal video context can be effectively utilized to align source and target languages and thus assist machine translation. In the end, we discuss the potentials of using VATEX for other video-and-language research.},
   addendum  = {Oral},
-  url       = {https://vatex.org/main/index.html},
+  url       = {https://eric-xw.github.io/vatex-website/index.html},
 }
 
 @InProceedings{fu2019rethinking,
@@ -1559,6 +1592,7 @@ robust to rare sentence context by imposing learned kernels to capture the close
   year      = {2019},
   month     = oct,
   abstract  = {Text attribute transfer is modifying certain linguistic attributes (e.g. sentiment, style, authorship, etc.) of a sentence and transforming them from one type to another. In this paper, we aim to analyze and interpret what is changed during the transfer process. We start from the observation that in many existing models and datasets, certain words within a sentence play important roles in determining the sentence attribute class. These words are referred to as the Pivot Words. Based on these pivot words, we propose a lexical analysis framework, the Pivot Analysis, to quantitatively analyze the effects of these words in text attribute classification and transfer. We apply this framework to existing datasets and models, and show that: (1) the pivot words are strong features for the classification of sentence attributes; (2) to change the attribute of a sentence, many datasets only requires to change certain pivot words; (3) consequently, many transfer models only perform the lexical-level modification, while leaving higher-level sentence structures unchanged. Our work provides an in-depth understanding of linguistic attribute transfer and further identifies the future requirements and challenges of this task.},
+  code      = {https://github.com/FranxYao/pivot_analysis},
 }
 
 @InProceedings{lu2019uncovering,
@@ -1594,6 +1628,7 @@ robust to rare sentence context by imposing learned kernels to capture the close
   month     = aug,
   abstract  = {State-of-the-art machine translation models are stillnot on a par with human translators. Previous worktakes human interactions into the neural machine translation process to obtain improved results in target languages. However, not all model-translation errors are equal some are critical while others are minor. In the mean while, same translation mistakes occur repeatedly in similar context. To solve bothissues, we propose CAMIT, a novel method for translating in an interactive environment. Our proposed method works with critical revision instructions,therefore allows human to correct arbitrary words in model-translated sentences. In addition,CAMIT learns from and softly memorizes revision actions based on the context, alleviating the issue of repeating mistakes. Experiments in both ideal and real interactive translation settings demonstrate that our proposed CAMIT enhances machine translation results significantly while requires fewer revision instructions from human compared to previous methods.},
   addendum  = {Oral},
+  code      = {https://github.com/wengrx/CAMIT},
 }
 
 @InProceedings{bao2019generating,
@@ -1613,6 +1648,7 @@ robust to rare sentence context by imposing learned kernels to capture the close
   year      = {2019},
   month     = jul,
   abstract  = {Text-based question answering (TBQA) has been studied extensively in recent years. Most existing approaches focus on finding the answer to a question within a single paragraph. However, many difficult questions require multiple supporting evidence from scattered text across two or more documents. In this paper, we propose the Dynamically Fused Graph Network (DFGN), a novel method to answer those questions requiring multiple scattered evidence and reasoning over them. Inspired by human’s step-by-step reasoning behavior, DFGN includes a dynamic fusion layer that starts from the entities mentioned in the given query, explores along the entity graph dynamically built from the text, and gradually finds relevant supporting entities from the given documents. We evaluate DFGN on HotpotQA, a public TBQA dataset requiring multi-hop reasoning. DFGN achieves competitive results on the public board. Furthermore, our analy- sis shows DFGN could produce interpretable reasoning chains.},
+  code      = {https://github.com/woshiyyya/DFGN-pytorch},
 }
 
 @InProceedings{zhang2019generating,
