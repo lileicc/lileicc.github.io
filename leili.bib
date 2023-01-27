@@ -1,3 +1,14 @@
+@InProceedings{chen2023converge,
+  author    = {Jiangjie Chen and Rui Xu and Wenxuan Zeng and Changzhi Sun and Lei Li and Yanghua Xiao},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence (AAAI)},
+  title     = {Converge to the Truth: Factual Error Correction via Iterative Constrained Editing},
+  year      = {2023},
+  month     = feb,
+  abstract  = {Given a possibly false claim sentence, how can we automatically correct it with minimal editing? Existing methods either require a large number of pairs of false and corrected claims for supervised training or do not handle well errors spanning over multiple tokens within an utterance. In this paper, we propose VENCE, a novel method for factual error correction (FEC) with minimal edits. VENCE formulates the FEC problem as iterative sampling editing actions with respect to a target density function. We carefully design the target function with predicted truthfulness scores from an offline trained fact verification model. VENCE samples the most probable editing positions based on back-calculated gradients of the truthfulness score concerning input tokens and the editing actions using a distantly-supervised language model (T5). Experiments on a public dataset show that VENCE improves the well-adopted SARI metric by 5.3 (or a relative improvement of 11.8%) over the previous best distantly-supervised methods.},
+  code      = {https://github.com/jiangjiechen/VENCE},
+  eprint    = {https://arxiv.org/abs/2211.12130},
+}
+
 @InProceedings{xu2022not,
   author    = {Wenda Xu and Yilin Tuan and Yujie Lu and Michael Saxon and Lei Li and William Yang Wang},
   booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP) - Findings},
@@ -37,6 +48,23 @@
   month     = nov,
   code      = {https://github.com/bytedance/lightseq},
   eprint    = {https://arxiv.org/abs/2110.05722},
+}
+
+  abstract = {Separating 3D point clouds into individual instances is an important task for 3D vision. It is challenging due to the unknown and varying number of instances in a scene. Existing deep learning based works focus on a two-step pipeline: first learn a feature embedding and then cluster the points. Such a two-step pipeline leads to disconnected intermediate objectives. In this paper, we propose an integrated reformulation of 3D instance segmentation as a per-point classification problem. We propose ICM-3D, a single-step method to segment 3D instances via instantiated categorization. The augmented category information is automatically constructed from 3D spatial positions. We conduct extensive experiments to verify the effectiveness of ICM-3D and show that it obtains inspiring performance across multiple frameworks, backbones and benchmarks.},
+  eprint   = {https://arxiv.org/abs/2108.11771},
+}
+
+@Article{wang2022solo,
+  author  = {Xinlong Wang and Rufeng Zhang and Chunhua Shen and Tao Kong and Lei Li},
+  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)},
+  title   = {SOLO: A Simple Framework for Instance Segmentation},
+  year    = {2022},
+  month   = nov,
+  number  = {11},
+  pages   = {8587-8601},
+  volume  = {44},
+  code    = {https://github.com/aim-uofa/AdelaiDet/},
+  eprint  = {https://arxiv.org/abs/2106.15947},
 }
 
 @InProceedings{lu2022uncovering,
@@ -312,19 +340,6 @@
   pages   = {57-64},
   volume  = {7},
   doi     = {10.1109/LRA.2021.3108483},
-}
-
-  abstract = {Separating 3D point clouds into individual instances is an important task for 3D vision. It is challenging due to the unknown and varying number of instances in a scene. Existing deep learning based works focus on a two-step pipeline: first learn a feature embedding and then cluster the points. Such a two-step pipeline leads to disconnected intermediate objectives. In this paper, we propose an integrated reformulation of 3D instance segmentation as a per-point classification problem. We propose ICM-3D, a single-step method to segment 3D instances via instantiated categorization. The augmented category information is automatically constructed from 3D spatial positions. We conduct extensive experiments to verify the effectiveness of ICM-3D and show that it obtains inspiring performance across multiple frameworks, backbones and benchmarks.},
-  eprint   = {https://arxiv.org/abs/2108.11771},
-}
-
-@Article{wang2021solo,
-  author  = {Xinlong Wang and Rufeng Zhang and Chunhua Shen and Tao Kong and Lei Li},
-  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)},
-  title   = {SOLO: A Simple Framework for Instance Segmentation},
-  year    = {2021},
-  code    = {https://github.com/aim-uofa/AdelaiDet/},
-  eprint  = {https://arxiv.org/abs/2106.15947},
 }
 
 @InProceedings{zheng2021duplex,
@@ -1442,7 +1457,7 @@ Such new perspective leads to a refreshed understanding of the roles of second m
 }
 
 @InProceedings{huang2020span,
-  author    = {Xunpeng Huang and Xianfeng Liang and Zhengyang Liu and Yue Yu and Lei Li},
+  author    = {Xunpeng Huang and Xianfeng Liang and Zhengyang Liu and Lei Li and Yue Yu and Yitan Li},
   booktitle = {the 34th {AAAI} Conference on Artificial Intelligence (AAAI)},
   title     = {{SPAN}: A Stochastic Projected Approximate Newton Method},
   year      = {2020},
@@ -1622,7 +1637,7 @@ robust to rare sentence context by imposing learned kernels to capture the close
 }
 
 @InProceedings{weng2019correct,
-  author    = {Weng, Rongxiang and Zhou, Hao and Huang, Shujian and Xia, Yifan and Li, Lei and Chen, Jiajun},
+  author    = {Weng, Rongxiang and Zhou, Hao and Huang, Shujian and Li, Lei and Xia, Yifan and Chen, Jiajun},
   booktitle = {the 28th International Joint Conference on Artificial Intelligence (IJCAI)},
   title     = {{Correct-and-Memorize}: Learning to Translate from Interactive Revisions},
   year      = {2019},
@@ -1653,7 +1668,7 @@ robust to rare sentence context by imposing learned kernels to capture the close
 }
 
 @InProceedings{zhang2019generating,
-  author    = {Zhang, Huangzhao and Miao, Ning and Zhou, Hao and Li, Lei},
+  author    = {Zhang, Huangzhao and Zhou, Hao and Miao, Ning and Li, Lei},
   booktitle = {the 57th Annual Meeting of the Association for Computational Linguistics (ACL) - short papers},
   title     = {Generating Fluent Adversarial Examples for Natural Languages},
   year      = {2019},
@@ -1662,7 +1677,7 @@ robust to rare sentence context by imposing learned kernels to capture the close
 }
 
 @InProceedings{wu2019unified,
-  author    = {Wu, Hao and Mao, Jiayuan and Zhang, Yufeng and Sun, Weiwei and Jiang, Yuning and Li, Lei and Ma, Weiying},
+  author    = {Wu, Hao and Mao, Jiayuan and Zhang, Yufeng and Jiang, Yuning and Li, Lei and Sun, Weiwei and Ma, Weiying},
   booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},
   title     = {Unified Visual-Semantic Embeddings: Bridging Vision and Language with Structured Meaning Representations},
   year      = {2019},
