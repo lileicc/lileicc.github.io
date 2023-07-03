@@ -56,6 +56,9 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   title     = {Say What You Mean! Large Language Models Speak Too Positively about Negative Commonsense Knowledge},
   year      = {2023},
   month     = jul,
+  abstract  = {Large language models (LLMs) have been widely studied for their ability to store and utilize positive knowledge. However, negative knowledge, such as “lions don’t live in the ocean”, is also ubiquitous in the world but rarely mentioned explicitly in the text. What do LLMs know about negative knowledge? This work examines the ability of LLMs to negative commonsense knowledge. We design a constrained keywords-to-sentence generation task (CG) and a Boolean question-answering task (QA) to probe LLMs. Our experiments reveal that LLMs frequently fail to generate valid sentences grounded in negative commonsense knowledge, yet they can correctly answer polar yes-or-no questions. We term this phenomenon the belief conflict of LLMs. Our further analysis shows that statistical shortcuts and negation reporting bias from language modeling pre-training cause this conflict.},
+  code      = {https://github.com/jiangjiechen/uncommongen},
+  eprint    = {https://arxiv.org/abs/2305.05976},
 }
 
 @InProceedings{ouyang2023waco,
@@ -65,6 +68,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   year      = {2023},
   month     = jul,
   abstract  = {End-to-end Speech Translation (E2E ST) aims to translate source speech into target translation without generating the intermediate transcript. However, existing approaches for E2E ST degrade considerably when only limited ST data are available. We observe that an ST model's performance strongly correlates with its embedding similarity from speech and transcript. In this paper, we propose Word-Aligned COntrastive learning (WACO), a novel method for few-shot speech-to-text translation. Our key idea is bridging word-level representations for both modalities via contrastive learning. We evaluate WACO and other methods on the MuST-C dataset, a widely used ST benchmark. Our experiments demonstrate that WACO outperforms the best baseline methods by 0.7-8.5 BLEU points with only 1-hour parallel data.},
+  code      = {https://github.com/owaski/WACO},
   eprint    = {https://arxiv.org/abs/2212.09359},
 }
 
@@ -75,6 +79,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   year      = {2023},
   month     = jul,
   abstract  = {Is it possible to leverage large scale raw and raw parallel corpora to build a general learned metric? Existing learned metrics have gaps to human judgements, are model-dependent or are limited to the domains or tasks where human ratings are available. In this paper, we propose SEScore2, a model-based metric pretrained over million-scale synthetic dataset constructed by our novel retrieval augmented data synthesis pipeline. SEScore2 achieves high correlation to human judgements without any human rating supervisions. Importantly, our unsupervised SEScore2 can outperform supervised metrics, which are trained on the News human ratings, at the TED domain. We evaluate SEScore2 over four text generation tasks across three languages. SEScore2 outperforms all prior unsupervised evaluation metrics in machine translation, speech translation, data-to-text and dialogue generation, with average Kendall improvements 0.158. SEScore2 even outperforms SOTA supervised BLEURT at data-to-text, dialogue generation and overall correlation.data.},
+  code      = {https://github.com/xu1998hz/SEScore2},
   eprint    = {https://arxiv.org/abs/2212.09305},
 }
 
@@ -85,6 +90,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   year      = {2023},
   month     = jul,
   abstract  = {How can we extend a pre-trained model to many language understanding tasks, without labeled or additional unlabeled data? Pre-trained language models (PLMs) have been effective for a wide range of NLP tasks. However, existing approaches either require fine-tuning on downstream labeled datasets or manually constructing proper prompts. In this paper, we propose nonparametric prompting PLM (NPPrompt) for fully zero-shot language understanding. Unlike previous methods, NPPrompt uses only pre-trained language models and does not require any labeled data or additional raw corpus for further fine-tuning, nor does it rely on humans to construct a comprehensive set of prompt label words. We evaluate NPPrompt against previous major few-shot and zero-shot learning methods on diverse NLP tasks: including text classification, text entailment, similar text retrieval, and paraphrasing. Experimental results demonstrate that our NPPrompt outperforms the previous best fully zero-shot method by big margins, with absolute gains of 12.8% in accuracy on text classification and 18.9% on the GLUE benchmark.},
+  code      = {https://github.com/XuandongZhao/NPPrompt},
   eprint    = {https://arxiv.org/abs/2212.06950},
 }
 
