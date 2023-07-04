@@ -1,106 +1,242 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <meta http-equiv="cache-control" content="no-cache">
-    <title> Lei Li's publications </title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
-    <link href="style/style.css" rel="stylesheet" type="text/css" />
-    <script src="jquery-3.4.1.min.js"></script>
-    <script src="bibtex_js.js" type="text/javascript" charset="utf-8"></script>
-  </head>
-  <body><bibtex src="leili.bib"></bibtex>
-    <script>
-		$(function() {
-		  $("#Fontselector").on("change",function() {
-		    var font = $("#Fontselector option:selected").text();
-		    console.log(font);
-		
-		    $('.title.fonters').each(function() {
-		    	$(this).css("font-family",font);
-		    });
-		  }); 
-		});
-		function reset() {
-			$("select").each(function () {
-			  localStorage.setItem($(this).attr("id"),"");
-			  $(this).val("");
-			}); 
-			$("#searchbar").val("");
-			$("#searchbar").trigger('change');
-		}
-    </script>
-    <style>
-      [class="Lei Li"] {
-        font-weight: bold;
-      }
-    </style>
-    <a name="top"></a>
-    <div class="container">
-      <h1 class="header"><a href="index.html">Lei Li</a>'s Publications</h1>
-      <div class="searchbar">
-        <div style="float:left;"> <button type="button" class="btn btn-default"
-            onclick="reset()">Reset</button>
-        </div>
-        <!-- <div style="float:left;">
-          <select id="authorselectfirst" class="btn bibtex_search bibtex_author"
-            style="border: 1px solid lightgrey;"
-            extra="first"
-            search="author">
-            <option value="">Search First Author</option>
-          </select>
-        </div> -->
-        <div style="float:left;">
-          <select id="authorselect" class="btn bibtex_search bibtex_generate_author" search="author" style="border: 1px solid lightgrey;">
-            <option value="">Search Author</option>
-          </select>
-        </div>
-        <div style="float:left;">
-          <select id="topicselect" class="btn
-							bibtex_search" style="border: 1px solid lightgrey;">
-            <option value="">Search Topic</option>
-            <!-- Add topic values here -->
-            <option value="machine translation|multilingual translation|NMT|SMT|speech translation|speech-to-text translation|speech-to-speech translation|simultaneous translation">Machine Translation</option>
-            <option value="dialog generation|sentence generation|text generation|headline generation|language generation|news generation|captioning|summarization|bidword generation|story generation|story editing|story rewriting">Text Generation</option>
-            <option value="question answering|machine reading comprehension|reasoning|fact verification">Reasoning and Question Answering</option>
-            <option value="information extraction|relation extraction|entity extraction|taxonomy completion|exent extraction|entity linking">Information Extraction</option>
-            <option value="BLOG|bayesian|probabilsitic inference|probabilistic model|graphical model|Monte Carlo|Monte-Carlo|VAE|Metropolis-Hastings|Gibbs sampling|MCMC|variational inference">Probabilistic Modelling and Inference</option>
-            <option value="time series|time sequence|coevolving sequence|temporal model|dynamical system|ThermoCast">Time Series Analysis</option>
-            <option value="image classification|object detection|image segmentation|instance segmentation|visual recognition|visual understanding|image retrieval|video retrieval|video captioning|vision and language">Computer Vision</option>
-            <option value="manipulation|grasp pose estimation|construct bridge|design and construction">Robotics</option>
-          </select>
-        </div>
-        <div style="float:left;"> <input class="bibtex_search form-control" id="searchbar"
-            placeholder="Search publications"
-            type="text">
-          <span class="help-block">Example: text generation (finds the intersection
-            of the two terms)</span> </div>
-        <span class="bibtex_search_stats badge bg-light text-danger">0</span>results
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta http-equiv="cache-control" content="no-cache">
+  <title> Lei Li's publications </title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto Slab:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+  <link href="style/style.min.css" rel="stylesheet" type="text/css" />
+  <script src="jquery-3.4.1.min.js"></script>
+  <script src="bibtex_js.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<bibtex src="leili.bib"></bibtex>
+<body class="page-template-template-home page-id-2">
+  <script>
+    $(function () {
+      $("#Fontselector").on("change", function () {
+        var font = $("#Fontselector option:selected").text();
+        console.log(font);
+
+        $('.title.fonters').each(function () {
+          $(this).css("font-family", font);
+        });
+      });
+    });
+    function reset() {
+      $("select").each(function () {
+        localStorage.setItem($(this).attr("id"), "");
+        $(this).val("");
+      });
+      $("#searchbar").val("");
+      $("#searchbar").trigger('change');
+    }
+  </script>
+  <style>
+    [class="Lei Li"] {
+      font-weight: bold;
+    }
+  </style>
+  <a name="top"></a>
+  <header class="site-header--mobile" role="banner">
+    <div class="mobile-header-right">
+      <button type="button" class="js-toggle-nav menu-button" aria-controls="mobile-nav-tray" aria-expanded="false">
+        <span class="vh">Menu</span>
+        <svg class="menu-icon" width="48" height="33" focusable="false">
+          <use href="#menu-icon" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-nav-tray" class="mobile-nav-tray" aria-hidden="true">
+    <div class="mobile-nav-header">
+      <div class="site-branding">
+        <a href="https://www.cmu.edu/" target="_blank" rel="home">
+          <span class="vh">Lei Li</span>
+        </a>
       </div>
-      <hr class="w-100">
-      <div class="bibtex_structure">
-        <div class="group year" extra="DESC string">
+      <button type="button" class="js-toggle-nav close-button" aria-controls="mobile-nav-tray" aria-expanded="false">
+        <span class="vh">Close</span>
+        <svg class="menu-icon-svg" width="33" height="33" focusable="false">
+          <use href="#close-icon" />
+        </svg>
+      </button>
+    </div>
+    <nav class="navigation--mobile">
+
+      <ul class="mobile-nav mobile-nav--main">
+        <li id="menu-item-334"
+          class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-334"><a
+            href="index.html">Home</a></li>
+        <li id="menu-item-17"
+          class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-9 current_page_item menu-item-17">
+          <a href="pubs.html" aria-current="page" aria-current="page">Publications</a></li>
+        <li id="menu-item-16" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16"><a
+            href="teaching.html">Teaching</a></li>
+        <li id="menu-item-15" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a
+            href="student.html">People</a></li>
+        <li id="menu-item-18" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18"><a
+            href="leili-bio.html">Bio</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="site-wrap">
+    <header id="masthead" class="site-header" role="banner">
+      <div class="wrap">
+
+        <div class="l-header">
+          <div class="l-header-col-1">
+
+            <div class="site-branding">
+              <a href="https://www.harvard.edu/" target="_blank" rel="home">
+                <span class="vh">Ariel Procaccia</span>
+                <svg class="site-logo" width="64" height="77" focusable="false">
+                  <use href="#site-logo" />
+                </svg>
+              </a>
+            </div>
+
+          </div>
+          <div class="l-header-col-2">
+
+            <div class="site-navigation">
+
+
+              <nav class="js-accessible-menu navigation--main" aria-label="Main Navigation" role="navigation">
+                <ul class="nav-list">
+                  <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-334"><a
+                      href="http://procaccia.info/">Home</a></li>
+                  <li
+                    class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-9 current_page_item menu-item-17">
+                    <a href="pubs.html" aria-current="page" aria-current="page">Publications</a>
+                  </li>
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16"><a
+                      href="teaching.html">Teaching</a></li>
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-15"><a
+                      href="student.html">People</a></li>
+                  <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-18"><a
+                      href="leili-bio.html">Bio</a></li>
+                </ul>
+              </nav>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </header>
+    <main id="main" class="site-main" role="main">
+
+      <header class="banner">
+        <div class="wrap">
+          <div class="banner-title">
+            <span class="h1">
+              Publications </span>
+          </div>
+        </div>
+      </header>
+      <section class="section form-section wrap">
+        <div class="filter-inner">
+          <div class="filter-body">
+            <div class="filter-item-grid-wrap">
+              <div class="filter-item-grid">
+      
+      
+                <div class="filter-footer">
+                  <button type="submit" class="button" onclick="reset()">Reset</button>
+                </div>
+                <!-- <div style="float:left;">
+                          <select id="authorselectfirst" class="btn bibtex_search bibtex_author"
+                            style="border: 1px solid lightgrey;"
+                            extra="first"
+                            search="author">
+                            <option value="">Search First Author</option>
+                          </select>
+                        </div> -->
+                <div class="filter-item">
+                  <div class="select">
+                    <select id="authorselect" class="ui-select ui-select-blue bibtex_search bibtex_generate_author"
+                      search="author">
+                      <!-- style="border: 1px solid lightgrey;" -->
+                      <option value="">Search Author</option>
+                    </select>
+                    <div class="select-arrow"></div>
+                  </div>
+                </div>
+                <div class="filter-item">
+                  <div class="select">
+                    <select id="topicselect" class="ui-select ui-select-blue
+                              bibtex_search">
+                      <option value="">Search Topic</option>
+                      <!-- Add topic values here -->
+                      <option
+                        value="machine translation|multilingual translation|NMT|SMT|speech translation|speech-to-text translation|speech-to-speech translation|simultaneous translation">
+                        Machine Translation</option>
+                      <option
+                        value="dialog generation|sentence generation|text generation|headline generation|language generation|news generation|captioning|summarization|bidword generation|story generation|story editing|story rewriting">
+                        Text Generation</option>
+                      <option value="question answering|machine reading comprehension|reasoning|fact verification">Reasoning
+                        and
+                        Question Answering</option>
+                      <option
+                        value="information extraction|relation extraction|entity extraction|taxonomy completion|exent extraction|entity linking">
+                        Information Extraction</option>
+                      <option
+                        value="BLOG|bayesian|probabilsitic inference|probabilistic model|graphical model|Monte Carlo|Monte-Carlo|VAE|Metropolis-Hastings|Gibbs sampling|MCMC|variational inference">
+                        Probabilistic Modelling and Inference</option>
+                      <option
+                        value="time series|time sequence|coevolving sequence|temporal model|dynamical system|ThermoCast">
+                        Time
+                        Series Analysis</option>
+                      <option
+                        value="image classification|object detection|image segmentation|instance segmentation|visual recognition|visual understanding|image retrieval|video retrieval|video captioning|vision and language">
+                        Computer Vision</option>
+                      <option value="manipulation|grasp pose estimation|construct bridge|design and construction">Robotics
+                      </option>
+                    </select>
+                    <div class="select-arrow"></div>
+                  </div>
+                </div>
+                <div class="filter-item">
+                  <div class="input"> <input class="bibtex_search form-control" id="searchbar"
+                      placeholder="Search publications" type="text">
+                    <span class="help-block">Example: text generation (finds the intersection
+                      of the two terms)
+                    </span>
+                  </div>
+                </div>
+                <span><span class="bibtex_search_stats badge text-danger">0</span>results</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bibtex_structure paper-section">
+        <div class="group year wrap" extra="DESC string">
           <ul>
             <div class="templates"></div>
           </ul>
           <!-- div class="sort month" extra="DESC date">
-                        </div --> 
-        	<a href="#top" style="display: inline"><em>(Top
+                                                  </div -->
+          <a href="#top" style="display: inline"><em>(Top
               of the page)</em></a>
         </div>
-      </div>
-      <div id="bibtex_display">
-        <div class="bibtex_template" style="display: none;"><li class="if BIBTEXTYPEKEY==ARTICLE || BIBTEXTYPEKEY==INPROCEEDINGS || BIBTEXTYPEKEY==MISC || BIBTEXTYPEKEY==PHDTHESIS || BIBTEXTYPEKEY==MASTERTHESIS || BIBTEXTYPEKEY==BACHELORSTHESIS || BIBTEXTYPEKEY==TECHREPORT || BIBTEXTYPEKEY==BOOK || BIBTEXTYPEKEY==UNPUBLISHED">
-            <span class="if thumbnail"><img class="bibtexVar bibtexthumb" src="pubs/+THUMBNAIL+" align="right" extra="thumbnail"/></span>
-            <span class="if title"><a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf"
-                extra="BIBTEXKEY"><span
-                  class="title"></span></a>,</span>
-            <div class="if author"><span class="author" conjunction=", and"><span class="first"></span> <span class="last"></span></span>.</div>
-            <div> <span class="if journal"> <em> <span class="journal"></span>
+      </section>
+      <div id="bibtex_display"><div class="bibtex_template" style="display: none;"><li
+            class="if BIBTEXTYPEKEY==ARTICLE || BIBTEXTYPEKEY==INPROCEEDINGS || BIBTEXTYPEKEY==MISC || BIBTEXTYPEKEY==PHDTHESIS || BIBTEXTYPEKEY==MASTERTHESIS || BIBTEXTYPEKEY==BACHELORSTHESIS || BIBTEXTYPEKEY==TECHREPORT || BIBTEXTYPEKEY==BOOK || BIBTEXTYPEKEY==UNPUBLISHED"><span class="if thumbnail"><img class="bibtexVar bibtexthumb" src="pubs/+THUMBNAIL+" align="right"
+                extra="thumbnail" /></span><span class="if title"><a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf" extra="BIBTEXKEY"><span
+                  class="title"></span></a>,</span><div class="if author"><span class="author" conjunction=", and"><span class="first"></span> <span
+                  class="last"></span></span>.</div><div><span class="if journal"> <em> <span class="journal"></span>
                 </em>, </span> <span class="if booktitle">In <em> <span class="booktitle">
                   </span> </em>, </span> <span class="if editor"> <span class="editor"></span>
                 (editors), </span> <span class="if publisher"> <em> <span class="publisher"></span>
@@ -113,38 +249,47 @@
               </span> <span class="if volume"> <span class="volume"></span>, </span>
               <span class="if journal number">( <span class="number"></span>),
               </span> <span class="if pages"> pages <span class="pages"></span>,</span>
-              <span class="if year"><span class="year"></span>.</span> <span class="if addendum">(<span class="addendum"></span>)</span></div>
+              <span class="if year"><span class="year"></span>.</span> <span class="if addendum">(<span
+                  class="addendum"></span>)</span>
+            </div>
             <div>
-            	<span class="if comment"><div><span class="comment"></span></div></span>
+              <span class="if comment">
+                <div><span class="comment"></span></div>
+              </span>
               <a class="bibtexVar badge bg-success btn" role="button" data-bs-toggle="collapse" href="#bib+BIBTEXKEY+"
-                aria-expanded="false"
-                aria-controls="bib+BIBTEXKEY+"
-                extra="BIBTEXKEY">Bib</a>
-              <span class="if eprint"><a class="bibtexVar badge bg-warning btn" href="+EPRINT+" role="button" extra="eprint">Eprint</a></span>              
+                aria-expanded="false" aria-controls="bib+BIBTEXKEY+" extra="BIBTEXKEY">Bib</a>
+              <span class="if eprint"><a class="bibtexVar badge bg-warning btn" href="+EPRINT+" role="button"
+                  extra="eprint">Eprint</a></span>
               <span class="if software"><a class="bibtexVar badge bg-primary btn" href="+SOFTWARE+" role="button"
                   extra="software">Software</a></span>
-              <span class="if code"><a class="bibtexVar badge bg-primary btn" href="+CODE+" role="button" extra="code">Code</a></span>
-              <span class="if url"><a class="bibtexVar badge bg-danger btn" href="+URL+" role="button" extra="url">URL</a></span>
-              <span class="if slides"><a class="bibtexVar badge bg-info btn" href="+SLIDES+" role="button" extra="slides">Slides</a></span>
-              <span class="if blog"><a class="bibtexVar badge bg-dark btn text-white" href="+BLOG+" role="button" extra="blog">Blog</a></span>
+              <span class="if code"><a class="bibtexVar badge bg-primary btn" href="+CODE+" role="button"
+                  extra="code">Code</a></span>
+              <span class="if url"><a class="bibtexVar badge bg-danger btn" href="+URL+" role="button"
+                  extra="url">URL</a></span>
+              <span class="if slides"><a class="bibtexVar badge bg-info btn" href="+SLIDES+" role="button"
+                  extra="slides">Slides</a></span>
+              <span class="if blog"><a class="bibtexVar badge bg-dark btn text-white" href="+BLOG+" role="button"
+                  extra="blog">Blog</a></span>
               <span class="if abstract">
-              <a class="bibtexVar badge bg-light btn text-dark" role="button" data-bs-toggle="collapse" href="#abs+BIBTEXKEY+"
-aria-expanded="false"
-aria-controls="abs+BIBTEXKEY+"
-extra="BIBTEXKEY">Abstract</a>
+                <a class="bibtexVar badge bg-light btn text-dark" role="button" data-bs-toggle="collapse"
+                  href="#abs+BIBTEXKEY+" aria-expanded="false" aria-controls="abs+BIBTEXKEY+"
+                  extra="BIBTEXKEY">Abstract</a>
               </span>
-              <span class="if doi"><a class="bibtexVar badge bg-secondary btn" href="+DOI+" role="button" extra="doi">DOI</a></span>
+              <span class="if doi"><a class="bibtexVar badge bg-secondary btn" href="+DOI+" role="button"
+                  extra="doi">DOI</a></span>
               <span class="if video"><a class="bibtexVar badge bg-dark btn" href="+VIDEO+" role="button" extra="video">
-                <div class="icon"><div class="videoCam"></div></div>
-              </a></span>
+                  <div class="icon">
+                    <div class="videoCam"></div>
+                  </div>
+                </a></span>
             </div>
             <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
               <div>
                 <pre><span class="bibtexraw noread raw"></span></pre>
                 <!-- <pre><span class="bibtextypekey raw" style="text-transform:lowercase"></span>{<span class="bibtexkey raw"></span>,
-  author = <span class="author raw"></span>,  title = "<span class="title raw"></span>",<span class="if booktitle">  booktitle = "<span class="booktitle raw"></span>",</span><span class="if journal">  journal = "<span class="journal raw"></span>",</span><span class="if publisher">
-  publisher = "<span class="publisher raw"></span>",</span><span class="if school">  school = "<span class="school raw"></span>",</span>  year = <span class="year raw"></span>,<span class="if volume">  volume = "<span class="volume raw"></span>",</span><span class="if number">
-  number = "<span class="number raw"></span>",</span><span class="if pages">  pages = "<span class="pages raw"></span>",</span><span class="if edition">  edition = "<span class="edition raw"></span>",</span>}</pre> -->
+            author = <span class="author raw"></span>,  title = "<span class="title raw"></span>",<span class="if booktitle">  booktitle = "<span class="booktitle raw"></span>",</span><span class="if journal">  journal = "<span class="journal raw"></span>",</span><span class="if publisher">
+            publisher = "<span class="publisher raw"></span>",</span><span class="if school">  school = "<span class="school raw"></span>",</span>  year = <span class="year raw"></span>,<span class="if volume">  volume = "<span class="volume raw"></span>",</span><span class="if number">
+            number = "<span class="number raw"></span>",</span><span class="if pages">  pages = "<span class="pages raw"></span>",</span><span class="if edition">  edition = "<span class="edition raw"></span>",</span>}</pre> -->
               </div>
             </div>
             <div class="bibtexVar collapse" id="abs+BIBTEXKEY+" extra="BIBTEXKEY">
@@ -152,15 +297,14 @@ extra="BIBTEXKEY">Abstract</a>
                 <pre><span class="abstract"></span></pre>
               </div>
             </div>
-            <div style="display:none"> <span class="bibtextype"></span></div>
-            <div style="display:none"> <span class="if topic"> <span class="topic"></span></span></div>
-          </li></div>
-      </div>
-    </div>
-    <!-- Latest compiled and minified JavaScript -->
-    <div>
-      A slightly old list of <a href="publications.html">publications</a>.
-    </div>
-    <!-- <script src="bootstrap.min.js"></script> -->
-  </body>
+            <div style="display:none"><span class="bibtextype"></span></div>
+            <div style="display:none"><span class="if topic"><span class="topic"></span></span></div>
+          </li></div></div>
+    </main>
+  </div>
+  <div>
+    A slightly old list of <a href="publications.html">publications</a>.
+  </div>
+</body>
+
 </html>
