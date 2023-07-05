@@ -9,12 +9,16 @@
     integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
-    crossorigin="anonymous"></script>
-
-  <link href="https://fonts.googleapis.com/css?family=Roboto Slab:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+    crossorigin="anonymous"></script>  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
   <link href="style/style.min.css" rel="stylesheet" type="text/css" />
   <script src="jquery-3.4.1.min.js"></script>
+  
   <script src="bibtex_js.js" type="text/javascript" charset="utf-8"></script>
 </head>
 <bibtex src="leili.bib"></bibtex>
@@ -96,8 +100,8 @@
           <div class="l-header-col-1">
 
             <div class="site-branding">
-              <a href="https://www.harvard.edu/" target="_blank" rel="home">
-                <span class="vh">Ariel Procaccia</span>
+              <a href="https://www.cmu.edu/" target="_blank" rel="home">
+                <span class="vh">Lei Li</span>
                 <svg class="site-logo" width="64" height="77" focusable="false">
                   <use href="#site-logo" />
                 </svg>
@@ -113,7 +117,7 @@
               <nav class="js-accessible-menu navigation--main" aria-label="Main Navigation" role="navigation">
                 <ul class="nav-list">
                   <li class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-334"><a
-                      href="http://procaccia.info/">Home</a></li>
+                      href="index.html">Home</a></li>
                   <li
                     class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-9 current_page_item menu-item-17">
                     <a href="pubs.html" aria-current="page" aria-current="page">Publications</a>
@@ -207,12 +211,20 @@
                   </div>
                 </div>
                 <div class="filter-item">
-                  <div class="input"> <input class="bibtex_search form-control" id="searchbar"
-                      placeholder="Search publications" type="text">
-                    <span class="help-block">Example: text generation (finds the intersection
-                      of the two terms)
-                    </span>
+                  <div class="select">
+                    <select id="yearselect" class="ui-select ui-select-blue bibtex_search bibtex_generate_year"
+                      search="year" bibtex_sort_order="desc">
+                      <!-- style="border: 1px solid lightgrey;" -->
+                      <option value="">Search Year</option>
+                    </select>
+                    <div class="select-arrow"></div>
                   </div>
+                </div>
+                <div class="filter-item">
+                  <input type="text" class="bibtex_search form-control" id="searchbar" placeholder="e.g. speech translation" type="text">
+                  <!-- <span class="help-block">Example: text generation (finds the intersection
+                    of the two terms)
+                  </span> -->
                 </div>
                 <span><span class="bibtex_search_stats badge text-danger">0</span>results</span>
               </div>
@@ -223,18 +235,16 @@
 
       <section class="bibtex_structure paper-section">
         <div class="group year wrap" extra="DESC string">
-          <ul>
             <div class="templates"></div>
-          </ul>
           <!-- div class="sort month" extra="DESC date">
                                                   </div -->
           <a href="#top" style="display: inline"><em>(Top
               of the page)</em></a>
         </div>
       </section>
-      <div id="bibtex_display"><div class="bibtex_template" style="display: none;"><li
-            class="if BIBTEXTYPEKEY==ARTICLE || BIBTEXTYPEKEY==INPROCEEDINGS || BIBTEXTYPEKEY==MISC || BIBTEXTYPEKEY==PHDTHESIS || BIBTEXTYPEKEY==MASTERTHESIS || BIBTEXTYPEKEY==BACHELORSTHESIS || BIBTEXTYPEKEY==TECHREPORT || BIBTEXTYPEKEY==BOOK || BIBTEXTYPEKEY==UNPUBLISHED"><span class="if thumbnail"><img class="bibtexVar bibtexthumb" src="pubs/+THUMBNAIL+" align="right"
-                extra="thumbnail" /></span><span class="if title"><a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf" extra="BIBTEXKEY"><span
+      <div id="bibtex_display"><div class="bibtex_template" style="display: none;"><span
+            class="if BIBTEXTYPEKEY==ARTICLE || BIBTEXTYPEKEY==INPROCEEDINGS || BIBTEXTYPEKEY==MISC || BIBTEXTYPEKEY==PHDTHESIS || BIBTEXTYPEKEY==MASTERTHESIS || BIBTEXTYPEKEY==BACHELORSTHESIS || BIBTEXTYPEKEY==TECHREPORT || BIBTEXTYPEKEY==BOOK || BIBTEXTYPEKEY==UNPUBLISHED"><span class="if thumbnail"><img class="bibtexVar bibtexthumb" src="pubs/+THUMBNAIL+" 
+                extra="thumbnail" /></span><span class="if !thumbnail"><span class="paperemoji">📄</span></span><span class="paperentry"><span class="if title"><a class="bibtexVar" href="pubs/+BIBTEXKEY+.pdf" extra="BIBTEXKEY"><span
                   class="title"></span></a>,</span><div class="if author"><span class="author" conjunction=", and"><span class="first"></span> <span
                   class="last"></span></span>.</div><div><span class="if journal"> <em> <span class="journal"></span>
                 </em>, </span> <span class="if booktitle">In <em> <span class="booktitle">
@@ -282,7 +292,7 @@
                     <div class="videoCam"></div>
                   </div>
                 </a></span>
-            </div>
+            </div></span>
             <div class="bibtexVar collapse" id="bib+BIBTEXKEY+" extra="BIBTEXKEY">
               <div>
                 <pre><span class="bibtexraw noread raw"></span></pre>
@@ -299,7 +309,7 @@
             </div>
             <div style="display:none"><span class="bibtextype"></span></div>
             <div style="display:none"><span class="if topic"><span class="topic"></span></span></div>
-          </li></div></div>
+          </span></div></div>
     </main>
   </div>
   <div>

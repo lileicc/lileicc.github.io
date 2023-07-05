@@ -1280,6 +1280,13 @@ function generateList(object, bibtexField) {
             object.attr("bibtex_sort_language"),
             options));
 
+    var sort_order = object.attr("bibtex_sort_order");
+    if (sort_order !== undefined) {
+        if (sort_order.trim().toUpperCase().localeCompare("DESC") == 0) {
+            displayTuples.reverse();
+        }
+    }
+
     for (var i = 0; i < displayTuples.length; i++) {
         var key = displayTuples[i][1];
         var text = displayTuples[i][2];
