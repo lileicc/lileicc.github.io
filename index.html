@@ -3,13 +3,12 @@
   <head>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
     <meta name="description" content="Lei Li" />
-    <meta name="keywords" content="machine learning deep learning natural language processing probabilistic programming" />
+    <meta name="keywords" content="machine learning deep learning natural language processing machine translation probabilistic programming" />
     <meta name="author" content="Lei Li" />
-    <link rel="stylesheet" type="text/css" href="style/origo.css" media="all" />
+    <link href="style/style.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="style/skeleton-tabs.css" />
     <!--link rel="stylesheet" type="text/css" href="style/style.css" media="all" /-->
     <script src="skeleton-tabs.js"></script>
-    <script src="custom.js"></script>
     <script type="application/javascript">
       function geoip(json){
          
@@ -27,225 +26,345 @@
     <script async="" src="https://get.geojs.io/v1/ip/geo.js"></script>
     <title>Lei LI</title>
   </head>
-  <body class="blue light">
-    <div id="layout">
-      <ul class="menu">
-        <li class="active"><a href="index.html">Home</a></li>
-        <li><a href="student.html">Student</a></li>
-        <li><a href="research.html">Research</a></li>
-        <li><a href="teaching.html">Teaching</a></li>
-        <li><a href="pubs.html">Publication</a></li>
-        <li><a href="resource.html">Resource</a></li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="leili-bio.html">Bio</a></li>
-        <li><a href="https://lileicc.github.io/blog/">Blog</a></li>
-      </ul>
-      <div class="row">
-        <div class="col c2"> <img src="leili-pic1.jpg" style="padding:2em 0 0 0"
-            alt=""
-            width="160" />
-        </div>
-        <div class="col">
-          <h1>Lei Li</h1>
-          <p>Co-Director, <a href="http://nlp.cs.ucsb.edu/">UCSB NLP Group</a></p>
-          <p> Assistant Professor <br />
-            <a href="https://www.cs.ucsb.edu">Computer Science Department <br />
-              Univeristy of California Santa Barbara</a> </p>
-          <p> Research area: natural language processing, machine learning, data
-            mining. </p>
-          <p> Topics: </p>
-          <ul>
-            <li> Machine translation, speech translation, multilingual NLP. </li>
-            <li> Text generation and summarization. </li>
-            <li> Reasoning and question answering. </li>
-            <li> LLM for Program Synthesis </li>
-            <li> AI for drug discovery </li>
-            <li> Green and Efficient ML </li>
-            <li> Time series mining and prediction </li>
-            <li> Probabilistic inference, Bayesian sampling methods </li>
-          </ul>
-          <p></p>
-          <p>Looking for highly motivated students to join my lab. </p>
-          <p> UCSB students: please feel free to contact me if you would like to
-            do intern in my lab. </p>
-        </div>
+  <body class="page-template-template-home page-id-1">
+    <header class="site-header--mobile" role="banner">
+      <div class="mobile-header-right">
+        <button type="button" class="js-toggle-nav menu-button" aria-controls="mobile-nav-tray" aria-expanded="false">
+          <span class="vh">Menu</span>
+          <svg class="menu-icon" width="48" height="33" focusable="false">
+            <use href="#menu-icon" />
+          </svg>
+        </button>
       </div>
-      <div class="row">
-        <div class="main col">
-          <ul class="tab-nav">
-            <li> <a class="button active" href="#news" onclick="return false">News</a>
-            </li>
-            <li> <a class="button" href="#papers" onclick="return false">Recent
-                Papers</a> </li>
-          </ul>
-          <div class="tab-content">
-            <div class="tab-pane active" id="news">
-              <ul>
-                <li><img src="images/new-icon.gif" style="height:1.2em" /> 
-                  New paper about <a href="https://arxiv.org/abs/2212.09450">designing peptides to kill bacteria</a> is accepted to KDD 2023. 
-                </li>
-                <li><img src="images/new-icon.gif" style="height:1.2em" /> 
-                  5 new papers are accepted to ACL 2023. Topics include <a href="https://arxiv.org/abs/2212.09359">Speech Translation</a>, <a href="https://arxiv.org/abs/2212.09305">Evaluation metric SEScore2</a>, <a href="https://arxiv.org/abs/2212.10551">Machine translation for 440 languages</a>, <a href="https://arxiv.org/abs/2212.06950">Zero-shot LLM</a>, <a href="https://arxiv.org/abs/2305.05976">Negative Knowledge in LLM</a>.
-                </li>
-                <li><img src="images/new-icon.gif" style="height:1.2em" /> 
-                  3 new papers are accepted to ICML 2023. Topics include <a href="https://arxiv.org/abs/2305.00386">Watermark for Language Generation</a>, <a href="https://arxiv.org/abs/2302.03162">Speed up Diffusion</a>, <a href="https://arxiv.org/abs/2302.02285">Protein Design</a>.
-                </li>
-                <li><img src="images/new-icon.gif" style="height:1.2em" /> 
-                  New papers at EMNLP 2022: <a href="https://arxiv.org/abs/2210.03312">Model Protection</a>
-                  <a href="https://arxiv.org/abs/2210.03329">Model correction on factual knowledge</a>, 
-                  <a href="https://arxiv.org/abs/2210.05035">Unsupervised Text Generation Metric - SEScore</a>.
-                </li>
-                <li><img src="images/new-icon.gif" style="height:1.2em" /> Our
-                  paper on <i>accelerated training of Transformers on GPUs</i>
-                  is accepted to SC 2022. The opensource software is released at
-                  <a href="https://github.com/bytedance/lightseq">github link</a>
-                </li>
-                <li><img src="images/new-icon.gif" style="height:1.2em" /> Our
-                  paper <i>analyzing the user engagement and activeness on
-                    content-based social media platforms</i> is accepted to KDD
-                  2022.  </li>
-                <li><img src="images/new-icon.gif" style="height:1.2em" /> Our
-                  paper <i>on the learning of Non-autoregressive Transformers</i>
-                  is accepted to ICML 2022. </li>
-                <li><img src="images/new-icon.gif" style="height:1.2em" /> 3
-                  papers are accepted to NAACL 2022 (2 in main and 1 in
-                  Findings), about <i>speech translation, multilingual text
-                    generation, and privacy preserving NLP</i>. </li>
-                <li><img src="images/new-icon.gif" style="height:1.2em" /> 7
-                  papers are accepted to ACL 2022 (4 in main and 3 in Findings),
-                  about speech translation, document translation,
-                  non-autoregressive translation, and representation learning. </li>
-                <li><img src="images/new-icon.gif" style="height:1.2em" /> Our
-                  paper on <a href="https://sites.google.com/view/bridge-pmr">bridge
-                    construction robot</a> is accepted to ICRA 2022. </li>
-                <li><img src="images/new-icon.gif" style="height:1.2em" /> Two
-                  papers is accepted to ICLR 2022. about <a href="https://openreview.net/forum?id=OjPmfr9GkVv">multilingual
-                    NLP</a> and <a href="https://openreview.net/forum?id=5HvpvYd68b">multilingual
-                    translation</a>. </li>
-                <li><img src="images/new-icon.gif" style="height:1.2em" /> Three
-                  papers are accepted to AAAI 2022. Topics include <a href="https://arxiv.org/abs/2012.13577">natural
-                    language reasoning for fact verification</a>, <a href="https://arxiv.org/abs/2012.13577">unsupervised
-                    counterfactual story editing</a>, and <a href="https://arxiv.org/abs/2110.07515">non-autoregressive
-                    translation</a>. </li>
-                <li> The paper on reversible machine translation model is
-                  accepted to NeurIPS 2021. Check out <a href="https://arxiv.org/abs/2105.03458">here</a>.
-                </li>
-                <li> 6 papers are accepted to EMNLP 2021, three to main
-                  confrence, and three to the Findings of EMNLP. The topics are
-                  machine translation, information extraction, and
-                  summarization.</li>
-                <li> One paper extending the SOLO framework for instance
-                  segmentation is accepted to TPAMI. </li>
-                <li> One paper about 3D instance segmentation is accepted to
-                  IEEE Robotics and Automation Letters.</li>
-                <li> Our paper Vocabulary Learning via Optimal Transport for
-                  Neural Machine Translation won <span style="color:red">the
-                    best paper award</span> at ACL 2021. </li>
-                <li> Two papers are accepted to IROS 2021. </li>
-                <li> One paper is accepted to InterSpeech 2021, about multi-task
-                  progressive pretraining for speech translation, achieving new
-                  SOTA results on MuST-C benchmarks. </li>
-                <li> Dr. Mingxuan Wang and I will be giving a <a href="TALKS/2021-ACL/">tutorial
-                    on Pre-training methods for Neural Machine Translation</a>
-                  at ACL 2021, July 31 </li>
-                <li> 11 papers to appear at ACL 2021 (6 long, 4 findings, and 1
-                  system demo). Strong results in machine translation and speech
-                  translation. Other topics include parallel generation,
-                  reasoning, summarization and information extraction. </li>
-                <li> 1 paper is accepted to ICML 2021 about long horizon skill
-                  learning. </li>
-                <li> 4 papers (1 main and 3 industry) are presenting at NAACL
-                  2021. Check out the long paper about <a href="https://arxiv.org/abs/2009.09654">how
-                    visual imagination will influence machine translation
-                    capability</a>. </li>
-                <li> Four papers on object detection and segmentation are
-                  accepted to CVPR 2021, including <a href="https://arxiv.org/abs/2011.12450">Sparse
-                    R-CNN</a>, DenseCL, Locate-Segment, Auto-Augment. <a href="https://arxiv.org/abs/2011.09157">DenCL</a>
-                  is accepted as Oral. </li>
-                <li> The paper on finding proper molecules for drug is accepted
-                  to ICLR 2021 with the spotlight presentation! </li>
-                <li> Six papers are accepted to AAAI 2021, about end-to-end
-                  speech translation, knowledge graph completion, optimization,
-                  text generation. </li>
-                <li> One paper about new method to generate query-relevant
-                  bidwords for search advertising is accepted to WSDM 2021. </li>
-                <li><a href="pubs/wang2020solov2.pdf">SOLOv2</a> is out! One
-                  paper about faster object instance segmentation in images is
-                  accepted to NeurIPS 2020.</li>
-                <li> Winner of 5 tasks in WMT20 Machine Translation Contest on
-                  Chinese-English, German-English, French-German, English-Khmer,
-                  English-Pashto languages. Winner of the WMT20 parallel data
-                  filtering task on Khmer and Pashto languages. </li>
-                <li> 5 papers accepted to EMNLP 2020! 3 in Long track and 2 in
-                  Findings.</li>
-                <li><a href="https://arxiv.org/abs/1912.04488">SOLO</a> paper
-                  accepted to ECCV 2020, achieving the SOTA in visual object
-                  instance segmentation. </li>
-                <li>1 paper accepted to ICML 2020, about solving a family of
-                  deep latent models (exponential family mixture VAEs). </li>
-                <li>1 paper and 1 demo accepted to ACL 2020, about tailoring
-                  pretrained language model and the robot reporter Xiaomingbot.
-                </li>
-                <li> I am giving a talk at ICLR 2020 about Learning Deep Latent
-                  Models for Text Sequences. You may watch <a href="https://iclr.cc/virtual/expo_2.html">here</a>.
-                </li>
-                <li> 1 paper accepted to AIStats 2020, about density ratio
-                  estimation for text generation. </li>
-                <li> 2 papers accepted at ICLR 2020, about <a href="pubs/zheng2020mirror.pdf">mirror
-                    generative model to unite language modelling and machine
-                    translation</a>, and <a href="pubs/ye2020variational.pdf">learning
-                    data-to-text generation templates via a variational method
-                    even without parallel corpus</a>. </li>
-                <li> 4 papers accepted at AAAI 2020, about pretraining method
-                  for neural machine translation, text editing, and approximate
-                  second order optimization. </li>
-                <li> 1 paper accepted at NeurIPS 2019, about <a href="pubs/miao2019kernelized.pdf">contextualized
-                    embedding for text generation and how we use kernels to
-                    model distribution and variance of word embeddings</a>. see
-                  you in Vancouver. </li>
-                <li> <a href="TALKS/2019-EMNLP">EMNLP 2019 Tutorial on
-                    Discreteness in NLP</a> </li>
-                <li> 1 paper accepted at INLG 2019. It is about <a href="pubs/fu2019rethinking.pdf">the
-                    style transfer for text generation </a>. </li>
-                <li> 1 paper accepted at EMNLP 2019, about <a href="pubs/wang2019towards.pdf">linear
-                    time neural machine translation</a>. </li>
-                <li> 2 papers accepted at ICCV 2019. One is to be presented as
-                  an Oral talk. </li>
-                <li> Dr. Hao Zhou and I are going to give a tutorial on deep
-                  generative models for text generation at NLPCC-ADL 2019 at
-                  Dunhuang, China. </li>
-              </ul>
+    </header>
+    
+    <div id="mobile-nav-tray" class="mobile-nav-tray" aria-hidden="true">
+      <div class="mobile-nav-header">
+        <div class="site-branding">
+          <a href="https://www.cmu.edu/" target="_blank" rel="home">
+            <span class="vh">Lei Li</span>
+          </a>
+        </div>
+        <button type="button" class="js-toggle-nav close-button" aria-controls="mobile-nav-tray" aria-expanded="false">
+          <span class="vh">Close</span>
+          <svg class="menu-icon-svg" width="33" height="33" focusable="false">
+            <use href="#close-icon" />
+          </svg>
+        </button>
+      </div>
+      <nav class="navigation--mobile">
+        <ul class="mobile-nav mobile-nav--main">
+          <li class="current-menu-item"><a href="index.html">Home</a></li>
+          <li><a href="research.html">Research</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li>
+            <a href="pubs.html">Publications</a>
+          </li>
+          <li><a href="people.html">People</a></li>
+          <li><a href="https://lileicc.github.io/blog/">Blog</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div>
+      <header id="masthead" class="site-header" role="banner">
+        <div class="wrap">
+    
+          <div class="l-header">
+            <div class="l-header-col-1">
+    
+              <div class="site-branding">
+                <a href="https://www.cmu.edu/" target="_blank" rel="home">
+                  <span class="vh">Lei Li</span>
+                  <svg class="site-logo" width="64" height="77" focusable="false">
+                    <use href="#site-logo" />
+                  </svg>
+                </a>
+              </div>
+    
             </div>
-            <div class="tab-pane" id="papers"> 
-              <ul>
-                <li>
-                  CGMH: A method for controllable text generation from specified keywords. [<a href="https://arxiv.org/abs/1811.10996">arxiv</a>]
-                </li>
-                <li>
-                  Analyzing anisotropic sentence embeddings from pre-trained language models. [<a href="https://arxiv.org/abs/2011.05864">arxiv</a>]
-                </li>
-                <li>
-                  <img src="mrasp-logo.png" style="height:1.6em"/> Data-efficient methods for many-to-many neural machine translation. [<a href="pubs/lin2020pre.pdf">mRASP</a>, <a href="pubs/pan2021contrastive.pdf">mRASP2</a>]
-                </li>
-                <li>
-                  Glancing Transformer (GLAT): non-autoregressive translation models are equally good as autoregressive Transformer. [<a href="https://arxiv.org/abs/2008.07905">arxiv</a>]
-                </li>
-                <li>VOLT: Learning vocabulary via optimal transport (ACL 2021 Best Paper). [<a href="https://arxiv.org/abs/2012.15671">arxiv</a>] </li>
-                <li>
-                  SOLO: Fast and accurate object instance segmentation. [<a href="https://arxiv.org/abs/1912.04488">SOLO</a>, <a href="pubs/wang2020solov2.pdf">SOLOv2</a>] 
-                </li>
-
-              </ul>  
+            <div class="l-header-col-2">
+    
+              <div class="site-navigation">
+                <nav class="js-accessible-menu navigation--main" aria-label="Main Navigation" role="navigation">
+                  <ul class="nav-list">
+                    <li class="current-menu-item"><a href="index.html">Home</a></li>
+                    <li><a href="research.html">Research</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li>
+                      <a href="pubs.html">Publications</a>
+                    </li>
+                    <li><a href="people.html">People</a></li>
+                    <li><a href="https://lileicc.github.io/blog/">Blog</a></li>
+                  </ul>
+                </nav>
+    
+              </div>
+    
             </div>
           </div>
+    
         </div>
-        <!-- <div class="main col" style="overflow-y: scroll; max-height: 24em;">
-                  </div> --> </div>
-      <div id="footer"> <a href="publications.html" style="color: white;">Publications</a>
-        <h4>Contact</h4>
-        Email: &lt;my full name&gt; plus  cs.ucsb.edu address. Last updated:
-        $Date:: 2022-05-01#$ by $Author: leili $ </div>
+      </header>
+      <main id="main" class="site-main" role="main">
+        <section class="hero">
+          <div class="wrap hero">
+            <div>
+              <div class="hero-content">
+                <h1>Lei Li</h1>
+                <h6>Univeristy of California Santa Barbara</h6>
+                <p>Co-Director, <a href="http://nlp.cs.ucsb.edu/">UCSB NLP Group</a><br />
+                Assistant Professor, 
+                  <a href="https://www.cs.ucsb.edu">Computer Science Department</a>
+                </p>
+                <p>Research area: natural language processing, machine learning, data
+                  mining. </p>
+                <p> Topics: </p>
+                <ul>
+                  <li> Machine translation, speech translation, multilingual NLP. </li>
+                  <li> LLM, text generation, program synthesis, reasoning. </li>
+                  <li> AI for drug design </li>
+                  <li> Efficient ML </li>
+                  <!-- <li> Green and Efficient ML </li>
+                                      <li> Time series mining and prediction </li>
+                                      <li> Probabilistic inference, Bayesian sampling methods </li> -->
+                </ul>
+              </div>
+            </div>
+            <div class="photo-box-container">
+              <div class="photo-box">
+                <img draggable="false" aria-hidden="true" src="leili-pic1.jpg" width="496" height="496" alt="">
+              </div>
+              <div class="inner-box"></div>
+            </div>
+          </div>
+        </section>
+        <section class="highlight-section">
+          <div class="wrap">
+            <ul class="tab-nav">
+              <li> <a class="button active" href="#news" onclick="return false">News</a>
+              </li>
+              <li> <a class="button" href="#papers" onclick="return false">Recent
+                  Papers</a> </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" id="news">
+                <ul>
+                  <li><img src="images/new-icon.gif" style="height:1.2em" /> 
+                    New paper about <a href="https://arxiv.org/abs/2212.09450">designing peptides to kill bacteria</a> is accepted to KDD 2023. 
+                  </li>
+                  <li><img src="images/new-icon.gif" style="height:1.2em" /> 
+                    5 new papers are accepted to ACL 2023. Topics include <a href="https://arxiv.org/abs/2212.09359">Speech Translation</a>, <a href="https://arxiv.org/abs/2212.09305">Evaluation metric SEScore2</a>, <a href="https://arxiv.org/abs/2212.10551">Machine translation for 440 languages</a>, <a href="https://arxiv.org/abs/2212.06950">Zero-shot LLM</a>, <a href="https://arxiv.org/abs/2305.05976">Negative Knowledge in LLM</a>.
+                  </li>
+                  <li><img src="images/new-icon.gif" style="height:1.2em" /> 
+                    3 new papers are accepted to ICML 2023. Topics include <a href="https://arxiv.org/abs/2305.00386">Watermark for Language Generation</a>, <a href="https://arxiv.org/abs/2302.03162">Speed up Diffusion</a>, <a href="https://arxiv.org/abs/2302.02285">Protein Design</a>.
+                  </li>
+                  <li><img src="images/new-icon.gif" style="height:1.2em" /> 
+                    New papers at EMNLP 2022: <a href="https://arxiv.org/abs/2210.03312">Model Protection</a>
+                    <a href="https://arxiv.org/abs/2210.03329">Model correction on factual knowledge</a>, 
+                    <a href="https://arxiv.org/abs/2210.05035">Unsupervised Text Generation Metric - SEScore</a>.
+                  </li>
+                  <li><img src="images/new-icon.gif" style="height:1.2em" /> Our
+                    paper on <i>accelerated training of Transformers on GPUs</i>
+                    is accepted to SC 2022. The opensource software is released at
+                    <a href="https://github.com/bytedance/lightseq">github link</a>
+                  </li>
+                  <li><img src="images/new-icon.gif" style="height:1.2em" /> Our
+                    paper <i>analyzing the user engagement and activeness on
+                      content-based social media platforms</i> is accepted to KDD
+                    2022.  </li>
+                  <li><img src="images/new-icon.gif" style="height:1.2em" /> Our
+                    paper <i>on the learning of Non-autoregressive Transformers</i>
+                    is accepted to ICML 2022. </li>
+                  <li><img src="images/new-icon.gif" style="height:1.2em" /> 3
+                    papers are accepted to NAACL 2022 (2 in main and 1 in
+                    Findings), about <i>speech translation, multilingual text
+                      generation, and privacy preserving NLP</i>. </li>
+                  <li><img src="images/new-icon.gif" style="height:1.2em" /> 7
+                    papers are accepted to ACL 2022 (4 in main and 3 in Findings),
+                    about speech translation, document translation,
+                    non-autoregressive translation, and representation learning. </li>
+                  <li><img src="images/new-icon.gif" style="height:1.2em" /> Our
+                    paper on <a href="https://sites.google.com/view/bridge-pmr">bridge
+                      construction robot</a> is accepted to ICRA 2022. </li>
+                  <li><img src="images/new-icon.gif" style="height:1.2em" /> Two
+                    papers is accepted to ICLR 2022. about <a href="https://openreview.net/forum?id=OjPmfr9GkVv">multilingual
+                      NLP</a> and <a href="https://openreview.net/forum?id=5HvpvYd68b">multilingual
+                      translation</a>. </li>
+                  <li><img src="images/new-icon.gif" style="height:1.2em" /> Three
+                    papers are accepted to AAAI 2022. Topics include <a href="https://arxiv.org/abs/2012.13577">natural
+                      language reasoning for fact verification</a>, <a href="https://arxiv.org/abs/2012.13577">unsupervised
+                      counterfactual story editing</a>, and <a href="https://arxiv.org/abs/2110.07515">non-autoregressive
+                      translation</a>. </li>
+                  <li> The paper on reversible machine translation model is
+                    accepted to NeurIPS 2021. Check out <a href="https://arxiv.org/abs/2105.03458">here</a>.
+                  </li>
+                  <li> 6 papers are accepted to EMNLP 2021, three to main
+                    confrence, and three to the Findings of EMNLP. The topics are
+                    machine translation, information extraction, and
+                    summarization.</li>
+                  <li> One paper extending the SOLO framework for instance
+                    segmentation is accepted to TPAMI. </li>
+                  <li> One paper about 3D instance segmentation is accepted to
+                    IEEE Robotics and Automation Letters.</li>
+                  <li> Our paper Vocabulary Learning via Optimal Transport for
+                    Neural Machine Translation won <span style="color:red">the
+                      best paper award</span> at ACL 2021. </li>
+                  <li> Two papers are accepted to IROS 2021. </li>
+                  <li> One paper is accepted to InterSpeech 2021, about multi-task
+                    progressive pretraining for speech translation, achieving new
+                    SOTA results on MuST-C benchmarks. </li>
+                  <li> Dr. Mingxuan Wang and I will be giving a <a href="TALKS/2021-ACL/">tutorial
+                      on Pre-training methods for Neural Machine Translation</a>
+                    at ACL 2021, July 31 </li>
+                  <li> 11 papers to appear at ACL 2021 (6 long, 4 findings, and 1
+                    system demo). Strong results in machine translation and speech
+                    translation. Other topics include parallel generation,
+                    reasoning, summarization and information extraction. </li>
+                  <li> 1 paper is accepted to ICML 2021 about long horizon skill
+                    learning. </li>
+                  <li> 4 papers (1 main and 3 industry) are presenting at NAACL
+                    2021. Check out the long paper about <a href="https://arxiv.org/abs/2009.09654">how
+                      visual imagination will influence machine translation
+                      capability</a>. </li>
+                  <li> Four papers on object detection and segmentation are
+                    accepted to CVPR 2021, including <a href="https://arxiv.org/abs/2011.12450">Sparse
+                      R-CNN</a>, DenseCL, Locate-Segment, Auto-Augment. <a href="https://arxiv.org/abs/2011.09157">DenCL</a>
+                    is accepted as Oral. </li>
+                  <li> The paper on finding proper molecules for drug is accepted
+                    to ICLR 2021 with the spotlight presentation! </li>
+                  <li> Six papers are accepted to AAAI 2021, about end-to-end
+                    speech translation, knowledge graph completion, optimization,
+                    text generation. </li>
+                  <li> One paper about new method to generate query-relevant
+                    bidwords for search advertising is accepted to WSDM 2021. </li>
+                  <li><a href="pubs/wang2020solov2.pdf">SOLOv2</a> is out! One
+                    paper about faster object instance segmentation in images is
+                    accepted to NeurIPS 2020.</li>
+                  <li> Winner of 5 tasks in WMT20 Machine Translation Contest on
+                    Chinese-English, German-English, French-German, English-Khmer,
+                    English-Pashto languages. Winner of the WMT20 parallel data
+                    filtering task on Khmer and Pashto languages. </li>
+                  <li> 5 papers accepted to EMNLP 2020! 3 in Long track and 2 in
+                    Findings.</li>
+                  <li><a href="https://arxiv.org/abs/1912.04488">SOLO</a> paper
+                    accepted to ECCV 2020, achieving the SOTA in visual object
+                    instance segmentation. </li>
+                  <li>1 paper accepted to ICML 2020, about solving a family of
+                    deep latent models (exponential family mixture VAEs). </li>
+                  <li>1 paper and 1 demo accepted to ACL 2020, about tailoring
+                    pretrained language model and the robot reporter Xiaomingbot.
+                  </li>
+                  <li> I am giving a talk at ICLR 2020 about Learning Deep Latent
+                    Models for Text Sequences. You may watch <a href="https://iclr.cc/virtual/expo_2.html">here</a>.
+                  </li>
+                  <li> 1 paper accepted to AIStats 2020, about density ratio
+                    estimation for text generation. </li>
+                  <li> 2 papers accepted at ICLR 2020, about <a href="pubs/zheng2020mirror.pdf">mirror
+                      generative model to unite language modelling and machine
+                      translation</a>, and <a href="pubs/ye2020variational.pdf">learning
+                      data-to-text generation templates via a variational method
+                      even without parallel corpus</a>. </li>
+                  <li> 4 papers accepted at AAAI 2020, about pretraining method
+                    for neural machine translation, text editing, and approximate
+                    second order optimization. </li>
+                  <li> 1 paper accepted at NeurIPS 2019, about <a href="pubs/miao2019kernelized.pdf">contextualized
+                      embedding for text generation and how we use kernels to
+                      model distribution and variance of word embeddings</a>. see
+                    you in Vancouver. </li>
+                  <li> <a href="TALKS/2019-EMNLP">EMNLP 2019 Tutorial on
+                      Discreteness in NLP</a> </li>
+                  <li> 1 paper accepted at INLG 2019. It is about <a href="pubs/fu2019rethinking.pdf">the
+                      style transfer for text generation </a>. </li>
+                  <li> 1 paper accepted at EMNLP 2019, about <a href="pubs/wang2019towards.pdf">linear
+                      time neural machine translation</a>. </li>
+                  <li> 2 papers accepted at ICCV 2019. One is to be presented as
+                    an Oral talk. </li>
+                  <li> Dr. Hao Zhou and I are going to give a tutorial on deep
+                    generative models for text generation at NLPCC-ADL 2019 at
+                    Dunhuang, China. </li>
+                </ul>
+              </div>
+              <div class="tab-pane" id="papers"> 
+                <ul>
+                  <li>
+                    CGMH: A method for controllable text generation from specified keywords. [<a href="https://arxiv.org/abs/1811.10996">arxiv</a>]
+                  </li>
+                  <li>
+                    Analyzing anisotropic sentence embeddings from pre-trained language models. [<a href="https://arxiv.org/abs/2011.05864">arxiv</a>]
+                  </li>
+                  <li>
+                    <img src="mrasp-logo.png" style="height:1.6em"/> Data-efficient methods for many-to-many neural machine translation. [<a href="pubs/lin2020pre.pdf">mRASP</a>, <a href="pubs/pan2021contrastive.pdf">mRASP2</a>]
+                  </li>
+                  <li>
+                    Glancing Transformer (GLAT): non-autoregressive translation models are equally good as autoregressive Transformer. [<a href="https://arxiv.org/abs/2008.07905">arxiv</a>]
+                  </li>
+                  <li>VOLT: Learning vocabulary via optimal transport (ACL 2021 Best Paper). [<a href="https://arxiv.org/abs/2012.15671">arxiv</a>] </li>
+                  <li>
+                    SOLO: Fast and accurate object instance segmentation. [<a href="https://arxiv.org/abs/1912.04488">SOLO</a>, <a href="pubs/wang2020solov2.pdf">SOLOv2</a>] 
+                  </li>
+  
+                </ul>  
+              </div>
+            </div>
+            <!-- <div class="main col" style="overflow-y: scroll; max-height: 24em;">
+                  </div> -->
+          </div>
+        </section>
+      </main>
     </div>
+    <address class="address-block" itemscope="" itemtype="https://schema.org/Organization">
+      <footer id="colophon" class="site-footer" role="contentinfo">
+        <div class="primary-footer">
+          <div class="wrap">
+            <div class="l-footer l-footer--5-cols l-footer--gap-large">
+              <div class="l-footer-item">
+                <h4 class="rectangle">
+                  Email
+                </h4>
+                <p>
+                  <span class="vh">Email:</span>
+                  <span itemprop="email">my fullname [at] cs.ucsb.edu</span>
+                </p>
+              </div>
+              <div class="l-footer-item">
+                <h4 class="rectangle">
+                  Twitter
+                </h4>
+                <p>
+                  <span class="vh">Twitter:</span>
+                  <span itemprop="telephone">@lileics</span>
+                </p>
+              </div>
+    
+              <div class="l-footer-item">
+                <h4 class="rectangle">
+                  Office
+                </h4>
+                <p class="address-title h5">
+                  <span itemprop="name">Harold Frank Hall 2121 </span>
+                </p>
+              </div>
+            </div>
+          </div>
+    
+        </div>
+      </footer>
+    
+      <script type="text/javascript"
+        src="http://procaccia.info/wp-content/themes/boxpress/assets/js/build/site.min.js?ver=1585079104"
+        id="site-js"></script>
+      <script type="text/javascript" src="http://procaccia.info/wp-includes/js/wp-embed.min.js?ver=5.6.11"
+        id="wp-embed-js"></script>
+    
+    
+    
+    
+    
+    </address>
+
+
+      <div id="footer"> <a href="publications.html" style="color: white;">Publications</a>
+
     <!-- Start of StatCounter Code for Default Guide -->
     <script type="text/javascript">
     var sc_project = 3806228;

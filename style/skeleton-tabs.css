@@ -34,6 +34,7 @@ input[type="reset"]:focus,
 input[type="button"]:focus {
   color: #333;
   border-color: #888;
+  background-color: transparent;
   outline: 0; }
 .button.button-primary,
 button.button-primary,
@@ -58,24 +59,24 @@ input[type="button"].button-primary:focus {
   border-color: #1EAEDB; }
 
 
-ul.tab-nav {
+.tab-nav {
     list-style: none;
     border-bottom: 1px solid #aaa;
     padding-left: 5px;
 }
 
-ul.tab-nav li {
+.tab-nav li {
     display: inline;
 }
 
-ul.tab-nav li a.button {
+.tab-nav li a.button {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
     margin-bottom: -1px;
     border-bottom: none;
 }
 
-ul.tab-nav li a.active.button {
+.tab-nav li a.active.button {
     border-bottom: 0.175em solid #fff;
 }
 
