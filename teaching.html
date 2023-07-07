@@ -1,30 +1,106 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head>
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <meta name="description" content="Lei Li" />
-    <meta name="keywords" content="machine learning deep learning natural language processing probabilistic programming" />
-    <meta name="author" content="Lei Li" />
-    <link rel="stylesheet" type="text/css" href="style/origo.css" media="all" />
-    <!--link rel="stylesheet" type="text/css" href="style/style.css" media="all" /-->
-    <title>Lei LI's Courses, Talks and Tutorials</title>
-  </head>
-  <body class="blue light">
-    <div id="layout">
-      <ul class="menu">
+
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="description" content="Lei Li" />
+  <meta name="keywords"
+    content="machine learning deep learning natural language processing machine translation probabilistic programming" />
+  <meta name="author" content="Lei Li" />
+  <link href="style/style.min.css" rel="stylesheet" type="text/css" />
+  <title>Lei LI's Courses and Talks</title>
+</head>
+
+<body class="page-template-template-home page-id-3">
+  <header class="site-header--mobile" role="banner">
+    <div class="mobile-header-right">
+      <button type="button" class="js-toggle-nav menu-button" aria-controls="mobile-nav-tray" aria-expanded="false">
+        <span class="vh">Menu</span>
+        <svg class="menu-icon" width="48" height="33" focusable="false">
+          <use href="#menu-icon" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-nav-tray" class="mobile-nav-tray" aria-hidden="true">
+    <div class="mobile-nav-header">
+      <div class="site-branding">
+        <a href="https://www.cmu.edu/" target="_blank" rel="home">
+          <span class="vh">Lei Li</span>
+        </a>
+      </div>
+      <button type="button" class="js-toggle-nav close-button" aria-controls="mobile-nav-tray" aria-expanded="false">
+        <span class="vh">Close</span>
+        <svg class="menu-icon-svg" width="33" height="33" focusable="false">
+          <use href="#close-icon" />
+        </svg>
+      </button>
+    </div>
+    <nav class="navigation--mobile">
+      <ul class="mobile-nav mobile-nav--main">
         <li><a href="index.html">Home</a></li>
-        <li><a href="student.html">Student</a></li>
         <li><a href="research.html">Research</a></li>
-        <li class="active"><a href="teaching.html">Teaching</a></li>
-        <li><a href="pubs.html">Publication</a></li>
-        <li><a href="resource.html">Resource</a></li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="leili-bio.html">Bio</a></li>
+        <li class="current-menu-item"><a href="teaching.html">Teaching</a></li>
+        <li>
+          <a href="pubs.html">Publications</a>
+        </li>
+        <li><a href="people.html">People</a></li>
         <li><a href="https://lileicc.github.io/blog/">Blog</a></li>
       </ul>
-      <div class="row">
-        <div class="main col">
-          <h1>Teaching</h1>
+    </nav>
+  </div>
+  <div>
+    <header id="masthead" class="site-header" role="banner">
+      <div class="wrap">
+
+        <div class="l-header">
+          <div class="l-header-col-1">
+
+            <div class="site-branding">
+              <a href="https://www.cmu.edu/" target="_blank" rel="home">
+                <span class="vh">Lei Li</span>
+                <svg class="site-logo" width="64" height="77" focusable="false">
+                  <use href="#site-logo" />
+                </svg>
+              </a>
+            </div>
+
+          </div>
+          <div class="l-header-col-2">
+
+            <div class="site-navigation">
+              <nav class="js-accessible-menu navigation--main" aria-label="Main Navigation" role="navigation">
+                <ul class="nav-list">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="research.html">Research</a></li>
+                  <li class="current-menu-item"><a href="teaching.html">Teaching</a></li>
+                  <li>
+                    <a href="pubs.html">Publications</a>
+                  </li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="https://lileicc.github.io/blog/">Blog</a></li>
+                </ul>
+              </nav>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </header>
+    <main id="main" class="site-main" role="main">
+      <header class="banner">
+        <div class="wrap">
+          <div class="banner-title">
+            <span class="h1">
+              Teaching </span>
+          </div>
+        </div>
+      </header>
+      <section class="section">
+        <div class="wrap">
           <ul>
             <li><a href="course/dl23w/">CS190I Deep Learning (undergrad, Winter 2023)</a></li>
             <li><a href="course/ml22fa/index.html">CS291K Machine Learning
@@ -35,7 +111,14 @@
             <li><a href="course/dl4mt21fa/index.html">CS291K Deep Learning for
                 Machine Translation (graduate, Fall 2021)</a> </li>
           </ul>
-          <h1>Tutorial</h1>
+        </div>
+      </section>
+
+      <section class="highlight-section section">
+        <div class="wrap">
+          <div class="highlight-heading">
+            <h1>Tutorial</h1>
+          </div>
           <ul>
             <li><a href="https://sites.cs.ucsb.edu/%7Elilei/TALKS/2021-ACL/">ACL2021
                 Tutorial: Pre-training methods for Neural Machine Translation</a></li>
@@ -45,23 +128,39 @@
                 Generative Models for Text Generation</a>. Dunhuang, China,
               2019. by Hao Zhou and Lei Li.</li>
             <li>CCF-ADL/NLPCC 2016 Tutorial on Deep Learning for Question
-              Answering. Kunming, China, December 2020. [<a href="TALKS/deep_learning_for_answering_questions_leili_nlpcc_adl2016.pdf">Slides</a>]</li>
-            <li>2014 PPAML Summer School Tutorial: <a href="http://bayesianlogic.github.io/download/BLOG-tutorial-2014.pdf">Probabilistic Modeling using Bayesian Logic (BLOG)
-                </a> . </li>
+              Answering. Kunming, China, December 2020. [<a
+                href="TALKS/deep_learning_for_answering_questions_leili_nlpcc_adl2016.pdf">Slides</a>]</li>
+            <li>2014 PPAML Summer School Tutorial: <a
+                href="http://bayesianlogic.github.io/download/BLOG-tutorial-2014.pdf">Probabilistic Modeling using
+                Bayesian Logic (BLOG)
+              </a> . </li>
             <li> <a href="TALKS/2010-KDD/">KDD 2010 Tutorial on Time Series</a></li>
           </ul>
-          <h1>Talks and Lecture</h1>
+        </div>
+      </section>
+
+      <section class="highlight-section section">
+        <div class="wrap">
+          <div class="highlight-heading">
+            <h1>Talks</h1>
+          </div>
           <ul>
-            <li>IEEE Central Coast Talk: <a href="TALKS/MTIntro2022-leili.pdf"> Breaking Language Barriers with Neural Machine Translation.</a> 2022.8.17  </li>
-            <li>CCMT 2021 Keynote: Efficient Machine Translation. [<a href="TALKS/EfficientMT-CCMT2021-leili.pdf">Slides</a>]
+            <li>IEEE Central Coast Talk: <a href="TALKS/MTIntro2022-leili.pdf"> Breaking Language Barriers with Neural
+                Machine Translation.</a> 2022.8.17 </li>
+            <li>CCMT 2021 Keynote: Efficient Machine Translation. [<a
+                href="TALKS/EfficientMT-CCMT2021-leili.pdf">Slides</a>]
             </li>
             <li>GAITC 2021 NLP Forum Invited Talk: Speech Translation from
-              Research to Product Innovation. [<a href="TALKS/speech_translation_gaitc_leili_2021.6.6.pdf">Slides</a>]</li>
+              Research to Product Innovation. [<a href="TALKS/speech_translation_gaitc_leili_2021.6.6.pdf">Slides</a>]
+            </li>
             <li>GTC Talk 2020: Recent Advances in Machine Writing and Translation – Algorithms
-              and Challenges. [<a href="TALKS/recent_advances_in_text_generation_and_machine_translation_gtc_china_leili_2020.12.19.pdf">Slides</a>]</li>
-            <li>NeurIPS 2020 Beijing Meetups: <a href="TALKS/interpretable_machine_learning_for_NLG_neurips_meetup_2020.12.06.pdf">Scalable,
+              and Challenges. [<a
+                href="TALKS/recent_advances_in_text_generation_and_machine_translation_gtc_china_leili_2020.12.19.pdf">Slides</a>]
+            </li>
+            <li>NeurIPS 2020 Beijing Meetups: <a
+                href="TALKS/interpretable_machine_learning_for_NLG_neurips_meetup_2020.12.06.pdf">Scalable,
                 Controllable, and Interpretable Machine Learning for Natural
-                Language Generation</a>. 
+                Language Generation</a>.
               2020.12.06 (30 mins).</li>
             <li><a href="TALKS/constrained_text_generation_monte_carlo_meets_neural_nets_2020.10.8.pdf">Constrained
                 Text Generation - Monte Carlo Meets Neural Nets</a>. Tsinghua
@@ -81,7 +180,8 @@
               Scientists and Engineers Forum: Deep Learning – Towards More
               Intelligent Machines.<br />
             </li>
-            <li> 2013 TAMU <a href="http://cesg.tamu.edu/seminar/fishbowl-teleseminar-fast-algorithms-for-mining-co-evolving-time-series/">Fish
+            <li> 2013 TAMU <a
+                href="http://cesg.tamu.edu/seminar/fishbowl-teleseminar-fast-algorithms-for-mining-co-evolving-time-series/">Fish
                 Bowl Seminar</a> </li>
             <li> Parsimonious Linear Fingerprinting for time series, Machine
               learning lunch seminar, CMU, Nov, 2010. [ <a href="TALKS/plif-mltalk2010.pdf">PPT</a>
@@ -97,7 +197,9 @@
               ] </li>
           </ul>
         </div>
-      </div>
-    </div>
-  </body>
+      </section>
+    </main>
+  </div>
+</body>
+
 </html>
