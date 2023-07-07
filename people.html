@@ -1,48 +1,825 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head>
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <meta name="description" content="Lei Li" />
-    <meta name="keywords" content="machine learning deep learning natural language processing probabilistic programming" />
-    <meta name="author" content="Lei Li" />
-    <link rel="stylesheet" type="text/css" href="style/origo.css" media="all" />
-    <!--link rel="stylesheet" type="text/css" href="style/style.css" media="all" /-->
-    <title>Lei LI's Student</title>
-  </head>
-  <body class="blue light">
-    <div id="layout">
-      <ul class="menu">
+
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="description" content="Lei Li" />
+  <meta name="keywords"
+    content="machine learning deep learning natural language processing machine translation probabilistic programming" />
+  <meta name="author" content="Lei Li" />
+  <link href="style/style.min.css" rel="stylesheet" type="text/css" />
+  <title>Lei LI's Student</title>
+</head>
+
+<body class="page-template-template-people page-id-5">
+  <header class="site-header--mobile" role="banner">
+    <div class="mobile-header-right">
+      <button type="button" class="js-toggle-nav menu-button" aria-controls="mobile-nav-tray" aria-expanded="false">
+        <span class="vh">Menu</span>
+        <svg class="menu-icon" width="48" height="33" focusable="false">
+          <use href="#menu-icon" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-nav-tray" class="mobile-nav-tray" aria-hidden="true">
+    <div class="mobile-nav-header">
+      <div class="site-branding">
+        <a href="https://www.cmu.edu/" target="_blank" rel="home">
+          <span class="vh">Lei Li</span>
+        </a>
+      </div>
+      <button type="button" class="js-toggle-nav close-button" aria-controls="mobile-nav-tray" aria-expanded="false">
+        <span class="vh">Close</span>
+        <svg class="menu-icon-svg" width="33" height="33" focusable="false">
+          <use href="#close-icon" />
+        </svg>
+      </button>
+    </div>
+    <nav class="navigation--mobile">
+      <ul class="mobile-nav mobile-nav--main">
         <li><a href="index.html">Home</a></li>
-        <li class="active"><a href="student.html">Student</a></li>
         <li><a href="research.html">Research</a></li>
         <li><a href="teaching.html">Teaching</a></li>
-        <li><a href="pubs.html">Publication</a></li>
-        <li><a href="resource.html">Resource</a></li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="leili-bio.html">Bio</a></li>
+        <li>
+          <a href="pubs.html">Publications</a>
+        </li>
+        <li class="current-menu-item"><a href="people.html">People</a></li>
         <li><a href="https://lileicc.github.io/blog/">Blog</a></li>
       </ul>
-      <div class="row">
-        <div class="main col">
-          <h1> PhD Student </h1>
-          <ul>
-            <li>Siqi Ouyang</li>
-            <li><a href="https://xu1998hz.github.io">Wenda Xu</a> (co-advise with Prof. <a href="https://sites.cs.ucsb.edu/%7Ewilliam/">William
-                Wang</a>)</li>
-            <li><a href="https://xuandongzhao.github.io">Xuandong Zhao</a>
-              (co-advise with Prof. <a href="https://sites.cs.ucsb.edu/%7Eyuxiangw/">Yu-Xiang
-                Wang</a>)</li>
-            <li><a href="https://dqwang122.github.io/">Danqing Wang</a></li>
-            <li><a href="https://jocelynsong.github.io">Zhenqiao Song</a></li>
-            <li><a href="https://zkx06111.github.io">Kexun Zhang</a> (co-advise with Prof. <a href="https://sites.cs.ucsb.edu/%7Ewilliam/">William
-                Wang</a>)</li>
-          </ul>
-          <h1>Master Student</h1>
-          <ul>
-            <li>Vihaan Akshaay Rajendiran</li>
-            <li>Zihan Ma</li>
-          </ul>
-          <h1>Interns</h1>
+    </nav>
+  </div>
+  <div>
+    <header id="masthead" class="site-header" role="banner">
+      <div class="wrap">
+
+        <div class="l-header">
+          <div class="l-header-col-1">
+
+            <div class="site-branding">
+              <a href="https://www.cmu.edu/" target="_blank" rel="home">
+                <span class="vh">Lei Li</span>
+                <svg class="site-logo" width="64" height="77" focusable="false">
+                  <use href="#site-logo" />
+                </svg>
+              </a>
+            </div>
+
+          </div>
+          <div class="l-header-col-2">
+
+            <div class="site-navigation">
+              <nav class="js-accessible-menu navigation--main" aria-label="Main Navigation" role="navigation">
+                <ul class="nav-list">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="research.html">Research</a></li>
+                  <li><a href="teaching.html">Teaching</a></li>
+                  <li>
+                    <a href="pubs.html">Publications</a>
+                  </li>
+                  <li class="current-menu-item"><a href="people.html">People</a></li>
+                  <li><a href="https://lileicc.github.io/blog/">Blog</a></li>
+                </ul>
+              </nav>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </header>
+    <main id="main" class="site-main" role="main">
+
+      <header class="banner">
+        <div class="wrap">
+          <div class="banner-title">
+            <span class="h1">
+              People </span>
+          </div>
+        </div>
+      </header>
+      <section class="section staff-section">
+        <div class="wrap">
+          <header>
+            <h2>Current Group Members</h2>
+          </header>
+
+          <div class="people-card-grid">
+
+            <a class="people-card" href="" target="">
+
+
+              <div class="box-left">
+                <div class="thumbnail-container">
+                  <div class="staff-image">
+                    <img draggable="false" aria-hidden="true" src="" width="178" height="178" alt="">
+                  </div>
+                </div>
+                <div class="slashes-container">
+                  <svg class="desktop-slashes" preserveAspectRatio="none" width="145px" height="89px"
+                    viewBox="0 0 145 89" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group" fill="#454149" fill-rule="nonzero">
+                        <polygon id="Line-3-Copy-3"
+                          points="60.2951021 1.01370631 22.6173338 75 18.1784668 75 55.81143 1.00719744"></polygon>
+                        <polygon id="Line-3-Copy-6"
+                          points="128.336044 1.00517751 90.6690826 75 86.1777649 75 123.819087 0.99209293"></polygon>
+                        <polygon id="Line-3-Copy"
+                          points="14.3055115 1.00517751 0.0365663081 29.0638324 0.00363393879 20.2967672 9.81464638 1.00160492">
+                        </polygon>
+                        <polygon id="Line-3-Copy-4"
+                          points="82.2990702 1.00517751 44.6668854 75 40.1701355 75 77.8125347 1.00442788"></polygon>
+                        <polygon id="Line-3-Copy-7"
+                          points="147.051191 9.36111447 113.673782 75 109.193863 75 146.813019 1.00517751 147 1.00517751">
+                        </polygon>
+                        <polygon id="Path"
+                          points="37.3062134 1.01378851 7.10952596e-15 74.3662415 7.10542736e-15 65.5388794 32.8084775 1.01378851">
+                        </polygon>
+                        <polygon id="Line-3-Copy-5"
+                          points="105.296478 1.00517751 67.6763 75 63.1841125 75 100.819427 1"></polygon>
+                        <polygon id="Line-3-Copy-8"
+                          points="147.002388 54.6913888 136.672239 75.00753 132.183444 75 147.002388 45.8750153">
+                        </polygon>
+                      </g>
+                    </g>
+                  </svg>
+
+                  <svg class="mobile-slashes" width="190px" height="150px" viewBox="0 0 190 150" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <title>Group</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs>
+                      <rect id="path-1" x="0" y="0" width="190" height="149.473684"></rect>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group">
+                        <mask id="mask-2" fill="white">
+                          <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Mask"></g>
+                        <g mask="url(#mask-2)" stroke="#454149" stroke-width="4">
+                          <g transform="translate(-73.684211, -8.947368)">
+                            <path d="M153.157895,0 L70.5263158,161.052632" id="Line-3"></path>
+                            <path d="M176.842105,0 L94.2105263,161.052632" id="Line-3-Copy"></path>
+                            <path d="M200,0 L117.368421,161.052632" id="Line-3-Copy-2"></path>
+                            <path d="M223.684211,0 L141.052632,161.052632" id="Line-3-Copy-3"></path>
+                            <path d="M246.842105,0 L164.210526,161.052632" id="Line-3-Copy-4"></path>
+                            <path d="M270.526316,0 L187.894737,161.052632" id="Line-3-Copy-5"></path>
+                            <path d="M294.210526,0 L211.578947,161.052632" id="Line-3-Copy-8"></path>
+                            <path d="M317.368421,0 L234.736842,161.052632" id="Line-3-Copy-9"></path>
+                            <path d="M341.052632,0 L258.421053,161.052632" id="Line-3-Copy-10"></path>
+                            <path d="M129.473684,0 L46.8421053,161.052632" id="Line-3-Copy-6"></path>
+                            <path d="M106.315789,0 L23.6842105,161.052632" id="Line-3-Copy-7"></path>
+                            <path d="M82.6315789,0 L0,161.052632" id="Line-3-Copy-11"></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+
+                </div>
+              </div>
+
+              <div class="box-right">
+                <div class="body">
+                  <h3>
+                    Siqi Ouyang </h3>
+                  <p>PhD in Computer Science</p>
+                  <p>UC Santa Barbara</p>
+                </div>
+              </div>
+            </a>
+
+
+            <a class="people-card" href="https://dqwang122.github.io/" target="">
+
+
+              <div class="box-left">
+                <div class="thumbnail-container">
+                  <div class="staff-image">
+                    <img draggable="false" aria-hidden="true" src="xxx.img" width="178" height="178" alt="">
+                  </div>
+                </div>
+                <div class="slashes-container">
+                  <svg class="desktop-slashes" preserveAspectRatio="none" width="145px" height="89px"
+                    viewBox="0 0 145 89" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group" fill="#454149" fill-rule="nonzero">
+                        <polygon id="Line-3-Copy-3"
+                          points="60.2951021 1.01370631 22.6173338 75 18.1784668 75 55.81143 1.00719744"></polygon>
+                        <polygon id="Line-3-Copy-6"
+                          points="128.336044 1.00517751 90.6690826 75 86.1777649 75 123.819087 0.99209293"></polygon>
+                        <polygon id="Line-3-Copy"
+                          points="14.3055115 1.00517751 0.0365663081 29.0638324 0.00363393879 20.2967672 9.81464638 1.00160492">
+                        </polygon>
+                        <polygon id="Line-3-Copy-4"
+                          points="82.2990702 1.00517751 44.6668854 75 40.1701355 75 77.8125347 1.00442788"></polygon>
+                        <polygon id="Line-3-Copy-7"
+                          points="147.051191 9.36111447 113.673782 75 109.193863 75 146.813019 1.00517751 147 1.00517751">
+                        </polygon>
+                        <polygon id="Path"
+                          points="37.3062134 1.01378851 7.10952596e-15 74.3662415 7.10542736e-15 65.5388794 32.8084775 1.01378851">
+                        </polygon>
+                        <polygon id="Line-3-Copy-5"
+                          points="105.296478 1.00517751 67.6763 75 63.1841125 75 100.819427 1"></polygon>
+                        <polygon id="Line-3-Copy-8"
+                          points="147.002388 54.6913888 136.672239 75.00753 132.183444 75 147.002388 45.8750153">
+                        </polygon>
+                      </g>
+                    </g>
+                  </svg>
+
+                  <svg class="mobile-slashes" width="190px" height="150px" viewBox="0 0 190 150" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <title>Group</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs>
+                      <rect id="path-1" x="0" y="0" width="190" height="149.473684"></rect>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group">
+                        <mask id="mask-2" fill="white">
+                          <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Mask"></g>
+                        <g mask="url(#mask-2)" stroke="#454149" stroke-width="4">
+                          <g transform="translate(-73.684211, -8.947368)">
+                            <path d="M153.157895,0 L70.5263158,161.052632" id="Line-3"></path>
+                            <path d="M176.842105,0 L94.2105263,161.052632" id="Line-3-Copy"></path>
+                            <path d="M200,0 L117.368421,161.052632" id="Line-3-Copy-2"></path>
+                            <path d="M223.684211,0 L141.052632,161.052632" id="Line-3-Copy-3"></path>
+                            <path d="M246.842105,0 L164.210526,161.052632" id="Line-3-Copy-4"></path>
+                            <path d="M270.526316,0 L187.894737,161.052632" id="Line-3-Copy-5"></path>
+                            <path d="M294.210526,0 L211.578947,161.052632" id="Line-3-Copy-8"></path>
+                            <path d="M317.368421,0 L234.736842,161.052632" id="Line-3-Copy-9"></path>
+                            <path d="M341.052632,0 L258.421053,161.052632" id="Line-3-Copy-10"></path>
+                            <path d="M129.473684,0 L46.8421053,161.052632" id="Line-3-Copy-6"></path>
+                            <path d="M106.315789,0 L23.6842105,161.052632" id="Line-3-Copy-7"></path>
+                            <path d="M82.6315789,0 L0,161.052632" id="Line-3-Copy-11"></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+
+                </div>
+              </div>
+
+              <div class="box-right">
+                <div class="body">
+                  <h3>
+                    Danqing Wang </h3>
+                  <p>PhD in Computer Science</p>
+                  <p>UC Santa Barbara</p>
+                </div>
+              </div>
+            </a>
+
+
+            <a class="people-card" href="https://jocelynsong.github.io/" target="">
+
+
+              <div class="box-left">
+                <div class="thumbnail-container">
+                  <div class="staff-image">
+                    <img draggable="false" aria-hidden="true" src="" width="178" height="178" alt="">
+                  </div>
+                </div>
+                <div class="slashes-container">
+                  <svg class="desktop-slashes" preserveAspectRatio="none" width="145px" height="89px"
+                    viewBox="0 0 145 89" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group" fill="#454149" fill-rule="nonzero">
+                        <polygon id="Line-3-Copy-3"
+                          points="60.2951021 1.01370631 22.6173338 75 18.1784668 75 55.81143 1.00719744"></polygon>
+                        <polygon id="Line-3-Copy-6"
+                          points="128.336044 1.00517751 90.6690826 75 86.1777649 75 123.819087 0.99209293"></polygon>
+                        <polygon id="Line-3-Copy"
+                          points="14.3055115 1.00517751 0.0365663081 29.0638324 0.00363393879 20.2967672 9.81464638 1.00160492">
+                        </polygon>
+                        <polygon id="Line-3-Copy-4"
+                          points="82.2990702 1.00517751 44.6668854 75 40.1701355 75 77.8125347 1.00442788"></polygon>
+                        <polygon id="Line-3-Copy-7"
+                          points="147.051191 9.36111447 113.673782 75 109.193863 75 146.813019 1.00517751 147 1.00517751">
+                        </polygon>
+                        <polygon id="Path"
+                          points="37.3062134 1.01378851 7.10952596e-15 74.3662415 7.10542736e-15 65.5388794 32.8084775 1.01378851">
+                        </polygon>
+                        <polygon id="Line-3-Copy-5"
+                          points="105.296478 1.00517751 67.6763 75 63.1841125 75 100.819427 1"></polygon>
+                        <polygon id="Line-3-Copy-8"
+                          points="147.002388 54.6913888 136.672239 75.00753 132.183444 75 147.002388 45.8750153">
+                        </polygon>
+                      </g>
+                    </g>
+                  </svg>
+
+                  <svg class="mobile-slashes" width="190px" height="150px" viewBox="0 0 190 150" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <title>Group</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs>
+                      <rect id="path-1" x="0" y="0" width="190" height="149.473684"></rect>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group">
+                        <mask id="mask-2" fill="white">
+                          <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Mask"></g>
+                        <g mask="url(#mask-2)" stroke="#454149" stroke-width="4">
+                          <g transform="translate(-73.684211, -8.947368)">
+                            <path d="M153.157895,0 L70.5263158,161.052632" id="Line-3"></path>
+                            <path d="M176.842105,0 L94.2105263,161.052632" id="Line-3-Copy"></path>
+                            <path d="M200,0 L117.368421,161.052632" id="Line-3-Copy-2"></path>
+                            <path d="M223.684211,0 L141.052632,161.052632" id="Line-3-Copy-3"></path>
+                            <path d="M246.842105,0 L164.210526,161.052632" id="Line-3-Copy-4"></path>
+                            <path d="M270.526316,0 L187.894737,161.052632" id="Line-3-Copy-5"></path>
+                            <path d="M294.210526,0 L211.578947,161.052632" id="Line-3-Copy-8"></path>
+                            <path d="M317.368421,0 L234.736842,161.052632" id="Line-3-Copy-9"></path>
+                            <path d="M341.052632,0 L258.421053,161.052632" id="Line-3-Copy-10"></path>
+                            <path d="M129.473684,0 L46.8421053,161.052632" id="Line-3-Copy-6"></path>
+                            <path d="M106.315789,0 L23.6842105,161.052632" id="Line-3-Copy-7"></path>
+                            <path d="M82.6315789,0 L0,161.052632" id="Line-3-Copy-11"></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+
+                </div>
+              </div>
+
+              <div class="box-right">
+                <div class="body">
+                  <h3>
+                    Zhenqiao Song </h3>
+                  <p>PhD in Computer Science</p>
+                  <p>UC Santa Barbara</p>
+                </div>
+              </div>
+            </a>
+
+
+            <a class="people-card" href="https://xu1998hz.github.io/" target="">
+
+
+              <div class="box-left">
+                <div class="thumbnail-container">
+                  <div class="staff-image">
+                    <img draggable="false" aria-hidden="true" src="" width="178" height="178" alt="">
+                  </div>
+                </div>
+                <div class="slashes-container">
+                  <svg class="desktop-slashes" preserveAspectRatio="none" width="145px" height="89px"
+                    viewBox="0 0 145 89" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group" fill="#454149" fill-rule="nonzero">
+                        <polygon id="Line-3-Copy-3"
+                          points="60.2951021 1.01370631 22.6173338 75 18.1784668 75 55.81143 1.00719744"></polygon>
+                        <polygon id="Line-3-Copy-6"
+                          points="128.336044 1.00517751 90.6690826 75 86.1777649 75 123.819087 0.99209293"></polygon>
+                        <polygon id="Line-3-Copy"
+                          points="14.3055115 1.00517751 0.0365663081 29.0638324 0.00363393879 20.2967672 9.81464638 1.00160492">
+                        </polygon>
+                        <polygon id="Line-3-Copy-4"
+                          points="82.2990702 1.00517751 44.6668854 75 40.1701355 75 77.8125347 1.00442788"></polygon>
+                        <polygon id="Line-3-Copy-7"
+                          points="147.051191 9.36111447 113.673782 75 109.193863 75 146.813019 1.00517751 147 1.00517751">
+                        </polygon>
+                        <polygon id="Path"
+                          points="37.3062134 1.01378851 7.10952596e-15 74.3662415 7.10542736e-15 65.5388794 32.8084775 1.01378851">
+                        </polygon>
+                        <polygon id="Line-3-Copy-5"
+                          points="105.296478 1.00517751 67.6763 75 63.1841125 75 100.819427 1"></polygon>
+                        <polygon id="Line-3-Copy-8"
+                          points="147.002388 54.6913888 136.672239 75.00753 132.183444 75 147.002388 45.8750153">
+                        </polygon>
+                      </g>
+                    </g>
+                  </svg>
+
+                  <svg class="mobile-slashes" width="190px" height="150px" viewBox="0 0 190 150" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <title>Group</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs>
+                      <rect id="path-1" x="0" y="0" width="190" height="149.473684"></rect>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group">
+                        <mask id="mask-2" fill="white">
+                          <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Mask"></g>
+                        <g mask="url(#mask-2)" stroke="#454149" stroke-width="4">
+                          <g transform="translate(-73.684211, -8.947368)">
+                            <path d="M153.157895,0 L70.5263158,161.052632" id="Line-3"></path>
+                            <path d="M176.842105,0 L94.2105263,161.052632" id="Line-3-Copy"></path>
+                            <path d="M200,0 L117.368421,161.052632" id="Line-3-Copy-2"></path>
+                            <path d="M223.684211,0 L141.052632,161.052632" id="Line-3-Copy-3"></path>
+                            <path d="M246.842105,0 L164.210526,161.052632" id="Line-3-Copy-4"></path>
+                            <path d="M270.526316,0 L187.894737,161.052632" id="Line-3-Copy-5"></path>
+                            <path d="M294.210526,0 L211.578947,161.052632" id="Line-3-Copy-8"></path>
+                            <path d="M317.368421,0 L234.736842,161.052632" id="Line-3-Copy-9"></path>
+                            <path d="M341.052632,0 L258.421053,161.052632" id="Line-3-Copy-10"></path>
+                            <path d="M129.473684,0 L46.8421053,161.052632" id="Line-3-Copy-6"></path>
+                            <path d="M106.315789,0 L23.6842105,161.052632" id="Line-3-Copy-7"></path>
+                            <path d="M82.6315789,0 L0,161.052632" id="Line-3-Copy-11"></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+
+                </div>
+              </div>
+
+              <div class="box-right">
+                <div class="body">
+                  <h3>
+                    Wenda Xu </h3>
+                  <p>PhD in Computer Science</p>
+                  <p>UC Santa Barbara</p>
+                  <p>Co-advised with William Wang</p>
+                </div>
+              </div>
+            </a>
+
+
+            <a class="people-card" href="https://xuandongzhao.github.io/" target="">
+
+
+              <div class="box-left">
+                <div class="thumbnail-container">
+                  <div class="staff-image">
+                    <img draggable="false" aria-hidden="true" src="" width="178" height="178" alt="">
+                  </div>
+                </div>
+                <div class="slashes-container">
+                  <svg class="desktop-slashes" preserveAspectRatio="none" width="145px" height="89px"
+                    viewBox="0 0 145 89" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group" fill="#454149" fill-rule="nonzero">
+                        <polygon id="Line-3-Copy-3"
+                          points="60.2951021 1.01370631 22.6173338 75 18.1784668 75 55.81143 1.00719744"></polygon>
+                        <polygon id="Line-3-Copy-6"
+                          points="128.336044 1.00517751 90.6690826 75 86.1777649 75 123.819087 0.99209293"></polygon>
+                        <polygon id="Line-3-Copy"
+                          points="14.3055115 1.00517751 0.0365663081 29.0638324 0.00363393879 20.2967672 9.81464638 1.00160492">
+                        </polygon>
+                        <polygon id="Line-3-Copy-4"
+                          points="82.2990702 1.00517751 44.6668854 75 40.1701355 75 77.8125347 1.00442788"></polygon>
+                        <polygon id="Line-3-Copy-7"
+                          points="147.051191 9.36111447 113.673782 75 109.193863 75 146.813019 1.00517751 147 1.00517751">
+                        </polygon>
+                        <polygon id="Path"
+                          points="37.3062134 1.01378851 7.10952596e-15 74.3662415 7.10542736e-15 65.5388794 32.8084775 1.01378851">
+                        </polygon>
+                        <polygon id="Line-3-Copy-5"
+                          points="105.296478 1.00517751 67.6763 75 63.1841125 75 100.819427 1"></polygon>
+                        <polygon id="Line-3-Copy-8"
+                          points="147.002388 54.6913888 136.672239 75.00753 132.183444 75 147.002388 45.8750153">
+                        </polygon>
+                      </g>
+                    </g>
+                  </svg>
+
+                  <svg class="mobile-slashes" width="190px" height="150px" viewBox="0 0 190 150" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <title>Group</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs>
+                      <rect id="path-1" x="0" y="0" width="190" height="149.473684"></rect>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group">
+                        <mask id="mask-2" fill="white">
+                          <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Mask"></g>
+                        <g mask="url(#mask-2)" stroke="#454149" stroke-width="4">
+                          <g transform="translate(-73.684211, -8.947368)">
+                            <path d="M153.157895,0 L70.5263158,161.052632" id="Line-3"></path>
+                            <path d="M176.842105,0 L94.2105263,161.052632" id="Line-3-Copy"></path>
+                            <path d="M200,0 L117.368421,161.052632" id="Line-3-Copy-2"></path>
+                            <path d="M223.684211,0 L141.052632,161.052632" id="Line-3-Copy-3"></path>
+                            <path d="M246.842105,0 L164.210526,161.052632" id="Line-3-Copy-4"></path>
+                            <path d="M270.526316,0 L187.894737,161.052632" id="Line-3-Copy-5"></path>
+                            <path d="M294.210526,0 L211.578947,161.052632" id="Line-3-Copy-8"></path>
+                            <path d="M317.368421,0 L234.736842,161.052632" id="Line-3-Copy-9"></path>
+                            <path d="M341.052632,0 L258.421053,161.052632" id="Line-3-Copy-10"></path>
+                            <path d="M129.473684,0 L46.8421053,161.052632" id="Line-3-Copy-6"></path>
+                            <path d="M106.315789,0 L23.6842105,161.052632" id="Line-3-Copy-7"></path>
+                            <path d="M82.6315789,0 L0,161.052632" id="Line-3-Copy-11"></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+
+                </div>
+              </div>
+
+              <div class="box-right">
+                <div class="body">
+                  <h3>
+                    Xuandong Zhao </h3>
+                  <p>PhD in Computer Science</p>
+                  <p>UC Santa Barbara</p>
+                  <p>Co-advised with Yu-Xiang Wang</p>
+                </div>
+              </div>
+            </a>
+
+
+            <a class="people-card" href="https://zkx06111.github.io/" target="">
+
+
+              <div class="box-left">
+                <div class="thumbnail-container">
+                  <div class="staff-image">
+                    <img draggable="false" aria-hidden="true" src="" width="178" height="178" alt="">
+                  </div>
+                </div>
+                <div class="slashes-container">
+                  <svg class="desktop-slashes" preserveAspectRatio="none" width="145px" height="89px"
+                    viewBox="0 0 145 89" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group" fill="#454149" fill-rule="nonzero">
+                        <polygon id="Line-3-Copy-3"
+                          points="60.2951021 1.01370631 22.6173338 75 18.1784668 75 55.81143 1.00719744"></polygon>
+                        <polygon id="Line-3-Copy-6"
+                          points="128.336044 1.00517751 90.6690826 75 86.1777649 75 123.819087 0.99209293"></polygon>
+                        <polygon id="Line-3-Copy"
+                          points="14.3055115 1.00517751 0.0365663081 29.0638324 0.00363393879 20.2967672 9.81464638 1.00160492">
+                        </polygon>
+                        <polygon id="Line-3-Copy-4"
+                          points="82.2990702 1.00517751 44.6668854 75 40.1701355 75 77.8125347 1.00442788"></polygon>
+                        <polygon id="Line-3-Copy-7"
+                          points="147.051191 9.36111447 113.673782 75 109.193863 75 146.813019 1.00517751 147 1.00517751">
+                        </polygon>
+                        <polygon id="Path"
+                          points="37.3062134 1.01378851 7.10952596e-15 74.3662415 7.10542736e-15 65.5388794 32.8084775 1.01378851">
+                        </polygon>
+                        <polygon id="Line-3-Copy-5"
+                          points="105.296478 1.00517751 67.6763 75 63.1841125 75 100.819427 1"></polygon>
+                        <polygon id="Line-3-Copy-8"
+                          points="147.002388 54.6913888 136.672239 75.00753 132.183444 75 147.002388 45.8750153">
+                        </polygon>
+                      </g>
+                    </g>
+                  </svg>
+
+                  <svg class="mobile-slashes" width="190px" height="150px" viewBox="0 0 190 150" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <title>Group</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs>
+                      <rect id="path-1" x="0" y="0" width="190" height="149.473684"></rect>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group">
+                        <mask id="mask-2" fill="white">
+                          <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Mask"></g>
+                        <g mask="url(#mask-2)" stroke="#454149" stroke-width="4">
+                          <g transform="translate(-73.684211, -8.947368)">
+                            <path d="M153.157895,0 L70.5263158,161.052632" id="Line-3"></path>
+                            <path d="M176.842105,0 L94.2105263,161.052632" id="Line-3-Copy"></path>
+                            <path d="M200,0 L117.368421,161.052632" id="Line-3-Copy-2"></path>
+                            <path d="M223.684211,0 L141.052632,161.052632" id="Line-3-Copy-3"></path>
+                            <path d="M246.842105,0 L164.210526,161.052632" id="Line-3-Copy-4"></path>
+                            <path d="M270.526316,0 L187.894737,161.052632" id="Line-3-Copy-5"></path>
+                            <path d="M294.210526,0 L211.578947,161.052632" id="Line-3-Copy-8"></path>
+                            <path d="M317.368421,0 L234.736842,161.052632" id="Line-3-Copy-9"></path>
+                            <path d="M341.052632,0 L258.421053,161.052632" id="Line-3-Copy-10"></path>
+                            <path d="M129.473684,0 L46.8421053,161.052632" id="Line-3-Copy-6"></path>
+                            <path d="M106.315789,0 L23.6842105,161.052632" id="Line-3-Copy-7"></path>
+                            <path d="M82.6315789,0 L0,161.052632" id="Line-3-Copy-11"></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+
+                </div>
+              </div>
+              <div class="box-right">
+                <div class="body">
+                  <h3>
+                    Kexun Zhang </h3>
+                  <p>PhD in Computer Science</p>
+                  <p>UC Santa Barbara</p>
+                  <p>Co-advised with William Wang</p>
+                </div>
+              </div>
+            </a>
+
+            <a class="people-card" href="" target="">
+
+
+              <div class="box-left">
+                <div class="thumbnail-container">
+                  <div class="staff-image">
+                    <img draggable="false" aria-hidden="true" src="" width="178" height="178" alt="">
+                  </div>
+                </div>
+                <div class="slashes-container">
+                  <svg class="desktop-slashes" preserveAspectRatio="none" width="145px" height="89px"
+                    viewBox="0 0 145 89" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group" fill="#454149" fill-rule="nonzero">
+                        <polygon id="Line-3-Copy-3"
+                          points="60.2951021 1.01370631 22.6173338 75 18.1784668 75 55.81143 1.00719744"></polygon>
+                        <polygon id="Line-3-Copy-6"
+                          points="128.336044 1.00517751 90.6690826 75 86.1777649 75 123.819087 0.99209293"></polygon>
+                        <polygon id="Line-3-Copy"
+                          points="14.3055115 1.00517751 0.0365663081 29.0638324 0.00363393879 20.2967672 9.81464638 1.00160492">
+                        </polygon>
+                        <polygon id="Line-3-Copy-4"
+                          points="82.2990702 1.00517751 44.6668854 75 40.1701355 75 77.8125347 1.00442788"></polygon>
+                        <polygon id="Line-3-Copy-7"
+                          points="147.051191 9.36111447 113.673782 75 109.193863 75 146.813019 1.00517751 147 1.00517751">
+                        </polygon>
+                        <polygon id="Path"
+                          points="37.3062134 1.01378851 7.10952596e-15 74.3662415 7.10542736e-15 65.5388794 32.8084775 1.01378851">
+                        </polygon>
+                        <polygon id="Line-3-Copy-5"
+                          points="105.296478 1.00517751 67.6763 75 63.1841125 75 100.819427 1"></polygon>
+                        <polygon id="Line-3-Copy-8"
+                          points="147.002388 54.6913888 136.672239 75.00753 132.183444 75 147.002388 45.8750153">
+                        </polygon>
+                      </g>
+                    </g>
+                  </svg>
+
+                  <svg class="mobile-slashes" width="190px" height="150px" viewBox="0 0 190 150" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <title>Group</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs>
+                      <rect id="path-1" x="0" y="0" width="190" height="149.473684"></rect>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group">
+                        <mask id="mask-2" fill="white">
+                          <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Mask"></g>
+                        <g mask="url(#mask-2)" stroke="#454149" stroke-width="4">
+                          <g transform="translate(-73.684211, -8.947368)">
+                            <path d="M153.157895,0 L70.5263158,161.052632" id="Line-3"></path>
+                            <path d="M176.842105,0 L94.2105263,161.052632" id="Line-3-Copy"></path>
+                            <path d="M200,0 L117.368421,161.052632" id="Line-3-Copy-2"></path>
+                            <path d="M223.684211,0 L141.052632,161.052632" id="Line-3-Copy-3"></path>
+                            <path d="M246.842105,0 L164.210526,161.052632" id="Line-3-Copy-4"></path>
+                            <path d="M270.526316,0 L187.894737,161.052632" id="Line-3-Copy-5"></path>
+                            <path d="M294.210526,0 L211.578947,161.052632" id="Line-3-Copy-8"></path>
+                            <path d="M317.368421,0 L234.736842,161.052632" id="Line-3-Copy-9"></path>
+                            <path d="M341.052632,0 L258.421053,161.052632" id="Line-3-Copy-10"></path>
+                            <path d="M129.473684,0 L46.8421053,161.052632" id="Line-3-Copy-6"></path>
+                            <path d="M106.315789,0 L23.6842105,161.052632" id="Line-3-Copy-7"></path>
+                            <path d="M82.6315789,0 L0,161.052632" id="Line-3-Copy-11"></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+
+                </div>
+              </div>
+              <div class="box-right">
+                <div class="body">
+                  <h3>
+                    Vihaan Akshaay Rajendiran </h3>
+                  <p>Master in CS</p>
+                  <p>UC Santa Barbara</p>
+                </div>
+              </div>
+            </a>
+
+
+            <a class="people-card" href="" target="">
+
+
+              <div class="box-left">
+                <div class="thumbnail-container">
+                  <div class="staff-image">
+                    <img draggable="false" aria-hidden="true" src="" width="178" height="178" alt="">
+                  </div>
+                </div>
+                <div class="slashes-container">
+                  <svg class="desktop-slashes" preserveAspectRatio="none" width="145px" height="89px"
+                    viewBox="0 0 145 89" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group" fill="#454149" fill-rule="nonzero">
+                        <polygon id="Line-3-Copy-3"
+                          points="60.2951021 1.01370631 22.6173338 75 18.1784668 75 55.81143 1.00719744"></polygon>
+                        <polygon id="Line-3-Copy-6"
+                          points="128.336044 1.00517751 90.6690826 75 86.1777649 75 123.819087 0.99209293"></polygon>
+                        <polygon id="Line-3-Copy"
+                          points="14.3055115 1.00517751 0.0365663081 29.0638324 0.00363393879 20.2967672 9.81464638 1.00160492">
+                        </polygon>
+                        <polygon id="Line-3-Copy-4"
+                          points="82.2990702 1.00517751 44.6668854 75 40.1701355 75 77.8125347 1.00442788"></polygon>
+                        <polygon id="Line-3-Copy-7"
+                          points="147.051191 9.36111447 113.673782 75 109.193863 75 146.813019 1.00517751 147 1.00517751">
+                        </polygon>
+                        <polygon id="Path"
+                          points="37.3062134 1.01378851 7.10952596e-15 74.3662415 7.10542736e-15 65.5388794 32.8084775 1.01378851">
+                        </polygon>
+                        <polygon id="Line-3-Copy-5"
+                          points="105.296478 1.00517751 67.6763 75 63.1841125 75 100.819427 1"></polygon>
+                        <polygon id="Line-3-Copy-8"
+                          points="147.002388 54.6913888 136.672239 75.00753 132.183444 75 147.002388 45.8750153">
+                        </polygon>
+                      </g>
+                    </g>
+                  </svg>
+
+                  <svg class="mobile-slashes" width="190px" height="150px" viewBox="0 0 190 150" version="1.1"
+                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+                    <title>Group</title>
+                    <desc>Created with Sketch.</desc>
+                    <defs>
+                      <rect id="path-1" x="0" y="0" width="190" height="149.473684"></rect>
+                    </defs>
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                      <g id="Group">
+                        <mask id="mask-2" fill="white">
+                          <use xlink:href="#path-1"></use>
+                        </mask>
+                        <g id="Mask"></g>
+                        <g mask="url(#mask-2)" stroke="#454149" stroke-width="4">
+                          <g transform="translate(-73.684211, -8.947368)">
+                            <path d="M153.157895,0 L70.5263158,161.052632" id="Line-3"></path>
+                            <path d="M176.842105,0 L94.2105263,161.052632" id="Line-3-Copy"></path>
+                            <path d="M200,0 L117.368421,161.052632" id="Line-3-Copy-2"></path>
+                            <path d="M223.684211,0 L141.052632,161.052632" id="Line-3-Copy-3"></path>
+                            <path d="M246.842105,0 L164.210526,161.052632" id="Line-3-Copy-4"></path>
+                            <path d="M270.526316,0 L187.894737,161.052632" id="Line-3-Copy-5"></path>
+                            <path d="M294.210526,0 L211.578947,161.052632" id="Line-3-Copy-8"></path>
+                            <path d="M317.368421,0 L234.736842,161.052632" id="Line-3-Copy-9"></path>
+                            <path d="M341.052632,0 L258.421053,161.052632" id="Line-3-Copy-10"></path>
+                            <path d="M129.473684,0 L46.8421053,161.052632" id="Line-3-Copy-6"></path>
+                            <path d="M106.315789,0 L23.6842105,161.052632" id="Line-3-Copy-7"></path>
+                            <path d="M82.6315789,0 L0,161.052632" id="Line-3-Copy-11"></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+
+                </div>
+              </div>
+              <div class="box-right">
+                <div class="body">
+                  <h3>Zihan Ma </h3>
+                  <p>Master in CS</p>
+                  <p>UC Santa Barbara</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>
+
+
+
+<!-- <h1>Interns</h1>
           <ul>
             <li>Chinmay Dandekar</li>
             <li>Yufei Song</li>
@@ -52,11 +829,4 @@
             <li>Jiangjie Chen</li>
             <li>Saisidharth Majeti</li>
             <li>Ahmed Elkordy</li>
-          </ul>
-          <p><br />
-          </p>
-        </div>
-      </div>
-    </div>
-  </body>
-</html>
+          </ul> -->

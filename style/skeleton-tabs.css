@@ -1,17 +1,17 @@
 /* Buttons
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
-.button,
-button,
-input[type="submit"],
-input[type="reset"],
-input[type="button"] {
+.tab-nav .button,
+.tab-nav button,
+.tab-nav input[type="submit"],
+.tab-nav input[type="reset"],
+.tab-nav input[type="button"] {
   display: inline-block;
   height: 38px;
   padding: 0 30px;
-  color: #555;
+  font-family: Verdana, sans-serif;
+  color: #6e6974; 
   text-align: center;
-  font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 38px;
   letter-spacing: .1rem;
   text-transform: uppercase;
@@ -21,69 +21,70 @@ input[type="button"] {
   border-radius: 4px;
   border: 1px solid #aaa;
   cursor: pointer;
-  box-sizing: border-box; }
-.button:hover,
-button:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover,
-input[type="button"]:hover,
-.button:focus,
-button:focus,
-input[type="submit"]:focus,
-input[type="reset"]:focus,
-input[type="button"]:focus {
-  color: #333;
-  border-color: #888;
-  background-color: transparent;
-  outline: 0; }
-.button.button-primary,
-button.button-primary,
-input[type="submit"].button-primary,
-input[type="reset"].button-primary,
-input[type="button"].button-primary {
+  box-sizing: border-box;
+}
+
+.tab-nav .button:hover,
+.tab-nav button:hover,
+.tab-nav input[type="submit"]:hover,
+.tab-nav input[type="reset"]:hover,
+.tab-nav input[type="button"]:hover {
+  color: #1e1b20;
+  border-color: #474747;
+  outline: 0;
+}
+
+.tab-nav .button.button-primary,
+.tab-nav button.button-primary,
+.tab-nav input[type="submit"].button-primary,
+.tab-nav input[type="reset"].button-primary,
+.tab-nav input[type="button"].button-primary {
   color: #FFF;
   background-color: #33C3F0;
-  border-color: #33C3F0; }
-.button.button-primary:hover,
-button.button-primary:hover,
-input[type="submit"].button-primary:hover,
-input[type="reset"].button-primary:hover,
-input[type="button"].button-primary:hover,
-.button.button-primary:focus,
-button.button-primary:focus,
-input[type="submit"].button-primary:focus,
-input[type="reset"].button-primary:focus,
-input[type="button"].button-primary:focus {
+  border-color: #33C3F0;
+}
+
+.tab-nav .button.button-primary:hover,
+.tab-nav button.button-primary:hover,
+.tab-nav input[type="submit"].button-primary:hover,
+.tab-nav input[type="reset"].button-primary:hover,
+.tab-nav input[type="button"].button-primary:hover,
+.tab-nav .button.button-primary:focus,
+.tab-nav button.button-primary:focus,
+.tab-nav input[type="submit"].button-primary:focus,
+.tab-nav input[type="reset"].button-primary:focus,
+.tab-nav input[type="button"].button-primary:focus {
   color: #FFF;
   background-color: #1EAEDB;
-  border-color: #1EAEDB; }
+  border-color: #1EAEDB;
+}
 
 
 .tab-nav {
-    list-style: none;
-    border-bottom: 1px solid #aaa;
-    padding-left: 5px;
+  list-style: none;
+  border-bottom: 1px solid #aaa;
+  padding-left: 5px;
 }
 
 .tab-nav li {
-    display: inline;
+  display: inline;
 }
 
 .tab-nav li a.button {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    margin-bottom: -1px;
-    border-bottom: none;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  margin-bottom: -1px;
+  border-bottom: none;
 }
 
 .tab-nav li a.active.button {
-    border-bottom: 0.175em solid #fff;
+  border-bottom: 0.175em solid #fff;
 }
 
 .tab-content .tab-pane {
-    display: none;
+  display: none;
 }
 
 .tab-content .tab-pane.active {
-    display: block;
+  display: block;
 }

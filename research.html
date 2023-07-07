@@ -1,40 +1,116 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
-  <head>
-    <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
-    <meta name="description" content="Lei Li" />
-    <meta name="keywords" content="machine learning deep learning natural language processing probabilistic programming" />
-    <meta name="author" content="Lei Li" />
-    <link rel="stylesheet" type="text/css" href="style/origo.css" media="all" />
-    <!--link rel="stylesheet" type="text/css" href="style/style.css" media="all" /-->
-    <title>Lei LI's Research Projects</title>
-  </head>
-  <body class="blue light">
-    <div id="layout">
-      <ul class="menu">
+
+<head>
+  <meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8" />
+  <meta name="description" content="Lei Li" />
+  <meta name="keywords"
+    content="machine learning deep learning natural language processing machine translation probabilistic programming" />
+  <meta name="author" content="Lei Li" />
+  <link href="style/style.min.css" rel="stylesheet" type="text/css" />
+  <title>Lei LI's Research Projects</title>
+</head>
+
+<body class="page-template-template-home page-id-2">
+  <header class="site-header--mobile" role="banner">
+    <div class="mobile-header-right">
+      <button type="button" class="js-toggle-nav menu-button" aria-controls="mobile-nav-tray" aria-expanded="false">
+        <span class="vh">Menu</span>
+        <svg class="menu-icon" width="48" height="33" focusable="false">
+          <use href="#menu-icon" />
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <div id="mobile-nav-tray" class="mobile-nav-tray" aria-hidden="true">
+    <div class="mobile-nav-header">
+      <div class="site-branding">
+        <a href="https://www.cmu.edu/" target="_blank" rel="home">
+          <span class="vh">Lei Li</span>
+        </a>
+      </div>
+      <button type="button" class="js-toggle-nav close-button" aria-controls="mobile-nav-tray" aria-expanded="false">
+        <span class="vh">Close</span>
+        <svg class="menu-icon-svg" width="33" height="33" focusable="false">
+          <use href="#close-icon" />
+        </svg>
+      </button>
+    </div>
+    <nav class="navigation--mobile">
+      <ul class="mobile-nav mobile-nav--main">
         <li><a href="index.html">Home</a></li>
-        <li><a href="student.html">Student</a></li>
-        <li class="active"><a href="research.html">Research</a></li>
+        <li class="current-menu-item"><a href="research.html">Research</a></li>
         <li><a href="teaching.html">Teaching</a></li>
-        <li><a href="pubs.html">Publication</a></li>
-        <li><a href="resource.html">Resource</a></li>
-        <li><a href="media.html">Media</a></li>
-        <li><a href="leili-bio.html">Bio</a></li>
+        <li>
+          <a href="pubs.html">Publications</a>
+        </li>
+        <li><a href="people.html">People</a></li>
         <li><a href="https://lileicc.github.io/blog/">Blog</a></li>
       </ul>
-      <div class="row">
-        <div class="main col">
-          <h1>Research Projects</h1>
+    </nav>
+  </div>
+  <div>
+    <header id="masthead" class="site-header" role="banner">
+      <div class="wrap">
+
+        <div class="l-header">
+          <div class="l-header-col-1">
+
+            <div class="site-branding">
+              <a href="https://www.cmu.edu/" target="_blank" rel="home">
+                <span class="vh">Lei Li</span>
+                <svg class="site-logo" width="64" height="77" focusable="false">
+                  <use href="#site-logo" />
+                </svg>
+              </a>
+            </div>
+
+          </div>
+          <div class="l-header-col-2">
+
+            <div class="site-navigation">
+              <nav class="js-accessible-menu navigation--main" aria-label="Main Navigation" role="navigation">
+                <ul class="nav-list">
+                  <li><a href="index.html">Home</a></li>
+                  <li class="current-menu-item"><a href="research.html">Research</a></li>
+                  <li><a href="teaching.html">Teaching</a></li>
+                  <li>
+                    <a href="pubs.html">Publications</a>
+                  </li>
+                  <li><a href="people.html">People</a></li>
+                  <li><a href="https://lileicc.github.io/blog/">Blog</a></li>
+                </ul>
+              </nav>
+
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </header>
+    <main id="main" class="site-main" role="main">
+      <header class="banner">
+        <div class="wrap">
+          <div class="banner-title">
+            <span class="h1">
+              Research </span>
+          </div>
+        </div>
+      </header>
+      <section class="section">
+        <div class="wrap">
           <h2>Intelligent Writing and Text Generation</h2>
           <ul>
             <li>developing controllable and interpretable methods for effective
               text generation. </li>
             <li>Xiaomingbot: an intelligent news-writing robot. [<a href="https://xiaomingbot.github.io">Demo</a>]</li>
-            <li>Bayesian sampling methods for controllable text generation: <a
-                href="pubs/miao2019cgmh.pdf">CGMH</a>,
+            <li>Bayesian sampling methods for controllable text generation: <a href="pubs/miao2019cgmh.pdf">CGMH</a>,
               <a href="pubs/zhang2019generating.pdf">MHA</a>, <a href="pubs/zhang2020language.pdf">TSMH</a>,
               controlling the language generation explicitly using various
-              constraints. </li>
+              constraints.
+            </li>
             <li>VAE with hierarchical latent priors. Solving the training
               problem for VAE with mixture of exponential family distribution. <a
                 href="pubs/shi2020dispersed.pdf">DEMVAE</a></li>
@@ -44,7 +120,9 @@
               generation in the latent space. </li>
             <li>One embedding is not enough to represent a word! <a href="pubs/miao2019kernelized.pdf">Bayesian
                 Softmax</a> improves text generation. </li>
-            <li>Application in Advertising system: <a href="pubs/song2021triangular.pdf">Generating bidwords for sponsored search</a>, <a href="https://arxiv.org/abs/1912.01114">News headline editing</a>.</li>
+            <li>Application in Advertising system: <a href="pubs/song2021triangular.pdf">Generating bidwords for
+                sponsored
+                search</a>, <a href="https://arxiv.org/abs/1912.01114">News headline editing</a>.</li>
           </ul>
           <h2>Multilingual Machine Translation </h2>
           <p>How to develop a unified model that can translation many language
@@ -53,34 +131,44 @@
             non-English language pairs. </p>
           <ul>
             <li>Does pre-trained monolingual language models such as BERT/GPT
-              benefit bilingual neural machine translation? check out CTNMT <a
-                href="pubs/yang2020towards.pdf">paper</a></li>
-            <li><img src="mrasp-logo.png" alt="" title="mRASP" style="width: 149px; height: 56px;"
-                align="left" />Can
+              benefit bilingual neural machine translation? check out CTNMT <a href="pubs/yang2020towards.pdf">paper</a>
+            </li>
+            <li><img src="mrasp-logo.png" alt="" title="mRASP" style="width: 149px; height: 56px;" align="left" />Can
               we build a universal pre-trained neural model that can improve on
               any pairs of language translation? Even if the languages do not
               occur in the pre-training corpus? The <a href="pubs/lin2020pre.pdf">mRASP
-                </a> and <a href="pubs/pan2021contrastive.pdf">mRASP2</a> papers try to answer this question. Read <a href="https://medium.com/@panxiao1994/mrasp2-multilingual-nmt-advances-via-contrastive-learning-ac8c4c35d63">the blog post here</a>.</li>
+              </a> and <a href="pubs/pan2021contrastive.pdf">mRASP2</a> papers try to answer this question. Read <a
+                href="https://medium.com/@panxiao1994/mrasp2-multilingual-nmt-advances-via-contrastive-learning-ac8c4c35d63">the
+                blog post here</a>.</li>
             <li>Building a model like human who knows two languages: integrating
               the translation capabilities from one to the other and vice versa,
               as well as the capabilities to compose sentences in both
               languages. check out Mirror Generative Neural Machine Translation
-              <a href="pubs/zheng2020mirror.pdf">paper</a>.</li>
+              <a href="pubs/zheng2020mirror.pdf">paper</a>.
+            </li>
             <li>Prune-tune: a method that continually learns multiple domains of
               translation. It improves domain-specific translation successively
               without degenerating on the general domain, avoiding the common
               catastrophic forgetting problem. check out <a href="pubs/liang2021finding.pdf">Prune-tune
                 paper</a>. [<a href="https://ohlionel.github.io/project/Prune-Tune/">project
                 page</a>]</li>
-            <li><a href="pubs/lin2021learning.pdf">Learning language-specific sub-network</a> is possible for multilingual neural machine translation. It improve zero-shot translation. </li>
-            <li><a href="">Graformer</a>: connecting pretrained BERT and GPT with a small bridge module to boost performance for multilingual machine translation. It furhter enables easy exploitation of pre-trained models using monolingual corpus in multiple languages. </li>
-            <li><a href="">CIAT</a>: designing small adapter subnets for multilingual machine translation. Should the adapter be serial or parallel to main backbone network? This study finds parallel adapter works better to counter interferences in langauges. </li>
+            <li><a href="pubs/lin2021learning.pdf">Learning language-specific sub-network</a> is possible for
+              multilingual
+              neural machine translation. It improve zero-shot translation. </li>
+            <li><a href="">Graformer</a>: connecting pretrained BERT and GPT with a small bridge module to boost
+              performance for multilingual machine translation. It furhter enables easy exploitation of pre-trained
+              models
+              using monolingual corpus in multiple languages. </li>
+            <li><a href="">CIAT</a>: designing small adapter subnets for multilingual machine translation. Should the
+              adapter be serial or parallel to main backbone network? This study finds parallel adapter works better to
+              counter interferences in langauges. </li>
             <li>How to achieve the top performance in multiple language
               directions in WMT 20 (Chinese-English, German-English,
               French-German, English-Khmer, English-Pashto). check out our
               experience in this <a href="https://arxiv.org/abs/2010.14806">report</a>,
               and this <a href="https://arxiv.org/abs/2010.14029">report</a>. </li>
-            <li>The algorithms are deployed to production, check out <a href="https://translate.volcengine.cn">VolcTrans</a>
+            <li>The algorithms are deployed to production, check out <a
+                href="https://translate.volcengine.cn">VolcTrans</a>
               that serves hundred millions of translation requests daily, in 55
               languages. </li>
           </ul>
@@ -101,18 +189,24 @@
               Inspired by human's listen, understand, and translate steps, we
               propose LUT method that utilizes triplets of source audio, source
               text, target text, and a pre-trained BERT model to train a better
-              end-to-end speech-to-text translation system. check out LUT <a href="https://arxiv.org/abs/2009.09704">paper</a>.
+              end-to-end speech-to-text translation system. check out LUT <a
+                href="https://arxiv.org/abs/2009.09704">paper</a>.
               [<a href="https://dqqcasia.github.io/projects/LUT/">project
                 page</a>]</li>
             <li>Can we utilize additional large parallel bilingual sentence
               pairs for machine translation to enhance speech translation? A
               idea based on consecutive decoding can achieve this. checkout
-              COSTT <a href="https://arxiv.org/abs/2009.09737">paper</a>. [<a href="https://dqqcasia.github.io/projects/COSTT/">project
+              COSTT <a href="https://arxiv.org/abs/2009.09737">paper</a>. [<a
+                href="https://dqqcasia.github.io/projects/COSTT/">project
                 page</a>]</li>
-            <li>Study of human brain reveals that there is common region is the brain responsible for text and speech processing. 
-              Can a neural network map input of text and speech to the same semantic space? check out <a href="pubs/han2021learning.pdf">Chimera</a>, a model for speech-to-text translation, 
-              utilizes the notion of share-semantic space to further improve speech translation.  </li>
-            <li>Training techniques such as progressive multitask training improves speech translation. <a href="pubs/ye2021end.pdf">XSTNet</a> obtains the state-of-the-art translation performance on MuST-C dataset. </li>
+            <li>Study of human brain reveals that there is common region is the brain responsible for text and speech
+              processing.
+              Can a neural network map input of text and speech to the same semantic space? check out <a
+                href="pubs/han2021learning.pdf">Chimera</a>, a model for speech-to-text translation,
+              utilizes the notion of share-semantic space to further improve speech translation. </li>
+            <li>Training techniques such as progressive multitask training improves speech translation. <a
+                href="pubs/ye2021end.pdf">XSTNet</a> obtains the state-of-the-art translation performance on MuST-C
+              dataset. </li>
           </ul>
           <ul>
           </ul>
@@ -128,13 +222,20 @@
               MARS <a href="https://openreview.net/forum?id=kHSu4ebxFXY">paper</a>.
             </li>
           </ul>
-          <h1>Old Projects:</h1>
-          <h3>Probabilistic programming languages and Bayesian inference</h3>
+        </div>
+      </section>
+      <section class="highlight-section section">
+        <div class="wrap">
+          <div class="highlight-heading">
+            <h1>Past Projects</h1>
+          </div>
+
+          <h2>Probabilistic programming languages and Bayesian inference</h2>
           <ul>
             <li> <a href="http://bayesianlogic.cs.berkeley.edu/">Bayesian Logic
                 (BLOG)</a> and its inference system. </li>
           </ul>
-          <h3>Time series learning</h3>
+          <h2>Time series learning</h2>
           <ul>
             <li> Modelling, summarization, clustering, imputation, and
               forecasting for multiple co-evolving time series data, with or
@@ -150,19 +251,22 @@
               centers. [ThermoCast paper]</li>
             <li> <a href="mlds/index.html">Tensor time series (MLDS)</a> </li>
           </ul>
-          <h3>Parallel Learning for Sequential Models</h3>
+          <h2>Parallel Learning for Sequential Models</h2>
           <ul>
             <li> <a href="paralearn/index.html"> Parallel algorithms for
                 graphical model on multicore </a> : (finished) </li>
           </ul>
-          <h3>Network analysis</h3>
+          <h2>Network analysis</h2>
           <ul>
             <li>social network and social media analysis</li>
             <li> <a href="http://www.db.cs.cmu.edu/db-site/Projects/cdem">CDEM</a>
               :fly embryo gene pattern mining. (finished) </li>
           </ul>
+
         </div>
-      </div>
-    </div>
-  </body>
+      </section>
+    </main>
+  </div>
+</body>
+
 </html>
