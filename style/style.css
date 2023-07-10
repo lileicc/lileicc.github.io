@@ -2519,22 +2519,23 @@ select#yearselect {
   padding: 0.6em 1.375em;
 }
 
-.navigation--main a:hover,
-.navigation--main a:focus {
-  color: #555159;
-  text-decoration: none;
-}
-
 .navigation--main>ul>li+li {
   margin-left: 0;
   border-left: 1px solid #D8D8D8;
 }
 
+.navigation--main a:hover,
+.navigation--main a:focus,
 .navigation--main .current-menu-item>a,
-.navigation--main .current-menu-ancestor>a {
+.navigation--main .current-menu-ancestor>a,
+.current-menu-item>a,
+.current-menu-ancestor>a,
+.navigation--main .sub-menu .current-menu-item a,
+.navigation--main .sub-menu .current-menu-ancestor a,
+.navigation--main .sub-menu a:hover,
+.navigation--main .sub-menu a:focus {
   color: #555159;
 }
-
 
 .navigation--main .sub-menu {
   margin: 0;
@@ -2573,15 +2574,6 @@ select#yearselect {
   font-size: 1em;
 }
 
-.navigation--main .sub-menu a:hover,
-.navigation--main .sub-menu a:focus {
-  color: #555159;
-}
-
-.navigation--main .sub-menu .current-menu-item a,
-.navigation--main .sub-menu .current-menu-ancestor a {
-  color: #555159;
-}
 
 .navigation--main li:hover>.sub-menu,
 .navigation--main li.is-active>.sub-menu {
@@ -2610,8 +2602,8 @@ select#yearselect {
   content: '';
   display: block;
   margin: auto;
-  height: 8px;
-  bottom: 12px;
+  height: 6px;
+  bottom: 8px;
   width: 0px;
   position: absolute;
   left: 0;
@@ -2627,11 +2619,6 @@ select#yearselect {
 }
 
 
-.current-menu-item>a,
-.current-menu-ancestor>a {
-  color: #555159;
-}
-
 .current-menu-item>a:after,
 .current-menu-ancestor>a:after {
   content: "";
@@ -2640,10 +2627,10 @@ select#yearselect {
   transition: background-color 0.5s ease;
   left: 0;
   right: 0;
-  bottom: 12px;
+  bottom: 8px;
   position: absolute;
   width: 35px;
-  height: 8px;
+  height: 6px;
   margin: auto;
   text-align: center;
 }
@@ -7247,11 +7234,12 @@ section.section.form-section {
     padding: 1em 1.5em;
   }
 
-  .navigation--main li:after,
+  /* .navigation--main li:after,
   .current-menu-item>a:after,
   .current-menu-ancestor>a:after {
     height: 6px;
-  }
+    bottom: 8px;
+  } */
 
   .navigation--social {
     padding-top: 3.5em;
@@ -7767,7 +7755,8 @@ section.section.form-section {
   .current-menu-item>a:after,
   .current-menu-ancestor>a:after {
     height: 8px;
-  }
+    bottom: 12px;
+  } 
 
   .bio-section .heading h2 {
     font-size: 3.75em;
