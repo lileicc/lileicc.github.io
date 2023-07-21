@@ -4,3 +4,6 @@
 [submodule "course/dl23w"]
 	path = course/dl23w
 	url = git@github.com:lileicc/ucsbcs190I_deep_learning_w2023.git
+[submodule "course/11737mnlp23fa"]
+	path = course/11737mnlp23fa
+	url = git@github.com:lileicc/cmu11737_multilingual_nlp_2023fall.git
