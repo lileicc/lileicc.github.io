@@ -17,6 +17,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   year      = {2023},
   month     = jul,
   abstract  = {Designing protein sequences with desired biological function is crucial in biology and chemistry. Recent machine learning methods use a surrogate sequence-function model to replace the expensive wet-lab validation. How can we efficiently generate diverse and novel protein sequences with high fitness? In this paper, we propose IsEM-Pro, an approach to generate protein sequences towards a given fitness criterion. At its core, IsEM-Pro is a latent generative model, augmented by combinatorial structure features from a separately learned Markov random fields (MRFs). We develop an Monte Carlo Expectation-Maximization method (MCEM) to learn the model. During inference, sampling from its latent space enhances diversity while its MRFs features guide the exploration in high fitness regions. Experiments on eight protein sequence design tasks show that our IsEM-Pro outperforms the previous best methods by at least 55% on average fitness score and generates more diverse and novel protein sequences.},
+  code      = {https://github.com/JocelynSong/IsEM-Pro},
   eprint    = {https://arxiv.org/abs/2305.00386},
 }
 
@@ -27,6 +28,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   year      = {2023},
   month     = jul,
   abstract  = {Diffusion models show promising generation capability for a variety of data. Despite their high generation quality, the inference for diffusion models is still time-consuming due to the numerous sampling iterations required. To accelerate the inference, we propose ReDi, a simple yet learning-free Retrieval-based Diffusion sampling framework. From a precomputed knowledge base, ReDi retrieves a trajectory similar to the partially generated trajectory at an early stage of generation, skips a large portion of intermediate steps, and continues sampling from a later step in the retrieved trajectory. We theoretically prove that the generation performance of ReDi is guaranteed. Our experiments demonstrate that ReDi improves the model inference efficiency by 2x speedup. Furthermore, ReDi is able to generalize well in zero-shot cross-domain image generation such as image stylization.},
+  code      = {https://github.com/zkx06111/ReDiffusion},
   eprint    = {https://arxiv.org/abs/2302.02285},
 }
 
@@ -47,6 +49,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   year      = {2023},
   month     = jul,
   abstract  = {Traditional multilingual neural machine translation (MNMT) uses a single model to translate all directions. However, with the increasing scale of language pairs, simply using a single model for massive MNMT brings new challenges: parameter tension and large computations. In this paper, we revisit multi-way structures by assigning an individual branch for each language (group). Despite being a simple architecture, it is challenging to train de-centralized models due to the lack of constraints to align representations from all languages. We propose a localized training recipe to map different branches into a unified space, resulting in an efficient detachable model, Lego-MT. For a fair comparison, we collect data from OPUS and build the first large-scale open-source translation benchmark covering 7 language-centric data, each containing 445 language pairs. Experiments show that Lego-MT (1.2B) brings gains of more than 4 BLEU while outperforming M2M-100 (12B).},
+  code      = {https://github.com/CONE-MT/Lego-MT},
   eprint    = {https://arxiv.org/abs/2212.10551},
 }
 
