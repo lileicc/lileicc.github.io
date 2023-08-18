@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Lei Li" />
   <meta name="keywords"
-    content="machine learning deep learning natural language processing machine translation probabilistic programming" />
+    content="machine learning, deep learning, natural language processing, machine translation, AI for science, drug discovery, protein design" />
   <meta name="author" content="Lei Li" />
   <link href="style/style.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" href="style/skeleton-tabs.css" />
@@ -24,7 +24,7 @@
       // Check country code
       // if(country_code == 'CN') {
       if (city == 'Shanghai') {
-        document.body.innerHTML = "<a href=\"pubs.html\">Publications</a><br /> Under major construction! Please check in a month!";
+        document.getElementById("intro-sec") = "";
       }
     }
   </script>
@@ -47,7 +47,7 @@
   <div id="mobile-nav-tray" class="mobile-nav-tray" aria-hidden="true">
     <div class="mobile-nav-header">
       <div class="site-branding">
-        <a href="https://www.cmu.edu/" target="_blank" rel="home">
+        <a href="https://www.cs.cmu.edu/~leili" target="_blank" rel="home">
           <span class="vh">Lei Li</span>
         </a>
       </div>
@@ -100,24 +100,22 @@
       </div>
     </header>
     <main id="main" class="site-main" role="main">
-      <section class="hero">
+      <section id="intro-sec" class="hero">
         <div class="wrap hero">
           <div>
             <div class="hero-content">
               <h1>Lei Li</h1>
-              <h6>University of California Santa Barbara</h6>
-              <p>Co-Director, <a href="http://nlp.cs.ucsb.edu/">UCSB NLP Group</a><br />
-                Associate Professor,
-                <a href="https://www.cs.ucsb.edu">Computer Science Department</a>
+              <h6>Carnegie Mellon University</h6>
+              <p><a href="http://lti.cs.cmu.edu/">Language Technology Institute</a><br />
+                Assistant Professor
               </p>
-              <p>Research area: natural language processing, machine learning, data
-                mining. </p>
+              <p>Research area: natural language processing, machine learning. </p>
               <p> Topics: </p>
               <ul>
-                <li> Machine translation, speech translation, multilingual NLP. </li>
-                <li> LLM, text generation, program synthesis, reasoning, privacy, watermark. </li>
-                <li> AI for drug design </li>
-                <li> Efficient ML </li>
+                <li> Multilingual NLP, machine translation, speech translation, . </li>
+                <li> LLM: text generation, code generation, reasoning, privacy, watermark. </li>
+                <li> AI for drug discovery. </li>
+                <li> Efficient ML. </li>
                 <!-- <li> Green and Efficient ML </li>
                                       <li> Time series mining and prediction </li>
                                       <li> Probabilistic inference, Bayesian sampling methods </li> -->
@@ -340,7 +338,7 @@
               </h4>
               <p>
                 <span class="vh">Email:</span>
-                <span itemprop="email">my fullname [at] cs.ucsb.edu</span>
+                <span itemprop="email">my fullname [at] cs.cmu.edu</span>
               </p>
             </div>
             <div class="l-footer-item">
@@ -349,7 +347,7 @@
               </h4>
               <p>
                 <span class="vh">Twitter:</span>
-                <span itemprop="telephone">@lileics</span>
+                <span itemprop="twitter">@lileics</span>
               </p>
             </div>
 
@@ -358,7 +356,7 @@
                 Office
               </h4>
               <p class="address-title h5">
-                <span itemprop="name">Harold Frank Hall 2121 </span>
+                <span itemprop="address">GHC 6403 </span>
               </p>
             </div>
           </div>
