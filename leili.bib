@@ -5,6 +5,7 @@
   year      = {2023},
   month     = dec,
   abstract  = {Given varying prompts regarding a factoid question, can a large language model (LLM) reliably generate factually correct answers? Existing LLMs may generate distinct responses for different prompts. In this paper, we study the problem of quantifying knowledge contained in an LLM regarding a given set of facts. We propose KaRR, a statistical approach to assess factual knowledge for LLMs. The main idea is to estimate the ratio of LLM generating text corresponding to the answer entity given diverse prompts of the subject and the querying relation, versus it generating by random chances. Our assessment suite contains a comprehensive set of 994,123 entities and 600 relations, with 1,395,905 text aliases. We use our method to evaluate 20 LLMs of various sizes, including LLaMA, Alpaca, OPT, etc. Experiments show that our results have a strong correlation (0.43 Kendall's τ) with the results of human assessment on LLMs. Our results reveal that the knowledge in LLMs with the same backbone architecture adheres to the scaling law, while tuning on instruction-following data sometimes compromises the model's capability to generate factually correct text reliably.},
+  code      = {https://github.com/dqxiu/KAssess},
   eprint    = {https://arxiv.org/abs/2305.10519},
   owner     = {lilei.02},
 }
@@ -28,6 +29,7 @@
   year      = {2023},
   month     = dec,
   abstract  = {Large language models (LLMs) have demonstrated their potential to refine their generation based on their own feedback. However, the feedback from LLM itself is often inaccurate, thereby limiting its benefits. In this paper, we propose Study Assistant for Large LAnguage Model (SALAM), a novel framework with an auxiliary agent to assist the main LLM in learning from mistakes through interactive cooperation. In the gathering phase, the student assistant agent probes the main LLM, analyzes its errors, and collects the interaction in a mistake memory. During the examination phase, the study assistant provides guidelines by retrieving relevant cases to help the main LLM anticipate and avoid similar errors. We first investigate the effectiveness of a general study assistant and then customize it to provide LLM-specific guidance through imitation learning from successful guidance experiences. Our experiments on three LLMs using two challenging frameworks demonstrate that SALAM can significantly boost LLMs by an accuracy margin of up to 6.6 on BBH and 12.6 on BBQ.},
+  code      = {https://dqwang122.github.io/projects/SALAM},
   eprint    = {https://arxiv.org/abs/2305.13829},
 }
 
@@ -48,6 +50,7 @@
   year      = {2023},
   month     = dec,
   abstract  = {Recent large language models (LLMs) are promising for making decisions in grounded environments. However, LLMs frequently fail in complex decision-making tasks due to the misalignment between the pre-trained knowledge in LLMs and the actual rules in the environment. Existing methods require either costly gradient computation or lengthy in-context demonstrations. In this paper, we propose AutoPlan, an approach to guide LLM-based agents to accomplish interactive decision-making tasks. AutoPlan augments the LLM prompt with a task-solving plan and optimizes it through iterative experience collection and reflection. Our experiments show that AutoPlan, though using no in-context demonstrations, achieves success rates on par with the baselines using human-written demonstrations on ALFWorld and even outperforms them by 8% on HotpotQA.},
+  code      = {https://github.com/owaski/AutoPlan},
   eprint    = {https://arxiv.org/abs/2305.15064},
 }
 
@@ -2554,6 +2557,14 @@ clickbait detection and generic text classification tasks demonstrate that our p
   author = {Mingwei Li and Qingyuan Jiang and Yi He and Lei Li and Wujun Li},
   title  = {Bidirectional Attentive Convolutional Neural Network for Near-Duplicate Video Retrieval},
   year   = {Preprint},
+}
+
+@Unpublished{songPreprintjoint,
+  author   = {Zhenqiao Song and Yunlong Zhao and Yufei Song and Wenxian Shi and Yang Yang and Lei Li},
+  title    = {Joint Design of Protein Sequence and Structure based on Motifs},
+  year     = {Preprint},
+  abstract = {Designing novel proteins with desired functions is crucial in biology and chemistry. However, most existing work focus on protein sequence design, leaving protein sequence and structure co-design underexplored. In this paper, we propose GeoPro, a method to design protein backbone structure and sequence jointly. Our motivation is that protein sequence and its backbone structure constrain each other, and thus joint design of both can not only avoid nonfolding and misfolding but also produce more diverse candidates with desired functions. To this end, GeoPro is powered by an equivariant encoder for three-dimensional (3D) backbone structure and a protein sequence decoder guided by 3D geometry. Experimental results on two biologically significant metalloprotein datasets, including β-lactamases and myoglobins, show that our proposed GeoPro outperforms several strong baselines on most metrics. Remarkably, our method discovers novel β-lactamases and myoglobins which are not present in protein data bank (PDB) and UniProt. These proteins exhibit stable folding and active site environments reminiscent of those of natural proteins, demonstrating their excellent potential to be biologically functional.},
+  eprint   = {https://arxiv.org/abs/2310.02546},
 }
 
 @Noshow{tianPreprintconversational,
