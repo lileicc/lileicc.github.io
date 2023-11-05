@@ -1,3 +1,66 @@
+@InProceedings{dong2023statistical,
+  author    = {Qingxiu Dong and Jingjing Xu and Lingpeng Kong and Zhifang Sui and Lei Li},
+  booktitle = {the 37th Conference on Neural Information Processing Systems (NeurIPS)},
+  title     = {Statistical Knowledge Assessment for Large Language Models},
+  year      = {2023},
+  month     = dec,
+  abstract  = {Given varying prompts regarding a factoid question, can a large language model (LLM) reliably generate factually correct answers? Existing LLMs may generate distinct responses for different prompts. In this paper, we study the problem of quantifying knowledge contained in an LLM regarding a given set of facts. We propose KaRR, a statistical approach to assess factual knowledge for LLMs. The main idea is to estimate the ratio of LLM generating text corresponding to the answer entity given diverse prompts of the subject and the querying relation, versus it generating by random chances. Our assessment suite contains a comprehensive set of 994,123 entities and 600 relations, with 1,395,905 text aliases. We use our method to evaluate 20 LLMs of various sizes, including LLaMA, Alpaca, OPT, etc. Experiments show that our results have a strong correlation (0.43 Kendall's τ) with the results of human assessment on LLMs. Our results reveal that the knowledge in LLMs with the same backbone architecture adheres to the scaling law, while tuning on instruction-following data sometimes compromises the model's capability to generate factually correct text reliably.},
+  eprint    = {https://arxiv.org/abs/2305.10519},
+  owner     = {lilei.02},
+}
+
+@InProceedings{zhang2023algo,
+  author    = {Kexun Zhang and Danqing Wang and Jingtao Xia and William Yang Wang and Lei Li},
+  booktitle = {the 37th Conference on Neural Information Processing Systems (NeurIPS)},
+  title     = {ALGO: Synthesizing Algorithmic Programs with Generated Oracle Verifiers},
+  year      = {2023},
+  month     = dec,
+  abstract  = {Large language models (LLMs) excel at implementing code from functionality descriptions but struggle with algorithmic problems that require not only implementation but also identification of the suitable algorithm. Moreover, LLM-generated programs lack guaranteed correctness and require human verification. To address these challenges, we propose ALGO, a framework that synthesizes Algorithmic programs with LLM-Generated Oracles to guide the generation and verify their correctness. ALGO first generates a reference oracle by prompting an LLM to exhaustively enumerate all the combinations of relevant variables. This oracle is then utilized to guide an arbitrary search strategy in exploring the algorithm space and to verify the synthesized algorithms. Our study shows that the LLM-generated oracles are correct for 88% of the cases. With the oracles as verifiers, ALGO can be integrated with any existing code generation model in a model-agnostic manner to enhance its performance. Experiments show that when equipped with ALGO, we achieve an 8x better one-submission pass rate over the Codex model and a 2.6x better one-submission pass rate over CodeT, the current state-of-the-art model on CodeContests. We can also get 1.3x better pass rate over the ChatGPT Code Interpreter on unseen problems.},
+  code      = {https://github.com/zkx06111/ALGO},
+  eprint    = {https://arxiv.org/abs/2305.14591},
+  owner     = {lilei.02},
+}
+
+@InProceedings{wang2023learning,
+  author    = {Danqing Wang and and Lei Li},
+  booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  title     = {Learning from Mistakes via Cooperative Study Assistant for Large Language Models},
+  year      = {2023},
+  month     = dec,
+  abstract  = {Large language models (LLMs) have demonstrated their potential to refine their generation based on their own feedback. However, the feedback from LLM itself is often inaccurate, thereby limiting its benefits. In this paper, we propose Study Assistant for Large LAnguage Model (SALAM), a novel framework with an auxiliary agent to assist the main LLM in learning from mistakes through interactive cooperation. In the gathering phase, the student assistant agent probes the main LLM, analyzes its errors, and collects the interaction in a mistake memory. During the examination phase, the study assistant provides guidelines by retrieving relevant cases to help the main LLM anticipate and avoid similar errors. We first investigate the effectiveness of a general study assistant and then customize it to provide LLM-specific guidance through imitation learning from successful guidance experiences. Our experiments on three LLMs using two challenging frameworks demonstrate that SALAM can significantly boost LLMs by an accuracy margin of up to 6.6 on BBH and 12.6 on BBQ.},
+  eprint    = {https://arxiv.org/abs/2305.13829},
+}
+
+@InProceedings{xu2023instructscore,
+  author    = {Wenda Xu and Danqing Wang and Liangming Pan and Zhenqiao Song and Markus Freitag and William Yang Wang and Lei Li},
+  booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP)},
+  title     = {INSTRUCTSCORE: Explainable Text Generation Evaluation with Finegrained Feedback},
+  year      = {2023},
+  month     = dec,
+  abstract  = {Automatically evaluating the quality of language generation is critical. Although recent learned metrics show high correlation with human judgement, these metrics can not explain their verdict or associate the scores with defects in generated text. To address this limitation, we present InstructScore, an explainable evaluation metric for text generation. By harnessing both explicit human instruction and the implicit knowledge of GPT-4, we fine-tune a text evaluation metric based on LLaMA, producing both a score for generated text and a human readable diagnostic report. We evaluate InstructScore on a variety of generation tasks, including translation, captioning, data-to-text and commonsense generation. Experiments show that our 7B model surpasses all other unsupervised metrics, including those based on 175B GPT-3 and GPT-4. Surprisingly, our InstructScore, even without direct supervision from human-rated data, achieves performance levels on par with state-of-the-art metrics like COMET22, which were fine-tuned on human ratings.},
+  eprint    = {https://arxiv.org/abs/2305.14282},
+}
+
+@InProceedings{ouyang2023autoplan,
+  author    = {Siqi Ouyang and and Lei Li},
+  booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP) - Findings},
+  title     = {AutoPlan: Automatic Planning of Interactive Decision-Making Tasks With Large Language Models},
+  year      = {2023},
+  month     = dec,
+  abstract  = {Recent large language models (LLMs) are promising for making decisions in grounded environments. However, LLMs frequently fail in complex decision-making tasks due to the misalignment between the pre-trained knowledge in LLMs and the actual rules in the environment. Existing methods require either costly gradient computation or lengthy in-context demonstrations. In this paper, we propose AutoPlan, an approach to guide LLM-based agents to accomplish interactive decision-making tasks. AutoPlan augments the LLM prompt with a task-solving plan and optimizes it through iterative experience collection and reflection. Our experiments show that AutoPlan, though using no in-context demonstrations, achieves success rates on par with the baselines using human-written demonstrations on ALFWorld and even outperforms them by 8% on HotpotQA.},
+  eprint    = {https://arxiv.org/abs/2305.15064},
+}
+
+@InProceedings{wu2023extrapolating,
+  author    = {Bohong Wu and Fei Yuan and Hai Zhao and Lei Li and Jingjing Xu},
+  booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP) - Findings},
+  title     = {Extrapolating Multilingual Understanding Models as Multilingual Generators},
+  year      = {2023},
+  month     = dec,
+  abstract  = {Multilingual understanding models (or encoder-based), pre-trained via masked language modeling, have achieved promising results on many language understanding tasks (e.g., mBERT). However, these non-autoregressive (NAR) models still struggle to generate high-quality texts compared with autoregressive (AR) models. Considering that encoder-based models have the advantage of efficient generation and self-correction abilities, this paper explores methods to empower multilingual understanding models the generation abilities to get a unified model. Specifically, we start from a multilingual encoder (XLM-R) and propose a Semantic-Guided Alignment-then-Denoising (SGA) approach to adapt an encoder to a multilingual generator with a small number of new parameters. Experiments show that the proposed approach is an effective adaption method, outperforming widely-used initialization-based methods with gains of 9.4 BLEU on machine translation, 8.1 Rouge-L on question generation, and 5.5 METEOR on story generation on XLM-Rlarge. On the other hand, we observe that XLM-R is still inferior to mBART in supervised settings despite better results on zero-shot settings, indicating that more exploration is required to make understanding models strong generators.},
+  eprint    = {https://arxiv.org/abs/2305.13140},
+}
+
 @InProceedings{wang2023accelerating,
   author    = {Danqing Wang and Zeyu Wen and Fei Ye and Lei Li and Hao Zhou},
   booktitle = {the 29th SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)},
@@ -108,15 +171,6 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   eprint    = {https://arxiv.org/abs/2211.12130},
 }
 
-@InProceedings{xu2022not,
-  author    = {Wenda Xu and Yilin Tuan and Yujie Lu and Michael Saxon and Lei Li and William Yang Wang},
-  booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP) - Findings},
-  title     = {Not All Errors are Equal: Learning Text Generation Metrics using Stratified Error Synthesis},
-  year      = {2022},
-  abstract  = {Is it possible to build a general and automatic natural language generation (NLG) evaluation metric? Existing learned metrics either perform unsatisfactorily or are restricted to tasks where large human rating data is already available. We introduce SESCORE, a model-based metric that is highly correlated with human judgements without requiring human annotation, by utilizing a novel, iterative error synthesis and severity scoring pipeline. This pipeline applies a series of plausible errors to raw text and assigns severity labels by simulating human judgements with entailment. We evaluate SESCORE against existing metrics by comparing how their scores correlate with human ratings. SESCORE outperforms all prior unsupervised metrics on multiple diverse NLG tasks including machine translation, image captioning, and WebNLG text generation. For WMT 20/21 En-De and Zh-En, SESCORE improve the average Kendall correlation with human judgement from 0.154 to 0.195. SESCORE even achieves comparable performance to the best supervised metric COMET, despite receiving no human-annotated training data.},
-  eprint    = {https://arxiv.org/abs/2210.05035},
-}
-
 @InProceedings{dong2022calibrating,
   author    = {Qingxiu Dong and Damai Dai and Yifan Song and Jingjing Xu and Zhifang Sui and Lei Li},
   booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP) - Findings},
@@ -128,6 +182,16 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   eprint    = {https://arxiv.org/abs/2210.03329},
 }
 
+@InProceedings{xu2022not,
+  author    = {Wenda Xu and Yilin Tuan and Yujie Lu and Michael Saxon and Lei Li and William Yang Wang},
+  booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP) - Findings},
+  title     = {Not All Errors are Equal: Learning Text Generation Metrics using Stratified Error Synthesis},
+  year      = {2022},
+  month     = dec,
+  abstract  = {Is it possible to build a general and automatic natural language generation (NLG) evaluation metric? Existing learned metrics either perform unsatisfactorily or are restricted to tasks where large human rating data is already available. We introduce SESCORE, a model-based metric that is highly correlated with human judgements without requiring human annotation, by utilizing a novel, iterative error synthesis and severity scoring pipeline. This pipeline applies a series of plausible errors to raw text and assigns severity labels by simulating human judgements with entailment. We evaluate SESCORE against existing metrics by comparing how their scores correlate with human ratings. SESCORE outperforms all prior unsupervised metrics on multiple diverse NLG tasks including machine translation, image captioning, and WebNLG text generation. For WMT 20/21 En-De and Zh-En, SESCORE improve the average Kendall correlation with human judgement from 0.154 to 0.195. SESCORE even achieves comparable performance to the best supervised metric COMET, despite receiving no human-annotated training data.},
+  eprint    = {https://arxiv.org/abs/2210.05035},
+}
+
 @InProceedings{zhao2022distillation,
   author    = {Xuandong Zhao and Lei Li and Yu-Xiang Wang},
   booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP) - Findings},
@@ -137,16 +201,6 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   abstract  = {How can we protect the intellectual property of trained NLP models? Modern NLP models are prone to stealing by querying and distilling from their publicly exposed APIs. However, existing protection methods such as watermarking only work for images but are not applicable to text. We propose Distillation-Resistant Watermarking (DRW), a novel technique to protect NLP models from being stolen via distillation. DRW protects a model by injecting watermarks into the victim's prediction probability corresponding to a secret key and is able to detect such a key by probing a suspect model. We prove that a protected model still retains the original accuracy within a certain bound. We evaluate DRW on a diverse set of NLP tasks including text classification, part-of-speech tagging, and named entity recognition. Experiments show that DRW protects the original model and detects stealing suspects at 100% mean average precision for all four tasks while the prior method fails on two.},
   code      = {https://github.com/xuandongzhao/drw},
   eprint    = {https://arxiv.org/abs/2210.03312},
-}
-
-@InProceedings{wang2022lightseq2,
-  author    = {Xiaohui Wang and Yang Wei and Ying Xiong and Guyue Huang and Xian Qian and Yufei Ding and Mingxuan Wang and Lei Li},
-  booktitle = {Proceedings of The International Conference for High Performance Computing, Networking, Storage and Analysis ({SC}'22)},
-  title     = {{LightSeq2}: Accelerated Training for Transformer-based Models on {GPUs}},
-  year      = {2022},
-  month     = nov,
-  code      = {https://github.com/bytedance/lightseq},
-  eprint    = {https://arxiv.org/abs/2110.05722},
 }
 
   abstract = {Separating 3D point clouds into individual instances is an important task for 3D vision. It is challenging due to the unknown and varying number of instances in a scene. Existing deep learning based works focus on a two-step pipeline: first learn a feature embedding and then cluster the points. Such a two-step pipeline leads to disconnected intermediate objectives. In this paper, we propose an integrated reformulation of 3D instance segmentation as a per-point classification problem. We propose ICM-3D, a single-step method to segment 3D instances via instantiated categorization. The augmented category information is automatically constructed from 3D spatial positions. We conduct extensive experiments to verify the effectiveness of ICM-3D and show that it obtains inspiring performance across multiple frameworks, backbones and benchmarks.},
@@ -166,6 +220,16 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   eprint  = {https://arxiv.org/abs/2106.15947},
 }
 
+@InProceedings{wang2022lightseq2,
+  author    = {Xiaohui Wang and Yang Wei and Ying Xiong and Guyue Huang and Xian Qian and Yufei Ding and Mingxuan Wang and Lei Li},
+  booktitle = {Proceedings of The International Conference for High Performance Computing, Networking, Storage and Analysis ({SC}'22)},
+  title     = {{LightSeq2}: Accelerated Training for Transformer-based Models on {GPUs}},
+  year      = {2022},
+  month     = nov,
+  code      = {https://github.com/bytedance/lightseq},
+  eprint    = {https://arxiv.org/abs/2110.05722},
+}
+
 @Patent{he2022video,
   nationality = {US},
   number      = {11,455,802 B2},
@@ -182,14 +246,6 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   owner       = {lilei.02},
 }
 
-@InProceedings{lu2022uncovering,
-  author    = {Yunfei Lu and Peng Cui and Linyun Yu and Lei Li and Wenwu Zhu},
-  booktitle = {the 28th SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)},
-  title     = {Uncovering the Heterogeneous Effects of Preference Diversity on User Activeness: A Dynamic Mixture Model},
-  year      = {2022},
-  month     = aug,
-}
-
 @Patent{yang2022method,
   nationality = {US},
   number      = {US11403835B2},
@@ -203,6 +259,31 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   monthfiled  = {#sep#},
   title       = {Method and device for processing feature point of image},
   comment     = {用于处理图像的特征点的方法和装置},
+  owner       = {lilei.02},
+}
+
+@InProceedings{lu2022uncovering,
+  author    = {Yunfei Lu and Peng Cui and Linyun Yu and Lei Li and Wenwu Zhu},
+  booktitle = {the 28th SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)},
+  title     = {Uncovering the Heterogeneous Effects of Preference Diversity on User Activeness: A Dynamic Mixture Model},
+  year      = {2022},
+  month     = aug,
+}
+
+@Patent{cao2022method,
+  nationality = {US},
+  number      = {US11379664B2},
+  year        = {2022},
+  yearfiled   = {2020},
+  assignee    = {Beijing Bytedance Network Tech Co.},
+  author      = {Cao, Jun and Li, Lei and Wang, Mingxuan and Zhu, Peihao},
+  day         = {5},
+  dayfiled    = {28},
+  month       = jul,
+  monthfiled  = {#feb#},
+  title       = {Method for acquiring a parallel corpus, electronic device, and storage medium},
+  comment     = {平行语料获取方法、装置、电子设备、及存储
+介质},
   owner       = {lilei.02},
 }
 
@@ -250,23 +331,6 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   title     = {On the Learning of Non-autoregressive Transformers},
   year      = {2022},
   month     = jul,
-}
-
-@Patent{cao2022method,
-  nationality = {US},
-  number      = {US11379664B2},
-  year        = {2022},
-  yearfiled   = {2020},
-  assignee    = {Beijing Bytedance Network Tech Co.},
-  author      = {Cao, Jun and Li, Lei and Wang, Mingxuan and Zhu, Peihao},
-  day         = {5},
-  dayfiled    = {28},
-  month       = jul,
-  monthfiled  = {#feb#},
-  title       = {Method for acquiring a parallel corpus, electronic device, and storage medium},
-  comment     = {平行语料获取方法、装置、电子设备、及存储
-介质},
-  owner       = {lilei.02},
 }
 
 @InProceedings{li2022learning,
@@ -469,6 +533,22 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   owner     = {lilei.02},
 }
 
+@Patent{li2021audioa,
+  nationality = {US},
+  number      = {11,182,426 B2},
+  year        = {2021},
+  yearfiled   = {2018},
+  assignee    = {Beijing Bytedance Network Tech Co.},
+  author      = {Gen Li and Lei Li and Yi He},
+  day         = {23},
+  dayfiled    = {29},
+  month       = nov,
+  monthfiled  = {#dec#},
+  title       = {Audio Retrieval and Identification Method and Device},
+  comment     = {一种音频检索识别方法及装置},
+  owner       = {lilei.02},
+}
+
 @InProceedings{qian2021volctrans,
   author       = {Lihua Qian and Yi Zhou and Zaixiang Zheng and Yaoming Zhu and Zehui Lin and Jiangtao Feng and Shanbo Cheng and Lei Li and Mingxuan Wang and Hao Zhou},
   booktitle    = {Sixth Conference on Machine Translation (WMT21)},
@@ -547,22 +627,6 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   abstract  = {Developing  a  unified  multilingual  model  haslong  been  a  pursuit  for  machine  translation. However, existing approaches suffer from performance degradation — a single multilingualmodel  is  inferior  to  separately  trained  bilingual ones on rich-resource languages. We conjecture  that such  a phenomenon  is due  to interference  caused  by  joint  training  with  multiple  languages.   To  accommodate  the  issue,we  propose  CIAT,  an  adapted  Transformermodel  with  a  small  parameter  overhead  formultilingual  machine  translation.   We  evaluate CIAT on multiple benchmark datasets, including  IWSLT,  OPUS-100,  and  WMT.  Experiments  show  that  CIAT  consistently  outperforms strong multilingual baselines on 64 of  total  66  language  directions,  42  of  whichsee  above  0.5  BLEU  improvement. Our code  is  available  at https://github.com/Yaoming95/CIAT.},
   code      = {https://github.com/Yaoming95/CIAT},
   eprint    = {https://arxiv.org/abs/2104.08154},
-}
-
-@Patent{li2021audioa,
-  nationality = {US},
-  number      = {11,182,426 B2},
-  year        = {2021},
-  yearfiled   = {2018},
-  assignee    = {Beijing Bytedance Network Tech Co.},
-  author      = {Gen Li and Lei Li and Yi He},
-  day         = {23},
-  dayfiled    = {29},
-  month       = nov,
-  monthfiled  = {#dec#},
-  title       = {Audio Retrieval and Identification Method and Device},
-  comment     = {一种音频检索识别方法及装置},
-  owner       = {lilei.02},
 }
 
 @InProceedings{wang2021cnewsum,
@@ -762,15 +826,6 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   eprint       = {https://arxiv.org/abs/2105.07319},
 }
 
-@InProceedings{jing2021adversarial,
-  author    = {Mingxuan Jing and Wenbing Huang and Fuchun Sun and Xiaojian Ma and Tao Kong and Chuang Gan and Lei Li},
-  booktitle = {Proceedings of the 38th International Conference on Machine Learning (ICML)},
-  title     = {Adversarial Option-Aware Hierarchical Imitation Learning},
-  year      = {2021},
-  month     = jul,
-  eprint    = {https://arxiv.org/abs/2106.05530},
-}
-
 @Patent{he2021video,
   nationality = {US},
   number      = {11,055,536 B2},
@@ -785,6 +840,15 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   title       = {Video Feature Extraction Method and Device},
   comment     = {一种视频特征提取方法及装置},
   owner       = {lilei.02},
+}
+
+@InProceedings{jing2021adversarial,
+  author    = {Mingxuan Jing and Wenbing Huang and Fuchun Sun and Xiaojian Ma and Tao Kong and Chuang Gan and Lei Li},
+  booktitle = {Proceedings of the 38th International Conference on Machine Learning (ICML)},
+  title     = {Adversarial Option-Aware Hierarchical Imitation Learning},
+  year      = {2021},
+  month     = jul,
+  eprint    = {https://arxiv.org/abs/2106.05530},
 }
 
 @InProceedings{long2021generative,
@@ -894,20 +958,6 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   owner     = {lilei.02},
 }
 
-@InProceedings{xie2021mars,
-  author    = {Yutong Xie and Chence Shi and Hao Zhou and Yuwei Yang and Weinan Zhang and Yong Yu and Lei Li},
-  booktitle = {International Conference on Learning Representations (ICLR)},
-  title     = {{MARS}: Markov Molecular Sampling for Multi-objective Drug Discovery},
-  year      = {2021},
-  month     = may,
-  abstract  = {Searching for novel molecules with desired chemical properties is crucial in drug discovery.  Existing work focuses on developing deep generative models to generate either sequences or chemical molecular graphs. However, it remains a great challenge to find novel and diverse compounds satisfying many properties. In this paper, we propose MARS, a method for multi-objective drug molecule discovery. MARS is based on the idea of generating the chemical candidates by iterative editing fragments of molecular graphs. To search for the best candidates, it employs an annealing scheme together with Markov chain Monte Carlo sampling (MCMC) on molecules. To further improve sample efficiency, MARS is equipped with a graph neural network (GNN) as the proposal for candidate edits on molecules, while the GNN is trained on-the-fly utilizing the sample paths in MCMC. Our experiments show that MARS achieves state-of-the-art performance in various multi-objective settings where molecular bio-activity, drug-likeness, and synthesizability are simultaneously considered.  In the most challenging setting where four objectives – bio-activities to two different targets, drug-likeness and synthesizability – are simultaneously considered, our method outperforms the state-of-the-art significantly in a comprehensive evaluation.},
-  addendum  = {Spotlight, 5.6\% acceptance rate},
-  code      = {https://github.com/yutxie/mars},
-  eprint    = {https://openreview.net/forum?id=kHSu4ebxFXY},
-  owner     = {lilei.02},
-  thumbnail = {xie2021mars_molecule_editing.jpg},
-}
-
 @Patent{li2021target,
   nationality = {CN},
   number      = {201811010095.X},
@@ -924,13 +974,18 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   owner       = {lilei.02},
 }
 
-@InProceedings{wang2021enpar,
-  author    = {Yijun Wang and Changzhi Sun and Yuanbin Wu and Hao Zhou and Lei Li and Junchi Yan},
-  booktitle = {Proceedings of European Chapter of the Association for Computational Linguistics (EACL)},
-  title     = {{ENPAR}: Enhancing Entity and Entity Pair Representations for Joint Entity Relation Extraction},
+@InProceedings{xie2021mars,
+  author    = {Yutong Xie and Chence Shi and Hao Zhou and Yuwei Yang and Weinan Zhang and Yong Yu and Lei Li},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {{MARS}: Markov Molecular Sampling for Multi-objective Drug Discovery},
   year      = {2021},
-  month     = apr,
+  month     = may,
+  abstract  = {Searching for novel molecules with desired chemical properties is crucial in drug discovery.  Existing work focuses on developing deep generative models to generate either sequences or chemical molecular graphs. However, it remains a great challenge to find novel and diverse compounds satisfying many properties. In this paper, we propose MARS, a method for multi-objective drug molecule discovery. MARS is based on the idea of generating the chemical candidates by iterative editing fragments of molecular graphs. To search for the best candidates, it employs an annealing scheme together with Markov chain Monte Carlo sampling (MCMC) on molecules. To further improve sample efficiency, MARS is equipped with a graph neural network (GNN) as the proposal for candidate edits on molecules, while the GNN is trained on-the-fly utilizing the sample paths in MCMC. Our experiments show that MARS achieves state-of-the-art performance in various multi-objective settings where molecular bio-activity, drug-likeness, and synthesizability are simultaneously considered.  In the most challenging setting where four objectives – bio-activities to two different targets, drug-likeness and synthesizability – are simultaneously considered, our method outperforms the state-of-the-art significantly in a comprehensive evaluation.},
+  addendum  = {Spotlight, 5.6\% acceptance rate},
+  code      = {https://github.com/yutxie/mars},
+  eprint    = {https://openreview.net/forum?id=kHSu4ebxFXY},
   owner     = {lilei.02},
+  thumbnail = {xie2021mars_molecule_editing.jpg},
 }
 
 @Patent{chen2021methoda,
@@ -991,16 +1046,13 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   owner       = {lilei.02},
 }
 
-@InProceedings{song2021triangular,
-  author    = {Zhenqiao Song and Jiaze Chen and Hao Zhou and Lei Li},
-  booktitle = {Proceedings of the 14th International Conference on Web Search and Data Mining (WSDM)},
-  title     = {Triangular Bidword Generation for Sponsored Search Auction},
+@InProceedings{wang2021enpar,
+  author    = {Yijun Wang and Changzhi Sun and Yuanbin Wu and Hao Zhou and Lei Li and Junchi Yan},
+  booktitle = {Proceedings of European Chapter of the Association for Computational Linguistics (EACL)},
+  title     = {{ENPAR}: Enhancing Entity and Entity Pair Representations for Joint Entity Relation Extraction},
   year      = {2021},
-  month     = mar,
-  abstract  = {Sponsored search auction is a crucial component of modern search engines. It requires a set of candidate bidwords that advertisers can place bids on. Existing methods generate bidwords from search queries or advertisement content. However, they suffer from the data noise in <query, bidword> and <advertisement, bidword> pairs. In this paper, we propose a triangular bidword generation model (TRIDENT), which takes the high-quality data of paired <query, advertisement> as a supervision signal to indirectly guide the bidword generation process. Our proposed model is simple yet effective: by using bidword as the bridge between search query and advertisement, the generation of search query, advertisement and bidword can be jointly learned in the triangular training framework. This alleviates the problem that the training data of bidword may be noisy. Experimental results, including automatic and human evaluations, show that our proposed TRIDENT can generate relevant and diverse bidwords for both search queries and advertisements. Our evaluation on online real data validates the effectiveness of the TRIDENT’s generated bidwords for product search.},
-  eprint    = {https://arxiv.org/abs/2101.11349},
+  month     = apr,
   owner     = {lilei.02},
-  thumbnail = {song2021triangular_search_bidding_example.jpg},
 }
 
 @Patent{li2021audio,
@@ -1031,6 +1083,31 @@ The code and dataset are publicly available at \url{https://github.com/rgwt123/S
   monthfiled  = dec,
   title       = {Method and Device for Push-Notifying Information},
   comment     = {用于推送信息的方法和装置},
+}
+
+@InProceedings{song2021triangular,
+  author    = {Zhenqiao Song and Jiaze Chen and Hao Zhou and Lei Li},
+  booktitle = {Proceedings of the 14th International Conference on Web Search and Data Mining (WSDM)},
+  title     = {Triangular Bidword Generation for Sponsored Search Auction},
+  year      = {2021},
+  month     = mar,
+  abstract  = {Sponsored search auction is a crucial component of modern search engines. It requires a set of candidate bidwords that advertisers can place bids on. Existing methods generate bidwords from search queries or advertisement content. However, they suffer from the data noise in <query, bidword> and <advertisement, bidword> pairs. In this paper, we propose a triangular bidword generation model (TRIDENT), which takes the high-quality data of paired <query, advertisement> as a supervision signal to indirectly guide the bidword generation process. Our proposed model is simple yet effective: by using bidword as the bridge between search query and advertisement, the generation of search query, advertisement and bidword can be jointly learned in the triangular training framework. This alleviates the problem that the training data of bidword may be noisy. Experimental results, including automatic and human evaluations, show that our proposed TRIDENT can generate relevant and diverse bidwords for both search queries and advertisements. Our evaluation on online real data validates the effectiveness of the TRIDENT’s generated bidwords for product search.},
+  eprint    = {https://arxiv.org/abs/2101.11349},
+  owner     = {lilei.02},
+  thumbnail = {song2021triangular_search_bidding_example.jpg},
+}
+
+@Patent_pending{wang2021speech,
+  assignee    = {Bytedance},
+  author      = {Mingxuan Wang and Qianqian Dong and Lei Li},
+  month       = feb,
+  monthfiled  = {#feb#},
+  nationality = {US},
+  number      = {2021/0271826 A1},
+  owner       = {lilei.02},
+  title       = {Speech translation method, electronic device and computer-readable storage medium},
+  year        = {2021},
+  yearfiled   = {2021},
 }
 
 @InProceedings{dong2021consecutive,
@@ -1104,19 +1181,6 @@ Such new perspective leads to a refreshed understanding of the roles of second m
   eprint    = {https://arxiv.org/abs/2101.01896},
   owner     = {lilei.02},
   thumbnail = {zhang2021taxonomy_completion_task.svg},
-}
-
-@Patent_pending{wang2021speech,
-  assignee    = {Bytedance},
-  author      = {Mingxuan Wang and Qianqian Dong and Lei Li},
-  month       = feb,
-  monthfiled  = {#feb#},
-  nationality = {US},
-  number      = {2021/0271826 A1},
-  owner       = {lilei.02},
-  title       = {Speech translation method, electronic device and computer-readable storage medium},
-  year        = {2021},
-  yearfiled   = {2021},
 }
 
 @Patent{chen2021method,
@@ -1301,6 +1365,38 @@ Such new perspective leads to a refreshed understanding of the roles of second m
   thumbnail = {wang2020solo_result_663.jpg},
 }
 
+@Patent{he2020method,
+  nationality = {China},
+  number      = {201810271774.6},
+  year        = {2020},
+  yearfiled   = {2018},
+  assignee    = {Beijing Bytedance Network Tech Co.},
+  author      = {He, Yi and Li, Lei and Yang, Cheng and Li, Gen and Li, Yitan},
+  day         = {7},
+  dayfiled    = {29},
+  month       = jul,
+  monthfiled  = oct,
+  title       = {A Method and Device for Video Feature Extraction},
+  comment     = {一种视频特征提取方法及装置},
+  owner       = {lilei.02},
+}
+
+@Patent{zhou2020machine,
+  nationality = {CN},
+  number      = {201910105606.4},
+  year        = {2020},
+  yearfiled   = {2019},
+  assignee    = {Beijing Bytedance Tech Co. Ltd},
+  author      = {Zhou, Hao and Li, Lei},
+  day         = {10},
+  dayfiled    = {1},
+  month       = jul,
+  monthfiled  = feb,
+  title       = {Machine Translation Method and Device},
+  comment     = {机器翻译方法和装置},
+  owner       = {lilei.02},
+}
+
 @InProceedings{shi2020dispersed,
   author    = {Wenxian Shi and Hao Zhou and Ning Miao and Lei Li},
   booktitle = {Proceedings of the 37th International Conference on Machine Learning (ICML)},
@@ -1349,48 +1445,6 @@ Such new perspective leads to a refreshed understanding of the roles of second m
   url          = {https://xiaomingbot.github.io},
 }
 
-@Patent{he2020method,
-  nationality = {China},
-  number      = {201810271774.6},
-  year        = {2020},
-  yearfiled   = {2018},
-  assignee    = {Beijing Bytedance Network Tech Co.},
-  author      = {He, Yi and Li, Lei and Yang, Cheng and Li, Gen and Li, Yitan},
-  day         = {7},
-  dayfiled    = {29},
-  month       = jul,
-  monthfiled  = oct,
-  title       = {A Method and Device for Video Feature Extraction},
-  comment     = {一种视频特征提取方法及装置},
-  owner       = {lilei.02},
-}
-
-@Patent{zhou2020machine,
-  nationality = {CN},
-  number      = {201910105606.4},
-  year        = {2020},
-  yearfiled   = {2019},
-  assignee    = {Beijing Bytedance Tech Co. Ltd},
-  author      = {Zhou, Hao and Li, Lei},
-  day         = {10},
-  dayfiled    = {1},
-  month       = jul,
-  monthfiled  = feb,
-  title       = {Machine Translation Method and Device},
-  comment     = {机器翻译方法和装置},
-  owner       = {lilei.02},
-}
-
-@InProceedings{hua2020xref,
-  author    = {Xinyu Hua and Lei Li and Lifeng Hua and Lu Wang},
-  booktitle = {Automated Knowledge Base Construction (AKBC)},
-  title     = {{XREF}: Entity Linking for {Chinese} News Comments with Supplementary Article Reference},
-  year      = {2020},
-  month     = jun,
-  abstract  = {Automatic identification of mentioned entities in social media posts facilitates quick digestion of trending topics and popular opinions. Nonetheless, this remains a challenging task due to limited context and diverse name variations. In this paper, we study the problem of entity linking for Chinese news comments given mentions’ spans. We hypothesize that comments often refer to entities in the corresponding news article, as well as topics involving the entities. We therefore propose a novel model, XREF, that leverages attention mechanisms to (1) pinpoint relevant context within comments, and (2) detect supporting entities from the news article. To improve training, we make two contributions: (a) we propose a supervised attention loss in addition to the standard cross entropy, and (b) we develop a weakly supervised training scheme to utilize the large-scale unlabeled corpus. Two new datasets in entertainment and product domains are collected and annotated for experiments. Our proposed method outperforms previous methods on both datasets.},
-  url       = {https://xinyuhua.github.io/Resources/akbc20/},
-}
-
 @Article{kong2020foveabox,
   author   = {Tao {Kong} and Fuchun {Sun} and Huaping {Liu} and Yuning {Jiang} and Lei {Li} and Jianbo {Shi}},
   journal  = {IEEE Transactions on Image Processing},
@@ -1417,6 +1471,16 @@ Such new perspective leads to a refreshed understanding of the roles of second m
   volume  = {2},
   doi     = {https://doi.org/10.1038/s42256-020-0183-4},
   eprint  = {https://rdcu.be/b5vk7},
+}
+
+@InProceedings{hua2020xref,
+  author    = {Xinyu Hua and Lei Li and Lifeng Hua and Lu Wang},
+  booktitle = {Automated Knowledge Base Construction (AKBC)},
+  title     = {{XREF}: Entity Linking for {Chinese} News Comments with Supplementary Article Reference},
+  year      = {2020},
+  month     = jun,
+  abstract  = {Automatic identification of mentioned entities in social media posts facilitates quick digestion of trending topics and popular opinions. Nonetheless, this remains a challenging task due to limited context and diverse name variations. In this paper, we study the problem of entity linking for Chinese news comments given mentions’ spans. We hypothesize that comments often refer to entities in the corresponding news article, as well as topics involving the entities. We therefore propose a novel model, XREF, that leverages attention mechanisms to (1) pinpoint relevant context within comments, and (2) detect supporting entities from the news article. To improve training, we make two contributions: (a) we propose a supervised attention loss in addition to the standard cross entropy, and (b) we develop a weakly supervised training scheme to utilize the large-scale unlabeled corpus. Two new datasets in entertainment and product domains are collected and annotated for experiments. Our proposed method outperforms previous methods on both datasets.},
+  url       = {https://xinyuhua.github.io/Resources/akbc20/},
 }
 
 @Patent{he2020video,
@@ -1451,31 +1515,6 @@ Such new perspective leads to a refreshed understanding of the roles of second m
   owner       = {lilei.02},
 }
 
-@InProceedings{ye2020variational,
-  author    = {Rong Ye and Wenxian Shi and Hao Zhou and Zhongyu Wei and Lei Li},
-  booktitle = {International Conference on Learning Representations (ICLR)},
-  title     = {Variational Template Machine for Data-to-Text Generation},
-  year      = {2020},
-  month     = apr,
-  abstract  = {How to generate descriptions from structured data organized in tables? Existing approaches using neural encoder-decoder models often suffer from lacking diversity. We claim that an open set of templates is crucial for enriching the phrase constructions and realizing varied generations.Learning such templates is prohibitive since it often requires a large paired <table,description>, which is seldom available. This paper explores the problem of automatically learning reusable "templates" from paired and non-paired data. We propose the variational template machine (VTM), a novel method to generate text descriptions from data tables. Our contributions include:  a) we carefully devise a specific model architecture and losses to explicitly disentangle text template and semantic content information, in the latent spaces, and b) we utilize both small parallel data and large raw text without aligned tables to enrich the template learning. Experiments on datasets from a variety of different domains show that VTM is able generate more diversely while keeping a good fluency and quality.},
-  code      = {https://github.com/ReneeYe/VariationalTemplateMachine},
-  eprint    = {https://openreview.net/forum?id=HkejNgBtPB},
-  video     = {https://iclr.cc/virtual_2020/poster_HkejNgBtPB.html},
-}
-
-@InProceedings{zheng2020mirror,
-  author    = {Zaixiang Zheng and Hao Zhou and Shujian Huang and Lei Li and Xinyu Dai and Jiajun Chen},
-  booktitle = {International Conference on Learning Representations (ICLR)},
-  title     = {Mirror Generative Models for Neural Machine Translation},
-  year      = {2020},
-  month     = apr,
-  abstract  = {Training neural machine translation models (NMT) requires a large amount of parallel corpus, which is scarce for many language pairs. However, raw non-parallel corpora are often easy to obtain. Existing approaches have not exploited the full potential of non-parallel bilingual data either in training or decoding. In this paper, we propose the mirror-generative NMT (MGNMT), a single unified architecture that simultaneously integrates the source to target translation model, the target to source translation model, and two language models. Both translation models and language models share the same latent semantic space, therefore both translation directions can learn from non-parallel data more effectively. Besides, the translation models and language models can collaborate together during decoding. Our experiments show that the proposed MGNMT consistently outperforms existing approaches in all a variety of scenarios and language pairs, including resource-rich and low-resource languages.},
-  addendum  = {Oral, 1.9\% acceptance rate},
-  eprint    = {https://openreview.net/forum?id=HkxQRTNYPH},
-  owner     = {lilei.02},
-  video     = {https://iclr.cc/virtual_2020/poster_HkxQRTNYPH.html},
-}
-
 @Patent{li2020target,
   nationality = {CN},
   number      = {201811010092.6},
@@ -1506,6 +1545,31 @@ Such new perspective leads to a refreshed understanding of the roles of second m
   title       = {Method and Apparatus for generating image},
   comment     = {用于生成图像的方法和装置},
   owner       = {lilei.02},
+}
+
+@InProceedings{ye2020variational,
+  author    = {Rong Ye and Wenxian Shi and Hao Zhou and Zhongyu Wei and Lei Li},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {Variational Template Machine for Data-to-Text Generation},
+  year      = {2020},
+  month     = apr,
+  abstract  = {How to generate descriptions from structured data organized in tables? Existing approaches using neural encoder-decoder models often suffer from lacking diversity. We claim that an open set of templates is crucial for enriching the phrase constructions and realizing varied generations.Learning such templates is prohibitive since it often requires a large paired <table,description>, which is seldom available. This paper explores the problem of automatically learning reusable "templates" from paired and non-paired data. We propose the variational template machine (VTM), a novel method to generate text descriptions from data tables. Our contributions include:  a) we carefully devise a specific model architecture and losses to explicitly disentangle text template and semantic content information, in the latent spaces, and b) we utilize both small parallel data and large raw text without aligned tables to enrich the template learning. Experiments on datasets from a variety of different domains show that VTM is able generate more diversely while keeping a good fluency and quality.},
+  code      = {https://github.com/ReneeYe/VariationalTemplateMachine},
+  eprint    = {https://openreview.net/forum?id=HkejNgBtPB},
+  video     = {https://iclr.cc/virtual_2020/poster_HkejNgBtPB.html},
+}
+
+@InProceedings{zheng2020mirror,
+  author    = {Zaixiang Zheng and Hao Zhou and Shujian Huang and Lei Li and Xinyu Dai and Jiajun Chen},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {Mirror Generative Models for Neural Machine Translation},
+  year      = {2020},
+  month     = apr,
+  abstract  = {Training neural machine translation models (NMT) requires a large amount of parallel corpus, which is scarce for many language pairs. However, raw non-parallel corpora are often easy to obtain. Existing approaches have not exploited the full potential of non-parallel bilingual data either in training or decoding. In this paper, we propose the mirror-generative NMT (MGNMT), a single unified architecture that simultaneously integrates the source to target translation model, the target to source translation model, and two language models. Both translation models and language models share the same latent semantic space, therefore both translation directions can learn from non-parallel data more effectively. Besides, the translation models and language models can collaborate together during decoding. Our experiments show that the proposed MGNMT consistently outperforms existing approaches in all a variety of scenarios and language pairs, including resource-rich and low-resource languages.},
+  addendum  = {Oral, 1.9\% acceptance rate},
+  eprint    = {https://openreview.net/forum?id=HkxQRTNYPH},
+  owner     = {lilei.02},
+  video     = {https://iclr.cc/virtual_2020/poster_HkxQRTNYPH.html},
 }
 
 @Patent{deng2020method,
@@ -1660,6 +1724,22 @@ robust to rare sentence context by imposing learned kernels to capture the close
   eprint    = {https://arxiv.org/abs/1911.00274},
 }
 
+@Patent{chen2019method,
+  nationality = {CN},
+  number      = {201811060837.X},
+  year        = {2019},
+  yearfiled   = {2018},
+  assignee    = {Beijing Bytedance Network Tech Co. Ltd},
+  author      = {Chen, Yangyu and He, Yi and Li, Lei},
+  day         = {12},
+  dayfiled    = {12},
+  month       = nov,
+  monthfiled  = sep,
+  title       = {A method and apparatus for determining a geometric transformation relationship between images},
+  comment     = {用于确定图像间的几何变换关系的方法和装置},
+  owner       = {lilei.02},
+}
+
 @InProceedings{zhao2019what,
   author    = {Zhao, Zhichen and Li, Lei and Zhang, Bowen and Wang, Meng and Jiang, Yuning and Xu, Li and Wang, Fengkun and Ma, Weiying},
   booktitle = {the 28th ACM International Conference on Information and Knowledge Management (CIKM)},
@@ -1677,22 +1757,6 @@ robust to rare sentence context by imposing learned kernels to capture the close
   month     = nov,
   abstract  = {In this study, we first investigate a novel capsule network with dynamic routing for linear time Neural Machine Translation (NMT), referred as CAPSNMT. CAPSNMT uses an aggregation mechanism to map the source sentence into a matrix with pre-determined size, and then applys a deep LSTM network to decode the target sequence from the source representation. Unlike the previous work (Sutskever et al., 2014) to store the source sentence with a passive and bottom-up way, the dynamic routing policy encodes the source sentence with an iterative process to decide the credit attribution between nodes from lower and higher layers. CAPSNMT has two core properties: it runs in time that is linear in the length of the sequences and provides a more flexible way to aggregate the part-whole information of the source sentence. On WMT14 English-German task and a larger WMT14 English-French task, CAPSNMT achieves comparable results with the Transformer system. We also devise new hybrid architectures intended to combine the strength of CAPSNMT and the RNMT model. Our hybrid models obtain state-of-the-arts results on both benchmark datasets. To the best of our knowledge, this is the first work that capsule networks have been empirically investigated for sequence to sequence problems},
   eprint    = {https://arxiv.org/abs/1811.00287},
-}
-
-@Patent{chen2019method,
-  nationality = {CN},
-  number      = {201811060837.X},
-  year        = {2019},
-  yearfiled   = {2018},
-  assignee    = {Beijing Bytedance Network Tech Co. Ltd},
-  author      = {Chen, Yangyu and He, Yi and Li, Lei},
-  day         = {12},
-  dayfiled    = {12},
-  month       = nov,
-  monthfiled  = sep,
-  title       = {A method and apparatus for determining a geometric transformation relationship between images},
-  comment     = {用于确定图像间的几何变换关系的方法和装置},
-  owner       = {lilei.02},
 }
 
 @InProceedings{jiang2019svd,
@@ -2053,6 +2117,17 @@ clickbait detection and generic text classification tasks demonstrate that our p
   timestamp = {2014.01.07},
 }
 
+@TechReport{li2013blog,
+  author      = {Li, Lei and Russell, Stuart},
+  institution = {EECS Department, University of California, Berkeley},
+  title       = {The BLOG Language Reference},
+  year        = {2013},
+  month       = may,
+  number      = {UCB/EECS-2013-51},
+  abstract    = {This document introduces the syntax of BLOG, a probabilistic programming language, for describing random variables and their probabilistic dependencies. BLOG defines probabilistic generative models over first-order structures. For example, all Bayesian networks can be easily described by BLOG. BLOG has the following features: (a) it employs open-universe semantics; (b) it can describe relational uncertainty; (c) it can handle identity uncertainty; and (d) it is empowered by first-order logic. The syntax as described in this document corresponds to BLOG version 0.6. The current version represents a significant redesign and extension to previous versions of BLOG, based on the principles of usability and implementation efficiency.},
+  file        = {:pubs/li2013blog - The BLOG Language Reference.pdf:PDF;Tech report:http\:/www.eecs.berkeley.edu/Pubs/TechRpts/2013/EECS-2013-51.html:URL},
+}
+
 @InProceedings{li2013dynamic,
   author    = {Li, Lei and Ramsundar, Bharath and Russell, Stuart},
   booktitle = {16th International Conference on Artificial Intelligence and Statistics (AISTATS)},
@@ -2129,17 +2204,6 @@ clickbait detection and generic text classification tasks demonstrate that our p
   file      = {:pubs/matsubara-The Pacific-Asia Conference on Knowledge Discovery and Data Mining (PAKDD)13-ftrail.pdf:PDF},
 }
 
-@TechReport{li2013blog,
-  author      = {Li, Lei and Russell, Stuart},
-  institution = {EECS Department, University of California, Berkeley},
-  title       = {The BLOG Language Reference},
-  year        = {2013},
-  month       = may,
-  number      = {UCB/EECS-2013-51},
-  abstract    = {This document introduces the syntax of BLOG, a probabilistic programming language, for describing random variables and their probabilistic dependencies. BLOG defines probabilistic generative models over first-order structures. For example, all Bayesian networks can be easily described by BLOG. BLOG has the following features: (a) it employs open-universe semantics; (b) it can describe relational uncertainty; (c) it can handle identity uncertainty; and (d) it is empowered by first-order logic. The syntax as described in this document corresponds to BLOG version 0.6. The current version represents a significant redesign and extension to previous versions of BLOG, based on the principles of usability and implementation efficiency.},
-  file        = {:pubs/li2013blog - The BLOG Language Reference.pdf:PDF;Tech report:http\:/www.eecs.berkeley.edu/Pubs/TechRpts/2013/EECS-2013-51.html:URL},
-}
-
 @InProceedings{henderson2012rolx,
   author    = {Henderson, Keith and Gallagher, Brian and Eliassi-Rad, Tina and Tong, Hanghang and Basu, Sugato and Akoglu, Leman and Koutra, Danai and Faloutsos, Christos and Li, Lei},
   booktitle = {Proceeding of the 18th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining (KDD)},
@@ -2160,6 +2224,17 @@ clickbait detection and generic text classification tasks demonstrate that our p
   publisher = {ACM},
   owner     = {leili},
   timestamp = {2012.07.18},
+}
+
+@PhdThesis{li2011fast,
+  author       = {Li, Lei},
+  title        = {Fast algorithms for mining co-evolving time series},
+  school       = {Carnegie Mellon University},
+  year         = {2011},
+  howpublished = {Available as technical report CMU-CS-11-127},
+  owner        = {leili},
+  slides       = {pubs/leili-talk2011-defense.pdf},
+  timestamp    = {2011.09.01},
 }
 
 @InProceedings{liu2011mobile,
@@ -2224,15 +2299,40 @@ clickbait detection and generic text classification tasks demonstrate that our p
   timestamp = {2011.03.14},
 }
 
-@PhdThesis{li2011fast,
-  author       = {Li, Lei},
-  title        = {Fast algorithms for mining co-evolving time series},
-  school       = {Carnegie Mellon University},
-  year         = {2011},
-  howpublished = {Available as technical report CMU-CS-11-127},
-  owner        = {leili},
-  slides       = {pubs/leili-talk2011-defense.pdf},
-  timestamp    = {2011.09.01},
+@InProceedings{li2010parsimonious,
+  author     = {Li, Lei and Prakash, B. Aditya and Faloutsos, Christos},
+  booktitle  = {the Proceedings of the Very Large Data Bases Endowment (VLDB)},
+  title      = {Parsimonious linear fingerprinting for time series},
+  year       = {2010},
+  month      = sep,
+  pages      = {385--396},
+  publisher  = {VLDB Endowment},
+  volume     = {3},
+  acmid      = {1920893},
+  file       = {:pubs/li2010parsimonious - Parsimonious linear fingerprinting for time series.pdf:PDF},
+  issn       = {2150-8097},
+  issue      = {1-2},
+  issue_date = {September 2010},
+  numpages   = {12},
+  owner      = {leili},
+  slides     = {pubs/li-vldb10-plif-slides.pdf},
+  software   = {software/plif-r345.zip},
+  timestamp  = {2011.03.05},
+}
+
+@Article{li2010efficient,
+  author    = {Li, Lei and Fu, Bin and Faloutsos, Christos},
+  journal   = {IEICE Transactions on Information and Systems},
+  title     = {Efficient Parallel Learning of Hidden {Markov} chain Models on {SMP}s},
+  year      = {2010},
+  number    = {6},
+  pages     = {1330--1342},
+  volume    = {E93.D},
+  abstract  = {Quad-core cpus have been a common desktop configuration for today’s office. The increasing number of processors on a single chip opens new opportunity for parallel computing. Our goal is to make use of the multi-core as well as multi-processor architectures to speed up large-scale data mining algorithms. In this paper, we present a general par- allel learning framework, Cut-And-Stitch, for training hidden Markov chain models. Particularly, we propose two model-specific variants, CAS-LDS for learning linear dynamical systems (LDS) and CAS-HMM for learning hidden Markov models (HMM). Our main contribution is a novel method to handle the data dependencies due to the chain structure of hidden variables, so as to parallelize the EM-based parameter learning algorithm. We imple- ment CAS-LDS and CAS-HMM using OpenMP on two supercomputers and a quad-core commercial desktop. The experimental results show that parallel algorithms using Cut-And-Stitch achieve comparable accuracy and almost linear speedups over the traditional serial version.},
+  comment   = {This one is applying the idea from Cut-And-Stitch paper from linear dynamical system to hidden markov models. The extended version can be found in my thesis Chapter 6 and 7.},
+  file      = {:pubs/li2010efficient - Efficient Parallel Learning of Hidden Markov Chain Models on SMPs.pdf:PDF},
+  owner     = {leili},
+  timestamp = {2011.03.05},
 }
 
 @InProceedings{li2010fast,
@@ -2281,76 +2381,6 @@ clickbait detection and generic text classification tasks demonstrate that our p
   timestamp = {2011.03.05},
 }
 
-@Article{li2010efficient,
-  author    = {Li, Lei and Fu, Bin and Faloutsos, Christos},
-  journal   = {IEICE Transactions on Information and Systems},
-  title     = {Efficient Parallel Learning of Hidden {Markov} chain Models on {SMP}s},
-  year      = {2010},
-  number    = {6},
-  pages     = {1330--1342},
-  volume    = {E93.D},
-  abstract  = {Quad-core cpus have been a common desktop configuration for today’s office. The increasing number of processors on a single chip opens new opportunity for parallel computing. Our goal is to make use of the multi-core as well as multi-processor architectures to speed up large-scale data mining algorithms. In this paper, we present a general par- allel learning framework, Cut-And-Stitch, for training hidden Markov chain models. Particularly, we propose two model-specific variants, CAS-LDS for learning linear dynamical systems (LDS) and CAS-HMM for learning hidden Markov models (HMM). Our main contribution is a novel method to handle the data dependencies due to the chain structure of hidden variables, so as to parallelize the EM-based parameter learning algorithm. We imple- ment CAS-LDS and CAS-HMM using OpenMP on two supercomputers and a quad-core commercial desktop. The experimental results show that parallel algorithms using Cut-And-Stitch achieve comparable accuracy and almost linear speedups over the traditional serial version.},
-  comment   = {This one is applying the idea from Cut-And-Stitch paper from linear dynamical system to hidden markov models. The extended version can be found in my thesis Chapter 6 and 7.},
-  file      = {:pubs/li2010efficient - Efficient Parallel Learning of Hidden Markov Chain Models on SMPs.pdf:PDF},
-  owner     = {leili},
-  timestamp = {2011.03.05},
-}
-
-@InProceedings{li2010parsimonious,
-  author     = {Li, Lei and Prakash, B. Aditya and Faloutsos, Christos},
-  booktitle  = {the Proceedings of the Very Large Data Bases Endowment (VLDB)},
-  title      = {Parsimonious linear fingerprinting for time series},
-  year       = {2010},
-  month      = sep,
-  pages      = {385--396},
-  publisher  = {VLDB Endowment},
-  volume     = {3},
-  acmid      = {1920893},
-  file       = {:pubs/li2010parsimonious - Parsimonious linear fingerprinting for time series.pdf:PDF},
-  issn       = {2150-8097},
-  issue      = {1-2},
-  issue_date = {September 2010},
-  numpages   = {12},
-  owner      = {leili},
-  slides     = {pubs/li-vldb10-plif-slides.pdf},
-  software   = {software/plif-r345.zip},
-  timestamp  = {2011.03.05},
-}
-
-@InProceedings{li2009dynammo,
-  author    = {Li, Lei and McCann, James and Pollard, Nancy and Faloutsos, Christos},
-  booktitle = {Proceeding of the 15th ACM SIGKDD international conference on Knowledge discovery and data mining (KDD)},
-  title     = {{DynaMMo}: Mining and Summarization of Coevolving Sequences with Missing Values},
-  year      = {2009},
-  address   = {New York, NY, USA},
-  publisher = {ACM},
-  code      = {https://github.com/lileicc/dynammo},
-  isbn      = {978-1-60558-193-4},
-  location  = {Paris, France},
-  owner     = {leili},
-  slides    = {pubs/li-kdd09-dynammo-slides.pdf},
-  software  = {software/dynammo-r346.zip},
-  timestamp = {2009.05.01},
-}
-
-@InProceedings{guo2009tailoring,
-  author       = {Guo, Fan and Li, Lei and Faloutsos, Christos},
-  booktitle    = {Proceedings of the 2009 workshop on Web Search Click Data},
-  title        = {Tailoring click models to user goals},
-  year         = {2009},
-  address      = {New York, NY, USA},
-  pages        = {88--92},
-  publisher    = {ACM},
-  series       = {WSCD '09},
-  acmid        = {1507523},
-  doi          = {http://doi.acm.org/10.1145/1507509.1507523},
-  entrysubtype = {workshop},
-  isbn         = {978-1-60558-434-8},
-  keywords     = {click model, user behavior, web search},
-  location     = {Barcelona, Spain},
-  numpages     = {5},
-}
-
 @Patent{chen2009adaptive,
   nationality = {US},
   number      = {US 7,634,471},
@@ -2394,6 +2424,58 @@ clickbait detection and generic text classification tasks demonstrate that our p
   monthfiled  = mar,
   title       = {Extracting Semantic Attributes},
   owner       = {lilei.02},
+}
+
+@InProceedings{li2009dynammo,
+  author    = {Li, Lei and McCann, James and Pollard, Nancy and Faloutsos, Christos},
+  booktitle = {Proceeding of the 15th ACM SIGKDD international conference on Knowledge discovery and data mining (KDD)},
+  title     = {{DynaMMo}: Mining and Summarization of Coevolving Sequences with Missing Values},
+  year      = {2009},
+  address   = {New York, NY, USA},
+  publisher = {ACM},
+  code      = {https://github.com/lileicc/dynammo},
+  isbn      = {978-1-60558-193-4},
+  location  = {Paris, France},
+  owner     = {leili},
+  slides    = {pubs/li-kdd09-dynammo-slides.pdf},
+  software  = {software/dynammo-r346.zip},
+  timestamp = {2009.05.01},
+}
+
+@InProceedings{guo2009tailoring,
+  author       = {Guo, Fan and Li, Lei and Faloutsos, Christos},
+  booktitle    = {Proceedings of the 2009 workshop on Web Search Click Data},
+  title        = {Tailoring click models to user goals},
+  year         = {2009},
+  address      = {New York, NY, USA},
+  pages        = {88--92},
+  publisher    = {ACM},
+  series       = {WSCD '09},
+  acmid        = {1507523},
+  doi          = {http://doi.acm.org/10.1145/1507509.1507523},
+  entrysubtype = {workshop},
+  isbn         = {978-1-60558-434-8},
+  keywords     = {click model, user behavior, web search},
+  location     = {Barcelona, Spain},
+  numpages     = {5},
+}
+
+@InProceedings{guo2008c,
+  author    = {Guo, Fan and Li, Lei and Faloutsos, Christos and Xing, Eric P.},
+  booktitle = {the Proceedings of the Very Large Data Bases Endowment (VLDB)},
+  title     = {{C-DEM}: a Multi-modal Query System for Drosophila Embryo Databases},
+  year      = {2008},
+  month     = aug,
+  pages     = {1508--1511},
+  publisher = {VLDB Endowment},
+  volume    = {1},
+  acmid     = {1454214},
+  file      = {:pubs/guo2008c - C-DEM_ a multi-modal query system for Drosophila Embryo databases.pdf:PDF},
+  issn      = {2150-8097},
+  issue     = {2},
+  numpages  = {4},
+  owner     = {leili},
+  timestamp = {2009.11.20},
 }
 
 @InProceedings{xu2008inferring,
@@ -2442,24 +2524,6 @@ clickbait detection and generic text classification tasks demonstrate that our p
   file      = {:pubs/li2008laziness - Laziness is a virtue_ Motion stitching using effort minimization.pdf:PDF},
   owner     = {leili},
   timestamp = {2009.03.04},
-}
-
-@InProceedings{guo2008c,
-  author    = {Guo, Fan and Li, Lei and Faloutsos, Christos and Xing, Eric P.},
-  booktitle = {the Proceedings of the Very Large Data Bases Endowment (VLDB)},
-  title     = {{C-DEM}: a Multi-modal Query System for Drosophila Embryo Databases},
-  year      = {2008},
-  month     = aug,
-  pages     = {1508--1511},
-  publisher = {VLDB Endowment},
-  volume    = {1},
-  acmid     = {1454214},
-  file      = {:pubs/guo2008c - C-DEM_ a multi-modal query system for Drosophila Embryo databases.pdf:PDF},
-  issn      = {2150-8097},
-  issue     = {2},
-  numpages  = {4},
-  owner     = {leili},
-  timestamp = {2009.11.20},
 }
 
 @InProceedings{li2006providing,
