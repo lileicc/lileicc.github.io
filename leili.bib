@@ -1,3 +1,23 @@
+@InProceedings{xu2024llmrefine,
+  author    = {Wenda Xu and Daniel Deutsch and Mara Finkelstein and Juraj Juraska and Biao Zhang and Zhongtao Liu and William Yang Wang and Lei Li and Markus Freitag},
+  booktitle = {Proceedings of 2024 Conference of the North American Chapter of the Association for Computational Linguistics (NAACL) - Findings},
+  title     = {LLMRefine: Pinpointing and Refining Large Language Models via Fine-Grained Actionable Feedback},
+  year      = {2024},
+  month     = jun,
+  abstract  = {Recent large language models (LLM) are leveraging human feedback to improve their generation quality. However, human feedback is costly to obtain, especially during inference. In this work, we propose LLMRefine, an inference time optimization method to refine LLM's output. The core idea is to use a learned fine-grained feedback model to pinpoint defects and guide LLM to refine them iteratively. Using original LLM as a proposal of edits, LLMRefine searches for defect-less text via simulated annealing, trading off the exploration and exploitation. We conduct experiments on three text generation tasks, including machine translation, long-form question answering (QA), and topical summarization. LLMRefine consistently outperforms all baseline approaches, achieving improvements up to 1.7 MetricX points on translation tasks, 8.1 ROUGE-L on ASQA, 2.2 ROUGE-L on topical summarization.},
+  eprint    = {https://arxiv.org/abs/2311.09336},
+}
+
+@InProceedings{zhu2024multilingual,
+  author    = {Wenhao Zhu and Hongyi Liu and Qingxiu Dong and Jingjing Xu and Lingpeng Kong and Jiajun Chen and Lei Li and Shujian Huang},
+  booktitle = {Proceedings of 2024 Conference of the North American Chapter of the Association for Computational Linguistics (NAACL) - Findings},
+  title     = {Multilingual Machine Translation with Large Language Models: Empirical Results and Analysis},
+  year      = {2024},
+  month     = jun,
+  abstract  = {Large language models (LLMs) have demonstrated remarkable potential in handling multilingual machine translation (MMT). In this paper, we systematically investigate the advantages and challenges of LLMs for MMT by answering two questions: 1) How well do LLMs perform in translating a massive number of languages? 2) Which factors affect LLMs' performance in translation? We evaluate popular LLMs, including XGLM, OPT, BLOOMZ, and ChatGPT, on 102 languages. Our empirical results show that even the best model ChatGPT still lags behind the supervised baseline NLLB in 83.33% of translation directions. Through further analysis, we discover that LLMs exhibit new working patterns when used for MMT. First, prompt semantics can surprisingly be ignored when given in-context exemplars, where LLMs still show strong performance even with unreasonable prompts. Second, cross-lingual exemplars can provide better task instruction for low-resource translation than exemplars in the same language pairs. Third, we observe the overestimated performance of BLOOMZ on dataset Flores-101, indicating the potential risk when using public datasets for evaluation.},
+  eprint    = {https://arxiv.org/abs/2304.04675},
+}
+
 @InProceedings{zhao2024provable,
   author    = {Xuandong Zhao and Prabhanjan Vijendra Ananth and Lei Li and Yu-Xiang Wang},
   booktitle = {International Conference on Learning Representations (ICLR)},
@@ -2700,14 +2720,6 @@ clickbait detection and generic text classification tasks demonstrate that our p
   year     = {Preprint},
   abstract = {Large Language Models (LLMs), trained predominantly on extensive English data, often exhibit limitations when applied to other languages. Current research is primarily focused on enhancing the multilingual capabilities of these models by employing various tuning strategies. Despite their effectiveness in certain languages, the understanding of the multilingual abilities of LLMs remains incomplete. This study endeavors to evaluate the multilingual capacity of LLMs by conducting an exhaustive analysis across 101 languages, and classifies languages with similar characteristics into four distinct quadrants. By delving into each quadrant, we shed light on the rationale behind their categorization and offer actionable guidelines for tuning these languages. Extensive experiments reveal that existing LLMs possess multilingual capabilities that surpass our expectations, and we can significantly improve the multilingual performance of LLMs by focusing on these distinct attributes present in each quadrant.},
   eprint   = {https://arxiv.org/abs/2311.09071},
-}
-
-@Unpublished{zhuPreprintmultilingual,
-  author   = {Wenhao Zhu and Hongyi Liu and Qingxiu Dong and Jingjing Xu and Lingpeng Kong and Jiajun Chen and Lei Li and Shujian Huang},
-  title    = {Multilingual Machine Translation with Large Language Models: Empirical Results and Analysis},
-  year     = {Preprint},
-  abstract = {Large language models (LLMs) have demonstrated remarkable potential in handling multilingual machine translation (MMT). In this paper, we systematically investigate the advantages and challenges of LLMs for MMT by answering two questions: 1) How well do LLMs perform in translating a massive number of languages? 2) Which factors affect LLMs' performance in translation? We evaluate popular LLMs, including XGLM, OPT, BLOOMZ, and ChatGPT, on 102 languages. Our empirical results show that even the best model ChatGPT still lags behind the supervised baseline NLLB in 83.33% of translation directions. Through further analysis, we discover that LLMs exhibit new working patterns when used for MMT. First, prompt semantics can surprisingly be ignored when given in-context exemplars, where LLMs still show strong performance even with unreasonable prompts. Second, cross-lingual exemplars can provide better task instruction for low-resource translation than exemplars in the same language pairs. Third, we observe the overestimated performance of BLOOMZ on dataset Flores-101, indicating the potential risk when using public datasets for evaluation.},
-  eprint   = {https://arxiv.org/abs/2304.04675},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
