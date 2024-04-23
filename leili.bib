@@ -38,6 +38,21 @@
   month     = feb,
 }
 
+@Patent{li2024media,
+  nationality = {US},
+  number      = {US11874869B2},
+  year        = {2024},
+  yearfiled   = {2018},
+  assignee    = {Beijing Bytedance Network Tech Co.},
+  author      = {Gen Li and Yi He and Lei Li and Yitan Li},
+  day         = {16},
+  dayfiled    = {29},
+  month       = jan,
+  monthfiled  = {#dec#},
+  title       = {Media retrieval method and apparatus},
+  owner       = {lilei.02},
+}
+
 @InProceedings{dong2023statistical,
   author    = {Qingxiu Dong and Jingjing Xu and Lingpeng Kong and Zhifang Sui and Lei Li},
   booktitle = {the 37th Conference on Neural Information Processing Systems (NeurIPS)},
@@ -237,7 +252,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
 
 @Patent{du2023document,
   nationality = {US},
-  number      = {US11763103B2},
+  number      = {US11580314B2},
   year        = {2023},
   yearfiled   = {2022},
   assignee    = {Beijing Bytedance Network Tech Co.},
@@ -2657,6 +2672,15 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint   = {https://arxiv.org/abs/2301.00234},
 }
 
+@Unpublished{duartePreprintde,
+  author   = {André V. Duarte and Xuandong Zhao and Arlindo L. Oliveira and Lei Li},
+  title    = {DE-COP: Detecting Copyrighted Content in Language Models Training Data},
+  year     = {Preprint},
+  abstract = {How can we detect if copyrighted content was used in the training process of a language model, considering that the training data is typically undisclosed? We are motivated by the premise that a language model is likely to identify verbatim excerpts from its training text. We propose DE-COP, a method to determine whether a piece of copyrighted content was included in training. DE-COP's core approach is to probe an LLM with multiple-choice questions, whose options include both verbatim text and their paraphrases. We construct BookTection, a benchmark with excerpts from 165 books published prior and subsequent to a model's training cutoff, along with their paraphrases. Our experiments show that DE-COP surpasses the prior best method by 9.6% in detection performance (AUC) on models with logits available. Moreover, DE-COP also achieves an average accuracy of 72% for detecting suspect books on fully black-box models where prior methods give ≈ 4% accuracy.},
+  code     = {https://github.com/avduarte333/DE-COP_Method},
+  eprint   = {https://arxiv.org/abs/2402.09910},
+}
+
 @Noshow{liPreprintbidirectional,
   author = {Mingwei Li and Qingyuan Jiang and Yi He and Lei Li and Wujun Li},
   title  = {Bidirectional Attentive Convolutional Neural Network for Near-Duplicate Video Retrieval},
@@ -2693,6 +2717,14 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint   = {https://arxiv.org/abs/2310.03304},
 }
 
+@Unpublished{xuPreprintperils,
+  author   = {Wenda Xu and Guanglei Zhu and Xuandong Zhao and Liangming Pan and Lei Li and William Yang Wang},
+  title    = {Perils of Self-Feedback: Self-Bias Amplifies in Large Language Models},
+  year     = {Preprint},
+  abstract = {Recent studies show that self-feedback improves large language models (LLMs) on certain tasks while worsens other tasks. We discovered that such a contrary is due to LLM's bias towards their own output. In this paper, we formally define LLM's self-bias -- the tendency to favor its own generation -- using two statistics. We analyze six LLMs on translation, constrained text generation, and mathematical reasoning tasks. We find that self-bias is prevalent in all examined LLMs across multiple languages and tasks. Our analysis reveals that while the self-refine pipeline improves the fluency and understandability of model outputs, it further amplifies self-bias. To mitigate such biases, we discover that larger model size and external feedback with accurate assessment can significantly reduce bias in the self-refine pipeline, leading to actual performance improvement in downstream tasks.},
+  eprint   = {https://arxiv.org/abs/2402.11436},
+}
+
 @Unpublished{xuPreprintreciprocal,
   author = {Minkai Xu and Mingxuan Wang and Zhouhan Lin and Hao Zhou and Weinan Zhang and Lei Li},
   title  = {Reciprocal Supervised Learning Improves Neural Machine Translation},
@@ -2705,6 +2737,14 @@ clickbait detection and generic text classification tasks demonstrate that our p
   title  = {A Survey on Green Deep Learning},
   year   = {Preprint},
   eprint = {https://arxiv.org/abs/2111.05193},
+}
+
+@Unpublished{yangPreprintstructure,
+  author   = {Yuwei Yang and Siqi Ouyang and Xueyu Hu and Mingyue Zheng and Hao Zhou and Lei Li},
+  title    = {Structure-Based Drug Design via 3D Molecular Generative Pre-training and Sampling},
+  year     = {Preprint},
+  abstract = {Structure-based drug design aims at generating high affinity ligands with prior knowledge of 3D target structures. Existing methods either use conditional generative model to learn the distribution of 3D ligands given target binding sites, or iteratively modify molecules to optimize a structure-based activity estimator. The former is highly constrained by data quantity and quality, which leaves optimization-based approaches more promising in practical scenario. However, existing optimization-based approaches choose to edit molecules in 2D space, and use molecular docking to estimate the activity using docking predicted 3D target-ligand complexes. The misalignment between the action space and the objective hinders the performance of these models, especially for those employ deep learning for acceleration. In this work, we propose MolEdit3D to combine 3D molecular generation with optimization frameworks. We develop a novel 3D graph editing model to generate molecules using fragments, and pre-train this model on abundant 3D ligands for learning target-independent properties. Then we employ a target-guided self-learning strategy to improve target-related properties using self-sampled molecules. MolEdit3D achieves state-of-the-art performance on majority of the evaluation metrics, and demonstrate strong capability of capturing both target-dependent and independent properties.},
+  eprint   = {https://arxiv.org/abs/2402.14315},
 }
 
 @Unpublished{yanPreprintcross,
@@ -2720,6 +2760,31 @@ clickbait detection and generic text classification tasks demonstrate that our p
   year     = {Preprint},
   abstract = {Large Language Models (LLMs), trained predominantly on extensive English data, often exhibit limitations when applied to other languages. Current research is primarily focused on enhancing the multilingual capabilities of these models by employing various tuning strategies. Despite their effectiveness in certain languages, the understanding of the multilingual abilities of LLMs remains incomplete. This study endeavors to evaluate the multilingual capacity of LLMs by conducting an exhaustive analysis across 101 languages, and classifies languages with similar characteristics into four distinct quadrants. By delving into each quadrant, we shed light on the rationale behind their categorization and offer actionable guidelines for tuning these languages. Extensive experiments reveal that existing LLMs possess multilingual capabilities that surpass our expectations, and we can significantly improve the multilingual performance of LLMs by focusing on these distinct attributes present in each quadrant.},
   eprint   = {https://arxiv.org/abs/2311.09071},
+}
+
+@Unpublished{yuanPreprintks,
+  author   = {Fei Yuan and Chang Ma and Shuai Yuan and Qiushi Sun and Lei Li},
+  title    = {KS-Lottery: Finding Certified Lottery Tickets for Multilingual Language Models},
+  year     = {Preprint},
+  abstract = {The lottery ticket hypothesis posits the existence of ``winning tickets'' within a randomly initialized neural network. Do winning tickets exist for LLMs in fine-tuning scenarios? How can we find such winning tickets? In this paper, we propose KS-Lottery, a method to identify a small subset of LLM parameters highly effective in multilingual fine-tuning. Our key idea is to use Kolmogorov-Smirnov Test to analyze the distribution shift of parameters before and after fine-tuning. We further theoretically prove that KS-Lottery can find the certified winning tickets in the embedding layer, fine-tuning on the found parameters is guaranteed to perform as well as full fine-tuning. Comparing KS-Lottery with other parameter-efficient tuning algorithms on translation tasks, the experimental results show that KS-Lottery finds a much smaller set of parameters for fine-tuning while achieving the comparable performance as full fine-tuning LLM. Surprisingly, we find that fine-tuning 18 tokens' embedding of LLaMA suffices to reach the fine-tuning translation performance.},
+  eprint   = {https://arxiv.org/abs/2402.02801},
+}
+
+@Unpublished{zhangPreprinthire,
+  author   = {Kexun Zhang and Yee Man Choi and Zhenqiao Song and Taiqi He and William Yang Wang and Lei Li},
+  title    = {Hire a Linguist!: Learning Endangered Languages with In-Context Linguistic Descriptions},
+  year     = {Preprint},
+  abstract = {How can large language models (LLMs) process and translate endangered languages? Many languages lack a large corpus to train a decent LLM; therefore existing LLMs rarely perform well in unseen, endangered languages. On the contrary, we observe that 2000 endangered languages, though without a large corpus, have a grammar book or a dictionary. We propose LINGOLLM, a training-free approach to enable an LLM to process unseen languages that hardly occur in its pre-training. Our key insight is to demonstrate linguistic knowledge of an unseen language in an LLM's prompt, including a dictionary, a grammar book, and morphologically analyzed input text. We implement LINGOLLM on top of two models, GPT-4 and Mixtral, and evaluate their performance on 5 tasks across 8 endangered or low-resource languages. Our results show that LINGOLLM elevates translation capability from GPT-4's 0 to 10.5 BLEU for 10 language directions. Our findings demonstrate the tremendous value of linguistic knowledge in the age of LLMs for endangered languages.},
+  eprint   = {https://arxiv.org/abs/2402.18025},
+}
+
+@Unpublished{zhaoPreprintpermute,
+  author   = {Xuandong Zhao and Lei Li and Yu-Xiang Wang},
+  title    = {Permute-and-Flip: An optimally robust and watermarkable decoder for LLMs},
+  year     = {Preprint},
+  abstract = {In this paper, we propose a new decoding method called Permute-and-Flip (PF) decoder. It enjoys robustness properties similar to the standard sampling decoder, but is provably up to 2x better in its quality-robustness tradeoff than sampling and never worse than any other decoder. We also design a cryptographic watermarking scheme analogous to Aaronson's Gumbel watermark, but naturally tailored for PF decoder. The watermarking scheme does not change the distribution to sample, while allowing arbitrarily low false positive rate and high recall whenever the generated text has high entropy. Our experiments show that the PF decoder (and its watermarked counterpart) significantly outperform(s) naive sampling (and it's Gumbel watermarked counterpart) in terms of perplexity, while retaining the same robustness (and detectability), hence making it a promising new approach for LLM decoding.},
+  code     = {https://github.com/XuandongZhao/pf-decoding},
+  eprint   = {https://arxiv.org/abs/2402.05864},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
