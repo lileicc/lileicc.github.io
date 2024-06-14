@@ -1,3 +1,68 @@
+@InProceedings{yuan2024how,
+  author    = {Fei Yuan and Shuai Yuan and Zhiyong Wu and Lei Li},
+  booktitle = {the 62nd Annual Meeting of the Association for Computational Linguistics - Findings (ACL-Findings)},
+  title     = {How Vocabulary Sharing Facilitates Multilingualism in LLaMA?},
+  year      = {2024},
+  month     = aug,
+  abstract  = {Large Language Models (LLMs), often show strong performance on English tasks, while ex- hibiting limitations on other languages. What is an LLM’s multilingual capability when it is trained only on certain languages? The under- lying mechanism remains unclear. This study endeavors to examine the multilingual capabil- ity of LLMs from the vocabulary sharing per- spective by conducting an exhaustive analysis across 101 languages. Through the investiga- tion of the performance gap before and after embedding fine-tuning, we discovered four dis- tinct quadrants. By delving into each quadrant we provide actionable and efficient guidelines for tuning these languages. Extensive experi- ments reveal that existing LLMs possess mul- tilingual capabilities that surpass our expecta- tions, and we can significantly improve the mul- tilingual performance of LLMs based on these attributes of each quadrant},
+  eprint    = {https://arxiv.org/abs/2311.09071},
+}
+
+@InProceedings{zhang2024hire,
+  author    = {Kexun Zhang and Yee Man Choi and Zhenqiao Song and Taiqi He and William Yang Wang and Lei Li},
+  booktitle = {the 62nd Annual Meeting of the Association for Computational Linguistics - Findings (ACL-Findings)},
+  title     = {Hire a Linguist!: Learning Endangered Languages in LLMs with In-Context Linguistic Descriptions},
+  year      = {2024},
+  month     = aug,
+  abstract  = {How can large language models (LLMs) process and translate endangered languages? Many languages lack a large corpus to train a decent LLM; therefore existing LLMs rarely perform well in unseen, endangered languages. On the contrary, we observe that 2000 endan- gered languages, though without a large corpus, have a grammar book or a dictionary. We pro- pose LINGOLLM, a training-free approach to enable an LLM to process unseen languages that hardly occur in its pre-training. Our key insight is to demonstrate linguistic knowledge of an unseen language in an LLM’s prompt, including a dictionary, a grammar book, and morphologically analyzed input text. We im- plement LINGOLLM on top of two models, GPT-4 and Mixtral, and evaluate their perfor- mance on 5 tasks across 8 endangered or low- resource languages. Our results show that LIN- GOLLM elevates translation capability from GPT-4’s 0 to 10.5 BLEU for 10 language di- rections. Our findings demonstrate the tremen- dous value of linguistic knowledge in the age of LLMs for endangered languages. Our data, code, and model generations can be found at https://github.com/LeiLiLab/LingoLLM.},
+  code      = {https://github.com/LeiLiLab/LingoLLM},
+  eprint    = {https://arxiv.org/abs/2402.18025},
+}
+
+@InProceedings{xu2024pride,
+  author    = {Wenda Xu and Guanglei Zhu and Xuandong Zhao and Liangming Pan and Lei Li and William Yang Wang},
+  booktitle = {the 62nd Annual Meeting of the Association for Computational Linguistics (ACL)},
+  title     = {Pride and Prejudice: LLM Amplifies Self-Bias in Self-Refinement},
+  year      = {2024},
+  month     = aug,
+  note      = {2024},
+  abstract  = {Recent studies show that large language models (LLMs) improve their performance through self-feedback on certain tasks while degrade on others. We discovered that such a contrary is due to LLM’s bias in evaluating their own output. In this paper, we formally define LLM’s self-bias – the tendency to favor its own generation – using two statistics. We analyze six LLMs (GPT-4, GPT-3.5, Gemini, LLaMA2, Mixtral and DeepSeek) on translation, constrained text generation, and mathematical reasoning tasks. We find that self-bias is prevalent in all examined LLMs across multiple languages and tasks. Our analysis reveals that while the self-refine pipeline improves the fluency and understandability of model out- puts, it further amplifies self-bias. To mitigate such biases, we discover that larger model size and external feedback with accurate assessment can significantly reduce bias in the self-refine pipeline, leading to actual performance improvement in downstream tasks. The code and data are released at https://github. com/xu1998hz/llm_self_bias.},
+  code      = {https://github. com/xu1998hz/llm_self_bias},
+  eprint    = {https://arxiv.org/abs/2402.11436},
+}
+
+@InProceedings{duarte2024de,
+  author    = {André V. Duarte and Xuandong Zhao and Arlindo L. Oliveira and Lei Li},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML)},
+  title     = {DE-COP: Detecting Copyrighted Content in Language Models Training Data},
+  year      = {2024},
+  month     = jul,
+  abstract  = {How can we detect if copyrighted content was used in the training process of a language model, considering that the training data is typically undisclosed? We are motivated by the premise that a language model is likely to identify ver- batim excerpts from its training text. We propose DE-COP, a method to determine whether a piece of copyrighted content was included in training. DE-COP’s core approach is to probe an LLM with multiple-choice questions, whose options include both verbatim text and their paraphrases. We construct BookTection, a benchmark with excerpts from 165 books published prior and subsequent to a model’s training cutoff, along with their paraphrases. Our experiments show that DE-COP surpasses the prior best method by 9.6% in detection performance (AUC) on models with logits available. Moreover, DE-COP also achieves an average accuracy of 72% for detecting suspect books on fully black-box models where prior methods give approximately 4% accuracy. The code and datasets are available at https: //github.com/LeiLiLab/DE-COP.},
+  code      = {https: //github.com/LeiLiLab/DE-COP},
+  eprint    = {https://arxiv.org/abs/2402.09910},
+}
+
+@InProceedings{song2024generative,
+  author    = {Zhenqiao Song and Yunlong Zhao and Wenxian Shi and Wengong Jin and Yang Yang and Lei Li},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML)},
+  title     = {Generative Enzyme Design Guided by Functionally Important Sites and Small-Molecule Substrates},
+  year      = {2024},
+  month     = jul,
+  abstract  = {Enzymes are genetically encoded biocatalysts capable of accelerating chemical reactions. How can we automatically design functional enzymes? In this paper, we propose EnzyGen, an approach to learn a unified model to design enzymes across all functional families. Our key idea is to generate an enzyme’s amino acid sequence and their three-dimensional (3D) coordinates based on functionally important sites and substrates corresponding to a desired catalytic function. These sites are automatically mined from enzyme databases. EnzyGen consists of a novel interleaving network of attention and neighborhood equivariant layers, which captures both long-range correlation in an entire protein sequence and local influence from nearest amino acids in 3D space. To learn the generative model, we devise a joint training objective, including a sequence generation loss, a position prediction loss and an enzyme- substrate interaction loss. We further construct EnzyBench, a dataset with 3157 enzyme families, covering all available enzymes within the protein data bank (PDB). Experimental results show that our EnzyGen consistently achieves the best performance across all 323 testing families, surpassing the best baseline by 10.79% in terms of substrate binding affinity. These findings demonstrate EnzyGen’s superior capability in designing well-folded and effective enzymes binding to specific substrates with high affinities. The code, model and dataset are released at https: //github.com/LeiLiLab/EnzyGen.},
+  code      = {https: //github.com/LeiLiLab/EnzyGen},
+  eprint    = {https://arxiv.org/abs/2405.08205},
+}
+
+@InProceedings{song2024surfpro,
+  author    = {Zhenqiao Song and Tinglin Huang and Lei Li and Wengong Jin},
+  booktitle = {Proceedings of the 41st International Conference on Machine Learning (ICML)},
+  title     = {SurfPro: Functional Protein Design Based on Continuous Surface},
+  year      = {2024},
+  month     = jul,
+  abstract  = {How can we design proteins with desired functions? We are motivated by a chemical intuition that both geometric structure and biochemical properties are critical to a protein’s function. In this paper, we propose SurfPro, a new method to generate functional proteins given a desired surface and its associated biochemical properties. SurfPro comprises a hierarchical encoder that progressively models the geometric shape and biochemical features of a protein surface, and an autoregressive decoder to produce an amino acid sequence. We evaluate SurfPro on a standard inverse folding benchmark CATH 4.2 and two functional protein design tasks: protein binder design and enzyme design. Our SurfPro consistently surpasses previous state-of-the-art inverse folding methods, achieving a recovery rate of 57.78% on CATH 4.2 and higher success rates in terms of protein-protein binding and enzyme-substrate interaction scores.},
+  eprint    = {https://arxiv.org/abs/2405.06693},
+}
+
 @InProceedings{xu2024llmrefine,
   author    = {Wenda Xu and Daniel Deutsch and Mara Finkelstein and Juraj Juraska and Biao Zhang and Zhongtao Liu and William Yang Wang and Lei Li and Markus Freitag},
   booktitle = {Proceedings of 2024 Conference of the North American Chapter of the Association for Computational Linguistics (NAACL) - Findings},
@@ -30,6 +95,21 @@
   owner     = {lilei.02},
 }
 
+@Patent{li2024method,
+  nationality = {US},
+  number      = {11,954,455 B2},
+  year        = {2024},
+  yearfiled   = {2021},
+  assignee    = {Beijing Bytedance Network Technology Co.},
+  author      = {Lei Li and Jun Cao and Minguxan Wang and Zhou Qian},
+  day         = {9},
+  dayfiled    = {26},
+  month       = apr,
+  monthfiled  = {#feb#},
+  title       = {Method for translating words in a picture, electronic device, and storage medium},
+  type        = {patentus},
+}
+
 @InProceedings{jain2024where,
   author    = {Sameer Jain and Sedrick Scott Keh and Shova Chhetri and Karun Dewan and Pablo Izquierdo and Johanna Prussmann and Pooja Shrestha and César Suárez and Zheyuan Ryan Shi and Lei Li and Fei Fang},
   booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence (AAAI)},
@@ -40,7 +120,7 @@
 
 @Patent{li2024media,
   nationality = {US},
-  number      = {US11874869B2},
+  number      = {11874869B2},
   year        = {2024},
   yearfiled   = {2018},
   assignee    = {Beijing Bytedance Network Tech Co.},
@@ -122,7 +202,7 @@
 
 @Patent{du2023video,
   nationality = {US},
-  number      = {US11580314B2},
+  number      = {11580314B2},
   year        = {2023},
   yearfiled   = {2022},
   assignee    = {Beijing Bytedance Network Tech Co.},
@@ -150,7 +230,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
 
 @Patent{li2023interactive,
   nationality = {US},
-  number      = {US11704504B2},
+  number      = {11704504B2},
   year        = {2023},
   yearfiled   = {2021},
   assignee    = {Beijing Bytedance Network Tech Co.},
@@ -193,6 +273,22 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   month     = jul,
   abstract  = {Language generation models have been an increasingly powerful enabler for many applications. Many such models offer free or affordable API access, which makes them potentially vulnerable to model extraction attacks through distillation. To protect intellectual property (IP) and ensure fair use of these models, various techniques such as lexical watermarking and synonym replacement have been proposed. However, these methods can be nullified by obvious countermeasures such as "synonym randomization". To address this issue, we propose {GINSEW}, a novel method to protect text generation models from being stolen through distillation. The key idea of our method is to inject secret signals into the probability vector of the decoding steps for each target token. We can then detect the secret message by probing a suspect model to tell if it is distilled from the protected one. Experimental results show that GINSEW can effectively identify instances of IP infringement with minimal impact on the generation quality of protected APIs. Our method demonstrates an absolute improvement of 19 to 29 points on mean average precision (mAP) in detecting suspects compared to previous methods against watermark removal attacks.},
   eprint    = {https://arxiv.org/abs/2302.03162},
+}
+
+@InProceedings{gu2023playground,
+  author       = {Gu, Tianrui and Chen, Kaie and Ouyang, Siqi and Li, Lei},
+  booktitle    = {Proceedings of the Workshop on Natural Language Processing for Indigenous Languages of the Americas (AmericasNLP)},
+  title        = {{P}lay{G}round Low Resource Machine Translation System for the 2023 {A}mericas{NLP} Shared Task},
+  year         = {2023},
+  address      = {Toronto, Canada},
+  editor       = {Mager, Manuel and Ebrahimi, Abteen and Oncevay, Arturo and Rice, Enora and Rijhwani, Shruti and Palmer, Alexis and Kann, Katharina},
+  month        = jul,
+  pages        = {173--176},
+  publisher    = {Association for Computational Linguistics},
+  abstract     = {This paper presents PlayGround{'}s submission to the AmericasNLP 2023 shared task on machine translation (MT) into indigenous languages. We finetuned NLLB-600M, a multilingual MT model pre-trained on Flores-200, on 10 low-resource language directions and examined the effectiveness of weight averaging and back translation. Our experiments showed that weight averaging, on average, led to a 0.0169 improvement in the ChrF++ score. Additionally, we found that back translation resulted in a 0.008 improvement in the ChrF++ score.},
+  doi          = {10.18653/v1/2023.americasnlp-1.19},
+  entrysubtype = {workshop},
+  url          = {https://aclanthology.org/2023.americasnlp-1.19},
 }
 
 @InProceedings{yuan2023lego,
@@ -252,7 +348,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
 
 @Patent{du2023document,
   nationality = {US},
-  number      = {US11580314B2},
+  number      = {11580314B2},
   year        = {2023},
   yearfiled   = {2022},
   assignee    = {Beijing Bytedance Network Tech Co.},
@@ -267,7 +363,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
 
 @Patent{he2023method,
   nationality = {US},
-  number      = {US11593582B2},
+  number      = {11593582B2},
   year        = {2023},
   yearfiled   = {2018},
   assignee    = {Beijing Bytedance Network Tech Co.},
@@ -282,7 +378,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
 
 @Patent{wang2023speech,
   nationality = {US},
-  number      = {2021/0271826 A1},
+  number      = {11,586,831 B2},
   year        = {2023},
   yearfiled   = {2021},
   assignee    = {Beijing ByteDance Network Technology Co Ltd},
@@ -304,6 +400,19 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   abstract  = {Given a possibly false claim sentence, how can we automatically correct it with minimal editing? Existing methods either require a large number of pairs of false and corrected claims for supervised training or do not handle well errors spanning over multiple tokens within an utterance. In this paper, we propose VENCE, a novel method for factual error correction (FEC) with minimal edits. VENCE formulates the FEC problem as iterative sampling editing actions with respect to a target density function. We carefully design the target function with predicted truthfulness scores from an offline trained fact verification model. VENCE samples the most probable editing positions based on back-calculated gradients of the truthfulness score concerning input tokens and the editing actions using a distantly-supervised language model (T5). Experiments on a public dataset show that VENCE improves the well-adopted SARI metric by 5.3 (or a relative improvement of 11.8%) over the previous best distantly-supervised methods.},
   code      = {https://github.com/jiangjiechen/VENCE},
   eprint    = {https://arxiv.org/abs/2211.12130},
+}
+
+@InBook{li2023deep,
+  author    = {Lei Li},
+  chapter   = {3},
+  editor    = {Honglin Li and Mingyue Zheng and Feng Zhu and Fang Bai},
+  pages     = {78-94},
+  publisher = {Chemical Industry Press},
+  title     = {Deep Generative Models},
+  year      = {2023},
+  isbn      = {978-7-122-42928-5},
+  note      = {in Chinese},
+  booktitle = {Artificial Intelligence for Drug Discovery},
 }
 
 @InProceedings{dong2022calibrating,
@@ -383,7 +492,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
 
 @Patent{yang2022method,
   nationality = {US},
-  number      = {US11403835B2},
+  number      = {11403835B2},
   year        = {2022},
   yearfiled   = {2018},
   assignee    = {Beijing Bytedance Network Tech Co.},
@@ -407,7 +516,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
 
 @Patent{cao2022method,
   nationality = {US},
-  number      = {US11379664B2},
+  number      = {11379664B2},
   year        = {2022},
   yearfiled   = {2020},
   assignee    = {Beijing Bytedance Network Tech Co.},
@@ -595,7 +704,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
 
 @Patent{he2022method,
   nationality = {US},
-  number      = {US11,265,598 B2},
+  number      = {11,265,598 B2},
   year        = {2022},
   yearfiled   = {2018},
   assignee    = {Beijing Bytedance Network Tech Co.},
@@ -670,7 +779,7 @@ focus on peptide sequence attributes and do not consider crucial structure infor
 
 @Patent{li2021audioa,
   nationality = {US},
-  number      = {US11,182,426 B2},
+  number      = {11,182,426 B2},
   year        = {2021},
   yearfiled   = {2018},
   assignee    = {Beijing Bytedance Network Tech Co.},
@@ -1336,7 +1445,7 @@ Such new perspective leads to a refreshed understanding of the roles of second m
 }
 
 @Patent{he2021duplicate,
-  nationality = {China},
+  nationality = {CN},
   number      = {201810273706.3},
   year        = {2021},
   yearfiled   = {2018},
@@ -1449,7 +1558,7 @@ Such new perspective leads to a refreshed understanding of the roles of second m
 }
 
 @Patent{deng2020sentiment,
-  nationality = {China},
+  nationality = {CN},
   number      = {201810909879.X},
   year        = {2020},
   yearfiled   = {2018},
@@ -1457,7 +1566,7 @@ Such new perspective leads to a refreshed understanding of the roles of second m
   day         = {18},
   dayfiled    = {10},
   month       = sep,
-  monthfiled  = aug,
+  monthfiled  = {#aug#},
   title       = {Sentiment Prediction Method and Device},
   type        = {patent},
   comment     = {舆情指数的预测方法及装置、计算机设备和可读存储介质},
@@ -1488,7 +1597,7 @@ Such new perspective leads to a refreshed understanding of the roles of second m
 }
 
 @Patent{he2020method,
-  nationality = {China},
+  nationality = {CN},
   number      = {201810271774.6},
   year        = {2020},
   yearfiled   = {2018},
@@ -1497,7 +1606,7 @@ Such new perspective leads to a refreshed understanding of the roles of second m
   day         = {7},
   dayfiled    = {29},
   month       = jul,
-  monthfiled  = oct,
+  monthfiled  = {#oct#},
   title       = {A Method and Device for Video Feature Extraction},
   comment     = {一种视频特征提取方法及装置},
   owner       = {lilei.02},
@@ -1606,7 +1715,7 @@ Such new perspective leads to a refreshed understanding of the roles of second m
 }
 
 @Patent{he2020video,
-  nationality = {China},
+  nationality = {CN},
   number      = {201810271773.1},
   year        = {2020},
   yearfiled   = {2018},
@@ -1712,7 +1821,7 @@ Such new perspective leads to a refreshed understanding of the roles of second m
 
 @Patent{li2020systems,
   nationality = {US},
-  number      = {US10606846B2},
+  number      = {10606846B2},
   year        = {2020},
   yearfiled   = {2016},
   assignee    = {Baidu USA LLC},
@@ -1720,7 +1829,7 @@ Such new perspective leads to a refreshed understanding of the roles of second m
   day         = {31},
   dayfiled    = {23},
   month       = mar,
-  monthfiled  = may,
+  monthfiled  = {#may#},
   title       = {Systems and methods for human inspired simple question answering (HISQA)},
   owner       = {lilei.02},
 }
@@ -2505,7 +2614,7 @@ clickbait detection and generic text classification tasks demonstrate that our p
 
 @Patent{chen2009adaptive,
   nationality = {US},
-  number      = {US 7,634,471},
+  number      = {7,634,471},
   year        = {2009},
   yearfiled   = {2006},
   assignee    = {Microsoft},
@@ -2513,14 +2622,14 @@ clickbait detection and generic text classification tasks demonstrate that our p
   day         = {14},
   dayfiled    = {29},
   month       = dec,
-  monthfiled  = mar,
+  monthfiled  = {#mar#},
   title       = {Adaptive grouping in a file network},
   owner       = {lilei.02},
 }
 
 @Patent{chen2009system,
   nationality = {US},
-  number      = {US 7,624,130},
+  number      = {7,624,130},
   year        = {2009},
   yearfiled   = {2006},
   assignee    = {Microsoft},
@@ -2528,14 +2637,14 @@ clickbait detection and generic text classification tasks demonstrate that our p
   day         = {24},
   dayfiled    = {30},
   month       = nov,
-  monthfiled  = mar,
+  monthfiled  = {#mar#},
   title       = {System and method for exploring a semantic file network},
   owner       = {lilei.02},
 }
 
 @Patent{chen2009extracting,
   nationality = {US},
-  number      = {US 7,502,785},
+  number      = {7,502,785},
   year        = {2009},
   yearfiled   = {2006},
   assignee    = {Microsoft},
@@ -2543,7 +2652,7 @@ clickbait detection and generic text classification tasks demonstrate that our p
   day         = {10},
   dayfiled    = {30},
   month       = mar,
-  monthfiled  = mar,
+  monthfiled  = {#mar#},
   title       = {Extracting Semantic Attributes},
   owner       = {lilei.02},
 }
@@ -2672,15 +2781,6 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint   = {https://arxiv.org/abs/2301.00234},
 }
 
-@Unpublished{duartePreprintde,
-  author   = {André V. Duarte and Xuandong Zhao and Arlindo L. Oliveira and Lei Li},
-  title    = {DE-COP: Detecting Copyrighted Content in Language Models Training Data},
-  year     = {Preprint},
-  abstract = {How can we detect if copyrighted content was used in the training process of a language model, considering that the training data is typically undisclosed? We are motivated by the premise that a language model is likely to identify verbatim excerpts from its training text. We propose DE-COP, a method to determine whether a piece of copyrighted content was included in training. DE-COP's core approach is to probe an LLM with multiple-choice questions, whose options include both verbatim text and their paraphrases. We construct BookTection, a benchmark with excerpts from 165 books published prior and subsequent to a model's training cutoff, along with their paraphrases. Our experiments show that DE-COP surpasses the prior best method by 9.6% in detection performance (AUC) on models with logits available. Moreover, DE-COP also achieves an average accuracy of 72% for detecting suspect books on fully black-box models where prior methods give ≈ 4% accuracy.},
-  code     = {https://github.com/avduarte333/DE-COP_Method},
-  eprint   = {https://arxiv.org/abs/2402.09910},
-}
-
 @Noshow{liPreprintbidirectional,
   author = {Mingwei Li and Qingyuan Jiang and Yi He and Lei Li and Wujun Li},
   title  = {Bidirectional Attentive Convolutional Neural Network for Near-Duplicate Video Retrieval},
@@ -2717,14 +2817,6 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint   = {https://arxiv.org/abs/2310.03304},
 }
 
-@Unpublished{xuPreprintperils,
-  author   = {Wenda Xu and Guanglei Zhu and Xuandong Zhao and Liangming Pan and Lei Li and William Yang Wang},
-  title    = {Perils of Self-Feedback: Self-Bias Amplifies in Large Language Models},
-  year     = {Preprint},
-  abstract = {Recent studies show that self-feedback improves large language models (LLMs) on certain tasks while worsens other tasks. We discovered that such a contrary is due to LLM's bias towards their own output. In this paper, we formally define LLM's self-bias -- the tendency to favor its own generation -- using two statistics. We analyze six LLMs on translation, constrained text generation, and mathematical reasoning tasks. We find that self-bias is prevalent in all examined LLMs across multiple languages and tasks. Our analysis reveals that while the self-refine pipeline improves the fluency and understandability of model outputs, it further amplifies self-bias. To mitigate such biases, we discover that larger model size and external feedback with accurate assessment can significantly reduce bias in the self-refine pipeline, leading to actual performance improvement in downstream tasks.},
-  eprint   = {https://arxiv.org/abs/2402.11436},
-}
-
 @Unpublished{xuPreprintreciprocal,
   author = {Minkai Xu and Mingxuan Wang and Zhouhan Lin and Hao Zhou and Weinan Zhang and Lei Li},
   title  = {Reciprocal Supervised Learning Improves Neural Machine Translation},
@@ -2754,28 +2846,12 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint = {https://arxiv.org/abs/1910.11301},
 }
 
-@Unpublished{yuanPreprinthow,
-  author   = {Fei Yuan and Shuai Yuan and Zhiyong Wu and Lei Li},
-  title    = {How Multilingual is Multilingual LLM?},
-  year     = {Preprint},
-  abstract = {Large Language Models (LLMs), trained predominantly on extensive English data, often exhibit limitations when applied to other languages. Current research is primarily focused on enhancing the multilingual capabilities of these models by employing various tuning strategies. Despite their effectiveness in certain languages, the understanding of the multilingual abilities of LLMs remains incomplete. This study endeavors to evaluate the multilingual capacity of LLMs by conducting an exhaustive analysis across 101 languages, and classifies languages with similar characteristics into four distinct quadrants. By delving into each quadrant, we shed light on the rationale behind their categorization and offer actionable guidelines for tuning these languages. Extensive experiments reveal that existing LLMs possess multilingual capabilities that surpass our expectations, and we can significantly improve the multilingual performance of LLMs by focusing on these distinct attributes present in each quadrant.},
-  eprint   = {https://arxiv.org/abs/2311.09071},
-}
-
 @Unpublished{yuanPreprintks,
   author   = {Fei Yuan and Chang Ma and Shuai Yuan and Qiushi Sun and Lei Li},
   title    = {KS-Lottery: Finding Certified Lottery Tickets for Multilingual Language Models},
   year     = {Preprint},
   abstract = {The lottery ticket hypothesis posits the existence of ``winning tickets'' within a randomly initialized neural network. Do winning tickets exist for LLMs in fine-tuning scenarios? How can we find such winning tickets? In this paper, we propose KS-Lottery, a method to identify a small subset of LLM parameters highly effective in multilingual fine-tuning. Our key idea is to use Kolmogorov-Smirnov Test to analyze the distribution shift of parameters before and after fine-tuning. We further theoretically prove that KS-Lottery can find the certified winning tickets in the embedding layer, fine-tuning on the found parameters is guaranteed to perform as well as full fine-tuning. Comparing KS-Lottery with other parameter-efficient tuning algorithms on translation tasks, the experimental results show that KS-Lottery finds a much smaller set of parameters for fine-tuning while achieving the comparable performance as full fine-tuning LLM. Surprisingly, we find that fine-tuning 18 tokens' embedding of LLaMA suffices to reach the fine-tuning translation performance.},
   eprint   = {https://arxiv.org/abs/2402.02801},
-}
-
-@Unpublished{zhangPreprinthire,
-  author   = {Kexun Zhang and Yee Man Choi and Zhenqiao Song and Taiqi He and William Yang Wang and Lei Li},
-  title    = {Hire a Linguist!: Learning Endangered Languages with In-Context Linguistic Descriptions},
-  year     = {Preprint},
-  abstract = {How can large language models (LLMs) process and translate endangered languages? Many languages lack a large corpus to train a decent LLM; therefore existing LLMs rarely perform well in unseen, endangered languages. On the contrary, we observe that 2000 endangered languages, though without a large corpus, have a grammar book or a dictionary. We propose LINGOLLM, a training-free approach to enable an LLM to process unseen languages that hardly occur in its pre-training. Our key insight is to demonstrate linguistic knowledge of an unseen language in an LLM's prompt, including a dictionary, a grammar book, and morphologically analyzed input text. We implement LINGOLLM on top of two models, GPT-4 and Mixtral, and evaluate their performance on 5 tasks across 8 endangered or low-resource languages. Our results show that LINGOLLM elevates translation capability from GPT-4's 0 to 10.5 BLEU for 10 language directions. Our findings demonstrate the tremendous value of linguistic knowledge in the age of LLMs for endangered languages.},
-  eprint   = {https://arxiv.org/abs/2402.18025},
 }
 
 @Unpublished{zhaoPreprintpermute,
@@ -2785,6 +2861,39 @@ clickbait detection and generic text classification tasks demonstrate that our p
   abstract = {In this paper, we propose a new decoding method called Permute-and-Flip (PF) decoder. It enjoys robustness properties similar to the standard sampling decoder, but is provably up to 2x better in its quality-robustness tradeoff than sampling and never worse than any other decoder. We also design a cryptographic watermarking scheme analogous to Aaronson's Gumbel watermark, but naturally tailored for PF decoder. The watermarking scheme does not change the distribution to sample, while allowing arbitrarily low false positive rate and high recall whenever the generated text has high entropy. Our experiments show that the PF decoder (and its watermarked counterpart) significantly outperform(s) naive sampling (and it's Gumbel watermarked counterpart) in terms of perplexity, while retaining the same robustness (and detectability), hence making it a promising new approach for LLM decoding.},
   code     = {https://github.com/XuandongZhao/pf-decoding},
   eprint   = {https://arxiv.org/abs/2402.05864},
+}
+
+@Electronic{blog,
+  language     = {Java},
+  note         = {Latest version (v0.10). Brian Milch was the author for version 0.3 or earlier.},
+  title        = {BLOG: A Probabilistic Modeling System for Bayesian Logic Probabilistic Programming Language},
+  url          = {http://bayesianlogic.github.io/},
+  entrysubtype = {software},
+}
+
+@Electronic{dynammo,
+  language     = {Matlab},
+  title        = {DynaMMo: a machine learning toolbox for multi-dimensional co-evolving time series},
+  url          = {https://github.com/lileicc/dynammo},
+  entrysubtype = {software},
+}
+
+@Electronic{lightseq,
+  title        = {LightSeq: A High Performance GPU Training and Inference Library for Transformer Models},
+  url          = {https://github.com/bytedance/lightseq},
+  entrysubtype = {software},
+}
+
+@Electronic{swift,
+  title        = {Swift: A compiler for BLOG probabilistic programming language},
+  url          = {https://github.com/lileicc/swift},
+  entrysubtype = {software},
+}
+
+@Electronic{volctrans,
+  title        = {VolcTrans: a machine translation platform for 100+ languages},
+  url          = {https://translate.volcengine.com},
+  entrysubtype = {software},
 }
 
 @Comment{jabref-meta: databaseType:bibtex;}
