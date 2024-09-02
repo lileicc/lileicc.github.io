@@ -1,3 +1,28 @@
+@InProceedings{xu2024cmus,
+  author       = {Xu, Xi and Ouyang, Siqi and Yan, Brian and Fernandes, Patrick and Chen, William and Li, Lei and Neubig, Graham and Watanabe, Shinji},
+  booktitle    = {Proceedings of the 21st International Conference on Spoken Language Translation (IWSLT 2024)},
+  title        = {{CMU}{'}s {IWSLT} 2024 Simultaneous Speech Translation System},
+  year         = {2024},
+  month        = aug,
+  pages        = {154--159},
+  abstract     = {This paper describes CMU{'}s submission to the IWSLT 2024 Simultaneous Speech Translation (SST) task for translating English speech to German text in a streaming manner. Our end-to-end speech-to-text (ST) system integrates the WavLM speech encoder, a modality adapter, and the Llama2-7B-Base model as the decoder. We employ a two-stage training approach: initially, we align the representations of speech and text, followed by full fine-tuning. Both stages are trained on MuST-c v2 data with cross-entropy loss. We adapt our offline ST model for SST using a simple fixed hold-n policy. Experiments show that our model obtains an offline BLEU score of 31.1 and a BLEU score of 29.5 under 2 seconds latency on the MuST-C-v2 tst-COMMON.},
+  entrysubtype = {workshop},
+  eprint       = {https://aclanthology.org/2024.iwslt-1.20},
+}
+
+@InProceedings{yan2024cmus,
+  author       = {Yan, Brian and Fernandes, Patrick and Tian, Jinchuan and Ouyang, Siqi and Chen, William and Livescu, Karen and Li, Lei and Neubig, Graham and Watanabe, Shinji},
+  booktitle    = {Proceedings of the 21st International Conference on Spoken Language Translation (IWSLT 2024)},
+  title        = {{CMU}{'}s {IWSLT} 2024 Offline Speech Translation System: A Cascaded Approach For Long-Form Robustness},
+  year         = {2024},
+  month        = aug,
+  pages        = {164--169},
+  publisher    = {Association for Computational Linguistics},
+  abstract     = {This work describes CMU{'}s submission to the IWSLT 2024 Offline Speech Translation (ST) Shared Task for translating English speech to German, Chinese, and Japanese text. We are the first participants to employ a long-form strategy which directly processes unsegmented recordings without the need for a separate voice-activity detection stage (VAD). We show that the Whisper automatic speech recognition (ASR) model has a hallucination problem when applied out-of-the-box to recordings containing non-speech noises, but a simple noisy fine-tuning approach can greatly enhance Whisper{'}s long-form robustness across multiple domains. Then, we feed English ASR outputs into fine-tuned NLLB machine translation (MT) models which are decoded using COMET-based Minimum Bayes Risk. Our VAD-free ASR+MT cascade is tested on TED talks, TV series, and workout videos and shown to outperform prior winning IWSLT submissions and large open-source models.},
+  entrysubtype = {workshop},
+  eprint       = {https://aclanthology.org/2024.iwslt-1.22},
+}
+
 @InProceedings{wang2024global,
   author    = {Danqing Wang and Antonis Antoniades and Kha-Dinh Luong and Edwin Zhang and Mert Kosan and Jiachen Li and Ambuj Singh and William Yang Wang and Lei Li},
   booktitle = {the 30th SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)},
@@ -606,13 +631,11 @@ focus on peptide sequence attributes and do not consider crucial structure infor
   booktitle    = {Proceedings of the 19th International Conference on Spoken Language Translation (IWSLT 2022)},
   title        = {On the Impact of Noises in Crowd-Sourced Data for Speech Translation},
   year         = {2022},
-  address      = {Dublin, Ireland (in-person and online)},
   month        = may,
   pages        = {92--97},
   publisher    = {Association for Computational Linguistics},
   abstract     = {Training speech translation (ST) models requires large and high-quality datasets. MuST-C is one of the most widely used ST benchmark datasets. It contains around 400 hours of speech-transcript-translation data for each of the eight translation directions. This dataset passes several quality-control filters during creation. However, we find that MuST-C still suffers from three major quality issues: audiotext misalignment, inaccurate translation, and unnecessary speaker{'}s name. What are the impacts of these data quality issues for model development and evaluation? In this paper, we propose an automatic method to fix or filter the above quality issues, using English-German (En-De) translation as an example. Our experiments show that ST models perform better on clean test sets, and the rank of proposed models remains consistent across different test sets. Besides, simply removing misaligned data points from the training set does not lead to a better ST model.},
   entrysubtype = {workshop},
-  url          = {https://aclanthology.org/2022.iwslt-1.9},
 }
 
 @InProceedings{bao2022latent,
