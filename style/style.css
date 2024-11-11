@@ -13,27 +13,26 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
-  margin: 0;
+.mfp-figure figure, body, li {
+    margin:0
 }
 
-main {
-  display: block;
-}
-
-h1 {
-  font-size: 2em;
-  margin: 0.67em 0;
+article, aside, details, figcaption, figure, footer, header, label, main, menu, nav, section {
+    display:block
 }
 
 hr {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
-  height: 0;
   overflow: visible;
+  margin: 2.5em 0 3em;
+  border: 0;
+  width: 100%;
+  height: 1px;
+  background-color:#3f3848
 }
 
-pre {
+code,pre {
   font-family: monospace, monospace;
   white-space: pre-wrap;
   hyphens: auto;
@@ -4459,11 +4458,11 @@ img {
 
 svg.menu-icon-svg {
   width: 15px;
-  color: black;
-  margin-top: 0.2em;
-  margin-right: 0.2em;
+  color: #000;
+  margin-top: .2em;
+  margin-right: .2em;
   position: relative;
-  z-index: -5;
+  z-index:-5
 }
 
 @supports (display: flex) {

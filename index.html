@@ -6,15 +6,15 @@
       initial-scale=1.0">
     <meta name="description" content="Lei Li">
     <meta name="keywords" content="machine learning, deep learning,
-      natural language processing, machine translation, AI for science,
-      drug discovery, protein design">
+      natural language processing, machine translation, text generation, AI for science,
+      drug discovery, protein design, large language models, generative AI, AI safety">
     <meta name="author" content="Lei Li">
-    <link href="style/style.min.css" rel="stylesheet" type="text/css">
+    <link href="style/style.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="style/skeleton-tabs.css">
-    <!--link rel="stylesheet" type="text/css" href="style/style.css" media="all" /-->
-    <script src="jquery-3.7.0.min.js"></script>
-    <script src="skeleton-tabs.js"></script>
-    <script src="style/mobile.js"></script>
+    
+    <script src="script/skeleton-tabs.js"></script>
+    <script src="script/jquery-3.7.0.min.js"></script>
+    <script src="script/mobile.js"></script>
     <script type="application/javascript">
     function geoip(json) {
 
@@ -49,18 +49,20 @@
             rel="home"> <span class="vh">Lei Li</span> </a> </div>
         <button type="button" class="js-toggle-nav close-button"
           aria-controls="mobile-nav-tray" aria-expanded="false"> <span
-            class="vh">Close</span>
-          <svg class="menu-icon-svg" width="33" height="33"
+            class="vh">Menu</span>
+          <svg class="menu-icon" width="48" height="33"
             focusable="false">
-            <use href="#close-icon"></use> </svg> </button> </div>
+            <use href="#menu-icon"></use> </svg>
+          </button> </div>
       <nav class="navigation--mobile">
         <ul class="mobile-nav mobile-nav--main">
           <li class="current-menu-item"><a href="index.html">Home</a></li>
-          <li><a href="research.html">Research</a></li>
-          <li><a href="teaching.html">Teaching</a></li>
-          <!-- <li> <a href="pubs.html">Publications</a> </li> -->
           <li><a href="https://leililab.github.io">Group</a></li>
-          <li><a href="https://lileicc.github.io/blog/">Blog</a></li>
+          <li><a href="teaching.html">Teaching</a></li>
+          <li><a href="resource.html">Resource</a></li>
+          <li><a href="leili-bio.html">Bio</a></li>
+          <!-- <li> <a href="pubs.html">Publications</a> </li> -->
+          <!-- <li><a href="https://lileicc.github.io/blog/">Blog</a></li> -->
         </ul>
       </nav>
     </div>
@@ -74,11 +76,12 @@
                   aria-label="Main Navigation" role="navigation">
                   <ul class="nav-list">
                     <li class="current-menu-item"><a href="index.html">Home</a></li>
-                    <li><a href="research.html">Research</a></li>
-                    <li><a href="teaching.html">Teaching</a></li>
-                    <!-- <li> <a href="pubs.html">Publications</a> </li> -->
                     <li><a href="https://leililab.github.io">Group</a></li>
-                    <li><a href="https://lileicc.github.io/blog/">Blog</a></li>
+                    <li><a href="teaching.html">Teaching</a></li>
+                    <li><a href="resource.html">Resource</a></li>
+                    <li><a href="leili-bio.html">Bio</a></li>
+                    <!-- <li> <a href="pubs.html">Publications</a> </li> -->
+                    <!-- <li><a href="https://lileicc.github.io/blog/">Blog</a></li> -->
                   </ul>
                 </nav>
               </div>
@@ -96,16 +99,14 @@
                 <br>
                 <p> I am an Assistant Professor in the <a href="https://www.lti.cs.cmu.edu/">Language Technologies Institute</a> of the School of
                   Computer Science at
-                  Carnegie Mellon University. I am also affiliated with
+                  <a href="https://www.cmu.edu/">Carnegie Mellon University</a>. I am also affiliated with
                   CMU <a moz-do-not-send="true"
                     href="https://www.cylab.cmu.edu/">CyLab</a> and University of California Santa Barbara Computer Science Department. I work
-                  on generative AI for language and science. including
+                  on generative AI for language and science, including
                   multilingual NLP, machine translation (text, speech),
                   security of large language models, agentic LLM, and AI
                   for drug discovery and protein design. <br>
                 </p>
-                <br>
-                <p> <a href="leili-bio.html">Bio</a> </p>
               </div>
             </div>
             <div class="photo-box-container">
@@ -574,6 +575,8 @@
           </div>
         </div>
       </footer>
+      <!-- render the html for mobile display -->
+      <script type='text/javascript' src='script/mobile.js' id='site-js'></script>
       <!-- Start of StatCounter Code for Default Guide -->
       <script type="text/javascript">
       var sc_project = 3806228;
