@@ -834,7 +834,7 @@ input[type="submit"]:focus {
 }
 
 .text-button:after {
-  content: url(../svg/icons/blue-arrow.svg);
+  content: url(../icons/blue-arrow.svg);
   width: 15px;
   height: 8px;
   margin-left: 0.5em;
@@ -848,7 +848,7 @@ input[type="submit"]:focus {
 
 .text-button:hover:after,
 .text-button:focus:after {
-  content: url(../svg/icons/blue-arrow.svg);
+  content: url(../icons/blue-arrow.svg);
 }
 
 .button-group {
@@ -1363,7 +1363,7 @@ small {
 
 .banner-title:before {
   content: "";
-  background-image: url(../svg/icons/banner-slashes.svg);
+  background-image: url(../icons/banner-slashes.svg);
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
@@ -2840,7 +2840,7 @@ select#yearselect {
 }
 
 .mobile-nav--main>.menu-item-has-children>a:after {
-  content: url(../svg/icons/child-down-arrow-icon.svg);
+  content: url(../icons/child-down-arrow-icon.svg);
   position: absolute;
   width: 10px;
   height: 10px;
@@ -2849,7 +2849,7 @@ select#yearselect {
 }
 
 .mobile-nav .sub-menu>.menu-item-has-children>a:after {
-  content: url(../svg/icons/child-down-arrow-icon.svg);
+  content: url(../icons/child-down-arrow-icon.svg);
   position: absolute;
   width: 10px;
   height: 10px;
@@ -2995,7 +2995,7 @@ select#yearselect {
 .navigation--social:after {
   position: absolute;
   top: 0;
-  content: url(../svg/icons/down-icon.svg);
+  content: url(../icons/down-icon.svg);
   width: 68px;
   height: 15px;
 }
@@ -3590,7 +3590,7 @@ select#yearselect {
 }
 
 .rectangle:before {
-  content: url(../svg/icons/triangle.svg);
+  content: url(../icons/triangle.svg);
   height: 20px;
   position: absolute;
   -webkit-transform: rotate(210deg);
@@ -3770,7 +3770,7 @@ p.address-title.h5 {
 
 .bio-section .heading:before {
   content: "";
-  background-image: url(../svg/icons/banner-slashes.svg);
+  background-image: url(../icons/banner-slashes.svg);
   background-position: center;
   background-repeat: no-repeat;
   width: 100%;
@@ -3834,7 +3834,7 @@ p.address-title.h5 {
 }
 
 .bio-section .content-row .box-container .box:before {
-  content: url(../svg/icons/down-icon-small.svg);
+  content: url(../icons/down-icon-small.svg);
   width: 20px;
   height: 20px;
   position: absolute;
@@ -4518,7 +4518,7 @@ svg.menu-icon-svg {
 }
 
 .tab-venue h5:after {
-  content: url(../svg/icons/venu_icon.svg);
+  content: url(../icons/venu_icon.svg);
   width: 20px;
   height: 20px;
   position: absolute;
@@ -4532,7 +4532,7 @@ svg.menu-icon-svg {
 }
 
 .tab-abstract h5:after {
-  content: url(../svg/icons/abstract-icon.svg);
+  content: url(../icons/abstract-icon.svg);
   width: 20px;
   height: 20px;
   position: absolute;
@@ -4570,7 +4570,7 @@ a.text-button.open-post {
 }
 
 a.text-button.open-post:after {
-  content: url(../svg/icons/blue-arrow.svg);
+  content: url(../icons/blue-arrow.svg);
 }
 
 .prev-left {
@@ -5111,7 +5111,7 @@ button.accordion:focus {
 }
 
 .paper-section .mobile-titles .paper-author h6:after {
-  content: url(../svg/icons/pen-icon.svg);
+  content: url(../icons/pen-icon.svg);
   position: absolute;
   left: 0;
 }
@@ -5133,7 +5133,7 @@ button.accordion:focus {
 }
 
 .paper-section .mobile-titles .paper-read h6:after {
-  content: url(../svg/icons/download-icon.svg);
+  content: url(../icons/download-icon.svg);
   position: absolute;
   left: 0;
 }
@@ -5147,7 +5147,7 @@ button.accordion:focus {
 }
 
 .paper-section .mobile-titles .paper-notes h6:after {
-  content: url(../svg/icons/notes-icon.svg);
+  content: url(../icons/notes-icon.svg);
   position: absolute;
   left: 0;
 }
@@ -5185,7 +5185,7 @@ button.accordion:focus {
 }
 
 .paper-section .paper-header .paper-id h6:after {
-  content: url(../svg/icons/magnifying-glass.svg);
+  content: url(../icons/magnifying-glass.svg);
   width: 24px;
   height: 20px;
   position: absolute;
@@ -5193,7 +5193,7 @@ button.accordion:focus {
 }
 
 .paper-section .paper-header .paper-title h6:after {
-  content: url(../svg/icons/title-icon.svg);
+  content: url(../icons/title-icon.svg);
   width: 24px;
   height: 20px;
   position: absolute;
@@ -5202,7 +5202,7 @@ button.accordion:focus {
 }
 
 .paper-section .paper-header .paper-authors h6:after {
-  content: url(../svg/icons/pen-icon.svg);
+  content: url(../icons/pen-icon.svg);
   width: 24px;
   height: 20px;
   position: absolute;
@@ -5219,7 +5219,7 @@ button.accordion:focus {
 }
 
 .paper-section .paper-header .paper-read h6:after {
-  content: url(../svg/icons/download-icon.svg);
+  content: url(../icons/download-icon.svg);
   width: 24px;
   height: 20px;
   position: absolute;
@@ -5229,7 +5229,7 @@ button.accordion:focus {
 }
 
 .paper-section .paper-header .paper-notes h6:after {
-  content: url(../svg/icons/notes-icon.svg);
+  content: url(../icons/notes-icon.svg);
   width: 24px;
   height: 20px;
   position: absolute;
@@ -5238,7 +5238,7 @@ button.accordion:focus {
 }
 
 .paper-section .paper-header .paper-venue h6:after {
-  content: url(../svg/icons/study-copy.svg);
+  content: url(../icons/study-copy.svg);
   width: 40px;
   height: 40px;
   position: absolute;
@@ -5294,7 +5294,7 @@ button.accordion .paper-title h6 {
 
 button.accordion span:after,
 button.accordion.accord-is-open span:after {
-  content: url(../svg/icons/accordion-up.svg);
+  content: url(../icons/accordion-up.svg);
   width: 23px;
   height: 20px;
   top: 15px;
@@ -5306,7 +5306,7 @@ button.accordion.accord-is-open span:after {
 }
 
 button.accordion span:after {
-  content: url(../svg/icons/accordion-down.svg);
+  content: url(../icons/accordion-down.svg);
   color: #ea7f06;
 }
 
@@ -5369,7 +5369,7 @@ button.accordion.accord-is-open .accord-container {
 }
 
 .paper-mobile .paper-right-col .paper-title h6:after {
-  content: url(../svg/icons/title-icon.svg);
+  content: url(../icons/title-icon.svg);
   width: 40px;
   height: 40px;
   position: absolute;
@@ -5430,7 +5430,7 @@ button.accordion.accord-is-open .accord-container {
 }
 
 .paper-left-col .paper-read h6:after {
-  content: url(../svg/icons/download-icon.svg);
+  content: url(../icons/download-icon.svg);
   width: 40px;
   height: 40px;
   position: absolute;
@@ -5484,7 +5484,7 @@ button.accordion.accord-is-open .accord-container {
 }
 
 .accord-content .paper-author h6:after {
-  content: url(../svg/icons/pen-icon.svg);
+  content: url(../icons/pen-icon.svg);
   width: 40px;
   height: 40px;
   position: absolute;
@@ -5506,7 +5506,7 @@ button.accordion.accord-is-open .accord-container {
 }
 
 .accord-content .paper-venue h6:after {
-  content: url(../svg/icons/study-copy.svg);
+  content: url(../icons/study-copy.svg);
   width: 40px;
   height: 40px;
   position: absolute;
@@ -5553,7 +5553,7 @@ button.accordion.accord-is-open .accord-container {
 }
 
 .accord-content .paper-notes h6:after {
-  content: url(../svg/icons/notes-icon.svg);
+  content: url(../icons/notes-icon.svg);
   width: 40px;
   height: 40px;
   position: absolute;
@@ -5811,7 +5811,7 @@ div.icon div.videoCam:after {
 }
 
 .paper-desktop .paper-table .paper-read a.download-icon:after {
-  content: url(../svg/icons/pdf-icon.svg);
+  content: url(../icons/pdf-icon.svg);
   position: absolute;
   left: 16px;
 }
@@ -5920,7 +5920,7 @@ a.download-icon {
 }
 
 a.download-icon:after {
-  content: url(../svg/icons/pdf-icon.svg);
+  content: url(../icons/pdf-icon.svg);
   position: absolute;
   left: 1px;
   top: -24px;
@@ -5934,7 +5934,7 @@ a.supersede-box.supersede-download {
 }
 
 a.supersede-box.supersede-download:after {
-  content: url(../svg/icons/up-download.svg);
+  content: url(../icons/up-download.svg);
   position: absolute;
   left: 18px;
   top: -24px;
@@ -6013,7 +6013,7 @@ a.alternative-link {
 }
 
 a.alternative-link:after {
-  content: url(../svg/icons/alt-link-icon.svg);
+  content: url(../icons/alt-link-icon.svg);
   width: 24px;
   height: 24px;
   position: absolute;
@@ -6180,7 +6180,7 @@ section.section.form-section {
 
 .details-info ul li:after {
   position: absolute;
-  content: url(../svg/icons/down-icon.svg);
+  content: url(../icons/down-icon.svg);
   width: 20px;
   height: 20px;
   background-repeat: no-repeat;
@@ -6351,7 +6351,7 @@ section.section.form-section {
 
 .teaching-card a .teaching-card-footer .card-item:last-child {
   background-color: white;
-  background-image: url(../svg/icons/teaching-card-lines.svg);
+  background-image: url(../icons/teaching-card-lines.svg);
 }
 
 .teaching-card {
@@ -7009,7 +7009,7 @@ section.section.form-section {
 
   .recent-talks .video-button:after {
     content: "";
-    background-image: url(../svg/icons/talk-play-button.svg);
+    background-image: url(../icons/talk-play-button.svg);
     width: 675px;
     background-repeat: no-repeat;
     height: 405px;
@@ -7522,7 +7522,7 @@ section.section.form-section {
   }
 
   .accord-content .paper-read h6:after {
-    content: url(../svg/icons/download-icon.svg);
+    content: url(../icons/download-icon.svg);
     width: 40px;
     height: 40px;
     position: absolute;
@@ -7586,7 +7586,7 @@ section.section.form-section {
   }
 
   a.alternative-link:after {
-    content: url(../svg/icons/alt-link-icon.svg);
+    content: url(../icons/alt-link-icon.svg);
     width: 24px;
     height: 24px;
     position: absolute;
@@ -7762,7 +7762,7 @@ section.section.form-section {
   }
 
   .bio-section .content-row .box-container .box:before {
-    content: url(../svg/icons/down-icon.svg);
+    content: url(../icons/down-icon.svg);
     top: 0.1em;
     left: 3.3em;
   }
@@ -7793,7 +7793,7 @@ section.section.form-section {
 
   .recent-talks ul.tabs li.current:after {
     position: absolute;
-    content: url(../svg/icons/down-icon.svg);
+    content: url(../icons/down-icon.svg);
     width: 20px;
     height: 20px;
     background-repeat: no-repeat;

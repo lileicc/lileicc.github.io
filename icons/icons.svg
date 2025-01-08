@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;">
+    <!-- Define a symbol with an ID to be referenced -->
+    <symbol id="menu-icon" viewBox="0 0 25 22">
+        <g fill="#000" fill-rule="nonzero">
+            <rect width="25" height="4" rx="1"></rect>
+            <rect y="9" width="25" height="4" rx="1"></rect>
+            <rect y="18" width="25" height="4" rx="1"></rect>
+        </g>
+    </symbol>
+    
+</svg>
