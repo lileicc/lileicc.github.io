@@ -7,5 +7,9 @@
             <rect y="18" width="25" height="4" rx="1"></rect>
         </g>
     </symbol>
-    
+    <symbol id="close-icon" viewBox="0 0 22 22">
+        <path
+            d="M11 8.902L19.902 0 22 2.098 13.098 11 22 19.902 19.902 22 11 13.098 2.098 22 0 19.902 8.902 11 0 2.098 2.098 0 11 8.902z"
+            fill="currentColor" fill-rule="nonzero"></path>
+    </symbol>
 </svg>
