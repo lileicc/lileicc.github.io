@@ -1,3 +1,120 @@
+@InProceedings{wang2025typedthinker,
+  author    = {Danqing Wang and Jianxin Ma and Fei Fang and Lei Li},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {TypedThinker: Diversify Large Language Model Reasoning with Typed Thinking},
+  year      = {2025},
+  month     = apr,
+  abstract  = {Large Language Models (LLMs) have demonstrated strong reasoning capabilities in solving complex problems. However, current approaches primarily enhance reasoning through the elaboration of thoughts while neglecting the diversity of reasoning types. LLMs typically employ deductive reasoning, proceeding step-by-step from given conditions, which limits their exploration during problem-solving. Our analysis reveals that certain problems are exclusively solvable through specific reasoning strategies like inductive, abductive, or analogical reasoning. However, incorporating diverse reasoning approaches presents two key challenges: identifying the appropriate reasoning type for each problem and exploiting this approach during problem-solving. Therefore, we propose the TypedThinker that predicts suitable reasoning types based on the problem and their previous effectiveness and provides relevant demonstrations to guide LLMs in applying these strategies. Experimental results show significant improvements across multiple benchmarks, with performance gains of 3.4% for Mistral 7B, 6.5% for LLaMA3 8B, and 7% for Qwen 2 7B on logical and mathematical reasoning tasks. TypedThinker enhances LLM reasoning without requiring knowledge distillation from larger models. It can be integrated into more advanced systems like GPT-4o or specialized models like MetaMath to diversify their reasoning approaches and improve their problem-solving capabilities.},
+  code      = {https://github.com/dqwang122/TypedThinker},
+  eprint    = {https://arxiv.org/abs/2410.01952},
+}
+
+@InProceedings{xu2025speculative,
+  author    = {Wenda Xu and Rujun Han and Zifeng Wang and Long Le and Dhruv Madeka and Lei Li and William Yang Wang and Rishabh Agarwal and Chen-Yu Lee and Tomas Pfister},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {Speculative Knowledge Distillation: Bridging the Teacher-Student Gap Through Interleaved Sampling},
+  year      = {2025},
+  month     = apr,
+  abstract  = {Recent advances in knowledge distillation (KD) have enabled smaller student models to approach the performance of larger teacher models. However, popular methods such as supervised KD and on-policy KD, are adversely impacted by the knowledge gaps between teacher-student in practical scenarios. Supervised KD suffers from a distribution mismatch between training with a static dataset and inference over final student-generated outputs. Conversely, on-policy KD, which uses student-generated samples for training, can suffer from low-quality training examples with which teacher models are not familiar, resulting in inaccurate teacher feedback. To address these limitations, we introduce Speculative Knowledge Distillation (SKD), a novel approach that leverages cooperation between student and teacher models to generate high-quality training data on-the-fly while aligning with the student's inference-time distribution. In SKD, the student proposes tokens, and the teacher replaces poorly ranked ones based on its own distribution, transferring high-quality knowledge adaptively. We evaluate SKD on various text generation tasks, including translation, summarization, math, and instruction following, and show that SKD consistently outperforms existing KD methods across different domains, data sizes, and model initialization strategies.},
+  code      = {https://github.com/xu1998hz/skd},
+  eprint    = {https://arxiv.org/abs/2410.11325},
+}
+
+@InProceedings{zhang2025diversity,
+  author    = {Kexun Zhang and Weiran Yao and Zuxin Liu and Yihao Feng and Zhiwei Liu and Rithesh R N and Tian Lan and Lei Li and Renze Lou and Jiacheng Xu and Bo Pang and Yingbo Zhou and Shelby Heinecke and Silvio Savarese and Huan Wang and Caiming Xiong},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {Diversity Empowers Intelligence: Integrating Expertise of Software Engineering Agents},
+  year      = {2025},
+  month     = apr,
+  abstract  = {Large language model (LLM) agents have shown great potential in solving real-world software engineering (SWE) problems. The most advanced open-source SWE agent can resolve over 27% of real GitHub issues in SWE-Bench Lite. However, these sophisticated agent frameworks exhibit varying strengths, excelling in certain tasks while underperforming in others. To fully harness the diversity of these agents, we propose DEI (Diversity Empowered Intelligence), a framework that leverages their unique expertise. DEI functions as a meta-module atop existing SWE agent frameworks, managing agent collectives for enhanced problem-solving. Experimental results show that a DEI-guided committee of agents is able to surpass the best individual agent's performance by a large margin. For instance, a group of open-source SWE agents, with a maximum individual resolve rate of 27.3% on SWE-Bench Lite, can achieve a 34.3% resolve rate with DEI, making a 25% improvement and beating most closed-source solutions. Our best-performing group excels with a 55% resolve rate, securing the highest ranking on SWE-Bench Lite. Our findings contribute to the growing body of research on collaborative AI systems and their potential to solve complex software engineering challenges.},
+  code      = {https://github.com/SalesforceAIResearch/swecomm},
+  eprint    = {https://arxiv.org/abs/2408.07060},
+}
+
+@InProceedings{zhao2025permute,
+  author    = {Xuandong Zhao and Lei Li and Yu-Xiang Wang},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {Permute-and-Flip: An Optimally Robust and Watermarkable Decoder for LLMs},
+  year      = {2025},
+  month     = apr,
+  abstract  = {In this paper, we propose a new decoding method called Permute-and-Flip (PF) decoder. It enjoys stability properties similar to the standard sampling decoder, but is provably up to 2x better in its quality-stability tradeoff than sampling and never worse than any other decoder. We also design a cryptographic watermarking scheme analogous to Aaronson (2023)’s Gumbel watermark, but naturally tailored for PF decoder. The watermarking scheme does not change the distribution to sample, while allowing arbitrarily low false positive rate and high recall whenever the generated text has high entropy. Our experiments show that the PF decoder (and its watermarked counterpart) significantly outperform(s) naive sampling (and its Gumbel watermarked counterpart) in terms of perplexity, while retaining the same stability (and detectability), hence making it a promising new approach for LLM decoding.},
+  code      = {https://github.com/XuandongZhao/pf-decoding},
+  eprint    = {https://arxiv.org/abs/2402.05864},
+}
+
+@InProceedings{ouyang2025anticipating,
+  author    = {Siqi Ouyang and Oleksii Hrinchuk and Zhehuai Chen and Vitaly Lavrukhin and Jagadeesh Balam and Lei Li and Boris Ginsburg},
+  booktitle = {Proceedings of 2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics (NAACL)},
+  title     = {Anticipating Future with Large Language Model for Simultaneous Machine Translation},
+  year      = {2025},
+  month     = apr,
+  abstract  = {Simultaneous machine translation (SMT) takes streaming input utterances and incrementally produces target text. Existing SMT methods only use the partial utterance that has already arrived at the input and the generated hypothesis. Motivated by human interpreters’ technique to forecast future words before hearing them, we propose Translation by Anticipating Future (TAF), a method to improve translation quality while retaining low latency. Its core idea is to use a large language model (LLM) to predict future source words and opportunistically translate without introducing too much risk. We evaluate our TAF and multiple baselines of SMT on four language directions. Experiments show that TAF achieves the best translation quality-latency trade-off and outperforms the baselines by up to 5 BLEU points at the same latency (three words).},
+  eprint    = {https://arxiv.org/abs/2410.22499},
+}
+
+@InProceedings{xie2025revealing,
+  author    = {Jian Xie and Kexun Zhang and Jiangjie Chen and Siyu Yuan and Kai Zhang and Yikai Zhang and Lei Li and Yanghua Xiao},
+  booktitle = {Proceedings of 2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics (NAACL)},
+  title     = {Revealing the Barriers of Language Agents in Planning},
+  year      = {2025},
+  month     = apr,
+  abstract  = {Autonomous planning has been an ongoing pursuit since the inception of artificial intelligence. Based on curated problem solvers, early planning agents could deliver precise solutions for specific tasks but lacked generalization. The emergence of large language models (LLMs) and their powerful reasoning capabilities has reignited interest in autonomous planning by automatically generating reasonable solutions for given tasks. However, prior research and our experiments show that current language agents still lack human-level planning abilities. Even the state-of-the-art reasoning model, OpenAI o1, achieves only 15.6% on one of the complex real-world planning benchmarks. This highlights a critical question: What hinders language agents from achieving human-level planning? Although existing studies have highlighted weak performance in agent planning, the deeper underlying issues and the mechanisms and limitations of the strategies proposed to address them remain insufficiently understood. In this work, we apply the feature attribution study and identify two key factors that hinder agent planning: the limited role of constraints and the diminishing influence of questions. We also find that although current strategies help mitigate these challenges, they do not fully resolve them, indicating that agents still have a long way to go before reaching human-level intelligence.},
+  eprint    = {https://arxiv.org/abs/2410.12409},
+}
+
+@InProceedings{yuan2025ks,
+  author    = {Fei Yuan and Chang Ma and Shuai Yuan and Qiushi Sun and Lei Li},
+  booktitle = {Proceedings of 2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics (NAACL)},
+  title     = {KS-Lottery: Finding Certified Lottery Tickets for Multilingual Transfer in Large Language Models},
+  year      = {2025},
+  month     = apr,
+  abstract  = {The lottery ticket hypothesis posits the existence of ``winning tickets'' within a randomly initialized neural network. Do winning tickets exist for LLMs in fine-tuning scenarios? How can we find such winning tickets? In this paper, we propose KS-Lottery, a method to identify a small subset of LLM parameters highly effective in multilingual fine-tuning. Our key idea is to use Kolmogorov-Smirnov Test to analyze the distribution shift of parameters before and after fine-tuning. We further theoretically prove that KS-Lottery can find the certified winning tickets in the embedding layer, fine-tuning on the found parameters is guaranteed to perform as well as full fine-tuning. Comparing KS-Lottery with other parameter-efficient tuning algorithms on translation tasks, the experimental results show that KS-Lottery finds a much smaller set of parameters for fine-tuning while achieving the comparable performance as full fine-tuning LLM. Surprisingly, we find that fine-tuning 18 tokens' embedding of LLaMA suffices to reach the fine-tuning translation performance.},
+  code      = {https://github.com/CONE-MT/KS-Lottery},
+  eprint    = {https://arxiv.org/abs/2402.02801},
+}
+
+@InProceedings{zhang2025scaling,
+  author    = {Kexun Zhang and Shang Zhou and Danqing Wang and William Yang Wang and Lei Li},
+  booktitle = {Proceedings of 2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics (NAACL)},
+  title     = {Scaling LLM Inference Efficiently with Optimized Sample Compute Allocation},
+  year      = {2025},
+  month     = apr,
+  abstract  = {Sampling is a basic operation for large language models (LLMs). In reinforcement learning rollouts and meta generation algorithms such as Best-of-N, it is essential to sample correct trajectories within a given compute budget. To find an optimal allocation for sample compute budgets, several choices need to be made: Which sampling configurations (model, temperature, language, etc.) to use? How many samples to generate in each configuration? We formulate these choices as a learning problem and propose OSCA, an algorithm that Optimizes Sample Compute Allocation by finding an optimal mix of different inference configurations. Our experiments show that with our learned mixed allocation, we can achieve accuracy better than the best single configuration with 128x less compute on code generation and 25x less compute on 4 reasoning tasks. OSCA is also shown to be effective in agentic workflows beyond single-turn tasks, achieving a better accuracy on SWE-Bench with 3x less compute than the default configuration.},
+  code      = {https://github.com/LeiLiLab/OSCA},
+  eprint    = {https://arxiv.org/abs/2410.22480},
+}
+
+@InProceedings{tufts2025practical,
+  author    = {Brian Tufts and Xuandong Zhao and Lei Li},
+  booktitle = {Proceedings of 2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics (NAACL) - Findings},
+  title     = {A Practical Examination of AI-Generated Text Detectors for Large Language Models},
+  year      = {2025},
+  month     = apr,
+  abstract  = {The proliferation of large language models has raised growing concerns about their misuse, particularly in cases where AI-generated text is falsely attributed to human authors. Machine-generated content detectors claim to effectively identify such text under various conditions and from any language model. This paper critically evaluates these claims by assessing several popular detectors (RADAR, Wild, T5Sentinel, Fast-DetectGPT, PHD, LogRank, Binoculars) on a range of domains, datasets, and models that these detectors have not previously encountered. We employ various prompting strategies to simulate practical adversarial attacks, demonstrating that even moderate efforts can significantly evade detection. We emphasize the importance of the true positive rate at a specific false positive rate (TPR@FPR) metric and demonstrate that these detectors perform poorly in certain settings, with TPR@.01 as low as 0%. Our findings suggest that both trained and zero-shot detectors struggle to maintain high sensitivity while achieving a reasonable true positive rate.},
+  code      = {https://github.com/LeiLiLab/llm-detector-eval},
+  eprint    = {https://arxiv.org/abs/2412.05139},
+}
+
+@InProceedings{xu2025ca*,
+  author    = {Xi Xu and Wenda Xu and Siqi Ouyang and Lei Li},
+  booktitle = {Proceedings of 2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics (NAACL) - Findings},
+  title     = {CA*: Addressing Evaluation Pitfalls in Computation-Aware Latency for Simultaneous Speech Translation},
+  year      = {2025},
+  month     = apr,
+  abstract  = {Simultaneous speech translation (SimulST) systems must balance translation quality with response time, making latency measurement crucial for evaluating their real-world performance. However, there has been a longstanding belief that current metrics yield unrealistically high latency measurements in unsegmented streaming settings. In this paper, we investigate this phenomenon, revealing its root cause in a fundamental misconception underlying existing latency evaluation approaches. We demonstrate that this issue affects not only streaming but also segment-level latency evaluation across different metrics. Furthermore, we propose a modification to correctly measure computation-aware latency for SimulST systems, addressing the limitations present in existing metrics.},
+  eprint    = {https://arxiv.org/abs/2410.16011},
+}
+
+@InProceedings{zhang2025extrapolating,
+  author    = {Zhang, Kexun and Dwivedi-Yu, Jane and Lin, Zhaojiang and Mao, Yuning and Wang, William Yang and Li, Lei and Wang, Yi-Chia},
+  booktitle = {Proceedings of the 31st International Conference on Computational Linguistics (COLING)},
+  title     = {Extrapolating to Unknown Opinions Using {LLM}s},
+  year      = {2025},
+  month     = jan,
+  abstract  = {From ice cream flavors to climate change, people exhibit a wide array of opinions on various topics, and understanding the rationale for these opinions can promote healthy discussion and consensus among them. As such, it can be valuable for a large language model (LLM), particularly as an AI assistant, to be able to empathize with or even explain these various standpoints. In this work, we hypothesize that different topic stances often manifest correlations that can be used to extrapolate to topics with unknown opinions. We explore various prompting and fine-tuning methods to improve an LLM`s ability to (a) extrapolate from opinions on known topics to unknown ones and (b) support their extrapolation with reasoning. Our findings suggest that LLMs possess inherent knowledge from training data about these opinion correlations, and with minimal data, the similarities between human opinions and model-extrapolated opinions can be improved by more than 50{\%}. Furthermore, LLM can generate the reasoning process behind their extrapolation of opinions.},
+  url       = {https://aclanthology.org/2025.coling-main.523/},
+}
+
 @Article{qiu2025evaluating,
   author   = {Jielin Qiu and William Han and Xuandong Zhao and Shangbang Long and Christos Faloutsos and Lei Li},
   journal  = {Transactions on Machine Learning Research},
@@ -2942,6 +3059,15 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint   = {https://www.biorxiv.org/content/10.1101/2025.01.06.631595},
 }
 
+@Unpublished{duartePreprintdis,
+  author   = {André V. Duarte and Xuandong Zhao and Arlindo L. Oliveira and Lei Li},
+  title    = {DIS-CO: Discovering Copyrighted Content in VLMs Training Data},
+  year     = {Preprint},
+  abstract = {How can we verify whether copyrighted content was used to train a large vision-language model (VLM) without direct access to its training data? Motivated by the hypothesis that a VLM is able to recognize images from its training corpus, we propose DIS-CO, a novel approach to infer the inclusion of copyrighted content during the model's development. By repeatedly querying a VLM with specific frames from targeted copyrighted material, DIS-CO extracts the content's identity through free-form text completions. To assess its effectiveness, we introduce MovieTection, a benchmark comprising 14,000 frames paired with detailed captions, drawn from films released both before and after a model’s training cutoff. Our results show that DIS-CO significantly improves detection performance, nearly doubling the average AUC of the best prior method on models with logits available. Our findings also highlight a broader concern: all tested models appear to have been exposed to some extent to copyrighted content.},
+  code     = {https://github.com/avduarte333/DIS-CO},
+  eprint   = {https://arxiv.org/abs/2502.17358},
+}
+
 @Unpublished{ouyangPreprintfasst,
   author   = {Siqi Ouyang and Xi Xu and Chinmay Dandekar and Lei Li},
   title    = {FASST: Fast LLM-based Simultaneous Speech Translation},
@@ -2966,37 +3092,12 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint   = {https://arxiv.org/abs/2310.02546},
 }
 
-@Unpublished{tuftsPreprintpractical,
-  author   = {Brian Tufts and Xuandong Zhao and Lei Li},
-  title    = {A Practical Examination of AI-Generated Text Detectors for Large Language Models},
-  year     = {Preprint},
-  abstract = {The proliferation of large language models has raised growing concerns about their misuse, particularly in cases where AI-generated text is falsely attributed to human authors. Machine-generated content detectors claim to effectively identify such text under various conditions and from any language model. This paper critically evaluates these claims by assessing several popular detectors (RADAR, Wild, T5Sentinel, Fast-DetectGPT, GPTID, LogRank, Binoculars) on a range of domains, datasets, and models that these detectors have not previously encountered. We employ various prompting strategies to simulate adversarial attacks, demonstrating that even moderate efforts can significantly evade detection. We emphasize the importance of the true positive rate at a specific false positive rate (TPR@FPR) metric and demonstrate that these detectors perform poorly in certain settings, with TPR@.01 as low as 0%. Our findings suggest that both trained and zero-shot detectors struggle to maintain high sensitivity while achieving a reasonable true positive rate.},
-  eprint   = {https://arxiv.org/abs/2412.05139},
-}
-
 @Unpublished{wangPreprintcooperative,
   author   = {Danqing Wang and Zhuorui Ye and Fei Fang and Lei Li},
   title    = {Cooperative Strategic Planning Enhances Reasoning Capabilities in Large Language Models},
   year     = {Preprint},
   abstract = {Enhancing the reasoning capabilities of large language models (LLMs) is crucial for enabling them to tackle complex, multi-step problems. Multi-agent frameworks have shown great potential in enhancing LLMs' reasoning capabilities. However, the lack of effective cooperation between LLM agents hinders their performance, especially for multi-step reasoning tasks. This paper proposes a novel cooperative multi-agent reasoning framework (CoPlanner) by separating reasoning steps and assigning distinct duties to different agents. CoPlanner consists of two LLM agents: a planning agent and a reasoning agent. The planning agent provides high-level strategic hints, while the reasoning agent follows these hints and infers answers. By training the planning agent's policy through the interactive reasoning process via Proximal Policy Optimization (PPO), the LLaMA-3-8B-based CoPlanner outperforms the previous best method by 9.94\% on LogiQA and 3.09\% on BBH. Our results demonstrate that the guidance from the planning agent and the effective cooperation between the agents contribute to the superior performance of CoPlanner in tackling multi-step reasoning problems.},
   eprint   = {https://arxiv.org/abs/2410.20007},
-}
-
-@Unpublished{wangPreprinttypedthinker,
-  author   = {Danqing Wang and Jianxin Ma and Fei Fang and Lei Li},
-  title    = {TypedThinker: Typed Thinking Improves Large Language Model Reasoning},
-  year     = {Preprint},
-  abstract = {Despite significant advancements in the reasoning capabilities of Large Language Models (LLMs), the lack of diverse reasoning solutions often makes them trapped in a limited solution search area. In this paper, we propose TypedThinker, a novel framework that enhances LLMs' problem-solving abilities by incorporating multiple reasoning types (deductive, inductive, abductive, and analogical). Our analysis across four benchmarks reveals that different reasoning types uniquely solve distinct sets of problems, highlighting the importance of diverse thinking approaches. TypedThinker addresses two key challenges: selecting appropriate reasoning types for given problems and effectively implementing specific reasoning types. Through self-training on successful experiences, TypedThinker learns an implicit policy for reasoning type selection and application. Experimental results demonstrate significant improvements over baseline models, with accuracy increases of 3.4% for Mistral 7B and 16.7% for LLaMA3 8B across four reasoning benchmarks. Notably, TypedThinker shows effective generalization to new benchmarks and can further enhance the reasoning capability of powerful models like GPT-4o.},
-  code     = {https://github.com/dqwang122/ThinkHub},
-  eprint   = {https://arxiv.org/abs/2410.01952},
-}
-
-@Unpublished{xuPreprintca*,
-  author   = {Xi Xu and Wenda Xu and Siqi Ouyang and Lei Li},
-  title    = {CA*: Addressing Evaluation Pitfalls in Computation-Aware Latency for Simultaneous Speech Translation},
-  year     = {Preprint},
-  abstract = {Simultaneous speech translation (SimulST) systems must balance translation quality with response time, making latency measurement crucial for evaluating their real-world performance. However, there has been a longstanding belief that current metrics yield unrealistically high latency measurements in unsegmented streaming settings. In this paper, we investigate this phenomenon, revealing its root cause in a fundamental misconception underlying existing latency evaluation approaches. We demonstrate that this issue affects not only streaming but also segment-level latency evaluation across different metrics. Furthermore, we propose a modification to correctly measure computation-aware latency for SimulST systems, addressing the limitations present in existing metrics.},
-  eprint   = {https://arxiv.org/abs/2410.16011},
 }
 
 @Unpublished{xuPreprintreciprocal,
@@ -3028,38 +3129,12 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint = {https://arxiv.org/abs/1910.11301},
 }
 
-@Unpublished{yuanPreprintks,
-  author   = {Fei Yuan and Chang Ma and Shuai Yuan and Qiushi Sun and Lei Li},
-  title    = {KS-Lottery: Finding Certified Lottery Tickets for Multilingual Language Models},
-  year     = {Preprint},
-  abstract = {The lottery ticket hypothesis posits the existence of ``winning tickets'' within a randomly initialized neural network. Do winning tickets exist for LLMs in fine-tuning scenarios? How can we find such winning tickets? In this paper, we propose KS-Lottery, a method to identify a small subset of LLM parameters highly effective in multilingual fine-tuning. Our key idea is to use Kolmogorov-Smirnov Test to analyze the distribution shift of parameters before and after fine-tuning. We further theoretically prove that KS-Lottery can find the certified winning tickets in the embedding layer, fine-tuning on the found parameters is guaranteed to perform as well as full fine-tuning. Comparing KS-Lottery with other parameter-efficient tuning algorithms on translation tasks, the experimental results show that KS-Lottery finds a much smaller set of parameters for fine-tuning while achieving the comparable performance as full fine-tuning LLM. Surprisingly, we find that fine-tuning 18 tokens' embedding of LLaMA suffices to reach the fine-tuning translation performance.},
-  eprint   = {https://arxiv.org/abs/2402.02801},
-}
-
-@Unpublished{zhangPreprintscaling,
-  author   = {Kexun Zhang and Shang Zhou and Danqing Wang and William Yang Wang and Lei Li},
-  title    = {Scaling LLM Inference with Optimized Sample Compute Allocation},
-  year     = {Preprint},
-  abstract = {Sampling is a basic operation in many inference-time algorithms of large language models (LLMs). To scale up inference efficiently with a limited compute, it is crucial to find an optimal allocation for sample compute budgets: Which sampling configurations (model, temperature, language, etc.) do we use? How many samples do we generate in each configuration? We formulate these choices as a learning problem and propose OSCA, an algorithm that Optimizes Sample Compute Allocation by finding an optimal mix of different inference configurations. Our experiments show that with our learned mixed allocation, we can achieve accuracy better than the best single configuration with 128x less compute on code generation and 25x less compute on 4 reasoning tasks. OSCA is also shown to be effective in agentic workflows beyond single-turn tasks, achieving a better accuracy on SWE-Bench with 3x less compute than the default configuration.},
-  code     = {https://github.com/LeiLiLab/OSCA},
-  eprint   = {https://arxiv.org/abs/2410.22480},
-}
-
 @Unpublished{zhaoPreprintefficiently,
   author   = {Xuandong Zhao and Chenwen Liao and Yu-Xiang Wang and Lei Li},
   title    = {Efficiently Identifying Watermarked Segments in Mixed-Source Texts},
   year     = {Preprint},
   abstract = {Text watermarks in large language models (LLMs) are increasingly used to detect synthetic text, mitigating misuse cases like fake news and academic dishonesty. While existing watermarking detection techniques primarily focus on classifying entire documents as watermarked or not, they often neglect the common scenario of identifying individual watermark segments within longer, mixed-source documents. Drawing inspiration from plagiarism detection systems, we propose two novel methods for partial watermark detection. First, we develop a geometry cover detection framework aimed at determining whether there is a watermark segment in long text. Second, we introduce an adaptive online learning algorithm to pinpoint the precise location of watermark segments within the text. Evaluated on three popular watermarking techniques (KGW-Watermark, Unigram-Watermark, and Gumbel-Watermark), our approach achieves high accuracy, significantly outperforming baseline methods. Moreover, our framework is adaptable to other watermarking techniques, offering new insights for precise watermark detection.},
   eprint   = {https://arxiv.org/abs/2410.03600},
-}
-
-@Unpublished{zhaoPreprintpermute,
-  author   = {Xuandong Zhao and Lei Li and Yu-Xiang Wang},
-  title    = {Permute-and-Flip: An optimally robust and watermarkable decoder for LLMs},
-  year     = {Preprint},
-  abstract = {In this paper, we propose a new decoding method called Permute-and-Flip (PF) decoder. It enjoys robustness properties similar to the standard sampling decoder, but is provably up to 2x better in its quality-robustness tradeoff than sampling and never worse than any other decoder. We also design a cryptographic watermarking scheme analogous to Aaronson's Gumbel watermark, but naturally tailored for PF decoder. The watermarking scheme does not change the distribution to sample, while allowing arbitrarily low false positive rate and high recall whenever the generated text has high entropy. Our experiments show that the PF decoder (and its watermarked counterpart) significantly outperform(s) naive sampling (and it's Gumbel watermarked counterpart) in terms of perplexity, while retaining the same robustness (and detectability), hence making it a promising new approach for LLM decoding.},
-  code     = {https://github.com/XuandongZhao/pf-decoding},
-  eprint   = {https://arxiv.org/abs/2402.05864},
 }
 
 @Electronic{blog,
