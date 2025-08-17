@@ -82,11 +82,11 @@
 }
 
 .tab-content .tab-pane {
+  block-size: 20lh;
+  overflow-y: auto;
   display: none;
 }
 
 .tab-content .tab-pane.active {
-  block-size: 20lh;
-  overflow-y: auto;
   display: block;
 }
