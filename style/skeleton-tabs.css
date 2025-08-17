@@ -82,6 +82,7 @@
 }
 
 .tab-content {
+  line-height: 1.6;
   block-size: 20lh;
   overflow-y: auto;
 }
