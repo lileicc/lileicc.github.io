@@ -81,9 +81,12 @@
   border-bottom: 0.175em solid #fff;
 }
 
-.tab-content .tab-pane {
+.tab-content {
   block-size: 20lh;
   overflow-y: auto;
+}
+
+.tab-content .tab-pane {
   display: none;
 }
 
