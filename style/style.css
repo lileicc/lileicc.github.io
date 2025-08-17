@@ -4405,13 +4405,12 @@ img {
   position: relative;
 }
 
-.recent-talks .tab-content {
+.recent-talks {
   font-size: 0.875em;
   display: none;
-  color: #3F3848;
 }
 
-.recent-talks .tab-content.current {
+.recent-talks {
   display: inherit;
 }
 
