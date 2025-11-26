@@ -1,3 +1,25 @@
+@InProceedings{huang2025benchmax,
+  author    = {Xu Huang and Wenhao Zhu and Hanxu Hu and Conghui He and Lei Li and Shujian Huang and Fei Yuan},
+  booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP) - Findings},
+  title     = {{BenchMAX}: A Comprehensive Multilingual Evaluation Suite for Large Language Models},
+  year      = {2025},
+  month     = nov,
+  abstract  = {Existing multilingual benchmarks focus primarily on language understanding tasks. There is a lack of benchmarks to measure comprehensive critical capabilities of large language models (LLMs) across diverse languages, including instruction following, reasoning, code generation, and long context understanding. To bridge this gap, we develop BenchMAX, a multi-way multilingual benchmark that covers 10 diverse tasks, to evaluate LLMs' general abilities across many languages. To ensure high data quality, each sample is post-edited by three native annotators after machine-translating from English into 16 languages. Extensive experiments on BenchMAX reveal uneven utilization of core capabilities across languages, emphasizing the performance gaps that scaling model size alone does not resolve. BenchMAX serves as a comprehensive multilingual evaluation platform, providing a promising test bed to promote the development of multilingual language models. The dataset and code are publicly accessible.},
+  code      = {https://github.com/CONE-MT/BenchMAX},
+  eprint    = {https://arxiv.org/abs/2502.07346},
+}
+
+@InProceedings{xu2025biographia,
+  author       = {Xi Xu and Sumin Jo and Adam Officer and Angela Chen and Yufei Huang and Lei Li},
+  booktitle    = {the Conference on Empirical Methods in Natural Language Processing (EMNLP): System Demonstrations},
+  title        = {{BioGraphia}: A LLM-Assisted Biological Pathway Graph Annotation Platform},
+  year         = {2025},
+  month        = nov,
+  abstract     = {Comprehensive pathway datasets are essential resources for advancing biological research, yet constructing these datasets is labor intensive. Recognizing the labor-intensive nature of constructing these critical resources, we present BioGraphia, a web-based annotation platform designed to facilitate collaborative pathway graph annotation. BioGraphia supports multi-user collaboration with real-time monitoring, curation, and interactive pathway graph visualization. It enables users to directly annotate the nodes and relations on the candidate graph, guided by detailed instructions. The platform is further enhanced with a large language model that automatically generates explainable and span-aligned pre-annotation to accelerate the annotation process. Its modular design allows flexible integration of external knowledge bases, and customization of the definition of annotation schema and, to support adaptation to other graph-based annotation tasks.},
+  code         = {https://github.com/LeiLiLab/BioGraphia},
+  entrysubtype = {demo},
+}
+
 @InProceedings{ouyang2025cmus,
   author       = {Ouyang, Siqi and Xu, Xi and Li, Lei},
   booktitle    = {Proceedings of the 22nd International Conference on Spoken Language Translation (IWSLT 2025)},
@@ -11,69 +33,69 @@
 }
 
 
-@InProceedings{zhao-etal-2025-efficiently,
-  author   = {Xuandong Zhao and Chenwen Liao and Yu-Xiang Wang and Lei Li},
-  booktitle = {the 63rd Annual Meeting of the Association for Computational Linguistics (ACL)},
-  title    = {Efficiently Identifying Watermarked Segments in Mixed-Source Texts},
-  year     = {2025},
+@InProceedings{duarte2025dis,
+  author    = {André V. Duarte and Xuandong Zhao and Arlindo L. Oliveira and Lei Li},
+  booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML)},
+  title     = {DIS-CO: Discovering Copyrighted Content in VLMs Training Data},
+  year      = {2025},
   month     = jul,
-  abstract = {Text watermarks in large language models (LLMs) are increasingly used to detect synthetic text, mitigating misuse cases like fake news and academic dishonesty. While existing watermarking detection techniques primarily focus on classifying entire documents as watermarked or not, they often neglect the common scenario of identifying individual watermark segments within longer, mixed-source documents. Drawing inspiration from plagiarism detection systems, we propose two novel methods for partial watermark detection. First, we develop a geometry cover detection framework aimed at determining whether there is a watermark segment in long text. Second, we introduce an adaptive online learning algorithm to pinpoint the precise location of watermark segments within the text. Evaluated on three popular watermarking techniques (KGW-Watermark, Unigram-Watermark, and Gumbel-Watermark), our approach achieves high accuracy, significantly outperforming baseline methods. Moreover, our framework is adaptable to other watermarking techniques, offering new insights for precise watermark detection.},
-  code     = {https://github.com/XuandongZhao/llm-watermark-location},
-  url   = {https://aclanthology.org/2025.acl-long.316/},
+  abstract  = {How can we verify whether copyrighted content was used to train a large vision-language model (VLM) without direct access to its training data? Motivated by the hypothesis that a VLM is able to recognize images from its training corpus, we propose DIS-CO, a novel approach to infer the inclusion of copyrighted content during the model's development. By repeatedly querying a VLM with specific frames from targeted copyrighted material, DIS-CO extracts the content's identity through free-form text completions. To assess its effectiveness, we introduce MovieTection, a benchmark comprising 14,000 frames paired with detailed captions, drawn from films released both before and after a model’s training cutoff. Our results show that DIS-CO significantly improves detection performance, nearly doubling the average AUC of the best prior method on models with logits available. Our findings also highlight a broader concern: all tested models appear to have been exposed to some extent to copyrighted content.},
+  code      = {https://github.com/avduarte333/DIS-CO},
+  eprint    = {https://arxiv.org/abs/2502.17358},
 }
 
-@InProceedings{ouyang-etal-2025-infinisst,
+@InProceedings{song2025ppdiff,
+  author    = {Zhenqiao Song and Tianxiao Li and Lei Li and Martin Renqiang},
+  booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML)},
+  title     = {PPDiff: Diffusing in Hybrid Sequence-Structure Space for Protein-Protein Complex Design},
+  year      = {2025},
+  month     = jul,
+  abstract  = {Designing protein-binding proteins with high affinity is critical in biomedical research and biotechnology. Despite recent advancements targeting specific proteins, the ability to create high-affinity binders for arbitrary protein targets on demand, without extensive rounds of wet-lab testing, remains a significant challenge. Here, we introduce PPDiff, a diffusion model to jointly design the sequence and structure of binders for arbitrary protein targets in a non-autoregressive manner. PPDiffbuilds upon our developed Sequence Structure Interleaving Network with Causal attention layers (SSINC), which integrates interleaved self-attention layers to capture global amino acid correlations, k-nearest neighbor (kNN) equivariant graph layers to model local interactions in three-dimensional (3D) space, and causal attention layers to simplify the intricate interdependencies within the protein sequence. To assess PPDiff, we curate PPBench, a general protein-protein complex dataset comprising 706,360 complexes from the Protein Data Bank (PDB). The model is pretrained on PPBenchand finetuned on two real-world applications: target-protein mini-binder complex design and antigen-antibody complex design. PPDiffconsistently surpasses baseline methods, achieving success rates of 50.00%, 23.16%, and 16.89% for the pretraining task and the two downstream applications, respectively.},
+  code      = {https://github.com/JocelynSong/PPDiff},
+  eprint    = {https://arxiv.org/abs/2506.11420},
+}
+
+@InProceedings{zhao2025weak,
+  author    = {Xuandong Zhao and Xianjun Yang and Tianyu Pang and Chao Du and Lei Li and Yu-Xiang Wang and William Yang Wang},
+  booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML)},
+  title     = {Weak-to-Strong Jailbreaking on Large Language Models},
+  year      = {2025},
+  month     = jul,
+  abstract  = {Large language models (LLMs) are vulnerable to jailbreak attacks - resulting in harmful, unethical, or biased text generations. However, existing jailbreaking methods are computationally costly. In this paper, we propose the weak-to-strong jailbreaking attack, an efficient inference time attack for aligned LLMs to produce harmful text. Our key intuition is based on the observation that jailbroken and aligned models only differ in their initial decoding distributions. The weak-to-strong attack's key technical insight is using two smaller models (a safe and an unsafe one) to adversarially modify a significantly larger safe model's decoding probabilities. We evaluate the weak-to-strong attack on 5 diverse open-source LLMs from 3 organizations. The results show our method can increase the misalignment rate to over 99% on two datasets with just one forward pass per example. Our study exposes an urgent safety issue that needs to be addressed when aligning LLMs. As an initial attempt, we propose a defense strategy to protect against such attacks, but creating more advanced defenses remains challenging.},
+  code      = {https://github.com/XuandongZhao/weak-to-strong},
+  eprint    = {https://arxiv.org/abs/2401.17256},
+}
+
+@InProceedings{ouyang2025infinisst,
   author    = {Siqi Ouyang and Xi Xu and Lei Li},
   booktitle = {the 63rd Annual Meeting of the Association for Computational Linguistics - Findings (ACL-Findings)},
   title     = {InfiniSST: Simultaneous Translation of Unbounded Speech with Large Language Model},
   year      = {2025},
   month     = jul,
   abstract  = {"Simultaneous translation of unbounded streaming speech remains a challenging problem due to the need for effectively processing the historical speech context and past translations so that quality and latency, including computation overhead, can be balanced. Most prior works assume pre-segmented speech, limiting their real-world applicability. In this paper, we propose InfiniSST, a novel approach that formulates SST as a multi-turn dialogue task, enabling seamless translation of unbounded speech. We construct translation trajectories and robust segments from MuST-C with multi-latency augmentation during training and develop a key-value (KV) cache management strategy to facilitate efficient inference. Experiments on MuST-C En-Es, En-De, and En-Zh demonstrate that InfiniSST reduces computation-aware latency by 0.5 to 1 second while maintaining the same translation quality compared to baselines. Ablation studies further validate the contributions of our data construction and cache management strategy. Code is released at https://github.com/LeiLiLab/InfiniSST."},
-  url    = {https://aclanthology.org/2025.findings-acl.157/},
+  url       = {https://aclanthology.org/2025.findings-acl.157/},
 }
 
-@InProceedings{yuan-etal-2025-legomt2,
+@InProceedings{yuan2025legomt2,
   author    = {Fei Yuan and Yinquan Lu and Lei Li and Jingjing Xu},
   booktitle = {the 63rd Annual Meeting of the Association for Computational Linguistics - Findings (ACL-Findings)},
   title     = {LegoMT2: Selective Asynchronous Sharded Data Parallel Training for Massive Neural Machine Translation},
   year      = {2025},
   month     = jul,
   abstract  = {"It is a critical challenge to learn a single model for massive languages. Prior methods focus on increasing the model size and training data size. However, large models are difficult to optimize efficiently even with distributed parallel training and translation capacity can interfere among languages. To address the challenge, we propose LegoMT2, an efficient training approach with an asymmetric multi-way model architecture for massive multilingual neural machine translation. LegoMT2 shards 435 languages into 8 language-centric groups and attributes one local encoder for each group{'}s languages and a mix encoder-decoder for all languages. LegoMT2 trains the model through local data parallel and asynchronous distributed updating of parameters. LegoMT2 is 16.2$\times$ faster than the distributed training method for M2M-100-12B (which only for 100 languages) while improving the translation performance by an average of 2.2 BLEU on \textit{Flores-101}, especially performing better for low-resource languages ."},
-  url    = {https://aclanthology.org/2025.findings-acl.1200/},
+  url       = {https://aclanthology.org/2025.findings-acl.1200/},
 }
 
 
-@InProceedings{duarte2025disco,
-  author   = {André V. Duarte and Xuandong Zhao and Arlindo L. Oliveira and Lei Li},
-  booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML)},
-  title    = {DIS-CO: Discovering Copyrighted Content in VLMs Training Data},
-  year     = {2025},
+@InProceedings{zhao2025efficiently,
+  author    = {Xuandong Zhao and Chenwen Liao and Yu-Xiang Wang and Lei Li},
+  booktitle = {the 63rd Annual Meeting of the Association for Computational Linguistics (ACL)},
+  title     = {Efficiently Identifying Watermarked Segments in Mixed-Source Texts},
+  year      = {2025},
   month     = jul,
-  abstract = {How can we verify whether copyrighted content was used to train a large vision-language model (VLM) without direct access to its training data? Motivated by the hypothesis that a VLM is able to recognize images from its training corpus, we propose DIS-CO, a novel approach to infer the inclusion of copyrighted content during the model's development. By repeatedly querying a VLM with specific frames from targeted copyrighted material, DIS-CO extracts the content's identity through free-form text completions. To assess its effectiveness, we introduce MovieTection, a benchmark comprising 14,000 frames paired with detailed captions, drawn from films released both before and after a model’s training cutoff. Our results show that DIS-CO significantly improves detection performance, nearly doubling the average AUC of the best prior method on models with logits available. Our findings also highlight a broader concern: all tested models appear to have been exposed to some extent to copyrighted content.},
-  code     = {https://github.com/avduarte333/DIS-CO},
-  eprint   = {https://arxiv.org/abs/2502.17358},
-}
-
-@InProceedings{zhao2025weaktostrongjailbreakinglargelanguage,
-  author   = {Xuandong Zhao and Xianjun Yang and Tianyu Pang and Chao Du and Lei Li and Yu-Xiang Wang and William Yang Wang},
-  booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML)},
-  title    = {Weak-to-Strong Jailbreaking on Large Language Models},
-  year     = {2025},
-  month     = jul,
-  abstract = {Large language models (LLMs) are vulnerable to jailbreak attacks - resulting in harmful, unethical, or biased text generations. However, existing jailbreaking methods are computationally costly. In this paper, we propose the weak-to-strong jailbreaking attack, an efficient inference time attack for aligned LLMs to produce harmful text. Our key intuition is based on the observation that jailbroken and aligned models only differ in their initial decoding distributions. The weak-to-strong attack's key technical insight is using two smaller models (a safe and an unsafe one) to adversarially modify a significantly larger safe model's decoding probabilities. We evaluate the weak-to-strong attack on 5 diverse open-source LLMs from 3 organizations. The results show our method can increase the misalignment rate to over 99% on two datasets with just one forward pass per example. Our study exposes an urgent safety issue that needs to be addressed when aligning LLMs. As an initial attempt, we propose a defense strategy to protect against such attacks, but creating more advanced defenses remains challenging.},
-  code     = {https://github.com/XuandongZhao/weak-to-strong},
-  eprint   = {https://arxiv.org/abs/2401.17256},
-}
-
-@InProceedings{song2025ppdiffdiffusinghybridsequencestructure,
-  author   = {Zhenqiao Song and Tianxiao Li and Lei Li and Martin Renqiang},
-  booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML)},
-  title    = {PPDiff: Diffusing in Hybrid Sequence-Structure Space for Protein-Protein Complex Design},
-  year     = {2025},
-  month     = jul,
-  abstract = {Designing protein-binding proteins with high affinity is critical in biomedical research and biotechnology. Despite recent advancements targeting specific proteins, the ability to create high-affinity binders for arbitrary protein targets on demand, without extensive rounds of wet-lab testing, remains a significant challenge. Here, we introduce PPDiff, a diffusion model to jointly design the sequence and structure of binders for arbitrary protein targets in a non-autoregressive manner. PPDiffbuilds upon our developed Sequence Structure Interleaving Network with Causal attention layers (SSINC), which integrates interleaved self-attention layers to capture global amino acid correlations, k-nearest neighbor (kNN) equivariant graph layers to model local interactions in three-dimensional (3D) space, and causal attention layers to simplify the intricate interdependencies within the protein sequence. To assess PPDiff, we curate PPBench, a general protein-protein complex dataset comprising 706,360 complexes from the Protein Data Bank (PDB). The model is pretrained on PPBenchand finetuned on two real-world applications: target-protein mini-binder complex design and antigen-antibody complex design. PPDiffconsistently surpasses baseline methods, achieving success rates of 50.00%, 23.16%, and 16.89% for the pretraining task and the two downstream applications, respectively.},
-  code     = {https://github.com/JocelynSong/PPDiff},
-  eprint   = {https://arxiv.org/abs/2506.11420},
+  abstract  = {Text watermarks in large language models (LLMs) are increasingly used to detect synthetic text, mitigating misuse cases like fake news and academic dishonesty. While existing watermarking detection techniques primarily focus on classifying entire documents as watermarked or not, they often neglect the common scenario of identifying individual watermark segments within longer, mixed-source documents. Drawing inspiration from plagiarism detection systems, we propose two novel methods for partial watermark detection. First, we develop a geometry cover detection framework aimed at determining whether there is a watermark segment in long text. Second, we introduce an adaptive online learning algorithm to pinpoint the precise location of watermark segments within the text. Evaluated on three popular watermarking techniques (KGW-Watermark, Unigram-Watermark, and Gumbel-Watermark), our approach achieves high accuracy, significantly outperforming baseline methods. Moreover, our framework is adaptable to other watermarking techniques, offering new insights for precise watermark detection.},
+  code      = {https://github.com/XuandongZhao/llm-watermark-location},
+  url       = {https://aclanthology.org/2025.acl-long.316/},
 }
 
 
@@ -520,6 +542,16 @@ We conduct extensive experiments to validate the effectiveness and applicability
   monthfiled  = {#dec#},
   title       = {Media retrieval method and apparatus},
   owner       = {lilei.02},
+}
+
+@InProceedings{wu2024regulogpt,
+  author    = {Wu, Xidong and Jo, Sumin and Zeng, Yiming and Das, Arun and Zhang, Ting-He and Patel, Parth and Wei, Yuanjing and Li, Lei and Gao, Shou-Jiang and Zhang, Jianqiu and Pratt, Dexter and Chiu, Yu-Chiao and Huang, Yufei},
+  booktitle = {2024 IEEE EMBS International Conference on Biomedical and Health Informatics (BHI)},
+  title     = {ReguloGPT: Harnessing GPT for End-to-End Knowledge Graph Construction of Molecular Regulatory Pathways},
+  year      = {2024},
+  pages     = {1-8},
+  doi       = {10.1109/BHI62660.2024.10913581},
+  keywords  = {Systematics;Phenotypes;Source coding;Semantics;Knowledge graphs;Benchmark testing;Regulation;Biological information theory;Materials requirements planning;Cancer;context-aware relation graph;GPT;in context learning;knowledge graph construction;molecular regulatory pathways;m6 A mRNA methylation;reguloGPT},
 }
 
 @InProceedings{dong2023statistical,
