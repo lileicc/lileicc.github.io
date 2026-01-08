@@ -1,3 +1,48 @@
+@Patent{cheng2025method,
+  nationality = {US},
+  number      = {US12488200B2},
+  year        = {2025},
+  yearfiled   = {2022},
+  assignee    = {Beijing Youzhuju Network Technology Co Ltd},
+  author      = {Shanbo Cheng and Mingxuan Wang and Lei Li},
+  day         = {02},
+  dayfiled    = {12},
+  month       = dec,
+  monthfiled  = {#may#},
+  title       = {Method and apparatus for adding video effect, device, and storage medium},
+}
+
+@Patent{feng2025text,
+  nationality = {US},
+  number      = {US12493640B2},
+  year        = {2025},
+  yearfiled   = {2022},
+  address     = {Beijing Youzhuju Network Technology Co Ltd},
+  author      = {Jiangtao Feng and Jiaze Chen and Hao Zhou and Lei Li},
+  day         = {9},
+  dayfiled    = {20},
+  month       = dec,
+  monthfiled  = {#jan#},
+  title       = {Text processing method and apparatus, device, and medium},
+}
+
+@Article{cheng2025dnalongbench,
+  author   = {Wenduo Cheng and Zhenqiao Song and Yang Zhang and Shike Wang and Danqing Wang and Muyu Yang and Lei Li and Jian Ma},
+  journal  = {Nature Communications},
+  title    = {{DNALONGBENCH}: a benchmark suite for long-range DNA prediction tasks},
+  year     = {2025},
+  issn     = {2041-1723},
+  month    = {Nov},
+  number   = {1},
+  pages    = {10108},
+  volume   = {16},
+  abstract = {Modeling long-range DNA dependencies is crucial for understanding genome structure and function across diverse biological contexts. However, effectively capturing these dependencies, which may span millions of base pairs in tasks such as three-dimensional (3D) chromatin folding prediction, remains a major challenge. A comprehensive benchmark suite for evaluating tasks that rely on long-range dependencies is notably absent. To address this gap, we introduce DNALONGBENCH, a benchmark dataset covering five key genomics tasks with long-range dependencies up to 1 million base pairs: enhancer-target gene interaction, expression quantitative trait loci, 3D genome organization, regulatory sequence activity, and transcription initiation signals. We assess DNALONGBENCH using five methods: a task-specific expert model, a convolutional neural network (CNN)-based model, and three fine-tuned DNA foundation models -- HyenaDNA, Caduceus-Ph, and Caduceus-PS. We envision DNALONGBENCH as a standardized resource to enable comprehensive comparisons and rigorous evaluations of emerging DNA sequence-based deep learning models that account for long-range dependencies.},
+  day      = {18},
+  doi      = {10.1038/s41467-025-65077-4},
+  eprint   = {https://www.biorxiv.org/content/10.1101/2025.01.06.631595},
+  url      = {https://doi.org/10.1038/s41467-025-65077-4},
+}
+
 @InProceedings{huang2025benchmax,
   author    = {Xu Huang and Wenhao Zhu and Hanxu Hu and Conghui He and Lei Li and Shujian Huang and Fei Yuan},
   booktitle = {the Conference on Empirical Methods in Natural Language Processing (EMNLP) - Findings},
@@ -18,6 +63,20 @@
   abstract     = {Comprehensive pathway datasets are essential resources for advancing biological research, yet constructing these datasets is labor intensive. Recognizing the labor-intensive nature of constructing these critical resources, we present BioGraphia, a web-based annotation platform designed to facilitate collaborative pathway graph annotation. BioGraphia supports multi-user collaboration with real-time monitoring, curation, and interactive pathway graph visualization. It enables users to directly annotate the nodes and relations on the candidate graph, guided by detailed instructions. The platform is further enhanced with a large language model that automatically generates explainable and span-aligned pre-annotation to accelerate the annotation process. Its modular design allows flexible integration of external knowledge bases, and customization of the definition of annotation schema and, to support adaptation to other graph-based annotation tasks.},
   code         = {https://github.com/LeiLiLab/BioGraphia},
   entrysubtype = {demo},
+}
+
+@Patent{zhu2025localization,
+  nationality = {US},
+  number      = {US12430797B2},
+  year        = {2025},
+  yearfiled   = {2022},
+  assignee    = {Beijing Youzhuju Network Technology Co Ltd},
+  author      = {Minzhao Zhu and Tao Kong and Lei Li},
+  day         = {30},
+  dayfiled    = {27},
+  month       = sep,
+  monthfiled  = {#may#},
+  title       = {Localization method and apparatus, electronic device, and storage medium},
 }
 
 @InProceedings{ouyang2025cmus,
@@ -552,6 +611,18 @@ We conduct extensive experiments to validate the effectiveness and applicability
   pages     = {1-8},
   doi       = {10.1109/BHI62660.2024.10913581},
   keywords  = {Systematics;Phenotypes;Source coding;Semantics;Knowledge graphs;Benchmark testing;Regulation;Biological information theory;Materials requirements planning;Cancer;context-aware relation graph;GPT;in context learning;knowledge graph construction;molecular regulatory pathways;m6 A mRNA methylation;reguloGPT},
+}
+
+@InProceedings{chen2023tooldec,
+  author       = {Hongqiao Chen and Kexun Zhang and Lei Li and William Yang Wang},
+  booktitle    = {NeurIPS workshop on Mathematical Reasoning and AI},
+  title        = {{ToolDec}: Syntax Error-Free and Generalizable Tool Use for LLMs via Finite-State Decoding},
+  year         = {2023},
+  month        = dec,
+  abstract     = {Instruction-tuned large language models (LLMs) excel at many tasks but often fail to use external tools due to complicated and unfamiliar syntax constraints. While extensive fine-tuning and prompting can mitigate the issue, these approaches are expensive and hard to generalize. Furthermore, because syntax constraints are only learned implicitly during fine-tuning, models still make frequent syntax errors. Motivated by the fact that these constraints can be better satisfied explicitly with constrained decoding, we propose TOOLDEC, a decoding algorithm using finite state machines to force LLMs to follow tool syntax. Our experiments show that TOOLDEC eliminates all syntax errors, achieving significantly better performance on various base models and benchmarks. More surprisingly, when applied to generalist out-of-the-box LLMs such as Mistral-Instruct, TOOLDEC improves its accuracy in tool use from the initial 0% to an impressive 52%, matching the performance of specialized fine-tuned models such as ToolLLM.},
+  code         = {https://github.com/chenhongqiao/tooldec},
+  entrysubtype = {workshop},
+  eprint       = {https://arxiv.org/abs/2310.07075},
 }
 
 @InProceedings{dong2023statistical,
@@ -3194,12 +3265,32 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint = {https://arxiv.org/abs/1911.10677},
 }
 
-@Unpublished{chengPreprintdnalongbench,
-  author   = {Wenduo Cheng and Zhenqiao Song and Yang Zhang and Shike Wang and Danqing Wang and Muyu Yang and Lei Li and Jian Ma},
-  title    = {DNALONGBENCH: A Benchmark Suite for Long-Range DNA Prediction Tasks},
+@Unpublished{duartePreprintrecap,
+  author   = {André V. Duarte and Xuying li and Bin Zeng and Arlindo L. Oliveira and Lei Li and Zhuo Li},
+  title    = {{RECAP}: Reproducing Copyrighted Data from LLMs Training with an Agentic Pipeline},
   year     = {Preprint},
-  abstract = {Modeling long-range DNA dependencies is crucial for understanding genome structure and function across a wide range of biological contexts. However, effectively capturing these extensive dependencies, which may span millions of base pairs in tasks such as three-dimensional (3D) chromatin folding prediction, remains a significant challenge. Furthermore, a comprehensive benchmark suite for evaluating tasks that rely on long-range dependencies is notably absent. To address this gap, we introduce DNALongBench, a benchmark dataset encompassing five important genomics tasks that consider long-range dependencies up to 1 million base pairs: enhancer-target gene interaction, expression quantitative trait loci, 3D genome organization, regulatory sequence activity, and transcription initiation signals. To comprehensively assess DNALongBench, we evaluate the performance of five methods: a task-specific expert model, a convolutional neural network (CNN)-based model, and three fine-tuned DNA foundation models – HyenaDNA, Caduceus-Ph, and Caduceus-PS. We envision DNALongBench as a standardized resource with the potential to facilitate comprehensive comparisons and rigorous evaluations of emerging DNA sequence-based deep learning models that account for long-range dependencies.},
-  eprint   = {https://www.biorxiv.org/content/10.1101/2025.01.06.631595},
+  abstract = {If we cannot inspect the training data of a large language model (LLM), how can we ever know what it has seen? We believe the most compelling evidence arises when the model itself freely reproduces the target content. As such, we propose RECAP, an agentic pipeline designed to elicit and verify memorized training data from LLM outputs. At the heart of RECAP is a feedback-driven loop, where an initial extraction attempt is evaluated by a secondary language model, which compares the output against a reference passage and identifies discrepancies. These are then translated into minimal correction hints, which are fed back into the target model to guide subsequent generations. In addition, to address alignment-induced refusals, RECAP includes a jailbreaking module that detects and overcomes such barriers. We evaluate RECAP on EchoTrace, a new benchmark spanning over 30 full books, and the results show that RECAP leads to substantial gains over single-iteration approaches. For instance, with GPT-4.1, the average ROUGE-L score for the copyrighted text extraction improved from 0.38 to 0.47 - a nearly 24% increase.},
+  code     = {https://github.com/avduarte333/RECAP},
+  eprint   = {https://arxiv.org/abs/2510.25941},
+}
+
+@Unpublished{gaoPreprintcould,
+  author   = {Changjiang Gao and Xu Huang and Wenhao Zhu and Shujian Huang and Lei Li and Fei Yuan},
+  title    = {Could Thinking Multilingually Empower LLM Reasoning?},
+  year     = {Preprint},
+  abstract = {Previous work indicates that large language models exhibit a significant "English bias", i.e. they often perform better when tasks are presented in English. Interestingly, we have observed that using certain other languages in reasoning tasks can yield better performance than English. However, this phenomenon remains under-explored. In this paper, we explore the upper bound of harnessing multilingualism in reasoning tasks, suggesting that multilingual reasoning promises significantly (by nearly 10 Acc@k points) and robustly (tolerance for variations in translation quality and language choice) higher upper bounds than English-only reasoning. Besides analyzing the reason behind the upper bound and challenges in reaching it, we also find that common answer selection methods cannot achieve this upper bound, due to their limitations and biases. These insights could pave the way for future research aimed at fully harnessing the potential of multilingual reasoning in LLMs.},
+  code     = {https://github.com/CONE-MT/multilingual_reasoning},
+  eprint   = {https://arxiv.org/abs/2504.11833},
+}
+
+@Unpublished{hePreprinthardtests,
+  author   = {Zhongmou He and Yee Man Choi and Kexun Zhang and Jiabao Ji and Junting Zhou and Dejia Xu and Ivan Bercovich and Aidan Zhang and Lei Li},
+  title    = {{HardTests}: Synthesizing High-Quality Test Cases for LLM Coding},
+  year     = {Preprint},
+  abstract = {Verifiers play a crucial role in large language model (LLM) reasoning, needed by post-training techniques such as reinforcement learning. However, reliable verifiers are hard to get for difficult coding problems, because a well-disguised wrong solution may only be detected by carefully human-written edge cases that are difficult to synthesize. To address this issue, we propose HARDTESTGEN, a pipeline for high-quality test synthesis using LLMs. With this pipeline, we curate a comprehensive competitive programming dataset HARDTESTS with 47k problems and synthetic high-quality tests. Compared with existing tests, HARDTESTGEN tests demonstrate precision that is 11.3 percentage points higher and recall that is 17.5 percentage points higher when evaluating LLM-generated code. For harder problems, the improvement in precision can be as large as 40 points. HARDTESTS also proves to be more effective for model training, measured by downstream code generation performance.},
+  code     = {https://github.com/LeiLiLab/HardTestGen},
+  eprint   = {https://arxiv.org/abs/2505.24098},
+  url      = {https://leililab.github.io/HardTests/},
 }
 
 
@@ -3219,6 +3310,14 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint   = {https://arxiv.org/abs/2310.04343},
 }
 
+@Unpublished{songPreprintinstructpro,
+  author   = {Zhenqiao Song and Ramith Hettiarachchi and Chuan Li and Jianwen Xie and Lei Li},
+  title    = {{InstructPro}: Natural Language Guided Ligand-Binding Protein Design},
+  year     = {Preprint},
+  abstract = {Designing ligand-binding proteins with precise functions is fundamental to advances in biology and chemistry, yet existing AI approaches are limited by scarce protein-ligand complex data. Meanwhile, abundant text descriptions of protein-ligand interactions remain underutilized. We introduce InstructPro, a family of generative models that design proteins from natural language instructions and ligand formulas. InstructPro produces protein sequences consistent with specified functional descriptions and ligand targets. To enable training and evaluation, we develop InstructProBench, a large-scale dataset of 9.6 million (function description, ligand, protein) triples. We train two model variants: InstructPro-1B and InstructPro-3B, which substantially outperform strong baselines. InstructPro-1B achieves design success rates of 2.46% (seen ligands) and 3.14% (zero-shot), while InstructPro-3B reaches 5.06% and 3.93%, respectively. These results demonstrate the potential of natural language-guided generative modeling to expand protein design capabilities beyond traditional data limitations.},
+  eprint   = {https://arxiv.org/abs/2506.09332},
+}
+
 @Unpublished{songPreprintjoint,
   author   = {Zhenqiao Song and Yunlong Zhao and Yufei Song and Wenxian Shi and Yang Yang and Lei Li},
   title    = {Joint Design of Protein Sequence and Structure based on Motifs},
@@ -3227,12 +3326,38 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint   = {https://arxiv.org/abs/2310.02546},
 }
 
+@Unpublished{sunPreprintjanuscoder,
+  author   = {Qiushi Sun and Jingyang Gong and Yang Liu and Qiaosheng Chen and Lei Li and Kai Chen and Qipeng Guo and Ben Kao and Fei Yuan},
+  title    = {{JanusCoder}: Towards a Foundational Visual-Programmatic Interface for Code Intelligence},
+  year     = {Preprint},
+  abstract = {The scope of neural code intelligence is rapidly expanding beyond text-based source code to encompass the rich visual outputs that programs generate. This visual dimension is critical for advanced applications like flexible content generation and precise, program-driven editing of visualizations. However, progress has been impeded by the scarcity of high-quality multimodal code data, a bottleneck stemming from challenges in synthesis and quality assessment. To address these challenges, we make contributions from both a data and modeling perspective. We first introduce a complete synthesis toolkit that leverages reciprocal synergies between data modalities to efficiently produce a large-scale, high-quality corpus spanning from standard charts to complex interactive web UIs and code-driven animations. Leveraging this toolkit, we construct JanusCode-800K, the largest multimodal code corpus to date. This powers the training of our models, JanusCoder and JanusCoderV, which establish a visual-programmatic interface for generating code from textual instructions, visual inputs, or a combination of both. Our unified model is a departure from existing approaches that build specialized models for isolated tasks. Extensive experiments on both text-centric and vision-centric coding tasks demonstrate the superior performance of the JanusCoder series, with our 7B to 14B scale models approaching or even exceeding the performance of commercial models. Furthermore, extensive analysis provides key insights into harmonizing programmatic logic with its visual expression.},
+  code     = {https://github.com/InternLM/JanusCoder},
+  eprint   = {https://arxiv.org/abs/2510.23538},
+}
+
+@Unpublished{turcanPreprinttusoai,
+  author   = {Alistair Turcan and Kexin Huang and Lei Li and Martin Jinye Zhang},
+  title    = {TusoAI: Agentic Optimization for Scientific Methods},
+  year     = {Preprint},
+  abstract = {Scientific discovery is often slowed by the manual development of computational tools needed to analyze complex experimental data. Building such tools is costly and time-consuming because scientists must iteratively review literature, test modeling and scientific assumptions against empirical data, and implement these insights into efficient software. Large language models (LLMs) have demonstrated strong capabilities in synthesizing literature, reasoning with empirical data, and generating domain-specific code, offering new opportunities to accelerate computational method development. Existing LLM-based systems either focus on performing scientific analyses using existing computational methods or on developing computational methods or models for general machine learning without effectively integrating the often unstructured knowledge specific to scientific domains. Here, we introduce TusoAI , an agentic AI system that takes a scientific task description with an evaluation function and autonomously develops and optimizes computational methods for the application. TusoAI integrates domain knowledge into a knowledge tree representation and performs iterative, domain-specific optimization and model diagnosis, improving performance over a pool of candidate solutions. We conducted comprehensive benchmark evaluations demonstrating that TusoAI outperforms state-of-the-art expert methods, MLE agents, and scientific AI agents across diverse tasks, such as single-cell RNA-seq data denoising and satellite-based earth monitoring. Applying TusoAI to two key open problems in genetics improved existing computational methods and uncovered novel biology, including 9 new associations between autoimmune diseases and T cell subtypes and 7 previously unreported links between disease variants linked to their target genes.},
+  code     = {https://github.com/Alistair-Turcan/TusoAI},
+  eprint   = {https://arxiv.org/abs/2509.23986},
+}
+
 @Unpublished{wangPreprintcooperative,
   author   = {Danqing Wang and Zhuorui Ye and Fei Fang and Lei Li},
   title    = {Cooperative Strategic Planning Enhances Reasoning Capabilities in Large Language Models},
   year     = {Preprint},
   abstract = {Enhancing the reasoning capabilities of large language models (LLMs) is crucial for enabling them to tackle complex, multi-step problems. Multi-agent frameworks have shown great potential in enhancing LLMs' reasoning capabilities. However, the lack of effective cooperation between LLM agents hinders their performance, especially for multi-step reasoning tasks. This paper proposes a novel cooperative multi-agent reasoning framework (CoPlanner) by separating reasoning steps and assigning distinct duties to different agents. CoPlanner consists of two LLM agents: a planning agent and a reasoning agent. The planning agent provides high-level strategic hints, while the reasoning agent follows these hints and infers answers. By training the planning agent's policy through the interactive reasoning process via Proximal Policy Optimization (PPO), the LLaMA-3-8B-based CoPlanner outperforms the previous best method by 9.94\% on LogiQA and 3.09\% on BBH. Our results demonstrate that the guidance from the planning agent and the effective cooperation between the agents contribute to the superior performance of CoPlanner in tackling multi-step reasoning problems.},
   eprint   = {https://arxiv.org/abs/2410.20007},
+}
+
+@Unpublished{wangPreprintstrategic,
+  author   = {Danqing Wang and Zhuorui Ye and Xinran Zhao and Fei Fang and Lei Li},
+  title    = {Strategic Planning and Rationalizing on Trees Make LLMs Better Debaters},
+  year     = {Preprint},
+  abstract = {Winning competitive debates requires sophisticated reasoning and argument skills. There are unique challenges in the competitive debate: (1) The time constraints force debaters to make strategic choices about which points to pursue rather than covering all possible arguments; (2) The persuasiveness of the debate relies on the back-and-forth interaction between arguments, which a single final game status cannot evaluate. To address these challenges, we propose TreeDebater, a novel debate framework that excels in competitive debate. We introduce two tree structures: the Rehearsal Tree and Debate Flow Tree. The Rehearsal Tree anticipates the attack and defenses to evaluate the strength of the claim, while the Debate Flow Tree tracks the debate status to identify the active actions. TreeDebater allocates its time budget among candidate actions and uses the speech time controller and feedback from the simulated audience to revise its statement. The human evaluation on both the stage-level and the debate-level comparison shows that our TreeDebater outperforms the state-of-the-art multi-agent debate system, with a +15.6% improvement in stage-level persuasiveness with DeepSeek and +10% debate-level opinion shift win. Further investigation shows that TreeDebater shows better strategies in limiting time to important debate actions, aligning with the strategies of human debate experts.},
+  eprint   = {https://arxiv.org/abs/2505.14886},
 }
 
 @Unpublished{xuPreprintreciprocal,
@@ -3262,6 +3387,24 @@ clickbait detection and generic text classification tasks demonstrate that our p
   title  = {Cross-Lingual Vision-Language Navigation},
   year   = {Preprint},
   eprint = {https://arxiv.org/abs/1910.11301},
+}
+
+@Unpublished{zengPreprintrare,
+  author   = {Yixiao Zeng and Tianyu Cao and Danqing Wang and Xinran Zhao and Zimeng Qiu and Morteza Ziyadi and Tongshuang Wu and Lei Li},
+  title    = {RARE: Retrieval-Aware Robustness Evaluation for Retrieval-Augmented Generation Systems},
+  year     = {Preprint},
+  abstract = {Retrieval-Augmented Generation (RAG) enhances recency and factuality in answers. However, existing evaluations rarely test how well these systems cope with real-world noise, conflicting between internal and external retrieved contexts, or fast-changing facts. We introduce Retrieval-Aware Robustness Evaluation (RARE), a unified framework and large-scale benchmark that jointly stress-tests query and document perturbations over dynamic, time-sensitive corpora. One of the central features of RARE is a knowledge-graph-driven synthesis pipeline (RARE-Get) that automatically extracts single and multi-hop relations from the customized corpus and generates multi-level question sets without manual intervention. Leveraging this pipeline, we construct a dataset (RARE-Set) spanning 527 expert-level time-sensitive finance, economics, and policy documents and 48295 questions whose distribution evolves as the underlying sources change. To quantify resilience, we formalize retrieval-conditioned robustness metrics (RARE-Met) that capture a model's ability to remain correct or recover when queries, documents, or real-world retrieval results are systematically altered. Our findings reveal that RAG systems are unexpectedly sensitive to perturbations. Moreover, they consistently demonstrate lower robustness on multi-hop queries compared to single-hop queries across all domains.},
+  code     = {https://github.com/LeiLiLab/RARE},
+  eprint   = {https://arxiv.org/abs/2506.00789},
+}
+
+@Unpublished{zhaoPreprintis,
+  author   = {Songwen Zhao and Danqing Wang and Kexun Zhang and Jiaxuan Luo and Zhuo Li and Lei Li},
+  title    = {Is Vibe Coding Safe? Benchmarking Vulnerability of Agent-Generated Code in Real-World Tasks},
+  year     = {Preprint},
+  abstract = {Vibe coding is a new programming paradigm in which human engineers instruct large language model (LLM) agents to complete complex coding tasks with little supervision. Although it is increasingly adopted, are vibe coding outputs really safe to deploy in production? To answer this question, we propose SUSVIBES, a benchmark consisting of 200 feature-request software engineering tasks from real-world open-source projects, which, when given to human programmers, led to vulnerable implementations. We evaluate multiple widely used coding agents with frontier models on this benchmark. Disturbingly, all agents perform poorly in terms of software security. Although 61% of the solutions from SWE-Agent with Claude 4 Sonnet are functionally correct, only 10.5% are secure. Further experiments demonstrate that preliminary security strategies, such as augmenting the feature request with vulnerability hints, cannot mitigate these security issues. Our findings raise serious concerns about the widespread adoption of vibe-coding, particularly in security-sensitive applications.},
+  code     = {https://github.com/LeiLiLab/susvibes},
+  eprint   = {https://arxiv.org/abs/2512.03262},
 }
 
 
