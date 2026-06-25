@@ -1,3 +1,93 @@
+@InProceedings{he2026hardtestgen,
+  author    = {Zhongmou He and Yee Man Choi and Kexun Zhang and Jiabao Ji and Junting Zhou and Dejia Xu and Ivan Bercovich and Aidan Zhang and Lei Li},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {{HARDTESTGEN}: A High-Quality RL Verifier Generation Pipeline for LLM Algorithimic Coding},
+  year      = {2026},
+  month     = apr,
+  abstract  = {Verifiers provide important reward signals for reinforcement learning of large language models (LLMs). However, it is challenging to develop or create reliable verifiers, especially for code generation tasks. A well-disguised wrong solution program may only be detected by carefully human-written edge cases that are difficult to synthesize automatically. To address this issue, we propose HARDTESTGEN, an approach to synthesize high-quality test cases for algorithmic coding problems. We curate a comprehensive algorithmic programming dataset HARDTESTS with 26.6k problems and high-quality synthetic tests. Compared with existing tests, \method tests demonstrate significantly higher accuracy in verifying LLM-generated code (+11.22 percentage points in precision, the percentage of actually correct code within the predicted correct ones). We also show that downstream post-training --- including rejection sampling and reinforcement learning (RL) --- using HARDTESTS verifier results in improved performance of LLM code generation. We open-source our dataset and synthesis pipeline at https://leililab.github.io/HardTests/.},
+  code      = {https://github.com/LeiLiLab/HardTestGen},
+  eprint    = {https://arxiv.org/abs/2505.24098},
+  url       = {https://leililab.github.io/HardTests/},
+}
+
+@InProceedings{sun2026januscoder,
+  author    = {Qiushi Sun and Jingyang Gong and Yang Liu and Qiaosheng Chen and Lei Li and Kai Chen and Qipeng Guo and Ben Kao and Fei Yuan},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {{JanusCoder}: Towards a Foundational Visual-Programmatic Interface for Code Intelligence},
+  year      = {2026},
+  month     = apr,
+  abstract  = {The scope of neural code intelligence is rapidly expanding beyond text-based source code to encompass the rich visual outputs that programs generate. This visual dimension is critical for advanced applications like flexible content generation and precise, program-driven editing of visualizations. However, progress has been impeded by the scarcity of high-quality multimodal code data, a bottleneck stemming from challenges in synthesis and quality assessment. To address these challenges, we make contributions from both a data and modeling perspective. We first introduce a complete synthesis toolkit that leverages reciprocal synergies between data modalities to efficiently produce a large-scale, high-quality corpus spanning from standard charts to complex interactive web UIs and code-driven animations. Leveraging this toolkit, we construct JanusCode-800K, the largest multimodal code corpus to date. This powers the training of our models, JanusCoder and JanusCoderV, which establish a visual-programmatic interface for generating code from textual instructions, visual inputs, or a combination of both. Our unified model is a departure from existing approaches that build specialized models for isolated tasks. Extensive experiments on both text-centric and vision-centric coding tasks demonstrate the superior performance of the JanusCoder series, with our 7B to 14B scale models approaching or even exceeding the performance of commercial models. Furthermore, extensive analysis provides key insights into harmonizing programmatic logic with its visual expression.},
+  code      = {https://github.com/InternLM/JanusCoder},
+  eprint    = {https://arxiv.org/abs/2510.23538},
+}
+
+@InProceedings{turcan2026tusoai,
+  author    = {Alistair Turcan and Kexin Huang and Lei Li and Martin Jinye Zhang},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {TusoAI: Agentic Optimization for Scientific Methods},
+  year      = {2026},
+  month     = apr,
+  abstract  = {Scientific discovery is often slowed by the manual development of computational tools needed to analyze complex experimental data. Building such tools is costly and time-consuming because scientists must iteratively review literature, test modeling and scientific assumptions against empirical data, and implement these insights into efficient software. Large language models (LLMs) have demonstrated strong capabilities in synthesizing literature, reasoning with empirical data, and generating domain-specific code, offering new opportunities to accelerate computational method development. Existing LLM-based systems either focus on performing scientific analyses using existing computational methods or on developing computational methods or models for general machine learning without effectively integrating the often unstructured knowledge specific to scientific domains. Here, we introduce TusoAI , an agentic AI system that takes a scientific task description with an evaluation function and autonomously develops and optimizes computational methods for the application. TusoAI integrates domain knowledge into a knowledge tree representation and performs iterative, domain-specific optimization and model diagnosis, improving performance over a pool of candidate solutions. We conducted comprehensive benchmark evaluations demonstrating that TusoAI outperforms state-of-the-art expert methods, MLE agents, and scientific AI agents across diverse tasks, such as single-cell RNA-seq data denoising and satellite-based earth monitoring. Applying TusoAI to two key open problems in genetics improved existing computational methods and uncovered novel biology, including 9 new associations between autoimmune diseases and T cell subtypes and 7 previously unreported links between disease variants linked to their target genes.},
+  code      = {https://github.com/Alistair-Turcan/TusoAI},
+  eprint    = {https://arxiv.org/abs/2509.23986},
+}
+
+@InProceedings{wang2026strategic,
+  author    = {Danqing Wang and Zhuorui Ye and Xinran Zhao and Fei Fang and Lei Li},
+  booktitle = {International Conference on Learning Representations (ICLR)},
+  title     = {Strategic Planning and Rationalizing on Trees Make LLMs Better Debaters},
+  year      = {2026},
+  month     = apr,
+  abstract  = {Winning competitive debates requires sophisticated reasoning and argument skills. There are unique challenges in the competitive debate: (1) The time constraints force debaters to make strategic choices about which points to pursue rather than covering all possible arguments; (2) The persuasiveness of the debate relies on the back-and-forth interaction between arguments, which a single final game status cannot evaluate. To address these challenges, we propose TreeDebater, a novel debate framework that excels in competitive debate. We introduce two tree structures: the Rehearsal Tree and Debate Flow Tree. The Rehearsal Tree anticipates the attack and defenses to evaluate the strength of the claim, while the Debate Flow Tree tracks the debate status to identify the active actions. TreeDebater allocates its time budget among candidate actions and uses the speech time controller and feedback from the simulated audience to revise its statement. The human evaluation on both the stage-level and the debate-level comparison shows that our TreeDebater outperforms the state-of-the-art multi-agent debate system, with a +15.6% improvement in stage-level persuasiveness with DeepSeek and +10% debate-level opinion shift win. Further investigation shows that TreeDebater shows better strategies in limiting time to important debate actions, aligning with the strategies of human debate experts.},
+  code      = {https://github.com/LeiLiLab/TreeDebater},
+  eprint    = {https://arxiv.org/abs/2505.14886},
+}
+
+@InBook{li2026flow,
+  author    = {Li, Lei},
+  editor    = {Li, Honglin and Zheng, Mingyue and zhu, feng and Bai, Fang},
+  pages     = {145--153},
+  publisher = {Springer Nature Singapore},
+  title     = {Flow-Based Generative Model},
+  year      = {2026},
+  address   = {Singapore},
+  isbn      = {978-981-95-2525-6},
+  abstract  = {In this chapter, we describe the flow-based generative models. The core idea is to start from the existing basic probability distribution, transform the probability distribution through a series of deep network layers, and finally define a large class of very broad probability distributions. In this way, we can compute the data distribution with close-form efficient solutions. Based on this idea, we will describe several instantiations, including normalizing flow, RealNVP, and Glow. We will also introduce flow-based model for text representation learning.},
+  booktitle = {Artificial Intelligence for Drug Design},
+  doi       = {10.1007/978-981-95-2525-6_14},
+  url       = {https://doi.org/10.1007/978-981-95-2525-6_14},
+}
+
+@InBook{li2026generative,
+  author    = {Li, Lei},
+  editor    = {Li, Honglin and Zheng, Mingyue and zhu, feng and Bai, Fang},
+  pages     = {137--143},
+  publisher = {Springer Nature Singapore},
+  title     = {Generative Adversarial Networks},
+  year      = {2026},
+  address   = {Singapore},
+  isbn      = {978-981-95-2525-6},
+  abstract  = {The generative model introduced in the previous chapter essentially defines a data probability distribution function. Probability distribution is not the only way to define a generative model. We describe generative adversarial networks (GAN) (Goodfellow et al., Generative adversarial nets. In: Advances in neural information processing systems. Curran Associates, 2014) in this chapter. It is defined through a data generation process, rather than a probability distribution. The motivation is it is often difficult to estimate the probability distribution of data, and even the likelihood function cannot be explicitly expressed. Defining the data generation process and its constraints directly does not depend on the specific likelihood function formula therefore it provides an alternative formulation of generative models. We will further describe an extension, Wasserstein GAN (WGAN).},
+  booktitle = {Artificial Intelligence for Drug Design},
+  doi       = {10.1007/978-981-95-2525-6_13},
+  url       = {https://doi.org/10.1007/978-981-95-2525-6_13},
+}
+
+@InBook{li2026variational,
+  author    = {Li, Lei},
+  editor    = {Li, Honglin and Zheng, Mingyue and zhu, feng and Bai, Fang},
+  pages     = {127--136},
+  publisher = {Springer Nature Singapore},
+  title     = {Variational Autoencoder (VAE)},
+  year      = {2026},
+  address   = {Singapore},
+  isbn      = {978-981-95-2525-6},
+  abstract  = {Machine learning is a paradigm of methods to learn patterns from data. A fundamental challenge in machine learning is how we learn proper representations from data. Supervised learning relies on human labeled data samples to train models. Their training objectives are well-designed losses against input and ground-truth labels. A proper data representation can be learned through such supervised training. However, labeled data is scarce or costly to obtain in many applications. Meanwhile, there is often abundant unlabeled data, such as text and images on the public Internet. How can we automatically learn useful representations from unlabeled data? Autoencoders are a family of methods to learn proper representations. Variational autoencoders (VAEs) are a class of methods to learn autoencoders by introducing probabilistic latent variables and optimizing them with stochastic gradients (Kingma and Welling, Auto-encoding variational bayes. In: ICLR, 2014). Since its inception in 2014, VAE has been widely used for image, speech, and text data modeling and generation. Later, there are extensive follow-up works to improve VAEs.},
+  booktitle = {Artificial Intelligence for Drug Design},
+  doi       = {10.1007/978-981-95-2525-6_12},
+  url       = {https://doi.org/10.1007/978-981-95-2525-6_12},
+}
+
 @Patent{cheng2025method,
   nationality = {US},
   number      = {US12488200B2},
@@ -287,7 +377,7 @@
   eprint    = {https://arxiv.org/abs/2412.05139},
 }
 
-@InProceedings{xu2025ca*,
+@InProceedings{xu2025ca,
   author    = {Xi Xu and Wenda Xu and Siqi Ouyang and Lei Li},
   booktitle = {Proceedings of 2025 Annual Conference of the Nations of the Americas Chapter of the Association for Computational Linguistics (NAACL) - Findings},
   title     = {CA*: Addressing Evaluation Pitfalls in Computation-Aware Latency for Simultaneous Speech Translation},
@@ -3283,16 +3373,6 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint   = {https://arxiv.org/abs/2504.11833},
 }
 
-@Unpublished{hePreprinthardtests,
-  author   = {Zhongmou He and Yee Man Choi and Kexun Zhang and Jiabao Ji and Junting Zhou and Dejia Xu and Ivan Bercovich and Aidan Zhang and Lei Li},
-  title    = {{HardTests}: Synthesizing High-Quality Test Cases for LLM Coding},
-  year     = {Preprint},
-  abstract = {Verifiers play a crucial role in large language model (LLM) reasoning, needed by post-training techniques such as reinforcement learning. However, reliable verifiers are hard to get for difficult coding problems, because a well-disguised wrong solution may only be detected by carefully human-written edge cases that are difficult to synthesize. To address this issue, we propose HARDTESTGEN, a pipeline for high-quality test synthesis using LLMs. With this pipeline, we curate a comprehensive competitive programming dataset HARDTESTS with 47k problems and synthetic high-quality tests. Compared with existing tests, HARDTESTGEN tests demonstrate precision that is 11.3 percentage points higher and recall that is 17.5 percentage points higher when evaluating LLM-generated code. For harder problems, the improvement in precision can be as large as 40 points. HARDTESTS also proves to be more effective for model training, measured by downstream code generation performance.},
-  code     = {https://github.com/LeiLiLab/HardTestGen},
-  eprint   = {https://arxiv.org/abs/2505.24098},
-  url      = {https://leililab.github.io/HardTests/},
-}
-
 
 @Unpublished{ouyangPreprintfasst,
   author   = {Siqi Ouyang and Xi Xu and Chinmay Dandekar and Lei Li},
@@ -3326,22 +3406,12 @@ clickbait detection and generic text classification tasks demonstrate that our p
   eprint   = {https://arxiv.org/abs/2310.02546},
 }
 
-@Unpublished{sunPreprintjanuscoder,
-  author   = {Qiushi Sun and Jingyang Gong and Yang Liu and Qiaosheng Chen and Lei Li and Kai Chen and Qipeng Guo and Ben Kao and Fei Yuan},
-  title    = {{JanusCoder}: Towards a Foundational Visual-Programmatic Interface for Code Intelligence},
+@Unpublished{songPreprintligand,
+  author   = {Zhenqiao Song and Huichong Liu and Yunlong Zhao and Yang Yang and Lei Li},
+  title    = {Ligand-guided Sequence–structure Co-design of De Novo Functional Enzymes},
   year     = {Preprint},
-  abstract = {The scope of neural code intelligence is rapidly expanding beyond text-based source code to encompass the rich visual outputs that programs generate. This visual dimension is critical for advanced applications like flexible content generation and precise, program-driven editing of visualizations. However, progress has been impeded by the scarcity of high-quality multimodal code data, a bottleneck stemming from challenges in synthesis and quality assessment. To address these challenges, we make contributions from both a data and modeling perspective. We first introduce a complete synthesis toolkit that leverages reciprocal synergies between data modalities to efficiently produce a large-scale, high-quality corpus spanning from standard charts to complex interactive web UIs and code-driven animations. Leveraging this toolkit, we construct JanusCode-800K, the largest multimodal code corpus to date. This powers the training of our models, JanusCoder and JanusCoderV, which establish a visual-programmatic interface for generating code from textual instructions, visual inputs, or a combination of both. Our unified model is a departure from existing approaches that build specialized models for isolated tasks. Extensive experiments on both text-centric and vision-centric coding tasks demonstrate the superior performance of the JanusCoder series, with our 7B to 14B scale models approaching or even exceeding the performance of commercial models. Furthermore, extensive analysis provides key insights into harmonizing programmatic logic with its visual expression.},
-  code     = {https://github.com/InternLM/JanusCoder},
-  eprint   = {https://arxiv.org/abs/2510.23538},
-}
-
-@Unpublished{turcanPreprinttusoai,
-  author   = {Alistair Turcan and Kexin Huang and Lei Li and Martin Jinye Zhang},
-  title    = {TusoAI: Agentic Optimization for Scientific Methods},
-  year     = {Preprint},
-  abstract = {Scientific discovery is often slowed by the manual development of computational tools needed to analyze complex experimental data. Building such tools is costly and time-consuming because scientists must iteratively review literature, test modeling and scientific assumptions against empirical data, and implement these insights into efficient software. Large language models (LLMs) have demonstrated strong capabilities in synthesizing literature, reasoning with empirical data, and generating domain-specific code, offering new opportunities to accelerate computational method development. Existing LLM-based systems either focus on performing scientific analyses using existing computational methods or on developing computational methods or models for general machine learning without effectively integrating the often unstructured knowledge specific to scientific domains. Here, we introduce TusoAI , an agentic AI system that takes a scientific task description with an evaluation function and autonomously develops and optimizes computational methods for the application. TusoAI integrates domain knowledge into a knowledge tree representation and performs iterative, domain-specific optimization and model diagnosis, improving performance over a pool of candidate solutions. We conducted comprehensive benchmark evaluations demonstrating that TusoAI outperforms state-of-the-art expert methods, MLE agents, and scientific AI agents across diverse tasks, such as single-cell RNA-seq data denoising and satellite-based earth monitoring. Applying TusoAI to two key open problems in genetics improved existing computational methods and uncovered novel biology, including 9 new associations between autoimmune diseases and T cell subtypes and 7 previously unreported links between disease variants linked to their target genes.},
-  code     = {https://github.com/Alistair-Turcan/TusoAI},
-  eprint   = {https://arxiv.org/abs/2509.23986},
+  abstract = {Proteins underpin essential biological functions across all kingdoms of life. The capacity to design novel proteins with tailored activities holds transformative potential for biotechnology, medicine, and sustainability. However, since protein functions, particularly enzymatic activities, depend on precise interactions with small-molecule ligands, accurately modeling these interactions remains a formidable challenge in de novo protein design. Here, we present ProteinNet, a large-scale generative model for the simultaneous co-design of protein sequence and structure with ligand-guided functional targeting. ProteinNet integrates Transformer-based sequence modeling with equivariant graph neural networks for 3D structural representation and an explicit protein-ligand interaction module. This model architecture enables targeted design from heterogeneous inputs, including binding ligands, functionally important residues, and evolutionary taxonomy. ProteinNet is a 730-million-parameter foundation model trained on 720,993 protein-ligand complexes using multi-task learning objectives, encompassing sequence, structure, and protein-ligand interaction prediction. In rigorous in silico benchmarks, ProteinNet consistently outperforms state-of-the-art baselines, including Inpainting, RFdiffusion/ProteinMPNN, and AlphaFold3/LigandMPNN, as measured by enzyme–substrate prediction scores, AlphaFold2 confidence metrics, and structural fidelity. We further experimentally validated ProteinNet across multiple enzyme families, including chloramphenicol acetyltransferase, aminoglycoside adenylyltransferase, and thiopurine S-methyltransferase. De novo enzymes generated by our fine-tuned ProteinNet exhibited catalytic activities comparable to or exceeding those of naturally enzymes, while retaining substantial novelty with sequence identities as low as 51.6%. These results establish ProteinNet as a robust Artificial Intelligence-based platform for functional enzyme design, demonstrating the power of large protein foundation models to create high-performance, novel biocatalysts.},
+  eprint   = {https://www.biorxiv.org/content/10.64898/2026.03.02.709205},
 }
 
 @Unpublished{wangPreprintcooperative,
@@ -3350,14 +3420,6 @@ clickbait detection and generic text classification tasks demonstrate that our p
   year     = {Preprint},
   abstract = {Enhancing the reasoning capabilities of large language models (LLMs) is crucial for enabling them to tackle complex, multi-step problems. Multi-agent frameworks have shown great potential in enhancing LLMs' reasoning capabilities. However, the lack of effective cooperation between LLM agents hinders their performance, especially for multi-step reasoning tasks. This paper proposes a novel cooperative multi-agent reasoning framework (CoPlanner) by separating reasoning steps and assigning distinct duties to different agents. CoPlanner consists of two LLM agents: a planning agent and a reasoning agent. The planning agent provides high-level strategic hints, while the reasoning agent follows these hints and infers answers. By training the planning agent's policy through the interactive reasoning process via Proximal Policy Optimization (PPO), the LLaMA-3-8B-based CoPlanner outperforms the previous best method by 9.94\% on LogiQA and 3.09\% on BBH. Our results demonstrate that the guidance from the planning agent and the effective cooperation between the agents contribute to the superior performance of CoPlanner in tackling multi-step reasoning problems.},
   eprint   = {https://arxiv.org/abs/2410.20007},
-}
-
-@Unpublished{wangPreprintstrategic,
-  author   = {Danqing Wang and Zhuorui Ye and Xinran Zhao and Fei Fang and Lei Li},
-  title    = {Strategic Planning and Rationalizing on Trees Make LLMs Better Debaters},
-  year     = {Preprint},
-  abstract = {Winning competitive debates requires sophisticated reasoning and argument skills. There are unique challenges in the competitive debate: (1) The time constraints force debaters to make strategic choices about which points to pursue rather than covering all possible arguments; (2) The persuasiveness of the debate relies on the back-and-forth interaction between arguments, which a single final game status cannot evaluate. To address these challenges, we propose TreeDebater, a novel debate framework that excels in competitive debate. We introduce two tree structures: the Rehearsal Tree and Debate Flow Tree. The Rehearsal Tree anticipates the attack and defenses to evaluate the strength of the claim, while the Debate Flow Tree tracks the debate status to identify the active actions. TreeDebater allocates its time budget among candidate actions and uses the speech time controller and feedback from the simulated audience to revise its statement. The human evaluation on both the stage-level and the debate-level comparison shows that our TreeDebater outperforms the state-of-the-art multi-agent debate system, with a +15.6% improvement in stage-level persuasiveness with DeepSeek and +10% debate-level opinion shift win. Further investigation shows that TreeDebater shows better strategies in limiting time to important debate actions, aligning with the strategies of human debate experts.},
-  eprint   = {https://arxiv.org/abs/2505.14886},
 }
 
 @Unpublished{xuPreprintreciprocal,
